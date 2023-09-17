@@ -32,11 +32,8 @@ declare global {
   declare namespace Utils {
     type Locale = string | string[]
 
-    type ActionFn = () => void
-    type ActionWithParamsFn<TArgs = any[]> = (...args: TArgs) => void
-    type DispatchFn<T> = () => T
-    type DispatchWithParamsFn<T, TArgs = any[]> = (...args: TArgs) => T
-    type UpdateFn<TValue> = (newValue: UpdateValueAction<TValue>) => void
+    type DispatchFn = () => void
+    type DispatchWithParamsFn<TArgs = any[]> = (...args: TArgs) => void
     type InitFn<TValue> = () => TValue
 
     type ObjectType = Record<any, any> | any[]

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useStore, type Atom } from 'jotai'
 
-const useAtomSubscription = (atom: Atom<any>, onUpdate: Utils.ActionFn) => {
+const useAtomSubscription = (atom: Atom<any>, onUpdate: Utils.DispatchFn) => {
   const appStore = useStore()
 
   React.useEffect(() => {

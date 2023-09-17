@@ -10,7 +10,7 @@ type MessageOptions = {
   title: string
   content: string
   data?: Utils.MaybePromise<MessagePayload | null>
-  style?: 'inline' | 'accessor'
+  style?: 'default' | 'inline'
 }
 
 class Logger {

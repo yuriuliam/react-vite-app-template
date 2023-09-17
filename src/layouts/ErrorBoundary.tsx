@@ -13,10 +13,7 @@ const ErrorBoundary: React.FC = () => {
   const navigate = useNavigate()
   const errorFromRoutes = useRouteError()
 
-  const isRouteError = React.useMemo(
-    () => isRouteErrorResponse(errorFromRoutes),
-    [errorFromRoutes],
-  )
+  const isRouteError = isRouteErrorResponse(errorFromRoutes)
 
   const handleRedirectToRoot = React.useCallback(() => {
     navigate(ROUTES.ROOT, { replace: true })
@@ -29,7 +26,6 @@ const ErrorBoundary: React.FC = () => {
       name: 'ErrorBoundary',
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
-      style: 'accessor',
     })
   }, [errorFromRoutes, isRouteError])
 

@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import * as RadixIcons from '@radix-ui/react-icons'
 import { Box } from '@radix-ui/themes'
 
@@ -13,7 +11,7 @@ type AppIconProps = {
 const Icon: React.FC<AppIconProps> = ({ type, size = '4' }) => {
   if (!(type in RadixIcons)) throw Error(`type "${type}" does not exist`)
 
-  const IconComp = useMemo(() => RadixIcons[type], [type])
+  const IconComp = RadixIcons[type]
 
   return (
     <Box width={size} height={size} asChild>

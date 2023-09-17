@@ -1,0 +1,12 @@
+/**
+ * Application Constants
+ */
+const APP = Object.freeze({
+  DISPLAY_NAME: 'My App',
+  VERSION: '0.1.0',
+  LOCAL_STORAGE: Object.freeze({
+    PREFIX: '@App',
+  }),
+})
+
+export { APP }
