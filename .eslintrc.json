@@ -1,0 +1,141 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "standard-with-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "eslint:recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/method-signature-style": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "format": ["PascalCase"],
+            "prefix": ["I"],
+            "selector": "interface"
+          },
+          {
+            "format": ["PascalCase"],
+            "selector": "class"
+          }
+        ],
+        "import-helpers/order-imports": [
+          "error",
+          {
+            "alphabetize": { "order": "asc", "ignoreCase": true },
+            "newlinesBetween": "always",
+            "groups": [
+              ["/^react/", "/^react-dom/"],
+              ["module", "absolute"],
+              ["parent", "sibling"],
+              "/assets/",
+              "/components\/atoms/",
+              "/components\/molecules/",
+              "/components\/organisms/",
+              "/contexts/",
+              "/hooks/",
+              "/layouts/",
+              "/pages/",
+              "/routes/",
+              "/services/",
+              "/scripts/",
+              "/utils/",
+              "index",
+              "type"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        "@typescript-eslint/no-empty-interface": "off",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react-jsx-props-no-spreading": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }]
+        
+      }
+    },
+    {
+      "files": ["*.d.ts"],
+      "rules": {
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-unused-vars": "off",
+        "no-var": "off"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["dist", "node_modules", ".eslintrc.json"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "import-helpers",
+    "prettier",
+    "react",
+    "react-hooks",
+    "react-refresh",
+    "jsx-a11y"
+  ],
+  "rules": {
+    "no-void": "off",
+    "eqeqeq": ["error", "always"],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "no-unused-expressions": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ],
+    "n/no-callback-literal": "off",
+    "no-undef": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    // Linting and Formatting
+    "dbaeumer.vscode-eslint",
+    "rvest.vs-code-prettier-eslint",
+    "esbenp.prettier-vscode",
+    "EditorConfig.EditorConfig",
+
+    // Tests
+    "ZixuanChen.vitest-explorer"
+  ]
+}
