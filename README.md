@@ -17,6 +17,7 @@ This is a React Application Base/Template for general purposes.
 ## Main Features
 
 - Tests w/ **Vitest**
+- App Documentation and Workshop w/ **Storybook**
 - Global Store and Global State w/ **Jotai**
 - Components and Design System Bases w/ **Radix UI** + **Radix Themes**
 - Custom Styles Powered w/ **Vite** + **Lightning CSS**
@@ -41,6 +42,7 @@ There are a few ones:
 - **routes** -> All the routes, divided by an URI Resource.
 - **scripts** -> Code parts, injected and executed before rendering the React **App**.
 - **services** -> Business and built-in layers to help with the application's environment.
+- **stories** -> Responsible for dedicated application pages.
 - **styles** -> Global/Main styles for the app.
 - **utils** -> small built-in utilities by javascript concept domain.
 - **App.tsx** -> App' base
