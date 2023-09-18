@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 
 import {
-  formatToHour,
-  formatToLogger,
+  formatToHoursAndMinutes,
+  formatToLoggerTime,
   formatToTime,
 } from '../../src/utils/datetimes'
 
@@ -11,15 +11,15 @@ describe('formatToHour', () => {
     const myDate = new Date('2023-01-01T12:53:28')
     const myTimestamp = Date.parse('2023-01-01T12:53:28')
 
-    const result1 = formatToHour(myDate, 'en-US')
-    const result2 = formatToHour(myTimestamp, 'en-US')
+    const result1 = formatToHoursAndMinutes(myDate, 'en-US')
+    const result2 = formatToHoursAndMinutes(myTimestamp, 'en-US')
 
     expect(result1).toEqual('12:53 PM')
     expect(result1).toEqual(result2)
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
-    const result = formatToHour(undefined, undefined)
+    const result = formatToHoursAndMinutes(undefined, undefined)
 
     expect(result).toBeTypeOf('string')
     expect(!result).toBeFalsy()
@@ -33,15 +33,15 @@ describe('formatToLogger', () => {
     const myDate = new Date(dateStr)
     const myTimestamp = Date.parse(dateStr)
 
-    const result1 = formatToLogger(myDate, 'en-US')
-    const result2 = formatToLogger(myTimestamp, 'en-US')
+    const result1 = formatToLoggerTime(myDate, 'en-US')
+    const result2 = formatToLoggerTime(myTimestamp, 'en-US')
 
     expect(result1).toEqual('Sunday, 01/01/2023, 12:53 PM')
     expect(result2).toEqual(result1)
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
-    const result = formatToLogger(undefined, undefined)
+    const result = formatToLoggerTime(undefined, undefined)
 
     expect(result).toBeTypeOf('string')
     expect(!result).toBeFalsy()

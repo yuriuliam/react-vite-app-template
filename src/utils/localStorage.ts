@@ -9,7 +9,4 @@ const asLocalStorageKey = <TKey extends string>(key: TKey): AppKey<TKey> => {
   return `${APP.LOCAL_STORAGE.PREFIX}:${key}`
 }
 
-const isLocalStorageItemSet = (key: string) =>
-  key in localStorage && localStorage.getItem(key) !== null
-
-export { asLocalStorageKey, isLocalStorageItemSet }
+export { asLocalStorageKey }

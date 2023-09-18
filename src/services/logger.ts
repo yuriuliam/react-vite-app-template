@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import debug, { type Debugger } from 'debug'
 
 import { LOGGER } from '../utils/constants'
-import { formatToLogger } from '../utils/datetimes'
+import { formatToLoggerTime } from '../utils/datetimes'
 
 type MessagePayload = Record<any, any> | any[]
 type MessageOptions = {
@@ -93,7 +93,7 @@ class Logger {
     const name = chalk.bold.green(options.name ?? 'Unknown')
     const title = chalk.bold(options.title)
     const content = chalk.italic(options.content)
-    const now = formatToLogger(Date.now(), 'en-US')
+    const now = formatToLoggerTime(Date.now(), 'en-US')
 
     if (typeof options.data !== 'undefined') {
       const isInline = !!options.style && options.style === 'inline'

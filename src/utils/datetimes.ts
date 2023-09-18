@@ -15,7 +15,7 @@ type IFormatDateTimeFn = (
 /**
  *
  */
-const formatToHour: IFormatDateTimeFn = (date, locale = []) =>
+const formatToHoursAndMinutes: IFormatDateTimeFn = (date, locale = []) =>
   new Intl.DateTimeFormat(locale, {
     ...INTL_DATETIME_HOUR_MINUTE_CYCLE_OPTS,
   }).format(date)
@@ -23,7 +23,7 @@ const formatToHour: IFormatDateTimeFn = (date, locale = []) =>
 /**
  *
  */
-const formatToLogger: IFormatDateTimeFn = (date, locale = []) =>
+const formatToLoggerTime: IFormatDateTimeFn = (date, locale = []) =>
   new Intl.DateTimeFormat(locale, {
     ...INTL_DATETIME_LOGGER_OPTS,
   }).format(date)
@@ -36,4 +36,4 @@ const formatToTime: IFormatDateTimeFn = (date, locale = []) =>
     ...INTL_DATETIME_TIME_OPTS,
   }).format(date)
 
-export { formatToHour, formatToLogger, formatToTime }
+export { formatToHoursAndMinutes, formatToLoggerTime, formatToTime }

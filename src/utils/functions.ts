@@ -25,13 +25,16 @@ const isAsyncGeneratorFunction = (
 
 /**
  * Check if value is a normal function. It will return false if function is
- * `async`, `async generator` or `generator`
+ * an `async`, `async generator` or `generator` type.
+ *
+ * If you just need to assert the type of the value, use `isFunctionType`
+ * or `typeof value === 'function'`
  */
 const isFunction = (value: any): value is FunctionHelpers.FunctionLike =>
   isFunctionType(value) && Object.getPrototypeOf(value) === FUNCTION_PROTOTYPE
 
 /**
- * Checks if value is a function of any type.
+ * Checks if value type is a function, regardless of the type.
  */
 const isFunctionType = (value: any): value is FunctionHelpers.FunctionLike =>
   typeof value === 'function'
