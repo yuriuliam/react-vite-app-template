@@ -1,24 +1,24 @@
-import { APIBase } from '../base'
+import { APIBase } from './base'
 
 import { APP } from '@/utils/constants'
 import { InjectFaker } from '@/utils/decorators'
 
 /**
- * [API] Main v0
+ * [API] Main
  */
-class APIMainV0 extends APIBase {
-  private static _instance: APIMainV0
+class APIMain extends APIBase {
+  private static _instance: APIMain
 
-  private constructor() {
-    super(APP.NAMES.MAIN.V0, import.meta.env.VITE_API_BASE_URL)
+  protected constructor() {
+    super(APP.NAMES.MAIN, import.meta.env.VITE_API_BASE_URL)
   }
 
   public static getInstance() {
-    if (!APIMainV0._instance) {
-      APIMainV0._instance = new APIMainV0()
+    if (!APIMain._instance) {
+      APIMain._instance = new APIMain()
     }
 
-    return APIMainV0._instance
+    return APIMain._instance
   }
 
   @InjectFaker(
@@ -43,4 +43,4 @@ class APIMainV0 extends APIBase {
   }
 }
 
-export { APIMainV0 }
+export { APIMain }
