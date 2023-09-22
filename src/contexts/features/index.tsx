@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { FeaturesContextProvider } from './context'
-
-import { useLogger } from '../../hooks/useLogger'
 import { useSet } from '@uidotdev/usehooks'
 
-import { LOGGER } from '../../utils/constants'
+import { FeaturesContextProvider } from './context'
+
+import { useLogger } from '@/hooks/useLogger'
+
+import { COMPONENTS, LOGGER } from '@/utils/constants'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
   const logger = useLogger(LOGGER.NAMESPACES.FEATURES)
@@ -63,6 +64,6 @@ const FeaturesProvider: React.PFC = ({ children }) => {
     </FeaturesContextProvider>
   )
 }
-FeaturesProvider.displayName = 'App.FeaturesProvider'
+FeaturesProvider.displayName = COMPONENTS.NAMES.FEATURES_PROVIDER
 
 export { FeaturesProvider }

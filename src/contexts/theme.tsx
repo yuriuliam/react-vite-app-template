@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { Theme } from '@radix-ui/themes'
+import { useMediaQuery } from '@uidotdev/usehooks'
 import { useAtom } from 'jotai'
 
-import { useConst } from '../hooks/useConst'
-import { useMediaQuery } from '@uidotdev/usehooks'
+import { useConst } from '@/hooks/useConst'
 
-import { atoms } from '../services/store/atoms'
+import { atoms } from '@/services/store/atoms'
+
+import { COMPONENTS } from '@/utils/constants'
 
 const ThemeProvider: React.PFC = ({ children }) => {
   const preferDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
@@ -17,7 +19,7 @@ const ThemeProvider: React.PFC = ({ children }) => {
     }),
   )
 
-  const [isDarkMode, setIsDarkMode] = useAtom(atoms.isDarkMode)
+  const [isDarkMode, setIsDarkMode] = useAtom(atoms.theme.isDarkMode)
 
   React.useInsertionEffect(() => {
     setIsDarkMode(preferDarkMode)
@@ -43,6 +45,6 @@ const ThemeProvider: React.PFC = ({ children }) => {
     </Theme>
   )
 }
-ThemeProvider.displayName = 'App.ThemeProvider'
+ThemeProvider.displayName = COMPONENTS.NAMES.THEME_PROVIDER
 
 export { ThemeProvider }

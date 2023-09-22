@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { Button } from '../../components/Button'
+import { Button } from '@/components/Button'
 
-import { useAuth } from '../../contexts/auth/context'
+import { useAuth } from '@/contexts/auth/context'
 
-import { ROUTES } from '../../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate()
-  const { signIn } = useAuth('SignIn')
+  const { signIn } = useAuth(COMPONENTS.NAMES.SIGN_IN)
 
   const handleSignIn = React.useCallback(async () => {
     await signIn()
@@ -30,6 +30,6 @@ const SignIn: React.FC = () => {
     </Flex>
   )
 }
-SignIn.displayName = 'App.Pages.SignIn'
+SignIn.displayName = COMPONENTS.NAMES.SIGN_IN
 
 export { SignIn }

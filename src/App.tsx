@@ -1,6 +1,6 @@
-import { AppProvider } from './contexts/app'
+import { AppProvider } from '@/contexts/app'
 
-import { Routes } from './routes'
+import { Routes } from '@/routes'
 
 const App: React.FC = () => {
   return (

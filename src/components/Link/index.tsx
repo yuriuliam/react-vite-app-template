@@ -1,5 +1,7 @@
 import { Flex, Link as RadixUILink } from '@radix-ui/themes'
 
+import { COMPONENTS } from '@/utils/constants'
+
 type AppLinkProps = React.ComponentProps<typeof RadixUILink>
 
 const Link: React.FC<AppLinkProps> = props => (
@@ -7,6 +9,6 @@ const Link: React.FC<AppLinkProps> = props => (
     <RadixUILink {...props} />
   </Flex>
 )
-Link.displayName = 'App.Link'
+Link.displayName = COMPONENTS.NAMES.LINK
 
 export { Link }

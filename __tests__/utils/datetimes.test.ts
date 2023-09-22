@@ -4,7 +4,7 @@ import {
   formatToHoursAndMinutes,
   formatToLoggerTime,
   formatToTime,
-} from '../../src/utils/datetimes'
+} from '@/utils/datetimes'
 
 describe('formatToHour', () => {
   it('should be able to format date-parsable values', () => {

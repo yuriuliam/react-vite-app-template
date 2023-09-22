@@ -1,13 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from '../../internals/createContext'
+import { createContext } from '@/internals/createContext'
+
+import { COMPONENTS } from '@/utils/constants'
 
 interface IFeaturesContextData {
-  addFeatures: (id: string) => void
-  hasFeatures: (id: string) => boolean
-  removeFeatures: (id: string) => void
+  addFeatures: (...ids: string[]) => void
+  hasFeatures: (...ids: string[]) => boolean
+  removeFeatures: (...ids: string[]) => void
 }
 
 const [FeaturesContextProvider, useFeatures] =
-  createContext<IFeaturesContextData>(null, 'Features')
+  createContext<IFeaturesContextData>(null, COMPONENTS.NAMES.FEATURES)
 
 export { FeaturesContextProvider, useFeatures }

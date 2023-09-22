@@ -4,12 +4,12 @@ import { useAtom } from 'jotai'
 
 import { AuthContextProvider } from './context'
 
-import { useAPI } from '../../hooks/useAPI'
-import { useLogger } from '../../hooks/useLogger'
+import { useAPI } from '@/hooks/useAPI'
+import { useLogger } from '@/hooks/useLogger'
 
-import { atoms } from '../../services/store/atoms'
+import { atoms } from '@/services/store/atoms'
 
-import { LOGGER } from '../../utils/constants'
+import { COMPONENTS, LOGGER } from '@/utils/constants'
 
 const AuthProvider: React.PFC = ({ children }) => {
   const logger = useLogger(LOGGER.NAMESPACES.AUTH)
@@ -19,7 +19,7 @@ const AuthProvider: React.PFC = ({ children }) => {
   const [token, setToken] = useAtom(atoms.auth.token)
 
   const signIn = React.useCallback(async () => {
-    const data = await api.getAuthUser()
+    const data = await api.authenticate()
 
     if (!data) {
       logger.error({
@@ -61,6 +61,6 @@ const AuthProvider: React.PFC = ({ children }) => {
     </AuthContextProvider>
   )
 }
-AuthProvider.displayName = 'App.AuthProvider'
+AuthProvider.displayName = COMPONENTS.NAMES.AUTH_PROVIDER
 
 export { AuthProvider }

@@ -1,5 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from '../../internals/createContext'
+import { createContext } from '@/internals/createContext'
+
+import { COMPONENTS } from '@/utils/constants'
 
 interface IAuthContextData {
   signIn: () => Promise<void>
@@ -10,7 +12,7 @@ interface IAuthContextData {
 
 const [AuthContextProvider, useAuth] = createContext<IAuthContextData>(
   null,
-  'Auth',
+  COMPONENTS.NAMES.AUTH,
 )
 
 export { AuthContextProvider, useAuth }

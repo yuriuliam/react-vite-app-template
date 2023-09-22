@@ -1,7 +1,18 @@
 import React from 'react'
 
-import { isFunction } from '../utils/functions'
+import { isFunction } from '@/utils/functions'
 
+/**
+ * Creates an immutable value.
+ * It can receive an Initial value or a Initializer Function.
+ *
+ * If for any circumstances the value is `null`,
+ * the initial value will be recomputed until it gets something
+ * different.
+ *
+ * @param init an initial value or an initializer function
+ * @returns the initialized value
+ */
 const useConst = <T>(init: T | Utils.InitFn<T>) => {
   const ref = React.useRef<T | null>(null)
 

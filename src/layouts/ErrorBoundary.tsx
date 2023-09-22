@@ -7,7 +7,7 @@ import {
 
 import { Flex, Section } from '@radix-ui/themes'
 
-import { ROUTES } from '../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const ErrorBoundary: React.FC = () => {
   const navigate = useNavigate()
@@ -53,6 +53,6 @@ const ErrorBoundary: React.FC = () => {
     </Flex>
   )
 }
-ErrorBoundary.displayName = 'App.ErrorBoundary'
+ErrorBoundary.displayName = COMPONENTS.NAMES.ERROR_BOUNDARY
 
 export { ErrorBoundary }

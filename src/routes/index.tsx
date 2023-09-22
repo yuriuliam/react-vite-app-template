@@ -3,15 +3,15 @@ import { Route } from 'react-router-dom'
 
 import { Router as AppRouter } from './Router'
 
-import { AuthLayout } from '../layouts/AuthLayout'
-import { ErrorBoundary } from '../layouts/ErrorBoundary'
-import { MainLayout } from '../layouts/MainLayout'
+import { AuthLayout } from '@/layouts/AuthLayout'
+import { ErrorBoundary } from '@/layouts/ErrorBoundary'
+import { MainLayout } from '@/layouts/MainLayout'
 
-import { Home } from '../pages/Home'
-import { SignIn } from '../pages/SignIn'
-import { SignOut } from '../pages/SignOut'
+import { Home } from '@/pages/Home'
+import { SignIn } from '@/pages/SignIn'
+import { SignOut } from '@/pages/SignOut'
 
-import { ROUTES } from '../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const Routes: React.FC = () => {
   return (
@@ -35,5 +35,6 @@ const Routes: React.FC = () => {
     </AppRouter>
   )
 }
+Routes.displayName = COMPONENTS.NAMES.ROUTES
 
 export { Routes }

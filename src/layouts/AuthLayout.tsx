@@ -1,15 +1,15 @@
 import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
-import { useAuth } from '../contexts/auth/context'
+import { useAuth } from '@/contexts/auth/context'
 
-import { ROUTES } from '../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
  * A pseudo-layout created to middleware authentication.
  */
 const AuthLayout: React.FC = () => {
-  const { token, user } = useAuth('Routes')
+  const { token, user } = useAuth(COMPONENTS.NAMES.AUTH_LAYOUT)
   const location = useLocation()
 
   const isAuthenticated = !!(token && user)
@@ -21,6 +21,6 @@ const AuthLayout: React.FC = () => {
     <Navigate to={ROUTES.SIGN_IN} />
   )
 }
-AuthLayout.displayName = 'App.AuthLayout'
+AuthLayout.displayName = COMPONENTS.NAMES.AUTH_LAYOUT
 
 export { AuthLayout }

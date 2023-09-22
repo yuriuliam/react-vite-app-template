@@ -5,6 +5,8 @@ import { FeaturesProvider } from './features'
 import { StoreProvider } from './store'
 import { ThemeProvider } from './theme'
 
+import { COMPONENTS } from '@/utils/constants'
+
 const AppProvider: React.PFC = ({ children }) => {
   return (
     <StoreProvider>
@@ -18,6 +20,6 @@ const AppProvider: React.PFC = ({ children }) => {
     </StoreProvider>
   )
 }
-AppProvider.displayName = 'App.AppProvider'
+AppProvider.displayName = COMPONENTS.NAMES.APP_PROVIDER
 
 export { AppProvider }

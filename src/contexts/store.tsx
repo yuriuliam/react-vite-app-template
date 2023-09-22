@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Provider as JotaiStoreProvider } from 'jotai'
 
-import { store } from '../services/store'
+import { store } from '@/services/store'
+
+import { COMPONENTS } from '@/utils/constants'
 
 const StoreProvider: React.PFC = ({ children }) => {
   return (
@@ -11,6 +13,6 @@ const StoreProvider: React.PFC = ({ children }) => {
     </JotaiStoreProvider>
   )
 }
-StoreProvider.displayName = 'App.StoreProvider'
+StoreProvider.displayName = COMPONENTS.NAMES.STORE_PROVIDER
 
 export { StoreProvider }

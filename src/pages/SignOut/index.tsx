@@ -1,16 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useAuth } from '../../contexts/auth/context'
+import { useAuth } from '@/contexts/auth/context'
 
-import { ROUTES } from '../../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
  * A pseudo-page which sign-outs the current user and redirect to the root.
  */
 const SignOut: React.FC = () => {
   const navigate = useNavigate()
-  const { signOut } = useAuth('SignOut')
+  const { signOut } = useAuth(COMPONENTS.NAMES.SIGN_OUT)
 
   React.useLayoutEffect(() => {
     signOut()
@@ -18,8 +18,8 @@ const SignOut: React.FC = () => {
     navigate(ROUTES.ROOT)
   }, [navigate, signOut])
 
-  return null
+  return <></>
 }
-SignOut.displayName = 'App.Pages.SignOut'
+SignOut.displayName = COMPONENTS.NAMES.SIGN_OUT
 
 export { SignOut }

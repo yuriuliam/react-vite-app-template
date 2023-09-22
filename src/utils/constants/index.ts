@@ -1,4 +1,5 @@
 export * from './app'
+export * from './components'
 export * from './definitions'
 export * from './logger'
 export * from './routes'

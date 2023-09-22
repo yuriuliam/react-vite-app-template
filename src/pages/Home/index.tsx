@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { Button } from '../../components/Button'
+import { Button } from '@/components/Button'
 
-import { ROUTES } from '../../utils/constants'
+import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -25,6 +25,6 @@ const Home: React.FC = () => {
     </Flex>
   )
 }
-Home.displayName = 'App.Pages.Home'
+Home.displayName = COMPONENTS.NAMES.HOME
 
 export { Home }

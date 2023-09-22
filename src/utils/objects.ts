@@ -23,7 +23,7 @@ const groupBy = <T extends any[], TCallback extends SelectKeyFn<T>>(
 /**
  * Checks if value is a non-null object/record/array.
  */
-const isObject = (value: any): value is Record<any, any> | any[] =>
+const isObject = (value: any): value is NonNullable<object> =>
   typeof value === 'object' && value !== null
 
 /**

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { formatPercentage, formatPrice } from '../../src/utils/numbers'
+import { formatPercentage, formatPrice } from '@/utils/numbers'
 
 describe('formatPercentage', () => {
   it('should format numbers to percentage when percentage is provided', () => {

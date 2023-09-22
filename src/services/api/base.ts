@@ -2,9 +2,9 @@ import axios, { isAxiosError, type AxiosInstance } from 'axios'
 
 import { Logger } from '../logger'
 
-import { LOGGER } from '../../utils/constants'
+import { LOGGER } from '@/utils/constants'
 
-class APIBase {
+abstract class APIBase {
   protected readonly fetcher: AxiosInstance
   protected readonly logger = Logger.getInstance(LOGGER.NAMESPACES.API)
   protected readonly name: string

@@ -2,6 +2,11 @@ import React from 'react'
 
 import { Button as RadixButton } from '@radix-ui/themes'
 
+import { COMPONENTS } from '@/utils/constants'
+
+/**
+ * A button for app's purposes.
+ */
 const Button = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<typeof RadixButton>
@@ -12,6 +17,6 @@ const Button = React.forwardRef<
     </RadixButton>
   )
 })
-Button.displayName = 'App.Button'
+Button.displayName = COMPONENTS.NAMES.BUTTON
 
 export { Button }
