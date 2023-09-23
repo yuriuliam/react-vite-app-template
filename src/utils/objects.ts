@@ -2,7 +2,7 @@ import { RECORD_PROTOTYPE } from './constants'
 
 type SelectKeyFn<T extends any[]> = (
   item: Readonly<Utils.ObjectValue<T>>,
-) => string
+) => string | number | symbol
 
 /**
  * Creates a Map out of an record/array.
