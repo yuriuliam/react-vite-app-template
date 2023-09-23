@@ -11,8 +11,11 @@ This is a React Application Base/Template for general purposes.
    2. `PNPM >= 8.7.0`
 2. Run `pnpm install`
 3. Make a copy of `.env.template` and name it `.env.local`
+4. Run `pnpm dev` to start de application locally.
 
-#### Current Status: W.I.P.
+#### Current Status
+
+This is current on **W.I.P.**
 
 ## Main Features
 
