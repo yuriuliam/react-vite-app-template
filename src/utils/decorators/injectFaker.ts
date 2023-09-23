@@ -1,6 +1,6 @@
 import { faker, type Faker } from '@faker-js/faker'
 
-import { memoize } from '../functions'
+import { isAsyncFunction, isFunctionType, memoize } from '../functions'
 
 type InjectionFn = (faker: Faker) => any
 
@@ -11,10 +11,28 @@ type InjectionFn = (faker: Faker) => any
  */
 const InjectFaker = (cb: InjectionFn, memo = false) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
-    const method = cb.bind(null, faker)
-    const override = memo ? memoize(method) : method
+    const originalMethod = Reflect.get(
+      descriptor,
+      descriptor.value ? 'value' : 'get',
+    )!
 
-    Reflect.set(descriptor, descriptor.value ? 'value' : 'get', override)
+    if (!originalMethod || !isFunctionType(originalMethod)) {
+      throw new TypeError(
+        'InjectFaker should be used on a method or get accessors',
+      )
+    }
+
+    const callback = cb.bind(null, faker)
+    const method = isAsyncFunction(originalMethod)
+      ? async () =>
+          await new Promise(resolve => {
+            resolve(callback())
+          })
+      : () => callback()
+
+    const overrideMethod = memo ? memoize(method) : method
+
+    Reflect.set(descriptor, descriptor.value ? 'value' : 'get', overrideMethod)
   }
 
   return decorator as any

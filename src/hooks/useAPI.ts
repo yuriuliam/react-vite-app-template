@@ -1,13 +1,13 @@
 import { useConst } from './useConst'
 
-import { APIMainV0 } from '@/services/api/main/v0'
+import { APIMain } from '@/services/api/main'
 
 /**
  * An immutable instance of the API which can be called
  * within a component.
  */
 const useAPI = () => {
-  return useConst(APIMainV0.getInstance())
+  return useConst(APIMain.getInstance())
 }
 
 export { useAPI }
