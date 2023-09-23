@@ -10,6 +10,6 @@ type AppBodyProps = {
 const Portal: React.PFC<AppBodyProps> = ({ children, element, id }) => (
   <>{ReactDOM.createPortal(children, element, id)}</>
 )
-Portal.displayName = COMPONENTS.NAMES.PORTAL
+Portal.displayName = COMPONENTS.NAMES.PORTALS.ROOT
 
 export { Portal }

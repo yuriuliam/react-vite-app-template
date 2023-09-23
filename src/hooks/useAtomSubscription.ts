@@ -12,7 +12,7 @@ import { useStore, type Atom } from 'jotai'
  * @param atom The atom to be subscribed.
  * @param onUpdate The function which will be called as the listener.
  */
-const useAtomSubscription = (atom: Atom<any>, onUpdate: Utils.DispatchFn) => {
+const useAtomSubscription = (atom: Atom<any>, onUpdate: Utils.CallbackFn) => {
   const appStore = useStore()
 
   React.useEffect(() => {

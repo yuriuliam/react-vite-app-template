@@ -4,7 +4,7 @@ import debug, { type Debugger } from 'debug'
 import { LOGGER } from '@/utils/constants'
 import { formatToLoggerTime } from '@/utils/datetimes'
 
-type MessagePayload = Record<any, any> | any[]
+type MessagePayload = Utils.ObjectType
 type MessageOptions = {
   name?: string
   title: string

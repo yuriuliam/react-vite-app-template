@@ -15,6 +15,6 @@ const Body: React.PFC<AppBodyProps> = ({ children, id }) => (
     {children}
   </Portal>
 )
-Body.displayName = COMPONENTS.NAMES.BODY
+Body.displayName = COMPONENTS.NAMES.PORTALS.BODY
 
 export { Body }

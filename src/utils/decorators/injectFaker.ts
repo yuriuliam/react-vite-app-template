@@ -1,6 +1,7 @@
 import { faker, type Faker } from '@faker-js/faker'
 
 import { isAsyncFunction, isFunctionType, memoize } from '../functions'
+import { promisify } from '../promises'
 
 type InjectionFn = (faker: Faker) => any
 
@@ -24,11 +25,8 @@ const InjectFaker = (cb: InjectionFn, memo = false) => {
 
     const callback = cb.bind(null, faker)
     const method = isAsyncFunction(originalMethod)
-      ? async () =>
-          await new Promise(resolve => {
-            resolve(callback())
-          })
-      : () => callback()
+      ? promisify(callback)
+      : callback
 
     const overrideMethod = memo ? memoize(method) : method
 

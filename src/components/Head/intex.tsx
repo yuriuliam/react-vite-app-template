@@ -15,6 +15,6 @@ const Head: React.PFC<AppHeadProps> = ({ children, id }) => (
     {children}
   </Portal>
 )
-Head.displayName = COMPONENTS.NAMES.HEAD
+Head.displayName = COMPONENTS.NAMES.PORTALS.HEAD
 
 export { Head }

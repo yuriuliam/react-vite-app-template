@@ -1,5 +1,8 @@
 import { isFunctionType, memoize } from '../functions'
 
+/**
+ * memos an accessor/method return value from a class.
+ */
 const Memoize = () => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     const method = Reflect.get(descriptor, 'value')

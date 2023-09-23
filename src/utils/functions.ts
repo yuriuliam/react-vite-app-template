@@ -14,7 +14,7 @@ type MemoizedFn<T extends (...args: any[]) => any> = ((
 const argsReplacer = (_k: string, v: any) => {
   if (v instanceof Set) return Array.from(v)
 
-  if (v instanceof Object) return Object.entries(v)
+  if (v instanceof Map) return Object.fromEntries(v.entries())
 
   return v
 }
@@ -41,7 +41,7 @@ const isAsyncGeneratorFunction = (
  * Check if value is a normal function. It will return false if function is
  * an `async`, `async generator` or `generator` type.
  *
- * If you just need to assert the type of the value, use `isFunctionType`
+ * If you just need to assert it's type, use `isFunctionType`
  * or `typeof value === 'function'`
  */
 const isFunction = (value: any): value is FunctionUtils.FunctionLike =>
@@ -63,7 +63,13 @@ const isGeneratorFunction = (
   Object.getPrototypeOf(value) === GENERATOR_FUNCTION_PROTOTYPE
 
 /**
- * Memoizes a function declaration.
+ * Memoizes a function declaration, quite useful for expensive methods return
+ * a value without needing to process.
+ *
+ * It can optionally receives an external cache. in order to control the values.
+ *
+ * It returns the memoized callback with a clear method bounded into it, making
+ * it possible to clear it's cache.
  */
 const memoize = <T extends (...args: any[]) => any>(
   method: T,

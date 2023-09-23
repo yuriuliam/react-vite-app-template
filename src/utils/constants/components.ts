@@ -4,16 +4,18 @@
 const COMPONENTS = Object.freeze({
   NAMES: Object.freeze({
     // From Components
-    BODY: 'App.Body',
     BUTTON: 'App.Button',
-    HEAD: 'App.Head',
     HEADER: 'App.Header',
     HEADER_LOGO: 'App.Header.Logo',
     HEADER_RIGHT_ACTIONS: 'App.Header.RightActions',
     HEADER_ROOT: 'App.Header.Root',
     ICON: 'App.Icon',
     LINK: 'App.Link',
-    PORTAL: 'App.Portal',
+    PORTALS: Object.freeze({
+      ROOT: 'App.Portal',
+      BODY: 'App.Portal.Body',
+      HEAD: 'App.Portal.Head',
+    }),
     ROUTE_LINK: 'App.RouteLink',
 
     // From Contexts

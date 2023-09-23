@@ -4,7 +4,7 @@ declare global {
   /**
    * Global instance of the App Logger.
    *
-   * Check `scripts/globalLogger.ts`
+   * See `scripts/globalLogger.ts`
    */
   var logger: Logger
 }
