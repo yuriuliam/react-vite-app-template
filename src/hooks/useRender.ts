@@ -12,10 +12,7 @@ const useRender = () => {
     dispatchRender()
   }, [])
 
-  return {
-    rerenderCount: renders,
-    rerender,
-  }
+  return [renders, rerender] as const
 }
 
 export { useRender }

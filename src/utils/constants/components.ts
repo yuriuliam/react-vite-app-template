@@ -4,45 +4,45 @@
 const COMPONENTS = Object.freeze({
   NAMES: Object.freeze({
     // From Components
-    BUTTON: 'App.Button',
-    HEADER: 'App.Header',
-    HEADER_LOGO: 'App.Header.Logo',
-    HEADER_RIGHT_ACTIONS: 'App.Header.RightActions',
-    HEADER_ROOT: 'App.Header.Root',
-    ICON: 'App.Icon',
-    LINK: 'App.Link',
+    BUTTON: 'Components.Button',
+    HEADER: 'Components.Header',
+    HEADER_LOGO: 'Components.Header.Logo',
+    HEADER_RIGHT_ACTIONS: 'Components.Header.RightActions',
+    HEADER_ROOT: 'Components.Header.Root',
+    ICON: 'Components.Icon',
+    LINK: 'Components.Link',
     PORTALS: Object.freeze({
-      ROOT: 'App.Portal',
-      BODY: 'App.Portal.Body',
-      HEAD: 'App.Portal.Head',
+      ROOT: 'Components.Portal',
+      BODY: 'Components.Portal.Body',
+      HEAD: 'Components.Portal.Head',
     }),
-    ROUTE_LINK: 'App.RouteLink',
+    ROUTE_LINK: 'Components.RouteLink',
 
     // From Contexts
     APP_PROVIDER: 'App.Provider',
-    AUTH: 'App.Auth',
-    AUTH_PROVIDER: 'App.AuthProvider',
-    FEATURES: 'App.Features',
-    FEATURES_PROVIDER: 'App.FeaturesProvider',
-    STORE_PROVIDER: 'App.StoreProvider',
-    THEME_PROVIDER: 'App.ThemeProvider',
+    AUTH: 'Contexts.Auth',
+    AUTH_PROVIDER: 'Contexts.AuthProvider',
+    FEATURES: 'Contexts.Features',
+    FEATURES_PROVIDER: 'Contexts.FeaturesProvider',
+    STORE_PROVIDER: 'Contexts.StoreProvider',
+    THEME_PROVIDER: 'Contexts.ThemeProvider',
 
     // From Internals
-    CONTEXT_PROVIDER: `App.ContextProvider`,
+    CONTEXT_PROVIDER: `Internals.ContextProvider`,
 
     // From Layouts
-    AUTH_LAYOUT: 'App.AuthLayout',
-    ERROR_BOUNDARY: 'App.ErrorBoundary',
-    MAIN_LAYOUT: 'App.MainLayout',
+    AUTH_LAYOUT: 'Layouts.Auth',
+    ERROR_BOUNDARY: 'Layouts.ErrorBoundary',
+    MAIN_LAYOUT: 'Layouts.Main',
 
     // From Pages
-    HOME: 'App.HomePage',
-    SIGN_IN: 'App.SignInPage',
-    SIGN_OUT: 'App.SignOutPage',
+    HOME: 'Pages.Home',
+    SIGN_IN: 'Pages.SignIn',
+    SIGN_OUT: 'Pages.SignOut',
 
     // From Routes
-    ROUTER: 'App.Router',
-    ROUTES: 'App.Routes',
+    ROUTER: 'Routes.Router',
+    ROUTES: 'Routes.Root',
   }),
 })
 

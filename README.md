@@ -19,14 +19,15 @@ This is current on **W.I.P.**
 
 ## Main Features
 
-- Tests w/ **Vitest**
-- App Documentation and Workshop w/ **Storybook**
-- Global Store and Global State w/ **Jotai**
-- Components and Design System Bases w/ **Radix UI** + **Radix Themes**
-- Custom Styles Powered w/ **Vite** + **Lightning CSS**
-- Logger Service powered w/ **Debug (Lib)** and **Chalk**
-- Some amazing React Hooks powered w/ **ui.dev's useHooks** + **App's Custom Hooks**
-- Linting + Styling w/ **ESLint (with plugins)** + **Prettier**
+- Tests powered w/ **Vitest**
+- App Documentation and Workshop powered w/ **Storybook**
+- Global Store and State powered w/ **Jotai**
+- Components and Design System Basis w/ **Radix UI** + **Radix Themes**
+- Path Aliases powered w/ **Vite**
+- Custom Styles powered w/ **Vite** + **Lightning CSS**
+- Logger powered w/ **Debug (Lib)** and **Chalk**
+- Some amazing custom React hooks w/ **ui.dev's useHooks** + **App's Custom Hooks**
+- Linting + Code Styling powered w/ **ESLint (with plugins)** + **Prettier**
 
 ## Architecture
 
@@ -70,7 +71,7 @@ There are a few ones:
 
     -> Router's Error Boundary
     -> Layouts (Page Layouts, Auth Layouts etc...)¹
-    -> Pages (then components, hooks etc...)
+    -> Pages (such as Home, SignIn etc)
   }
  }
 }

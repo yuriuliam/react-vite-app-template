@@ -8,7 +8,8 @@ type InjectionFn = (faker: Faker) => any
 /**
  * Override the method/getter to return a value of your choice.
  *
- * The Injection function receives a Data Faker instance.
+ * The Injection function receives a Data Faker instance, which can be used
+ * as a data generator, certainly fake.
  */
 const InjectFaker = (cb: InjectionFn, memo = false) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {

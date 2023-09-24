@@ -13,10 +13,7 @@ import { COMPONENTS } from '@/utils/constants'
 const ThemeProvider: React.PFC = ({ children }) => {
   const preferDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const themeClasses = useConst(
-    Object.freeze({
-      dark: 'dark-theme',
-      light: 'light-theme',
-    }),
+    Object.freeze({ dark: 'dark-theme', light: 'light-theme' }),
   )
 
   const [isDarkMode, setIsDarkMode] = useAtom(atoms.theme.isDarkMode)
@@ -26,7 +23,7 @@ const ThemeProvider: React.PFC = ({ children }) => {
   }, [])
 
   React.useInsertionEffect(() => {
-    const themeClass = themeClasses[isDarkMode ? 'dark' : 'light']
+    const themeClass = Reflect.get(themeClasses, isDarkMode ? 'dark' : 'light')
 
     document.body.classList.add(themeClass)
 

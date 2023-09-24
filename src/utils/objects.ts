@@ -21,8 +21,7 @@ const asSet = <T extends Utils.ObjectType>(value: T) =>
   )
 
 /**
- * Creates a record out of an array, grouping them by key selected by
- * a callback.
+ * Creates a record out of an array, grouping them by keys out of a callback.
  */
 const groupBy = <T extends any[], TCallback extends SelectKeyFn<T>>(
   obj: T,

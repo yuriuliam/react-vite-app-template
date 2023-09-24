@@ -7,19 +7,17 @@ import { ThemeProvider } from './theme'
 
 import { COMPONENTS } from '@/utils/constants'
 
-const AppProvider: React.PFC = ({ children }) => {
-  return (
-    <StoreProvider>
-      <FeaturesProvider>
-        <ThemeProvider>
-          <AuthProvider>
-            <>{children}</>
-          </AuthProvider>
-        </ThemeProvider>
-      </FeaturesProvider>
-    </StoreProvider>
-  )
-}
+const AppProvider: React.PFC = ({ children }) => (
+  <StoreProvider>
+    <FeaturesProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <>{children}</>
+        </AuthProvider>
+      </ThemeProvider>
+    </FeaturesProvider>
+  </StoreProvider>
+)
 AppProvider.displayName = COMPONENTS.NAMES.APP_PROVIDER
 
 export { AppProvider }

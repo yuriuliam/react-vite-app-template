@@ -23,12 +23,6 @@ declare global {
 
     /** Describes a Iterator-return Method. */
     type IteratorFunctionLike = (...args: any[]) => Iterator<any, any, any>
-
-    /** Converts a given method type into an Asynchronous Method. */
-    type PromisifiedFunction<TMethod extends FunctionLike> =
-      ReturnType<TMethod> extends Promise<any>
-        ? TMethod
-        : (...args: Parameters<T>) => Promise<ReturnType<T>>
   }
 }
 

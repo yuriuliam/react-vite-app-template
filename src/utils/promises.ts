@@ -4,7 +4,7 @@ import { isFunction } from './functions'
  * Defers a value into a promise, which will be resolved after a given number
  * of milliseconds.
  */
-const debounced = async <T>(value: T, ms: number) =>
+const deferred = async <T>(value: T, ms: number) =>
   new Promise(resolve => {
     setTimeout(() => {
       resolve(value)
@@ -26,13 +26,12 @@ const promised = async <T>(init: T | Utils.InitFn<T>) => {
 }
 
 /**
- * A wrapper to create promise function out of non-async ones.
+ * A wrapper to create a promise function out of non-async one.
  */
-const promisify = <T extends FunctionUtils.FunctionLike>(callback: T) =>
-  (async (...args: Parameters<T>) =>
-    await Promise.resolve(
-      callback(...args),
-    )) as FunctionUtils.PromisifiedFunction<T>
+const promisify =
+  <T extends FunctionUtils.FunctionLike>(callback: T) =>
+  async (...args: Parameters<T>) =>
+    (await Promise.resolve(callback(...args))) as ReturnType<T>
 
 /**
  * Creates a promise which will only be resolved after a given amount
@@ -42,4 +41,4 @@ const wait = async (ms: number) => {
   await new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export { promised, debounced, promisify, wait }
+export { promised, deferred, promisify, wait }
