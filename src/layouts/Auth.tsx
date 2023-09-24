@@ -8,7 +8,7 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
 /**
  * A pseudo-layout created to middleware authentication.
  */
-const AuthLayout: React.FC = () => {
+const Auth: React.FC = () => {
   const { token, user } = useAuth(COMPONENTS.NAMES.AUTH_LAYOUT)
   const location = useLocation()
 
@@ -21,6 +21,6 @@ const AuthLayout: React.FC = () => {
     <Navigate to={ROUTES.SIGN_IN} />
   )
 }
-AuthLayout.displayName = COMPONENTS.NAMES.AUTH_LAYOUT
+Auth.displayName = COMPONENTS.NAMES.AUTH_LAYOUT
 
-export { AuthLayout }
+export { Auth }

@@ -7,7 +7,7 @@ import { COMPONENTS } from '../utils/constants'
 
 import { Header } from '@/components/Header'
 
-const MainLayout: React.FC = () => {
+const Main: React.FC = () => {
   return (
     <>
       <Section>
@@ -18,6 +18,6 @@ const MainLayout: React.FC = () => {
     </>
   )
 }
-MainLayout.displayName = COMPONENTS.NAMES.MAIN_LAYOUT
+Main.displayName = COMPONENTS.NAMES.MAIN_LAYOUT
 
-export { MainLayout }
+export { Main }

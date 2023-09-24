@@ -3,13 +3,13 @@ import { Route } from 'react-router-dom'
 
 import { Router as AppRouter } from './Router'
 
-import { AuthLayout } from '@/layouts/AuthLayout'
+import { Auth as AuthLayout } from '@/layouts/Auth'
 import { ErrorBoundary } from '@/layouts/ErrorBoundary'
-import { MainLayout } from '@/layouts/MainLayout'
+import { Main as MainLayout } from '@/layouts/Main'
 
-import { Home } from '@/pages/Home'
-import { SignIn } from '@/pages/SignIn'
-import { SignOut } from '@/pages/SignOut'
+import { Home as HomePage } from '@/pages/Home'
+import { SignIn as SignInPage } from '@/pages/SignIn'
+import { SignOut as SignOutPage } from '@/pages/SignOut'
 
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
@@ -21,15 +21,15 @@ const Routes: React.FC = () => {
         <Route element={<AuthLayout />}>
           {/* Main Layout */}
           <Route element={<MainLayout />}>
-            <Route path={ROUTES.ROOT} element={<Home />} />
+            <Route path={ROUTES.ROOT} element={<HomePage />} />
           </Route>
         </Route>
 
         {/* Routes Without Authentication */}
         <Route>
-          <Route path={ROUTES.SIGN_IN} element={<SignIn />} />
+          <Route path={ROUTES.SIGN_IN} element={<SignInPage />} />
 
-          <Route path={ROUTES.SIGN_OUT} element={<SignOut />} />
+          <Route path={ROUTES.SIGN_OUT} element={<SignOutPage />} />
         </Route>
       </Route>
     </AppRouter>
