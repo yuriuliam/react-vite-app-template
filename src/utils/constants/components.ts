@@ -19,10 +19,10 @@ const COMPONENTS = Object.freeze({
     ROUTE_LINK: 'Components.RouteLink',
 
     // From Contexts
+    AUTH: 'AuthContext',
+    FEATURES: 'FeaturesContext',
     APP_PROVIDER: 'App.Provider',
-    AUTH: 'Contexts.Auth',
     AUTH_PROVIDER: 'Contexts.AuthProvider',
-    FEATURES: 'Contexts.Features',
     FEATURES_PROVIDER: 'Contexts.FeaturesProvider',
     STORE_PROVIDER: 'Contexts.StoreProvider',
     THEME_PROVIDER: 'Contexts.ThemeProvider',
