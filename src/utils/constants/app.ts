@@ -6,7 +6,7 @@ const APP = Object.freeze({
   VERSION: '0.1.0',
 
   NAMES: Object.freeze({
-    MAIN: '[API] Main',
+    API_MAIN: '[API] Main',
   }),
 
   LOCAL_STORAGE: Object.freeze({

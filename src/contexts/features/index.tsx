@@ -16,7 +16,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   const addFeatures = React.useCallback(
     (...ids: string[]) => {
       logger.log({
-        name: 'FeaturesProvider',
+        name: COMPONENTS.NAMES.FEATURES_PROVIDER,
         title: 'addFeatures::()',
         content: `Adding ${ids.length} feature(s)`,
         data: ids,
@@ -39,7 +39,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   const removeFeatures = React.useCallback(
     (...ids: string[]) => {
       logger.log({
-        name: 'Features',
+        name: COMPONENTS.NAMES.FEATURES_PROVIDER,
         title: 'removeFeatures::()',
         content: `Removing ${ids.length} feature(s)`,
         data: ids,

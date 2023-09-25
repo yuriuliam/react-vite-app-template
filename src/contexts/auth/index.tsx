@@ -18,12 +18,14 @@ const AuthProvider: React.PFC = ({ children }) => {
   const [user, setUser] = useAtom(atoms.auth.user)
   const [token, setToken] = useAtom(atoms.auth.token)
 
+  const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
+
   const signIn = React.useCallback(async () => {
     const data = await api.authenticate()
 
     if (!data) {
       logger.error({
-        name: 'AuthProvider',
+        name: COMPONENTS.NAMES.AUTH_PROVIDER,
         content: "Couldn't authenticate user",
         data,
       })
@@ -41,7 +43,7 @@ const AuthProvider: React.PFC = ({ children }) => {
 
   const signOut = React.useCallback(() => {
     logger.log({
-      name: 'AuthProvider',
+      name: COMPONENTS.NAMES.AUTH_PROVIDER,
       title: 'signOut::()',
       content: 'de-authenticating current user',
     })
@@ -54,6 +56,7 @@ const AuthProvider: React.PFC = ({ children }) => {
     <AuthContextProvider
       signIn={signIn}
       signOut={signOut}
+      isAuthenticated={isAuthenticated}
       user={user}
       token={token}
     >

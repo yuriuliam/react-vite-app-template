@@ -6,6 +6,7 @@ import { COMPONENTS } from '@/utils/constants'
 interface IAuthContextData {
   signIn: () => Promise<void>
   signOut: () => void
+  isAuthenticated: boolean
   user: App.User | null
   token: App.UserToken | null
 }

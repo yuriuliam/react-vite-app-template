@@ -23,7 +23,7 @@ const ErrorBoundary: React.FC = () => {
     if (isRouteError) return
 
     globalThis.logger.error({
-      name: 'ErrorBoundary',
+      name: COMPONENTS.NAMES.ERROR_BOUNDARY,
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
     })

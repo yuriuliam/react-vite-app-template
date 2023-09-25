@@ -10,7 +10,7 @@ class APIMain extends APIBase {
   private static _instance: APIMain
 
   protected constructor() {
-    super(APP.NAMES.MAIN, import.meta.env.VITE_API_BASE_URL)
+    super(APP.NAMES.API_MAIN, import.meta.env.VITE_API_BASE_URL)
   }
 
   public static getInstance() {

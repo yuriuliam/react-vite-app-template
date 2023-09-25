@@ -6,7 +6,6 @@ const LOGGER = Object.freeze({
   NAMESPACES: Object.freeze({
     AUTH: 'providers:auth',
     FEATURES: 'providers:features',
-    PAGES: 'routes:pages',
     API: 'services:api',
   }),
 })
