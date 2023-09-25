@@ -16,7 +16,7 @@ const Memoize = (cache = new Map<string, any>()) => {
     Reflect.set(
       descriptor,
       descriptor.value ? 'value' : 'get',
-      memoize(method, cache),
+      memoize(method, { cache }),
     )
   }
 
