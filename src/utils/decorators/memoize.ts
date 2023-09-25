@@ -3,7 +3,7 @@ import { isFunctionType, memoize } from '../functions'
 /**
  * memos an accessor/method return value from a class.
  */
-const Memoize = () => {
+const Memoize = (cache = new Map<string, any>()) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     const method = Reflect.get(descriptor, 'value')
 
@@ -13,7 +13,7 @@ const Memoize = () => {
       )
     }
 
-    Reflect.set(descriptor, 'value', memoize(method))
+    Reflect.set(descriptor, 'value', memoize(method, cache))
   }
 
   return decorator as any

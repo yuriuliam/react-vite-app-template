@@ -1,6 +1,6 @@
 import { faker, type Faker } from '@faker-js/faker'
 
-import { isAsyncFunction, isFunctionType, memoize } from '../functions'
+import { isAsyncFunction, isFunctionType } from '../functions'
 import { promisify } from '../promises'
 
 type InjectionFn = (faker: Faker) => any
@@ -11,7 +11,7 @@ type InjectionFn = (faker: Faker) => any
  * The Injection function receives a Data Faker instance, which can be used
  * as a data generator, certainly fake.
  */
-const InjectFaker = (cb: InjectionFn, memo = false) => {
+const InjectFaker = (cb: InjectionFn) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     const originalMethod = Reflect.get(
       descriptor,
@@ -25,11 +25,9 @@ const InjectFaker = (cb: InjectionFn, memo = false) => {
     }
 
     const callback = cb.bind(null, faker)
-    const method = isAsyncFunction(originalMethod)
+    const overrideMethod = isAsyncFunction(originalMethod)
       ? promisify(callback)
       : callback
-
-    const overrideMethod = memo ? memoize(method) : method
 
     Reflect.set(descriptor, descriptor.value ? 'value' : 'get', overrideMethod)
   }

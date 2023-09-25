@@ -1,7 +1,7 @@
 import { APIBase } from './base'
 
 import { APP } from '@/utils/constants'
-import { InjectFaker } from '@/utils/decorators'
+import { InjectFaker, Memoize } from '@/utils/decorators'
 
 /**
  * [API] Main
@@ -21,15 +21,13 @@ class APIMain extends APIBase {
     return APIMain._instance
   }
 
-  @InjectFaker(
-    faker => ({
-      id: faker.string.uuid(),
-      email: faker.internet.email(),
-      name: faker.person.fullName(),
-      token: faker.string.nanoid(64),
-    }),
-    true,
-  )
+  @Memoize()
+  @InjectFaker(faker => ({
+    id: faker.string.uuid(),
+    email: faker.internet.email(),
+    name: faker.person.fullName(),
+    token: faker.string.nanoid(64),
+  }))
   public async authenticate() {
     try {
       const { data } = await this.fetcher<App.UserResponse>('/users/me')
