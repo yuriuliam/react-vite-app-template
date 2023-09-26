@@ -11,13 +11,17 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate()
-  const { signIn } = useAuth(COMPONENTS.NAMES.SIGN_IN)
+  const { isAuthenticated, signIn } = useAuth(COMPONENTS.NAMES.SIGN_IN)
 
   const handleSignIn = React.useCallback(async () => {
     await signIn()
 
     navigate(ROUTES.ROOT)
   }, [navigate, signIn])
+
+  React.useEffect(() => {
+    if (isAuthenticated) navigate(ROUTES.ROOT)
+  }, [isAuthenticated, navigate])
 
   return (
     <Flex align="center" direction="column">
