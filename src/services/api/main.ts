@@ -22,12 +22,15 @@ class APIMain extends APIBase {
   }
 
   @Memoize()
-  @InjectFaker(faker => ({
-    id: faker.string.uuid(),
-    email: faker.internet.email(),
-    name: faker.person.fullName(),
-    token: faker.string.nanoid(64),
-  }))
+  @InjectFaker(
+    faker =>
+      ({
+        id: faker.string.uuid(),
+        email: faker.internet.email(),
+        name: faker.person.fullName(),
+        token: faker.string.nanoid(64),
+      }) satisfies App.UserResponse,
+  )
   public async authenticate() {
     try {
       const { data } = await this.fetcher<App.UserResponse>('/users/me')

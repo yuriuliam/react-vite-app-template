@@ -16,7 +16,7 @@ const InjectFaker = (cb: InjectionFn) => {
     const originalMethod = Reflect.get(
       descriptor,
       descriptor.value ? 'value' : 'get',
-    )!
+    )
 
     if (!originalMethod || !isFunctionType(originalMethod)) {
       throw new TypeError(

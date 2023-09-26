@@ -1,4 +1,4 @@
-import { isFunction } from './functions'
+import { isAsyncFunction, isFunction } from './functions'
 
 /**
  * Defers a value into a promise, which will be resolved after a given number
@@ -14,15 +14,11 @@ const deferred = async <T>(value: T, ms: number) =>
 /**
  * Puts the value into a Promise. It can receives an Initializer function
  * as well.
- *
- * Optionally can receive an Error object, forcing the promise to be rejected.
  */
 const promised = async <T>(init: T | Utils.InitFn<T>) => {
   const value = isFunction(init) ? init() : init
 
-  return await (value instanceof Error
-    ? Promise.reject(value)
-    : Promise.resolve(value))
+  return await Promise.resolve(value)
 }
 
 /**
@@ -31,7 +27,7 @@ const promised = async <T>(init: T | Utils.InitFn<T>) => {
 const promisify =
   <T extends FunctionUtils.FunctionLike>(callback: T) =>
   async (...args: Parameters<T>) =>
-    (await Promise.resolve(callback(...args))) as ReturnType<T>
+    (await Promise.resolve(await callback(...args))) as ReturnType<T>
 
 /**
  * Creates a promise which will only be resolved after a given amount
