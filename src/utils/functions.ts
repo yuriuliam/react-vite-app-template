@@ -11,7 +11,7 @@ type MemoizeOptions<T extends (...args: any[]) => any> = {
   /**
    * Time-to-live of the memoized value (in milliseconds).
    * Values equal or less than 0 will not trigger this feature.
-   * 
+   *
    * Default is `0`.
    */
   ttl?: number | undefined
@@ -83,10 +83,10 @@ const isGeneratorFunction = (
  * It returns the memoized callback with a clear method bounded into it, making
  * it possible to clear it's cache.
  */
-const memoize = <T extends (...args: any[]) => any>(method: T, {
-  cache = new Map<string, any>(),
-  ttl = 0
-}: MemoizeOptions<T>) => {
+const memoize = <T extends (...args: any[]) => any>(
+  method: T,
+  { cache = new Map<string, any>(), ttl = 0 }: MemoizeOptions<T>,
+) => {
   const memoized: MemoizedFn<T> = (...args) => {
     const paramsKey = JSON.stringify(args, argsReplacer)
 
@@ -95,9 +95,10 @@ const memoize = <T extends (...args: any[]) => any>(method: T, {
     const result = method(...args)
     cache.set(paramsKey, result)
 
-    if (ttl > 0) setTimeout(() => {
-      cache.delete(paramsKey)
-    }, ttl)
+    if (ttl > 0)
+      setTimeout(() => {
+        cache.delete(paramsKey)
+      }, ttl)
 
     return result
   }

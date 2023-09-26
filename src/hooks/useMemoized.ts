@@ -15,10 +15,9 @@ const useMemoized = <T extends (...args: any[]) => any>(callback: T | null) => {
 
   return React.useMemo(
     () =>
-      memoize(
-        (...args: any[]) => callbackRef.current?.(...args) as T,
-        cacheRef.current,
-      ),
+      memoize((...args: any[]) => callbackRef.current?.(...args) as T, {
+        cache: cacheRef.current,
+      }),
     [],
   )
 }
