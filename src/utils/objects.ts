@@ -21,6 +21,16 @@ const asSet = <T extends Utils.ObjectType>(value: T) =>
   )
 
 /**
+ * Returns the first item of an array/set without side-effects.
+ * If the array/set is empty it returns `null`.
+ */
+const defaultOrNull = <T>(value: T[] | Set<T>) => {
+  const obj = Array.from(value)
+
+  return obj.length > 0 ? (obj.shift() as T) : null
+}
+
+/**
  * Creates a record out of an array, grouping them by keys out of a callback.
  */
 const groupBy = <T extends any[], TCallback extends SelectKeyFn<T>>(
@@ -48,4 +58,4 @@ const isObject = (value: any): value is NonNullable<object> =>
 const isRecord = (value: any): value is Record<any, any> =>
   isObject(value) && Object.getPrototypeOf(value) === RECORD_PROTOTYPE
 
-export { asMap, asSet, groupBy, isObject, isRecord }
+export { asMap, asSet, defaultOrNull, groupBy, isObject, isRecord }
