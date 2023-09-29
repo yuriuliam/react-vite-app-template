@@ -29,11 +29,11 @@ class APIMain extends APIBase {
         email: faker.internet.email(),
         name: faker.person.fullName(),
         token: faker.string.nanoid(64),
-      }) satisfies App.UserResponse,
+      }) satisfies App.AuthResponse,
   )
   public async authenticate() {
     try {
-      const { data } = await this.fetcher<App.UserResponse>('/users/me')
+      const { data } = await this.fetcher<App.AuthResponse>('/auth/jwt')
 
       return data
     } catch (error) {

@@ -8,7 +8,7 @@ declare global {
       email: string
     }
 
-    type UserResponse = User & {
+    type AuthResponse = User & {
       token: UserToken
     }
   }
