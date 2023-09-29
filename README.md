@@ -7,7 +7,7 @@ This is a React Application Base/Template for general purposes.
 ## How to start it
 
 1. Ensure you have those dependencies installed:
-   1. `NodeJS >= 18.17 < 19`
+   1. `NodeJS >= 18.18 < 19`
    2. `PNPM >= 8.7.0`
 2. Run `pnpm install`
 3. Make a copy of `.env.template` and name it `.env.local`

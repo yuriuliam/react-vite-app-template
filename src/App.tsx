@@ -1,4 +1,4 @@
-import { GlobalStyles } from '@/components/GlobalStyles/intex'
+import { GlobalStyles } from '@/components/GlobalStyles'
 
 import { AppProvider } from '@/contexts/app'
 
