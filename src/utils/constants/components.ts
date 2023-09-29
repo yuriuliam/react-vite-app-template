@@ -5,6 +5,7 @@ const COMPONENTS = Object.freeze({
   NAMES: Object.freeze({
     // From Components
     BUTTON: 'Components.Button',
+    GLOBAL_STYLES: 'Components.GlobalStyles',
     HEADER: 'Components.Header',
     HEADER_LOGO: 'Components.Header.Logo',
     HEADER_RIGHT_ACTIONS: 'Components.Header.RightActions',

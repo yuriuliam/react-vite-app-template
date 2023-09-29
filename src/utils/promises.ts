@@ -1,4 +1,4 @@
-import { isAsyncFunction, isFunction } from './functions'
+import { isFunction } from './functions'
 
 /**
  * Defers a value into a promise, which will be resolved after a given number

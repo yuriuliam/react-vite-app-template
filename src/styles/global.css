@@ -1,8 +1,0 @@
-:root {
-  --app-font-family: 'Poppins', sans-serif
-}
-
-.radix-themes {
-  --default-font-family: var(--app-font-family);
-}
-

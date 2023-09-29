@@ -20,7 +20,7 @@ This is a React Application Base/Template for general purposes.
 - Global Store and State powered w/ **Jotai**
 - Components and Design System Basis w/ **Radix UI** + **Radix Themes**
 - Path Aliases powered w/ **Vite**
-- Custom Styles powered w/ **Vite** + **Lightning CSS**
+- Custom CSS-in-JS Styles powered w/ **Vite** + **Linaria**
 - Logger powered w/ **Debug (Lib)** and **Chalk**
 - Some amazing custom React hooks w/ **ui.dev's useHooks** + **App's Custom Hooks**
 - Linting + Code Styling powered w/ **ESLint (with plugins)** + **Prettier**

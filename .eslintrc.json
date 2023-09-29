@@ -58,6 +58,7 @@
               "/@\/services/",
               "/@\/scripts/",
               "/@\/utils/",
+              "/@\/styles/",
               "index",
               "type"
             ]

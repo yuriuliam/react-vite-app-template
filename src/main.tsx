@@ -12,7 +12,6 @@ import '@fontsource/poppins/600.css'
 import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import '@radix-ui/themes/styles.css'
-import '@/styles/global.css'
 
 if (import.meta.env.DEV) {
   globalThis.logger.log({
@@ -23,7 +22,7 @@ if (import.meta.env.DEV) {
     style: 'inline',
   })
 
-  faker.seed(753489)
+  faker.seed(202309010001)
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
