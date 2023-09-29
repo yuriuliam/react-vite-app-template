@@ -33,11 +33,12 @@ class APIMain extends APIBase {
   )
   public async authenticate() {
     try {
-      const { data } = await this.fetcher<App.AuthResponse>('/auth/jwt')
+      const { data } = await this.fetcher('/auth/jwt')
 
-      return data
+      return this.modelValidator.parseAuthResponse(data)
     } catch (error) {
       this.handleFetcherError(error)
+      this.modelValidator.handleValidationError(error)
 
       return null
     }

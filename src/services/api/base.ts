@@ -1,10 +1,12 @@
 import axios, { isAxiosError, type AxiosInstance } from 'axios'
 
 import { Logger } from '../logger'
+import { ModelValidator } from '../validator/model'
 
 import { LOGGER } from '@/utils/constants'
 
 abstract class APIBase {
+  protected readonly modelValidator: ModelValidator
   protected readonly fetcher: AxiosInstance
   protected readonly logger = Logger.getInstance(LOGGER.NAMESPACES.API)
   protected readonly name: string
@@ -14,6 +16,7 @@ abstract class APIBase {
     this.fetcher = axios.create({
       baseURL,
     })
+    this.modelValidator = ModelValidator.getInstance()
   }
 
   protected handleFetcherError(error: unknown) {

@@ -7,6 +7,7 @@ const APP = Object.freeze({
 
   NAMES: Object.freeze({
     API_MAIN: '[API] Main',
+    MODEl_VALIDATOR: '[Validator] Models',
   }),
 
   LOCAL_STORAGE: Object.freeze({

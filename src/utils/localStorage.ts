@@ -1,12 +1,22 @@
 import { APP } from './constants'
 
-type AppKey<TKey extends string> = `${typeof APP.LOCAL_STORAGE.PREFIX}:${TKey}`
+type LocalStorageKey<
+  TPrefix extends string,
+  TKey extends string,
+> = `${TPrefix}:${TKey}`
+
+/**
+ * Prefixes an App local storage key.
+ */
+const asAppLocalStorageKey = <TKey extends string>(key: TKey) =>
+  asLocalStorageKey(APP.LOCAL_STORAGE.PREFIX, key)
 
 /**
  * Wrapper for local storage key, prefixing it for internal purposes.
  */
-const asLocalStorageKey = <TKey extends string>(key: TKey): AppKey<TKey> => {
-  return `${APP.LOCAL_STORAGE.PREFIX}:${key}`
-}
+const asLocalStorageKey = <TPrefix extends string, TKey extends string>(
+  prefix: TPrefix,
+  key: TKey,
+): LocalStorageKey<TPrefix, TKey> => `${prefix}:${key}`
 
-export { asLocalStorageKey }
+export { asAppLocalStorageKey }

@@ -4,9 +4,10 @@ const LOGGER = Object.freeze({
     DEV: 'dev',
   }),
   NAMESPACES: Object.freeze({
+    API: 'services:api',
     AUTH: 'providers:auth',
     FEATURES: 'providers:features',
-    API: 'services:api',
+    MODEL_VALIDATOR: 'providers:validators:model',
   }),
 })
 
