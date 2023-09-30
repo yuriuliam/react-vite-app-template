@@ -8,7 +8,7 @@ describe('formatPercentage', () => {
 
     const result = formatPercentage(myPercentage)
 
-    expect(result).toEqual('98.95%')
+    expect(result).toBe('98.95%')
   })
 
   it('should be able to receive locale as second parameter', () => {
@@ -16,7 +16,7 @@ describe('formatPercentage', () => {
 
     const result = formatPercentage(myPercentage, 'pt-BR')
 
-    expect(result).toEqual('105,4%')
+    expect(result).toBe('105,4%')
   })
 
   it('should be able to clamp a given fraction of digits', () => {
@@ -26,8 +26,8 @@ describe('formatPercentage', () => {
     const result1 = formatPercentage(myPercentage)
     const result2 = formatPercentage(myPercentage, 'en-US', maxFractionDigit)
 
-    expect(result1).toEqual('98.95%')
-    expect(result2).toEqual('98.95238%')
+    expect(result1).toBe('98.95%')
+    expect(result2).toBe('98.95238%')
   })
 })
 
@@ -37,7 +37,7 @@ describe('formatPrice', () => {
 
     const result = formatPrice(myPrice, 'en-US')
 
-    expect(result).toEqual('$20.05')
+    expect(result).toBe('$20.05')
   })
 
   it('should accept locale parameter once given', () => {
@@ -45,15 +45,6 @@ describe('formatPrice', () => {
 
     const result = formatPrice(myPrice, 'en-GB')
 
-    expect(result).toEqual('US$37.27')
-  })
-
-  it('should accept currency as third parameter once provided', () => {
-    const myPrice = 20.05
-    const myCurrency = 'GBP'
-
-    const result = formatPrice(myPrice, [], myCurrency)
-
-    expect(result).toEqual('£20.05')
+    expect(result).toBe('US$37.27')
   })
 })

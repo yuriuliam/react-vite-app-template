@@ -9,7 +9,7 @@ type SelectKeyFn<T extends any[]> = (
  */
 const asMap = <T extends Utils.ObjectType>(value: T) =>
   new Map(
-    Object.entries(value) as Array<[Utils.ObjectKey<T>, Utils.ObjectValue<T>]>,
+    Object.entries(value) as Array<[Utils.EntryKey<T>, Utils.ObjectValue<T>]>,
   )
 
 /**
@@ -27,7 +27,7 @@ const asSet = <T extends Utils.ObjectType>(value: T) =>
 const defaultOrNull = <T>(value: T[] | Set<T>) => {
   const obj = Array.from(value)
 
-  return obj.length > 0 ? (obj.shift() as T) : null
+  return obj.length > 0 ? (obj.at(0) as T) : null
 }
 
 /**

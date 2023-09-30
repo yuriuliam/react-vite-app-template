@@ -14,15 +14,15 @@ describe('formatToHour', () => {
     const result1 = formatToHoursAndMinutes(myDate, 'en-US')
     const result2 = formatToHoursAndMinutes(myTimestamp, 'en-US')
 
-    expect(result1).toEqual('12:53 PM')
-    expect(result1).toEqual(result2)
+    expect(result1).toBe('12:53 PM')
+    expect(result1).toBe(result2)
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
     const result = formatToHoursAndMinutes(undefined, undefined)
 
+    expect(result).toBeTruthy()
     expect(result).toBeTypeOf('string')
-    expect(!result).toBeFalsy()
   })
 })
 
@@ -36,15 +36,15 @@ describe('formatToLogger', () => {
     const result1 = formatToLoggerTime(myDate, 'en-US')
     const result2 = formatToLoggerTime(myTimestamp, 'en-US')
 
-    expect(result1).toEqual('Sunday, 01/01/2023, 12:53 PM')
-    expect(result2).toEqual(result1)
+    expect(result1).toBe('Sunday, 01/01/2023, 12:53 PM')
+    expect(result2).toBe(result1)
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
-    const result = formatToLoggerTime(undefined, undefined)
+    const result = formatToLoggerTime()
 
+    expect(result).toBeTruthy()
     expect(result).toBeTypeOf('string')
-    expect(!result).toBeFalsy()
   })
 })
 
@@ -56,14 +56,14 @@ describe('formatToTime', () => {
     const result1 = formatToTime(myDate, 'en-US')
     const result2 = formatToTime(myTimestamp, 'en-US')
 
-    expect(result1).toEqual('15:53:28')
-    expect(result1).toEqual(result2)
+    expect(result1).toBe('15:53:28')
+    expect(result1).toBe(result2)
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
     const result = formatToTime(undefined, undefined)
 
+    expect(result).toBeTruthy()
     expect(result).toBeTypeOf('string')
-    expect(!result).toBeFalsy()
   })
 })

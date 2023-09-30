@@ -24,6 +24,7 @@ declare global {
     type ObjectType = Record<any, any> | any[]
     /** Describes the key type of an ObjectType */
     type ObjectKey<T extends ObjectType> = T extends any[] ? number : keyof T
+    type EntryKey<T extends ObjectType> = T extends any[] ? string : keyof T
     /** Describes the value type of an ObjectType */
     type ObjectValue<T extends ObjectType> = T extends Array<infer V>
       ? V

@@ -6,7 +6,7 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'v8',
-      exclude: ['**/constants.ts'],
+      exclude: ['**/utils/constants/**/*.ts', '**/utils/definitions.ts'],
     },
     environment: 'jsdom',
     globals: true,

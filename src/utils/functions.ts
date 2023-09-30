@@ -85,8 +85,10 @@ const isGeneratorFunction = (
  */
 const memoize = <T extends (...args: any[]) => any>(
   method: T,
-  { cache = new Map<string, any>(), ttl = 0 }: MemoizeOptions<T>,
+  options?: Partial<MemoizeOptions<T>>,
 ) => {
+  const { cache = new Map<string, any>(), ttl = 0 } = options ?? {}
+
   const memoized: MemoizedFn<T> = (...args) => {
     const paramsKey = JSON.stringify(args, argsReplacer)
 
