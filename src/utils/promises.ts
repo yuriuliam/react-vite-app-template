@@ -25,7 +25,7 @@ const promised = async <T>(init: T | AppUtils.InitFn<T>) => {
  * A wrapper to create a promise function out of non-async one.
  */
 const promisify =
-  <T extends AppFunctionUtils.FunctionLike>(callback: T) =>
+  <T extends AppUtils.FunctionLike>(callback: T) =>
   async (...args: Parameters<T>) =>
     (await Promise.resolve(await callback(...args))) as ReturnType<T>
 

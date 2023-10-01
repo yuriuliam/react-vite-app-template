@@ -34,9 +34,7 @@ const argsReplacer = (_k: string, v: any) => {
 /**
  * Check if value is an async function.
  */
-const isAsyncFunction = (
-  value: any,
-): value is AppFunctionUtils.AsyncFunctionLike =>
+const isAsyncFunction = (value: any): value is AppUtils.AsyncFunctionLike =>
   isFunctionType(value) &&
   Object.getPrototypeOf(value) === ASYNC_FUNCTION_PROTOTYPE
 
@@ -45,7 +43,7 @@ const isAsyncFunction = (
  */
 const isAsyncGeneratorFunction = (
   value: any,
-): value is AppFunctionUtils.AsyncGeneratorFunctionLike =>
+): value is AppUtils.AsyncGeneratorFunctionLike =>
   isFunctionType(value) &&
   Object.getPrototypeOf(value) === ASYNC_GENERATOR_FUNCTION_PROTOTYPE
 
@@ -56,13 +54,13 @@ const isAsyncGeneratorFunction = (
  * If you just need to assert it's type, use `isFunctionType`
  * or `typeof value === 'function'`
  */
-const isFunction = (value: any): value is AppFunctionUtils.FunctionLike =>
+const isFunction = (value: any): value is AppUtils.FunctionLike =>
   isFunctionType(value) && Object.getPrototypeOf(value) === FUNCTION_PROTOTYPE
 
 /**
  * Checks if value type is a function, regardless of the type.
  */
-const isFunctionType = (value: any): value is AppFunctionUtils.FunctionLike =>
+const isFunctionType = (value: any): value is AppUtils.FunctionLike =>
   typeof value === 'function'
 
 /**
@@ -70,7 +68,7 @@ const isFunctionType = (value: any): value is AppFunctionUtils.FunctionLike =>
  */
 const isGeneratorFunction = (
   value: any,
-): value is AppFunctionUtils.GeneratorFunctionLike =>
+): value is AppUtils.GeneratorFunctionLike =>
   isFunctionType(value) &&
   Object.getPrototypeOf(value) === GENERATOR_FUNCTION_PROTOTYPE
 
