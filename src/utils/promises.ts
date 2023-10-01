@@ -30,7 +30,7 @@ const promisify =
     (await Promise.resolve(await callback(...args))) as ReturnType<T>
 
 /**
- * Creates a promise which will only be resolved after a given amount
+ * Creates a promise which will be resolved after a given amount
  * of milliseconds.
  */
 const wait = async (ms: number) => {

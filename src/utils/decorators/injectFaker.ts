@@ -10,6 +10,9 @@ type InjectionFn = (faker: Faker) => any
  *
  * The Injection function receives a Data Faker instance, which can be used
  * as a data generator, certainly fake.
+ *
+ * If the original method is async, the method will be injected as
+ * an async callback.
  */
 const InjectFaker = (cb: InjectionFn) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
