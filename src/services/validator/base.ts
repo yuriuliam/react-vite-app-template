@@ -1,5 +1,3 @@
-import { ZodError } from 'zod'
-
 import { Logger } from '../logger'
 
 import { LOGGER } from '@/utils/constants'
@@ -16,14 +14,12 @@ abstract class Validator {
   }
 
   public handleValidationError(error: unknown) {
-    if (!(error instanceof ZodError)) return
-
+    if (!(error instanceof Error)) return
     const message = `Validation Failed - ${error.message}`
 
     this.logger.error({
       name: this.name,
       content: message,
-      data: error.issues,
     })
   }
 }

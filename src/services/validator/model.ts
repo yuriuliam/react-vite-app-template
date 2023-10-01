@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { ZodError, z } from 'zod'
 
 import { Validator } from './base'
 
@@ -28,6 +28,18 @@ class ModelValidator extends Validator {
     })
 
     return model.parse(value)
+  }
+
+  public override handleValidationError(error: unknown) {
+    if (!(error instanceof ZodError)) return
+
+    const message = `Validation Failed - ${error.message}`
+
+    this.logger.error({
+      name: this.name,
+      content: message,
+      data: error.issues,
+    })
   }
 }
 
