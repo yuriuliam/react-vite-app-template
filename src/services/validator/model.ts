@@ -24,10 +24,13 @@ class ModelValidator extends Validator {
 
   public parseAuthResponse(value: any) {
     const model = z.object({
-      id: z.string().nonempty(),
-      name: z.string().nonempty(),
-      email: z.string().nonempty().email(),
-      token: z.string().nonempty(),
+      id: z.string().nonempty('id property is required.'),
+      name: z.string().nonempty('name property is required.'),
+      email: z
+        .string()
+        .nonempty('email property is required.')
+        .email('given email is not valid.'),
+      token: z.string().nonempty('token property is required.'),
     })
 
     return model.parse(value) satisfies AppModels.AuthResponse
