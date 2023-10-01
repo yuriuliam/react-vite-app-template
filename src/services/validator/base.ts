@@ -4,7 +4,7 @@ import { Logger } from '../logger'
 
 import { LOGGER } from '@/utils/constants'
 
-class Validator {
+abstract class Validator {
   protected readonly logger = Logger.getInstance(
     LOGGER.NAMESPACES.MODEL_VALIDATOR,
   )
