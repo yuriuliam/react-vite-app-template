@@ -1,5 +1,5 @@
 declare global {
-  declare namespace App {
+  declare namespace AppModels {
     type UserToken = string
 
     type User = {

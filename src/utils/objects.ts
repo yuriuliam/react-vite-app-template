@@ -1,22 +1,24 @@
 import { RECORD_PROTOTYPE } from './constants'
 
 type SelectKeyFn<T extends any[]> = (
-  item: Readonly<Utils.ObjectValue<T>>,
+  item: Readonly<AppUtils.ObjectValue<T>>,
 ) => string | number | symbol
 
 /**
  * Creates a Map out of an record/array.
  */
-const asMap = <T extends Utils.ObjectType>(value: T) =>
+const asMap = <T extends AppUtils.ObjectType>(value: T) =>
   new Map(
-    Object.entries(value) as Array<[Utils.EntryKey<T>, Utils.ObjectValue<T>]>,
+    Object.entries(value) as Array<
+      [AppUtils.EntryKey<T>, AppUtils.ObjectValue<T>]
+    >,
   )
 
 /**
  * Creates a Set out of an record/array.
  */
-const asSet = <T extends Utils.ObjectType>(value: T) =>
-  new Set<Utils.ObjectValue<T>>(
+const asSet = <T extends AppUtils.ObjectType>(value: T) =>
+  new Set<AppUtils.ObjectValue<T>>(
     Array.isArray(value) ? value : Object.values(value),
   )
 
@@ -44,7 +46,7 @@ const groupBy = <T extends any[], TCallback extends SelectKeyFn<T>>(
       ...acc,
       [key]: key in acc ? [...acc[key], cur] : [cur],
     }
-  }, {}) as Record<ReturnType<TCallback>, Array<Utils.ObjectValue<T>>>
+  }, {}) as Record<ReturnType<TCallback>, Array<AppUtils.ObjectValue<T>>>
 
 /**
  * Checks if value is a non-null object.

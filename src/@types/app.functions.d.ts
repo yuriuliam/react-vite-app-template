@@ -6,7 +6,7 @@ declare global {
    *
    * It describes the Function Utilities which can be globally used in the app.
    */
-  declare namespace FunctionUtils {
+  declare namespace AppFunctionUtils {
     /** Describes an Asynchronous Method. */
     type AsyncFunctionLike = (...args: any[]) => Promise<any>
 

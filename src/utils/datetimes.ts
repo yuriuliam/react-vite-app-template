@@ -9,7 +9,7 @@ type FormattedDateTime = string
 
 type IFormatDateTimeFn = (
   value?: Date | Timestamp,
-  locale?: Utils.Locale,
+  locale?: AppUtils.Locale,
 ) => FormattedDateTime
 
 /**

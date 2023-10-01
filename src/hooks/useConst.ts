@@ -13,7 +13,7 @@ import { isFunction } from '@/utils/functions'
  * @param init an initial value or an initializer function
  * @returns the initialized value
  */
-const useConst = <T>(init: T | Utils.InitFn<T>) => {
+const useConst = <T>(init: T | AppUtils.InitFn<T>) => {
   const ref = React.useRef<T | null>(null)
 
   if (ref.current === null) {

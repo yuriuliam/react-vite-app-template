@@ -4,12 +4,12 @@ import debug, { type Debugger } from 'debug'
 import { LOGGER } from '@/utils/constants'
 import { formatToLoggerTime } from '@/utils/datetimes'
 
-type MessagePayload = Utils.ObjectType
+type MessagePayload = AppUtils.ObjectType
 type MessageOptions = {
   name?: string
   title: string
   content: string
-  data?: Utils.MaybePromise<MessagePayload | null>
+  data?: AppUtils.MaybePromise<MessagePayload | null>
   style?: 'default' | 'inline'
 }
 

@@ -29,7 +29,7 @@ class APIMain extends APIBase {
         email: faker.internet.email(),
         name: faker.person.fullName(),
         token: faker.string.nanoid(64),
-      }) satisfies App.AuthResponse,
+      }) satisfies AppModels.AuthResponse,
   )
   public async authenticate() {
     try {

@@ -7,13 +7,13 @@ type FormattedPrice = FormattedNumber
 
 type IFormatPercentage = (
   value: number,
-  locale?: Utils.Locale,
+  locale?: AppUtils.Locale,
   maxFractionDigits?: number,
 ) => FormattedNumber
 
 type IFormatPrice = (
   value: number,
-  locale?: Utils.Locale,
+  locale?: AppUtils.Locale,
   currency?: Currency,
 ) => FormattedPrice
 

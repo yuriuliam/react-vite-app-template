@@ -6,7 +6,7 @@ declare global {
    * avoiding possible typing gymnastics in `.ts(x)`
    * and repetitive declarations.
    */
-  declare namespace Utils {
+  declare namespace AppUtils {
     /** Generic Locale type argument, usually requested by Intl methods. */
     type Locale = string | string[]
 

@@ -5,13 +5,13 @@ import { asAppLocalStorageKey } from '@/utils/localStorage'
 const atoms = Object.freeze({
   /** Authentication Atoms */
   auth: Object.freeze({
-    token: atomWithStorage<App.UserToken | null>(
+    token: atomWithStorage<AppModels.UserToken | null>(
       asAppLocalStorageKey('auth:token'),
       null,
       undefined,
       { unstable_getOnInit: true },
     ),
-    user: atomWithStorage<App.User | null>(
+    user: atomWithStorage<AppModels.User | null>(
       asAppLocalStorageKey('auth:user'),
       null,
       undefined,

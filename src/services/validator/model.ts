@@ -4,6 +4,9 @@ import { Validator } from './base'
 
 import { APP } from '@/utils/constants'
 
+/**
+ * A class dedicated to validate and parse incoming responses from the API.
+ */
 class ModelValidator extends Validator {
   private static _instance: ModelValidator
 
@@ -19,7 +22,7 @@ class ModelValidator extends Validator {
     return ModelValidator._instance
   }
 
-  public parseAuthResponse(value: any): App.AuthResponse {
+  public parseAuthResponse(value: any) {
     const model = z.object({
       id: z.string().nonempty(),
       name: z.string().nonempty(),
@@ -27,7 +30,7 @@ class ModelValidator extends Validator {
       token: z.string().nonempty(),
     })
 
-    return model.parse(value)
+    return model.parse(value) satisfies AppModels.AuthResponse
   }
 
   public override handleValidationError(error: unknown) {

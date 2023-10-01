@@ -7,8 +7,8 @@ interface IAuthContextData {
   signIn: () => Promise<void>
   signOut: () => void
   isAuthenticated: boolean
-  user: App.User | null
-  token: App.UserToken | null
+  user: AppModels.User | null
+  token: AppModels.UserToken | null
 }
 
 const [AuthContextProvider, useAuth] = createContext<IAuthContextData>(
