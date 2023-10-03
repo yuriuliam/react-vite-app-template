@@ -2,6 +2,7 @@ import { APIBase } from './base'
 
 import { APP } from '@/utils/constants'
 import { InjectFaker, Memoize } from '@/utils/decorators'
+import { Deferred } from '@/utils/decorators/deferred'
 
 /**
  * [API] Main
@@ -22,6 +23,7 @@ class APIMain extends APIBase {
   }
 
   @Memoize()
+  @Deferred(200)
   @InjectFaker(
     faker =>
       ({

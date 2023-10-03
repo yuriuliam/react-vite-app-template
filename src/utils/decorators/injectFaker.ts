@@ -16,12 +16,10 @@ type InjectionFn = (faker: Faker) => any
  */
 const InjectFaker = (cb: InjectionFn) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
-    const originalMethod = Reflect.get(
-      descriptor,
-      descriptor.value ? 'value' : 'get',
-    )
+    const methodKey = descriptor.value ? 'value' : 'get'
+    const originalMethod = Reflect.get(descriptor, methodKey)
 
-    if (!originalMethod || !isFunctionType(originalMethod)) {
+    if (!isFunctionType(originalMethod)) {
       throw new TypeError(
         'InjectFaker should be used on a method or get accessors',
       )
@@ -32,7 +30,7 @@ const InjectFaker = (cb: InjectionFn) => {
       ? promisify(callback)
       : callback
 
-    Reflect.set(descriptor, descriptor.value ? 'value' : 'get', overrideMethod)
+    Reflect.set(descriptor, methodKey, overrideMethod)
   }
 
   return decorator as any

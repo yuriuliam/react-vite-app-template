@@ -5,7 +5,8 @@ import { isFunctionType, memoize } from '../functions'
  */
 const Memoize = (cache = new Map<string, any>()) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
-    const method = Reflect.get(descriptor, descriptor.value ? 'value' : 'get')!
+    const methodKey = descriptor.value ? 'value' : 'get'
+    const method = Reflect.get(descriptor, methodKey)!
 
     if (!method || !isFunctionType(method)) {
       throw new TypeError(
@@ -13,11 +14,7 @@ const Memoize = (cache = new Map<string, any>()) => {
       )
     }
 
-    Reflect.set(
-      descriptor,
-      descriptor.value ? 'value' : 'get',
-      memoize(method, { cache }),
-    )
+    Reflect.set(descriptor, methodKey, memoize(method, { cache }))
   }
 
   return decorator as any
