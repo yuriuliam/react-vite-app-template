@@ -53,6 +53,7 @@
               "/@\/contexts/",
               "/@\/hooks/",
               "/@\/layouts/",
+              "/@\/models/",
               "/@\/pages/",
               "/@\/routes/",
               "/@\/services/",

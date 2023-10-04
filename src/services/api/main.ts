@@ -1,5 +1,7 @@
 import { APIBase } from './base'
 
+import { authResponse } from '@/models/auth'
+
 import { APP } from '@/utils/constants'
 import { InjectFaker, Memoize } from '@/utils/decorators'
 import { Deferred } from '@/utils/decorators/deferred'
@@ -34,10 +36,9 @@ class APIMain extends APIBase {
     try {
       const { data } = await this.fetcher('/auth/jwt')
 
-      return this.modelValidator.parseAuthResponse(data)
+      return authResponse.parse(data)
     } catch (error) {
-      this.handleFetcherError(error)
-      this.modelValidator.handleValidationError(error)
+      this.handleError(error)
 
       return null
     }
