@@ -3,7 +3,9 @@ import { atomWithStorage } from 'jotai/utils'
 import { asAppLocalStorageKey } from '@/utils/localStorage'
 
 const atoms = Object.freeze({
-  /** Authentication Atoms */
+  /**
+   * Authentication Atoms
+   */
   auth: Object.freeze({
     token: atomWithStorage<AppModels.UserToken | null>(
       asAppLocalStorageKey('auth:token'),
@@ -19,7 +21,9 @@ const atoms = Object.freeze({
     ),
   }),
 
-  /** Theme Atoms */
+  /**
+   * Theme Atoms
+   */
   theme: Object.freeze({
     isDarkMode: atomWithStorage(
       asAppLocalStorageKey('theme:dark'),

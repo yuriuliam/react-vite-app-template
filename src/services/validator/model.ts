@@ -22,7 +22,7 @@ class ModelValidator extends Validator {
     return ModelValidator._instance
   }
 
-  public parseAuthResponse(value: any) {
+  public parseAuthResponse(value: unknown) {
     const model = z.object({
       id: z.string().nonempty('id property is required.'),
       name: z.string().nonempty('name property is required.'),

@@ -24,15 +24,12 @@ class APIMain extends APIBase {
 
   @Memoize()
   @Deferred(200)
-  @InjectFaker(
-    faker =>
-      ({
-        id: faker.string.uuid(),
-        email: faker.internet.email(),
-        name: faker.person.fullName(),
-        token: faker.string.nanoid(64),
-      }) satisfies AppModels.AuthResponse,
-  )
+  @InjectFaker<AppModels.AuthResponse>(faker => ({
+    id: faker.string.uuid(),
+    email: faker.internet.email(),
+    name: faker.person.fullName(),
+    token: faker.string.nanoid(64),
+  }))
   public async authenticate() {
     try {
       const { data } = await this.fetcher('/auth/jwt')

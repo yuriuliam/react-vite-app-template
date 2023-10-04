@@ -3,7 +3,7 @@ import { faker, type Faker } from '@faker-js/faker'
 import { isAsyncFunction, isFunctionType } from '../functions'
 import { promisify } from '../promises'
 
-type InjectionFn = (faker: Faker) => any
+type InjectionFn<T = any> = (faker: Faker) => T
 
 /**
  * Override the method/getter to return a value of your choice.
@@ -14,14 +14,14 @@ type InjectionFn = (faker: Faker) => any
  * If the original method is async, the method will be injected as
  * an async callback.
  */
-const InjectFaker = (cb: InjectionFn) => {
+const InjectFaker = <T>(cb: InjectionFn<T>) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     const methodKey = descriptor.value ? 'value' : 'get'
     const originalMethod = Reflect.get(descriptor, methodKey)
 
     if (!isFunctionType(originalMethod)) {
       throw new TypeError(
-        'InjectFaker should be used on a method or get accessors',
+        'InjectFaker should be used on methods or get accessors',
       )
     }
 
