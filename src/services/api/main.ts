@@ -1,6 +1,6 @@
 import { APIBase } from './base'
 
-import { authResponse } from '@/models/auth'
+import { authResponseModel } from '@/models/auth'
 
 import { APP } from '@/utils/constants'
 import { InjectFaker, Memoize } from '@/utils/decorators'
@@ -36,7 +36,7 @@ class APIMain extends APIBase {
     try {
       const { data } = await this.fetcher('/auth/jwt')
 
-      return authResponse.parse(data)
+      return authResponseModel.parse(data)
     } catch (error) {
       this.handleError(error)
 

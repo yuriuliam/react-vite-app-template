@@ -1,11 +1,11 @@
-import type { authResponse, token, user } from '@/models/auth'
+import type { authResponseModel, tokenModel, userModel } from '@/models/auth'
 import type { z } from 'zod'
 
 declare global {
   declare namespace AppModels {
-    type AuthResponse = z.infer<typeof authResponse>
-    type User = z.infer<typeof user>
-    type UserToken = z.infer<typeof token>
+    type AuthResponse = z.infer<typeof authResponseModel>
+    type User = z.infer<typeof userModel>
+    type UserToken = z.infer<typeof tokenModel>
   }
 }
 

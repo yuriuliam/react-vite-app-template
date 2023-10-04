@@ -1,18 +1,17 @@
 import { z } from 'zod'
 
-const token = z.string().nonempty('token property is required.')
+import { emailModel } from './generics'
 
-const user = z.object({
+const tokenModel = z.string().nonempty('token property is required.')
+
+const userModel = z.object({
   id: z.string().nonempty('id property is required.'),
   name: z.string().nonempty('name property is required.'),
-  email: z
-    .string()
-    .nonempty('email property is required.')
-    .email('given email is not valid.'),
+  email: emailModel.nonempty('email property is required.'),
 })
 
-const authResponse = user.extend({
-  token,
+const authResponseModel = userModel.extend({
+  token: tokenModel,
 })
 
-export { authResponse, token, user }
+export { authResponseModel, tokenModel, userModel }
