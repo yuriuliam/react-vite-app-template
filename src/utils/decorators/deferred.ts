@@ -2,7 +2,7 @@ import { isAsyncFunction } from '../functions'
 import { deferred } from '../promises'
 
 /**
- * Defers a promise for a given amount of milliseconds.
+ * Defers an async method for a given amount of milliseconds.
  *
  * It can only be applied to async methods.
  */
@@ -11,7 +11,7 @@ const Deferred = (ms: number) => {
     const originalMethod = Reflect.get(descriptor, 'value')
 
     if (!isAsyncFunction(originalMethod)) {
-      throw new TypeError('Delay should be used on async methods')
+      throw new TypeError('Delay Decorator should be used on async methods')
     }
 
     const callback = async (...args: any) =>

@@ -7,7 +7,7 @@ import { LOGGER } from '@/utils/constants'
 
 abstract class APIBase {
   protected readonly fetcher: AxiosInstance
-  protected readonly logger = Logger.getInstance(LOGGER.NAMESPACES.API)
+  protected readonly logger = Logger.getInstance(LOGGER.NAMESPACES.API_SERVICE)
   protected readonly name: string
 
   protected constructor(name: string, baseURL: string) {

@@ -9,7 +9,7 @@ import { useLogger } from '@/hooks/useLogger'
 import { COMPONENTS, LOGGER } from '@/utils/constants'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
-  const logger = useLogger(LOGGER.NAMESPACES.FEATURES)
+  const logger = useLogger(LOGGER.NAMESPACES.FEATURES_PROVIDER)
 
   const features = useSet<string>()
 

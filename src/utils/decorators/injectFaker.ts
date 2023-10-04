@@ -21,7 +21,7 @@ const InjectFaker = <T>(cb: InjectionFn<T>) => {
 
     if (!isFunctionType(originalMethod)) {
       throw new TypeError(
-        'InjectFaker should be used on methods or get accessors',
+        'InjectFaker Decorator should be used on methods or get accessors',
       )
     }
 

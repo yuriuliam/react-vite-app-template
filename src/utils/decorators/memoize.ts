@@ -9,7 +9,9 @@ const Memoize = (memoOptions?: MemoizeOptions<any>) => {
     const method = Reflect.get(descriptor, methodKey)!
 
     if (!method || !isFunctionType(method)) {
-      throw new TypeError('Memoized should be used on methods or get accessors')
+      throw new TypeError(
+        'Memoized Decorator should be used on methods or get accessors',
+      )
     }
 
     Reflect.set(descriptor, methodKey, memoize(method, memoOptions))

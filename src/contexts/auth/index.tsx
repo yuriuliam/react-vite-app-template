@@ -12,7 +12,7 @@ import { atoms } from '@/services/store/atoms'
 import { COMPONENTS, LOGGER } from '@/utils/constants'
 
 const AuthProvider: React.PFC = ({ children }) => {
-  const logger = useLogger(LOGGER.NAMESPACES.AUTH)
+  const logger = useLogger(LOGGER.NAMESPACES.AUTH_PROVIDER)
   const api = useAPI()
 
   const [user, setUser] = useAtom(atoms.auth.user)
