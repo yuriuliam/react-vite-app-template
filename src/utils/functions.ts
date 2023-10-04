@@ -21,7 +21,7 @@ type MemoizedFn<T extends (...args: any[]) => any> = ((
   ...args: Parameters<T>
 ) => ReturnType<T>) & {
   clear: () => void
-  force: (...args: Parameters<T>) => ReturnType<T>
+  recompute: (...args: Parameters<T>) => ReturnType<T>
 }
 
 const argsReplacer = (_k: string, v: any) => {
@@ -101,7 +101,7 @@ const memoize = <T extends (...args: any[]) => any>(
     return result
   }
   memoized.clear = cache.clear.bind(cache)
-  memoized.force = (...args) => {
+  memoized.recompute = (...args) => {
     const paramsKey = JSON.stringify(args, argsReplacer)
 
     const result = method(...args)

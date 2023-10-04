@@ -150,6 +150,42 @@ describe('memoize', () => {
     expect(result).toBe('foo')
   })
 
+  it('should delete the cache once .clear is called', () => {
+    const myCache = new Map<string, any>()
+    const memoizedFn = memoize(() => 'foo', {
+      cache: myCache,
+    })
+
+    memoizedFn()
+
+    expect(myCache.size).toBe(1)
+
+    memoizedFn.clear()
+
+    expect(myCache.size).toBe(0)
+  })
+
+  it('should ignore the cache once called with .recompute', () => {
+    const myCache = new Map<string, any>()
+    const memoizedFn = memoize(() => Object.create(null), {
+      cache: myCache,
+    })
+
+    const objA = memoizedFn()
+    const objB = memoizedFn()
+
+    expect(myCache.size).toBe(1)
+    expect(objA).toBe(objB)
+
+    const objC = memoizedFn.recompute()
+
+    expect(objB).not.toBe(objC)
+
+    const objD = memoizedFn()
+
+    expect(objC).toBe(objD)
+  })
+
   it('should respect ttl once set', async () => {
     const myCache = new Map<string, any>()
     const memoizedFn = memoize(() => 'foo', {
@@ -158,6 +194,14 @@ describe('memoize', () => {
     })
 
     void memoizedFn()
+
+    expect(myCache.size).toBe(1)
+
+    await wait(100)
+
+    expect(myCache.size).toBe(0)
+
+    void memoizedFn.recompute()
 
     expect(myCache.size).toBe(1)
 
