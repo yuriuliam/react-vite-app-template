@@ -35,6 +35,7 @@ There are a few ones:
 - **assets** -> Images and icons dynamically imported into the app.
 - **components** -> Reusable page parts, a common pattern for *React apps*.
 - **contexts** -> Assertive data layers provided for the app to use within the app.
+- **guards** -> Middlewares for routes, but reflects big changes on the app.
 - **hooks** -> Some code utilities used by react to execute behaviors.
 - **internals** -> Lib overrides and enhancements for the app's purposes.
 - **layouts** -> Reusable page structures, avoiding code duplicating patterns.

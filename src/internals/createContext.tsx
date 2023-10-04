@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { COMPONENTS } from '../utils/constants'
+import { COMPONENTS } from '@/utils/constants'
 
 /**
  * A small but useful wrapper React's createContext.

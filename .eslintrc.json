@@ -51,6 +51,7 @@
               "/@\/assets/",
               "/@\/components/",
               "/@\/contexts/",
+              "/@\/guards/",
               "/@\/hooks/",
               "/@\/layouts/",
               "/@\/models/",

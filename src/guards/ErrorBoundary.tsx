@@ -9,6 +9,9 @@ import { Flex, Section } from '@radix-ui/themes'
 
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
+/**
+ * A middleware for possible application errors.
+ */
 const ErrorBoundary: React.FC = () => {
   const navigate = useNavigate()
   const errorFromRoutes = useRouteError()
@@ -23,7 +26,7 @@ const ErrorBoundary: React.FC = () => {
     if (isRouteError) return
 
     globalThis.logger.error({
-      name: COMPONENTS.NAMES.ERROR_BOUNDARY,
+      name: COMPONENTS.NAMES.ERROR_BOUNDARY_GUARD,
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
     })
@@ -53,6 +56,6 @@ const ErrorBoundary: React.FC = () => {
     </Flex>
   )
 }
-ErrorBoundary.displayName = COMPONENTS.NAMES.ERROR_BOUNDARY
+ErrorBoundary.displayName = COMPONENTS.NAMES.ERROR_BOUNDARY_GUARD
 
 export { ErrorBoundary }

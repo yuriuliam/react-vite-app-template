@@ -3,11 +3,11 @@ import { Outlet } from 'react-router-dom'
 
 import { Section } from '@radix-ui/themes'
 
-import { COMPONENTS } from '../utils/constants'
-
 import { Header } from '@/components/Header'
 
-const Main: React.FC = () => {
+import { COMPONENTS } from '@/utils/constants'
+
+const MainLayout: React.FC = () => {
   return (
     <>
       <Section>
@@ -18,6 +18,6 @@ const Main: React.FC = () => {
     </>
   )
 }
-Main.displayName = COMPONENTS.NAMES.MAIN_LAYOUT
+MainLayout.displayName = COMPONENTS.NAMES.MAIN_LAYOUT
 
-export { Main }
+export { MainLayout }

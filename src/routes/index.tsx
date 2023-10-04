@@ -3,9 +3,10 @@ import { Route } from 'react-router-dom'
 
 import { Router as AppRouter } from './Router'
 
-import { Auth as AuthLayout } from '@/layouts/Auth'
-import { ErrorBoundary } from '@/layouts/ErrorBoundary'
-import { Main as MainLayout } from '@/layouts/Main'
+import { AuthGuard } from '@/guards/AuthGuard'
+import { ErrorBoundary } from '@/guards/ErrorBoundary'
+
+import { MainLayout } from '@/layouts/MainLayout'
 
 import { Home as HomePage } from '@/pages/Home'
 import { SignIn as SignInPage } from '@/pages/SignIn'
@@ -18,7 +19,7 @@ const Routes: React.FC = () => {
     <AppRouter>
       <Route errorElement={<ErrorBoundary />}>
         {/* Routes With Authentication */}
-        <Route element={<AuthLayout />}>
+        <Route element={<AuthGuard />}>
           {/* Main Layout */}
           <Route element={<MainLayout />}>
             <Route path={ROUTES.ROOT} element={<HomePage />} />

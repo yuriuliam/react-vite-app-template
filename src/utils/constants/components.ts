@@ -28,12 +28,14 @@ const COMPONENTS = Object.freeze({
     STORE_PROVIDER: 'Contexts.StoreProvider',
     THEME_PROVIDER: 'Contexts.ThemeProvider',
 
+    // From  Guards
+    AUTH_GUARD: 'Guards.Auth',
+    ERROR_BOUNDARY_GUARD: 'Guards.ErrorBoundary',
+
     // From Internals
     CONTEXT_PROVIDER: `Internals.ContextProvider`,
 
     // From Layouts
-    AUTH_LAYOUT: 'Layouts.Auth',
-    ERROR_BOUNDARY: 'Layouts.ErrorBoundary',
     MAIN_LAYOUT: 'Layouts.Main',
 
     // From Pages

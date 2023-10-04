@@ -6,13 +6,13 @@ import { useAuth } from '@/contexts/auth/context'
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
- * A pseudo-layout created to middleware authentication.
+ * A middleware for authentication.
  */
-const Auth: React.FC = () => {
-  const { isAuthenticated } = useAuth(COMPONENTS.NAMES.AUTH_LAYOUT)
+const AuthGuard: React.FC = () => {
+  const { isAuthenticated } = useAuth(COMPONENTS.NAMES.AUTH_GUARD)
 
   return isAuthenticated ? <Outlet /> : <Navigate to={ROUTES.SIGN_IN} />
 }
-Auth.displayName = COMPONENTS.NAMES.AUTH_LAYOUT
+AuthGuard.displayName = COMPONENTS.NAMES.AUTH_GUARD
 
-export { Auth }
+export { AuthGuard }
