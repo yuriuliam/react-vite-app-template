@@ -123,3 +123,4 @@ export {
   isGeneratorFunction,
   memoize,
 }
+export type { MemoizeOptions }
