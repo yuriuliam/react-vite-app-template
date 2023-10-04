@@ -38,6 +38,7 @@ There are a few ones:
 - **hooks** -> Some code utilities used by react to execute behaviors.
 - **internals** -> Lib overrides and enhancements for the app's purposes.
 - **layouts** -> Reusable page structures, avoiding code duplicating patterns.
+- **models** -> Reusable validators, so you can ensure the data models used by the app.
 - **pages** -> Literal pages, already composed by **layouts** and enhanced with content.
 - **routes** -> All the routes, divided by an URI Resource.
 - **scripts** -> Code parts, injected and executed before rendering the React **App**.
