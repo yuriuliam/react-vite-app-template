@@ -8,10 +8,8 @@ type SelectKeyFn<T extends any[]> = (
  * Creates a Map out of an record/array.
  */
 const asMap = <T extends AppUtils.ObjectType>(value: T) =>
-  new Map(
-    Object.entries(value) as Array<
-      [AppUtils.EntryKey<T>, AppUtils.ObjectValue<T>]
-    >,
+  new Map<AppUtils.EntryKey<T>, AppUtils.ObjectValue<T>>(
+    Object.entries(value) as any,
   )
 
 /**
