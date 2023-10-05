@@ -7,7 +7,7 @@ const atoms = Object.freeze({
    * Authentication Atoms
    */
   auth: Object.freeze({
-    token: atomWithStorage<AppModels.UserToken | null>(
+    token: atomWithStorage<AppModels.AuthToken | null>(
       asAppLocalStorageKey('auth:token'),
       null,
       undefined,

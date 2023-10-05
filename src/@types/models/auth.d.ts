@@ -4,8 +4,8 @@ import type { z } from 'zod'
 declare global {
   declare namespace AppModels {
     type AuthResponse = z.infer<typeof authResponseModel>
+    type AuthToken = z.infer<typeof tokenModel>
     type User = z.infer<typeof userModel>
-    type UserToken = z.infer<typeof tokenModel>
   }
 }
 

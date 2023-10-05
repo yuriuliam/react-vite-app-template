@@ -8,7 +8,7 @@ interface IAuthContextData {
   signOut: () => void
   isAuthenticated: boolean
   user: AppModels.User | null
-  token: AppModels.UserToken | null
+  token: AppModels.AuthToken | null
 }
 
 const [AuthContextProvider, useAuth] = createContext<IAuthContextData>(

@@ -11,7 +11,7 @@ const Deferred = (ms: number) => {
     const originalMethod = Reflect.get(descriptor, 'value')
 
     if (!isAsyncFunction(originalMethod)) {
-      throw new TypeError('Delay Decorator should be used on async methods')
+      throw new TypeError('Deferred Decorator should be used on async methods')
     }
 
     const callback = async (...args: any) =>
