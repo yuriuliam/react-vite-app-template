@@ -13,7 +13,7 @@ const atoms = Object.freeze({
       undefined,
       { unstable_getOnInit: true },
     ),
-    user: atomWithStorage<AppModels.User | null>(
+    user: atomWithStorage<AppModels.AuthUser | null>(
       asAppLocalStorageKey('auth:user'),
       null,
       undefined,

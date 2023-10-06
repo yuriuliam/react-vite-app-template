@@ -65,14 +65,11 @@ There are a few ones:
   -> Auth Provider
 
   -> App Router (as Router-DOM's BrowserRouter) {
-    // Then we provide the pages through routes.
+    // Then we provide the pages.
 
-    -> Router's Error Boundary
-    -> Layouts (Page Layouts, Auth Layouts etc...)¹
+    -> Router Guards and Layouts
     -> Pages (such as Home, SignIn etc)
   }
  }
 }
-
-¹: It can have 0 to x Layouts stacked.
 ```

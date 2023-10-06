@@ -22,7 +22,7 @@ abstract class APIBase {
     this.handleZodError(error)
   }
 
-  protected handleAxiosError(error: unknown) {
+  private handleAxiosError(error: unknown) {
     if (!isAxiosError(error)) return
 
     const message = `"URI ${error.config!.url}" Failed - ${error.message}`
@@ -34,7 +34,7 @@ abstract class APIBase {
     })
   }
 
-  protected handleZodError(error: unknown) {
+  private handleZodError(error: unknown) {
     if (!(error instanceof ZodError)) return
 
     const message = `Validation Failed - ${error.message}`

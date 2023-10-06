@@ -7,7 +7,7 @@ interface IAuthContextData {
   signIn: () => Promise<void>
   signOut: () => void
   isAuthenticated: boolean
-  user: AppModels.User | null
+  user: AppModels.AuthUser | null
   token: AppModels.AuthToken | null
 }
 
