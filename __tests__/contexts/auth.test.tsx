@@ -5,7 +5,7 @@ import { createAuthWrapper } from '../wrappers'
 
 import { useAuth } from '@/contexts/auth/context'
 
-import { useAPI } from '@/hooks/useAPI'
+import { APIMain } from '@/services/api/main'
 
 import { promised } from '@/utils/promises'
 
@@ -47,13 +47,12 @@ describe('Auth Context/Provider', () => {
   })
 
   it('should not sign in when api return null', async () => {
-    const { result: api } = renderHook(() => useAPI())
-
     const { result: auth } = renderHook(() => useAuth(TEST_NAME), {
       wrapper: createAuthWrapper(),
     })
 
-    vi.spyOn(api.current, 'authenticate').mockReturnValue(promised(null))
+    const api = APIMain.getInstance()
+    vi.spyOn(api, 'authenticate').mockReturnValue(promised(null))
 
     await act(async () => {
       await auth.current.signIn()
