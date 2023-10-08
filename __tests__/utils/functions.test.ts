@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 
 import {
+  debounced,
   isAsyncFunction,
   isAsyncGeneratorFunction,
   isFunction,
@@ -9,6 +10,46 @@ import {
   memoize,
 } from '@/utils/functions'
 import { wait } from '@/utils/promises'
+
+describe('debounced', () => {
+  it('should debounce a given callback', async () => {
+    const callback = vi.fn()
+    const value = 'foo bar'
+
+    const debouncedCallback = debounced(callback, 50)
+
+    debouncedCallback(value)
+
+    expect(callback.mock.calls).toHaveLength(0)
+
+    await wait(50)
+
+    const mockCalls = callback.mock.calls
+
+    expect(mockCalls).toHaveLength(1)
+
+    const mockCall = mockCalls.at(0)
+    expect(mockCall).toEqual([value])
+  })
+
+  it('should run once, when called twice before timeout expires', async () => {
+    const callback = vi.fn()
+
+    const debouncedCallback = debounced(callback, 50)
+
+    debouncedCallback('test 1')
+    debouncedCallback('test 2')
+
+    await wait(50)
+
+    const mockCalls = callback.mock.calls
+
+    expect(mockCalls).toHaveLength(1)
+
+    const mockCall = mockCalls.at(0)
+    expect(mockCall).toEqual(['test 2'])
+  })
+})
 
 describe('isAsyncFunction', () => {
   it('should return true for async functions', () => {
@@ -190,14 +231,14 @@ describe('memoize', () => {
     const myCache = new Map<string, any>()
     const memoizedFn = memoize(() => 'foo', {
       cache: myCache,
-      ttl: 100,
+      ttl: 50,
     })
 
     void memoizedFn()
 
     expect(myCache.size).toBe(1)
 
-    await wait(100)
+    await wait(50)
 
     expect(myCache.size).toBe(0)
 
@@ -205,7 +246,7 @@ describe('memoize', () => {
 
     expect(myCache.size).toBe(1)
 
-    await wait(100)
+    await wait(50)
 
     expect(myCache.size).toBe(0)
   })

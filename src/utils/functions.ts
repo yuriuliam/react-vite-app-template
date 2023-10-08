@@ -5,6 +5,10 @@ import {
   GENERATOR_FUNCTION_PROTOTYPE,
 } from './constants'
 
+type Debounced<T extends (...args: any[]) => any> = (
+  ...args: Parameters<T>
+) => void
+
 type MemoizeOptions<T extends (...args: any[]) => any> = {
   /** An optional External Cache to keep the return values */
   cache?: Map<string, ReturnType<T>> | undefined
@@ -30,6 +34,27 @@ const argsReplacer = (_k: string, v: any) => {
   if (v instanceof Map) return Object.fromEntries(v.entries())
 
   return v
+}
+
+/**
+ * Debounces a callback by using setTimeout. It returns a function expression
+ * which runs the callback after a given amount of milliseconds once called.
+ *
+ * It can receive arguments as well, but won't return nothing.
+ *
+ * It will cancel the last timeout when called more than once if not expired.
+ */
+const debounced = <T extends (...args: any[]) => void>(
+  callback: T,
+  ms: number,
+) => {
+  let curTimeout = 0
+
+  return ((...args: Parameters<T>) => {
+    if (curTimeout) clearTimeout(curTimeout)
+
+    curTimeout = setTimeout(callback, ms, ...args) as any
+  }) as Debounced<T>
 }
 
 /**
@@ -116,6 +141,7 @@ const memoize = <T extends (...args: any[]) => any>(
 }
 
 export {
+  debounced,
   isAsyncFunction,
   isAsyncGeneratorFunction,
   isFunction,
