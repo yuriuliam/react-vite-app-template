@@ -24,7 +24,7 @@ class APIMain extends APIBase {
     return APIMain._instance
   }
 
-  @Deferred(200)
+  @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
   @InjectFaker<AppModels.AuthResponse>(
     faker => {
       faker.seed(APP.FAKER_SEED)
