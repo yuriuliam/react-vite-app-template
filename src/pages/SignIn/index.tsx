@@ -7,17 +7,19 @@ import { Button } from '@/components/Button'
 
 import { useAuth } from '@/contexts/auth/context'
 
+import { useCallbackRef } from '@/hooks/useCallbackRef'
+
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate()
   const { isAuthenticated, signIn } = useAuth(COMPONENTS.NAMES.SIGN_IN)
 
-  const handleSignIn = React.useCallback(async () => {
+  const handleSignIn = useCallbackRef(async () => {
     await signIn()
 
     navigate(ROUTES.ROOT)
-  }, [navigate, signIn])
+  })
 
   React.useEffect(() => {
     if (isAuthenticated) navigate(ROUTES.ROOT)

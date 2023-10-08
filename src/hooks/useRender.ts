@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useCallbackRef } from './useCallbackRef'
+
 /**
  * A practical function to force re-render of a component.
  *
@@ -8,9 +10,9 @@ import React from 'react'
 const useRender = () => {
   const [renders, dispatchRender] = React.useReducer((v: number) => v + 1, 0)
 
-  const rerender = React.useCallback<AppUtils.CallbackFn>(() => {
+  const rerender = useCallbackRef<AppUtils.CallbackFn>(() => {
     dispatchRender()
-  }, [])
+  })
 
   return [renders, rerender] as const
 }

@@ -5,6 +5,7 @@ import { useAtom } from 'jotai'
 import { AuthContextProvider } from './context'
 
 import { useAPI } from '@/hooks/useAPI'
+import { useCallbackRef } from '@/hooks/useCallbackRef'
 import { useLogger } from '@/hooks/useLogger'
 
 import { atoms } from '@/services/store/atoms'
@@ -20,7 +21,7 @@ const AuthProvider: React.PFC = ({ children }) => {
 
   const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
 
-  const signIn = React.useCallback(async () => {
+  const signIn = useCallbackRef(async () => {
     const data = await api.authenticate()
 
     if (!data) {
@@ -39,9 +40,9 @@ const AuthProvider: React.PFC = ({ children }) => {
 
     setUser(authUser)
     setToken(token)
-  }, [api, logger, setToken, setUser])
+  })
 
-  const signOut = React.useCallback(() => {
+  const signOut = useCallbackRef(() => {
     logger.log({
       name: COMPONENTS.NAMES.AUTH_PROVIDER,
       title: 'signOut::()',
@@ -50,7 +51,7 @@ const AuthProvider: React.PFC = ({ children }) => {
 
     setToken(null)
     setUser(null)
-  }, [logger, setToken, setUser])
+  })
 
   return (
     <AuthContextProvider

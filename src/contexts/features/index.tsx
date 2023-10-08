@@ -1,9 +1,8 @@
-import React from 'react'
-
 import { useSet } from '@uidotdev/usehooks'
 
 import { FeaturesContextProvider } from './context'
 
+import { useCallbackRef } from '@/hooks/useCallbackRef'
 import { useLogger } from '@/hooks/useLogger'
 
 import { COMPONENTS, LOGGER } from '@/utils/constants'
@@ -13,46 +12,39 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
   const features = useSet<string>()
 
-  const addFeatures = React.useCallback(
-    (...ids: string[]) => {
-      logger.log({
-        name: COMPONENTS.NAMES.FEATURES_PROVIDER,
-        title: 'addFeatures::()',
-        content: `Adding ${ids.length} feature(s)`,
-        data: ids,
-      })
+  const addFeatures = useCallbackRef((...ids: string[]) => {
+    logger.log({
+      name: COMPONENTS.NAMES.FEATURES_PROVIDER,
+      title: 'addFeatures::()',
+      content: `Adding ${ids.length} feature(s)`,
+      data: ids,
+    })
 
-      ids.forEach(id => {
-        if (features.has(id)) return
+    ids.forEach(id => {
+      if (features.has(id)) return
 
-        features.add(id)
-      })
-    },
-    [features, logger],
+      features.add(id)
+    })
+  })
+
+  const hasFeatures = useCallbackRef((...ids: string[]) =>
+    ids.every(id => features.has(id)),
   )
 
-  const hasFeatures = React.useCallback(
-    (...ids: string[]) => ids.every(id => features.has(id)),
-    [features],
-  )
+  const removeFeatures = useCallbackRef((...ids: string[]) => {
+    logger.log({
+      name: COMPONENTS.NAMES.FEATURES_PROVIDER,
+      title: 'removeFeatures::()',
+      content: `Removing ${ids.length} feature(s)`,
+      data: ids,
+    })
 
-  const removeFeatures = React.useCallback(
-    (...ids: string[]) => {
-      logger.log({
-        name: COMPONENTS.NAMES.FEATURES_PROVIDER,
-        title: 'removeFeatures::()',
-        content: `Removing ${ids.length} feature(s)`,
-        data: ids,
-      })
+    ids.forEach(id => {
+      if (!features.has(id)) return
 
-      ids.forEach(id => {
-        if (!features.has(id)) return
-
-        features.delete(id)
-      })
-    },
-    [features, logger],
-  )
+      features.delete(id)
+    })
+  })
 
   return (
     <FeaturesContextProvider

@@ -7,6 +7,8 @@ import {
 
 import { Flex, Section } from '@radix-ui/themes'
 
+import { useCallbackRef } from '@/hooks/useCallbackRef'
+
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
@@ -18,9 +20,9 @@ const ErrorBoundary: React.FC = () => {
 
   const isRouteError = isRouteErrorResponse(errorFromRoutes)
 
-  const handleRedirectToRoot = React.useCallback(() => {
+  const handleRedirectToRoot = useCallbackRef(() => {
     navigate(ROUTES.ROOT, { replace: true })
-  }, [navigate])
+  })
 
   React.useEffect(() => {
     if (isRouteError) return

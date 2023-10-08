@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useCallbackRef } from './useCallbackRef'
 import { useRender } from './useRender'
 
 import { debounced } from '@/utils/functions'
@@ -15,12 +16,11 @@ const useDebounced = <T>(value: T, ms: number) => {
   const valueRef = React.useRef(undefined as T)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const update = React.useCallback(
+  const update = useCallbackRef(
     debounced((newValue: T) => {
       valueRef.current = newValue
       rerender()
     }, ms),
-    [],
   )
 
   React.useEffect(() => {

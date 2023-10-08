@@ -1,18 +1,19 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { Button } from '@/components/Button'
 
+import { useCallbackRef } from '@/hooks/useCallbackRef'
+
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
 
-  const handleSignOut = React.useCallback(() => {
+  const handleSignOut = useCallbackRef(() => {
     navigate(ROUTES.SIGN_OUT, { replace: true })
-  }, [navigate])
+  })
 
   return (
     <Flex align="center" direction="column">
