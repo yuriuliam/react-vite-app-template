@@ -14,6 +14,11 @@ dist-ssr
 storybook-static
 *.local
 
+# non-accepted files
+**/*.js
+!src/**/*.js
+!__tests__/**/*.js
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -2,8 +2,8 @@ import { APIBase } from './base'
 
 import { authResponseModel } from '@/models/auth'
 
-import { APP } from '@/utils/constants'
-import { InjectFaker, Memoize } from '@/utils/decorators'
+import { APP, MODE } from '@/utils/constants'
+import { InjectFaker } from '@/utils/decorators'
 import { Deferred } from '@/utils/decorators/deferred'
 
 /**
@@ -24,14 +24,20 @@ class APIMain extends APIBase {
     return APIMain._instance
   }
 
-  @Memoize()
   @Deferred(200)
-  @InjectFaker<AppModels.AuthResponse>(faker => ({
-    id: faker.string.uuid(),
-    email: faker.internet.email(),
-    name: faker.person.fullName(),
-    token: faker.string.nanoid(64),
-  }))
+  @InjectFaker<AppModels.AuthResponse>(
+    faker => {
+      faker.seed(APP.FAKER_SEED)
+      return {
+        id: faker.string.uuid(),
+        email: faker.internet.email(),
+        name: faker.person.fullName(),
+        token: faker.string.nanoid(64),
+      }
+    },
+    MODE.DEVELOPMENT,
+    MODE.TEST,
+  )
   public async authenticate() {
     try {
       const { data } = await this.fetcher('/auth/jwt')

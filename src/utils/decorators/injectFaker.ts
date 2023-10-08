@@ -1,5 +1,6 @@
 import { faker, type Faker } from '@faker-js/faker'
 
+import { isMode } from '../environment'
 import { isAsyncFunction, isFunctionType } from '../functions'
 import { promisify } from '../promises'
 
@@ -13,9 +14,14 @@ type InjectionFn<T = any> = (faker: Faker) => T
  *
  * If the original method is async, the method will be injected as
  * an async callback.
+ *
+ * @param cb A callback to generate the faker data.
+ * @param envModes the accepted environment modes to inject the faker.
  */
-const InjectFaker = <T>(cb: InjectionFn<T>) => {
+const InjectFaker = <T>(cb: InjectionFn<T>, ...envModes: string[]) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
+    if (envModes.length && !envModes.some(isMode)) return
+
     const methodKey = descriptor.value ? 'value' : 'get'
     const originalMethod = Reflect.get(descriptor, methodKey)
 

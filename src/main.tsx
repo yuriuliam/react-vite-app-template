@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { faker } from '@faker-js/faker'
-
 import { App } from './App.tsx'
 
 import '@/scripts/globalLogger'
@@ -21,8 +19,6 @@ if (import.meta.env.DEV) {
     data: { meta: import.meta },
     style: 'inline',
   })
-
-  faker.seed(202309010001)
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

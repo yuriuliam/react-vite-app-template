@@ -1,5 +1,6 @@
 export * from './app'
 export * from './components'
 export * from './definitions'
+export * from './environment'
 export * from './logger'
 export * from './routes'

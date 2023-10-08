@@ -7,7 +7,12 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       extension: ['.ts', '.tsx'],
-      exclude: ['**/utils/constants/**/*.ts', '**/utils/definitions.ts'],
+      exclude: [
+        '**/services/**/*',
+        '**/utils/constants/**/*',
+        '**/utils/decorators/**/*',
+        '**/utils/definitions',
+      ],
     },
     environment: 'jsdom',
     globals: true,
