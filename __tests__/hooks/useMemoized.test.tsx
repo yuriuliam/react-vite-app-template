@@ -26,7 +26,7 @@ describe('useMemoized', () => {
 
     const value1 = memoizedCallback.current()
 
-    await wait(100)
+    await wait(25)
 
     const value2 = memoizedCallback.current()
 
