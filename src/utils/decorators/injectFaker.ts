@@ -4,7 +4,7 @@ import { isMode } from '../environment'
 import { isAsyncFunction, isFunctionType } from '../functions'
 import { promisify } from '../promises'
 
-type InjectionFn<T = any> = (faker: Faker) => T
+type InjectionFn = (faker: Faker) => any
 
 /**
  * Override the method/getter to return a value of your choice.
@@ -18,7 +18,7 @@ type InjectionFn<T = any> = (faker: Faker) => T
  * @param cb A callback to generate the faker data.
  * @param envModes the accepted environment modes to inject the faker.
  */
-const InjectFaker = <T>(cb: InjectionFn<T>, ...envModes: string[]) => {
+const InjectFaker = (cb: InjectionFn, ...envModes: string[]) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     if (envModes.length && !envModes.some(isMode)) return
 

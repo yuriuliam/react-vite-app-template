@@ -5,6 +5,7 @@ import { authResponseModel } from '@/models/auth'
 import { APP, MODE } from '@/utils/constants'
 import { InjectFaker } from '@/utils/decorators'
 import { Deferred } from '@/utils/decorators/deferred'
+import { createFakeAuthResponse } from '@/utils/faker'
 
 /**
  * [API] Main
@@ -25,16 +26,8 @@ class APIMain extends APIBase {
   }
 
   @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
-  @InjectFaker<AppModels.AuthResponse>(
-    faker => {
-      faker.seed(APP.FAKER_SEED)
-      return {
-        id: faker.string.uuid(),
-        email: faker.internet.email(),
-        name: faker.person.fullName(),
-        token: faker.string.nanoid(64),
-      }
-    },
+  @InjectFaker(
+    createFakeAuthResponse,
     MODE.DEVELOPMENT, // Remove this to execute the function instead of faker during development.
     MODE.TEST,
   )
