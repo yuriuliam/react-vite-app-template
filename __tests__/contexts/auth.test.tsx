@@ -1,9 +1,13 @@
 import { act, renderHook } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import { createAuthWrapper } from '../wrappers'
 
 import { useAuth } from '@/contexts/auth/context'
+
+import { useAPI } from '@/hooks/useAPI'
+
+import { promised } from '@/utils/promises'
 
 describe('Auth Context/Provider', () => {
   const TEST_NAME = 'Tests.Contexts.Auth'
@@ -35,6 +39,24 @@ describe('Auth Context/Provider', () => {
 
     act(() => {
       auth.current.signOut()
+    })
+
+    expect(auth.current.isAuthenticated).toBeFalsy()
+    expect(auth.current.token).toBe(null)
+    expect(auth.current.user).toBe(null)
+  })
+
+  it('should not sign in when api return null', async () => {
+    const { result: api } = renderHook(() => useAPI())
+
+    const { result: auth } = renderHook(() => useAuth(TEST_NAME), {
+      wrapper: createAuthWrapper(),
+    })
+
+    vi.spyOn(api.current, 'authenticate').mockReturnValue(promised(null))
+
+    await act(async () => {
+      await auth.current.signIn()
     })
 
     expect(auth.current.isAuthenticated).toBeFalsy()

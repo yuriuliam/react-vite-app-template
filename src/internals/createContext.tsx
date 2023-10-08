@@ -45,7 +45,9 @@ function createContext<T extends Record<string, any>>(
     const contextValue = React.useContext(Context)
 
     if (!contextValue) {
-      throw new Error(`${consumerName} must be wrapped within ${componentName}`)
+      throw new Error(
+        `${consumerName} must be wrapped within ${componentName} or contain a truthy initial value`,
+      )
     }
 
     return contextValue

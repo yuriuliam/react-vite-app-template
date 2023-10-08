@@ -7,6 +7,8 @@ import { useFeatures } from '@/contexts/features/context'
 
 describe('Features Context/Provider', () => {
   const TEST_NAME = 'Tests.Contexts.Features'
+  const FF_TEST_1 = 'ff_tests_foo_bar'
+  const FF_TEST_2 = 'ff_tests_hello_world'
 
   it('should be able to consume the context by useHook', () => {
     const { result: features } = renderHook(() => useFeatures(TEST_NAME), {
@@ -20,9 +22,6 @@ describe('Features Context/Provider', () => {
     const { result: features } = renderHook(() => useFeatures(TEST_NAME), {
       wrapper: createFeaturesWrapper(),
     })
-
-    const FF_TEST_1 = 'ff_tests_foo_bar'
-    const FF_TEST_2 = 'ff_tests_hello_world'
 
     act(() => {
       features.current.addFeatures(FF_TEST_1, FF_TEST_2)
@@ -43,5 +42,29 @@ describe('Features Context/Provider', () => {
     })
 
     expect(features.current.hasFeatures(FF_TEST_2)).toBeFalsy()
+  })
+
+  it('should not add duplicated feature flags', () => {
+    const { result: features } = renderHook(() => useFeatures(TEST_NAME), {
+      wrapper: createFeaturesWrapper(),
+    })
+
+    act(() => {
+      features.current.addFeatures(FF_TEST_1, FF_TEST_1)
+    })
+
+    expect(features.current.hasFeatures(FF_TEST_1)).toBeTruthy()
+
+    act(() => {
+      features.current.removeFeatures(FF_TEST_1)
+    })
+
+    expect(features.current.hasFeatures(FF_TEST_1)).toBeFalsy()
+
+    act(() => {
+      features.current.removeFeatures(FF_TEST_1)
+    })
+
+    expect(features.current.hasFeatures(FF_TEST_1)).toBeFalsy()
   })
 })
