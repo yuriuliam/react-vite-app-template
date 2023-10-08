@@ -35,7 +35,7 @@ class APIMain extends APIBase {
         token: faker.string.nanoid(64),
       }
     },
-    MODE.DEVELOPMENT, // Remove this to execute the function instead of faker.
+    MODE.DEVELOPMENT, // Remove this to execute the function instead of faker during development.
     MODE.TEST,
   )
   public async authenticate() {
