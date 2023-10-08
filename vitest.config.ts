@@ -8,6 +8,7 @@ export default defineConfig({
       provider: 'v8',
       extension: ['.ts', '.tsx'],
       exclude: [
+        '__tests__/**/*',
         '**/services/**/*',
         '**/utils/constants/**/*',
         '**/utils/decorators/**/*',
