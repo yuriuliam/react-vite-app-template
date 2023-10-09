@@ -1,9 +1,10 @@
 import { APIBase } from './base'
 
 import { authResponseModel } from '@/models/auth'
+import { featuresModel } from '@/models/features'
 
-import { APP, MODE } from '@/utils/constants'
-import { InjectFaker } from '@/utils/decorators'
+import { APP, FEATURES, MODE } from '@/utils/constants'
+import { InjectFaker, Memoize } from '@/utils/decorators'
 import { Deferred } from '@/utils/decorators/deferred'
 import { createFakeAuthResponse } from '@/utils/faker'
 
@@ -25,17 +26,34 @@ class APIMain extends APIBase {
     return APIMain._instance
   }
 
+  // Remove MODE.DEVELOPMENT if you want to execute the code during development.
+  @Memoize({}, MODE.DEVELOPMENT, MODE.TEST)
   @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
-  @InjectFaker(
-    createFakeAuthResponse,
-    MODE.DEVELOPMENT, // Remove this to execute the function instead of faker during development.
-    MODE.TEST,
-  )
+  @InjectFaker(createFakeAuthResponse, MODE.DEVELOPMENT, MODE.TEST)
   public async authenticate() {
     try {
-      const { data } = await this.fetcher('/auth/jwt')
+      const { data } = await this.fetcher.post('/auth/jwt')
 
       return authResponseModel.parse(data)
+    } catch (error) {
+      this.handleError(error)
+
+      return null
+    }
+  }
+
+  @Memoize({}, MODE.DEVELOPMENT, MODE.TEST)
+  @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
+  @InjectFaker(() => [FEATURES.CYAN_THEME], MODE.DEVELOPMENT, MODE.TEST)
+  public async getFeatures(token: string) {
+    try {
+      const { data } = await this.fetcher.get('/user/features', {
+        headers: {
+          Authorization: token,
+        },
+      })
+
+      return featuresModel.parse(data)
     } catch (error) {
       this.handleError(error)
 

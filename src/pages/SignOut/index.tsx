@@ -2,21 +2,28 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '@/contexts/auth/context'
+import { useFeatures } from '@/contexts/features/context'
 
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
- * A pseudo-page which sign-outs the current user and redirect to the root.
+ * A page which sign-outs. Originally created if you wish to show something
+ * to the user, otherwise you can use router's loader system
+ *
+ * @see https://reactrouter.com/en/main/route/loader
  */
 const SignOut: React.FC = () => {
-  const navigate = useNavigate()
   const { signOut } = useAuth(COMPONENTS.NAMES.SIGN_OUT)
+  const { clearFeatures } = useFeatures(COMPONENTS.NAMES.SIGN_OUT)
+
+  const navigate = useNavigate()
 
   React.useLayoutEffect(() => {
+    clearFeatures()
     signOut()
 
     navigate(ROUTES.ROOT)
-  }, [navigate, signOut])
+  }, [clearFeatures, navigate, signOut])
 
   return <></>
 }

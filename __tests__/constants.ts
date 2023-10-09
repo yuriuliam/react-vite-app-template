@@ -1,0 +1,3 @@
+const FAKER_SEED = 202310010001
+
+export { FAKER_SEED }

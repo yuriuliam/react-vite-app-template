@@ -2,12 +2,14 @@ import { useSet } from '@uidotdev/usehooks'
 
 import { FeaturesContextProvider } from './context'
 
+import { useAPI } from '@/hooks/useAPI'
 import { useCallbackRef } from '@/hooks/useCallbackRef'
 import { useLogger } from '@/hooks/useLogger'
 
 import { COMPONENTS, LOGGER } from '@/utils/constants'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
+  const api = useAPI()
   const logger = useLogger(LOGGER.NAMESPACES.FEATURES_PROVIDER)
 
   const features = useSet<string>()
@@ -25,6 +27,34 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
       features.add(id)
     })
+  })
+
+  const clearFeatures = useCallbackRef(() => {
+    const currentFeatures = Array.from(features.values())
+
+    logger.log({
+      name: COMPONENTS.NAMES.FEATURES_PROVIDER,
+      title: 'clearFeatures::()',
+      content: `Clearing ${currentFeatures.length} feature(s)`,
+      data: currentFeatures,
+    })
+
+    features.clear()
+  })
+
+  const fetchFeatures = useCallbackRef(async (token: string) => {
+    const features = await api.getFeatures(token)
+
+    if (!features) {
+      logger.error({
+        name: COMPONENTS.NAMES.FEATURES_PROVIDER,
+        content: "Couldn't fetch user features",
+      })
+
+      return
+    }
+
+    addFeatures(...features)
   })
 
   const hasFeatures = useCallbackRef((...ids: string[]) =>
@@ -49,6 +79,8 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   return (
     <FeaturesContextProvider
       addFeatures={addFeatures}
+      clearFeatures={clearFeatures}
+      fetchFeatures={fetchFeatures}
       hasFeatures={hasFeatures}
       removeFeatures={removeFeatures}
     >

@@ -40,9 +40,8 @@ const argsReplacer = (_k: string, v: any) => {
  * Debounces a callback by using setTimeout. It returns a function expression
  * which runs the callback after a given amount of milliseconds once called.
  *
- * It can receive arguments as well, but won't return nothing.
- *
- * It will cancel the last timeout when called more than once if not expired.
+ * It can receive arguments as well, but won't return nothing and will cancel
+ * the last timeout when called more than once if not expired.
  */
 const debounced = <T extends (...args: any[]) => void>(
   callback: T,

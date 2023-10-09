@@ -5,8 +5,8 @@ import { useStore, type Atom } from 'jotai'
 /**
  * Use an atom value by synchronizing via store subscription.
  *
- * It returns the latest value of the atom. Once it updates, the value
- * gets updated.
+ * It returns the latest value of the atom.
+ * Once it updates, the value gets updated.
  *
  * @param atom The atom to be subscribed.
  */

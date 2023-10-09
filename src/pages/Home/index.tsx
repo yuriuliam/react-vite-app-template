@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate()
 
   const handleSignOut = useCallbackRef(() => {
-    navigate(ROUTES.SIGN_OUT, { replace: true })
+    navigate(ROUTES.SIGN_OUT)
   })
 
   return (

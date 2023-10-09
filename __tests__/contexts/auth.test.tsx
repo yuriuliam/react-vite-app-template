@@ -1,13 +1,13 @@
 import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { createAuthWrapper } from '../wrappers'
-
 import { useAuth } from '@/contexts/auth/context'
 
 import { APIMain } from '@/services/api/main'
 
 import { promised } from '@/utils/promises'
+
+import { createAuthWrapper } from '#/wrappers'
 
 describe('Auth Context/Provider', () => {
   const TEST_NAME = 'Tests.Contexts.Auth'

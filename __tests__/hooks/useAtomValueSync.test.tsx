@@ -2,11 +2,11 @@ import { act, renderHook } from '@testing-library/react'
 import { atom, useSetAtom } from 'jotai'
 import { describe, expect, it } from 'vitest'
 
-import { createStoreWrapper } from '../wrappers'
-
 import { useAtomValueSync } from '@/hooks/useAtomValueSync'
 
 import { store } from '@/services/store'
+
+import { createStoreWrapper } from '#/wrappers'
 
 describe('useAtomValueSync', () => {
   const testAtom = atom('hello world!')

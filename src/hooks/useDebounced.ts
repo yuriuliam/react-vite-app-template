@@ -15,7 +15,6 @@ const useDebounced = <T>(value: T, ms: number) => {
   const [, rerender] = useRender()
   const valueRef = React.useRef(undefined as T)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const update = useCallbackRef(
     debounced((newValue: T) => {
       valueRef.current = newValue

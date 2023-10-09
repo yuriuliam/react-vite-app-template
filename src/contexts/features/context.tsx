@@ -5,6 +5,8 @@ import { COMPONENTS } from '@/utils/constants'
 
 interface IFeaturesContextData {
   addFeatures: (...ids: string[]) => void
+  clearFeatures: () => void
+  fetchFeatures: (token: string) => Promise<void>
   hasFeatures: (...ids: string[]) => boolean
   removeFeatures: (...ids: string[]) => void
 }

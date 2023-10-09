@@ -1,10 +1,6 @@
-import { faker, type Faker } from '@faker-js/faker'
-
 import { isMode } from '../environment'
 import { isAsyncFunction, isFunctionType } from '../functions'
 import { promisify } from '../promises'
-
-type InjectionFn = (faker: Faker) => any
 
 /**
  * Override the method/getter to return a value of your choice.
@@ -15,10 +11,10 @@ type InjectionFn = (faker: Faker) => any
  * If the original method is async, the method will be injected as
  * an async callback.
  *
- * @param cb A callback to generate the faker data.
+ * @param callback A callback to generate the faker data.
  * @param envModes the accepted environment modes to inject the faker.
  */
-const InjectFaker = (cb: InjectionFn, ...envModes: string[]) => {
+const InjectFaker = (callback: AppUtils.CallbackFn, ...envModes: string[]) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     if (envModes.length && !envModes.some(isMode)) return
 
@@ -31,7 +27,6 @@ const InjectFaker = (cb: InjectionFn, ...envModes: string[]) => {
       )
     }
 
-    const callback = cb.bind(null, faker)
     const overrideMethod = isAsyncFunction(originalMethod)
       ? promisify(callback)
       : callback

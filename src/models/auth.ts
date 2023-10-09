@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { emailModel } from './generics'
 
-const authTokenModel = z.string().nonempty('token is required.')
+const authTokenModel = z.string()
 
 const authUserModel = z.object({
   id: z.string().nonempty('id property is required.'),

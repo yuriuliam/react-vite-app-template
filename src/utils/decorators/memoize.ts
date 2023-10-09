@@ -1,3 +1,4 @@
+import { isMode } from '../environment'
 import { type MemoizeOptions, isFunctionType, memoize } from '../functions'
 
 /**
@@ -6,8 +7,10 @@ import { type MemoizeOptions, isFunctionType, memoize } from '../functions'
  * @param memoOptions memoized options.
  * @returns
  */
-const Memoize = (memoOptions?: MemoizeOptions<any>) => {
+const Memoize = (memoOptions?: MemoizeOptions<any>, ...envModes: string[]) => {
   const decorator: MethodDecorator = (target, _key, descriptor) => {
+    if (envModes.length && !envModes.some(isMode)) return
+
     const methodKey = descriptor.value ? 'value' : 'get'
     const originalMethod = Reflect.get(descriptor, methodKey)!
 

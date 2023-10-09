@@ -1,9 +1,6 @@
-import { APP } from './constants/app'
+import { faker } from '@faker-js/faker'
 
-import type { Faker } from '@faker-js/faker'
-
-const createFakeAuthResponse = (faker: Faker) => {
-  faker.seed(APP.FAKER_SEED)
+const createFakeAuthResponse = () => {
   return {
     id: faker.string.uuid(),
     email: faker.internet.email(),
@@ -12,4 +9,12 @@ const createFakeAuthResponse = (faker: Faker) => {
   } satisfies AppModels.AuthResponse
 }
 
-export { createFakeAuthResponse }
+const createFakeAuthUser = () => {
+  return {
+    id: faker.string.uuid(),
+    email: faker.internet.email(),
+    name: faker.person.fullName(),
+  } satisfies AppModels.AuthUser
+}
+
+export { createFakeAuthResponse, createFakeAuthUser }

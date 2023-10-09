@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, json } from 'react-router-dom'
 
 import { Router as AppRouter } from './Router'
 
@@ -15,6 +15,8 @@ import { SignOut as SignOutPage } from '@/pages/SignOut'
 import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 const Routes: React.FC = () => {
+  const loader = () => json({ hello: 'world!' })
+
   return (
     <AppRouter>
       <Route errorElement={<ErrorBoundary />}>
@@ -22,7 +24,7 @@ const Routes: React.FC = () => {
         <Route element={<AuthGuard />}>
           {/* Main Layout */}
           <Route element={<MainLayout />}>
-            <Route path={ROUTES.ROOT} element={<HomePage />} />
+            <Route loader={loader} path={ROUTES.ROOT} element={<HomePage />} />
           </Route>
         </Route>
 

@@ -61,6 +61,7 @@
               "/@\/scripts/",
               "/@\/utils/",
               "/@\/styles/",
+              "/#/",
               "index",
               "type"
             ]
