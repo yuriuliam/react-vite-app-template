@@ -1,7 +1,4 @@
-import React from 'react'
-
 import { useCallbackRef } from './useCallbackRef'
-import { useRender } from './useRender'
 
 import { debounced } from '@/utils/functions'
 
@@ -11,26 +8,11 @@ import { debounced } from '@/utils/functions'
  * @param ms
  * @returns
  */
-const useDebounced = <T>(value: T, ms: number) => {
-  const [, rerender] = useRender()
-  const valueRef = React.useRef(undefined as T)
-
-  const update = useCallbackRef(
-    debounced((newValue: T) => {
-      valueRef.current = newValue
-      rerender()
-    }, ms),
-  )
-
-  React.useEffect(() => {
-    update(value)
-  }, [value, update])
-
-  if (valueRef.current === undefined) {
-    valueRef.current = value
-  }
-
-  return valueRef.current
+const useDebounced = <T extends (...args: any[]) => void>(
+  value: T,
+  ms: number,
+) => {
+  return useCallbackRef(debounced(value, ms))
 }
 
 export { useDebounced }

@@ -5,7 +5,7 @@ import {
   GENERATOR_FUNCTION_PROTOTYPE,
 } from './constants'
 
-type Debounced<T extends (...args: any[]) => any> = (
+type DebouncedFn<T extends (...args: any[]) => any> = (
   ...args: Parameters<T>
 ) => void
 
@@ -53,7 +53,7 @@ const debounced = <T extends (...args: any[]) => void>(
     if (curTimeout) clearTimeout(curTimeout)
 
     curTimeout = setTimeout(callback, ms, ...args) as any
-  }) as Debounced<T>
+  }) as DebouncedFn<T>
 }
 
 /**

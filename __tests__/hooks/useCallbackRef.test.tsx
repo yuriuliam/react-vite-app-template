@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
 import { useCallbackRef } from '@/hooks/useCallbackRef'
@@ -9,7 +9,9 @@ describe('useCallbackRef', () => {
 
     const { result: callbackRef } = renderHook(() => useCallbackRef(callback))
 
-    callbackRef.current('hello world!')
+    act(() => {
+      callbackRef.current('hello world!')
+    })
 
     expect(callback.mock.calls[0]).toEqual(['hello world!'])
   })

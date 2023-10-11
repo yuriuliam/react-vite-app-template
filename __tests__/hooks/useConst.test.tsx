@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { useConst } from '@/hooks/useConst'
@@ -19,7 +19,9 @@ describe('useConst', () => {
 
     const value = constant.result.current
 
-    constant.rerender()
+    act(() => {
+      constant.rerender()
+    })
 
     expect(value).toBe(constant.result.current)
   })
