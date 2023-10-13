@@ -1,6 +1,26 @@
 import { describe, it, expect } from 'vitest'
 
-import { formatPercentage, formatPrice } from '@/utils/numbers'
+import { clamp, formatPercentage, formatPrice } from '@/utils/numbers'
+
+describe('clamp', () => {
+  it('should respect minimum value', () => {
+    const value = 10
+    const min = 20
+
+    const result = clamp(value, min)
+
+    expect(result).toBe(20)
+  })
+
+  it('should respect maximum value', () => {
+    const value = 80
+    const max = 50
+
+    const result = clamp(value, undefined, max)
+
+    expect(result).toBe(50)
+  })
+})
 
 describe('formatPercentage', () => {
   it('should format numbers to percentage when percentage is provided', () => {

@@ -18,6 +18,20 @@ type IFormatPrice = (
 ) => FormattedPrice
 
 /**
+ * Clamps a value based on given minimum and maximum values.
+ *
+ * @param value the value to be clamped.
+ * @param min minimum value.
+ * @param max maximum value.
+ * @returns clamped number.
+ */
+const clamp = (
+  value: number,
+  min: number | undefined = Number.MIN_SAFE_INTEGER,
+  max: number | undefined = Number.MAX_SAFE_INTEGER,
+) => Math.max(min, Math.min(max, value))
+
+/**
  *
  */
 const formatPercentage: IFormatPercentage = (
@@ -36,4 +50,4 @@ const formatPercentage: IFormatPercentage = (
 const formatPrice: IFormatPrice = (price, locale = [], currency = 'USD') =>
   new Intl.NumberFormat(locale, { ...INTL_PRICE_OPTS, currency }).format(price)
 
-export { formatPercentage, formatPrice }
+export { clamp, formatPercentage, formatPrice }
