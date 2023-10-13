@@ -31,7 +31,7 @@ const COMPONENTS = Object.freeze({
 
     // From  Guards
     AUTH_GUARD: 'Guards.Auth',
-    ERROR_BOUNDARY_GUARD: 'Guards.ErrorBoundary',
+    ERROR_GUARD: 'Guards.Error',
 
     // From Internals
     CONTEXT_PROVIDER: `Internals.ContextProvider`,

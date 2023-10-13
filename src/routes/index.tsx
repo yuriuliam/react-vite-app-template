@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import { Router as AppRouter } from './Router'
 
 import { AuthGuard } from '@/guards/AuthGuard'
-import { ErrorBoundary } from '@/guards/ErrorBoundary'
+import { ErrorGuard } from '@/guards/ErrorGuard'
 
 import { MainLayout } from '@/layouts/MainLayout'
 
@@ -17,7 +17,7 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
 const Routes: React.FC = () => {
   return (
     <AppRouter>
-      <Route errorElement={<ErrorBoundary />}>
+      <Route errorElement={<ErrorGuard />}>
         <Route element={<AuthGuard />}>
           <Route element={<MainLayout />}>
             <Route path={ROUTES.ROOT} element={<HomePage />} />

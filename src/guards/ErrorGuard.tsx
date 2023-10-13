@@ -14,7 +14,7 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
 /**
  * A middleware for possible application errors.
  */
-const ErrorBoundary: React.FC = () => {
+const ErrorGuard: React.FC = () => {
   const navigate = useNavigate()
   const errorFromRoutes = useRouteError()
 
@@ -28,7 +28,7 @@ const ErrorBoundary: React.FC = () => {
     if (isRouteError) return
 
     globalThis.logger.error({
-      name: COMPONENTS.NAMES.ERROR_BOUNDARY_GUARD,
+      name: COMPONENTS.NAMES.ERROR_GUARD,
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
     })
@@ -58,6 +58,6 @@ const ErrorBoundary: React.FC = () => {
     </Flex>
   )
 }
-ErrorBoundary.displayName = COMPONENTS.NAMES.ERROR_BOUNDARY_GUARD
+ErrorGuard.displayName = COMPONENTS.NAMES.ERROR_GUARD
 
-export { ErrorBoundary }
+export { ErrorGuard }
