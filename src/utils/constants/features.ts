@@ -1,5 +1,5 @@
 const FEATURES = Object.freeze({
-  CYAN_THEME: 'ff_cyan_theme',
+  HELLO_WORLD: 'ff_hello_world',
 })
 
 export { FEATURES }

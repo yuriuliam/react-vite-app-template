@@ -4,6 +4,21 @@ import type React from 'react'
 
 type PossibleRef<T> = React.Ref<T> | undefined
 
+const areDependenciesEqual = (
+  nextDeps: React.DependencyList,
+  prevDeps: React.DependencyList,
+) => {
+  if (nextDeps.length !== prevDeps.length) return false
+
+  for (let i = 0; i < prevDeps.length && i < nextDeps.length; i++) {
+    if (Object.is(nextDeps.at(i), prevDeps.at(i))) continue
+
+    return false
+  }
+
+  return true
+}
+
 /**
  * Composes React Refs into a callback,
  * making it possible to stack multiple refs.
@@ -26,4 +41,4 @@ const composeRefs = <T>(
   }
 }
 
-export { composeRefs }
+export { areDependenciesEqual, composeRefs }

@@ -2,6 +2,8 @@ import React from 'react'
 
 import { COMPONENTS } from '@/utils/constants'
 
+type ContextProvider<T> = React.PFC<Partial<T>>
+
 /**
  * A small but useful wrapper React's createContext.
  *
@@ -30,12 +32,8 @@ function createContext<T extends Record<string, any>>(
 ) {
   const Context = React.createContext(initialValue as T)
 
-  const Provider: React.PFC<Partial<T>> = ({ children, ...rest }) => {
-    const values = React.useMemo(
-      () => (Object.keys(rest).length ? rest : initialValue) as T,
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      Object.values(rest),
-    )
+  const Provider: ContextProvider<T> = ({ children, ...rest }) => {
+    const values = (Object.keys(rest).length ? rest : initialValue) as T
 
     return <Context.Provider value={values}>{children}</Context.Provider>
   }

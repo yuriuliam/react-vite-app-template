@@ -23,6 +23,7 @@ const COMPONENTS = Object.freeze({
     AUTH: 'AuthContext',
     FEATURES: 'FeaturesContext',
     APP_PROVIDER: 'App.Provider',
+
     AUTH_PROVIDER: 'Contexts.AuthProvider',
     FEATURES_PROVIDER: 'Contexts.FeaturesProvider',
     STORE_PROVIDER: 'Contexts.StoreProvider',
@@ -39,9 +40,9 @@ const COMPONENTS = Object.freeze({
     MAIN_LAYOUT: 'Layouts.Main',
 
     // From Pages
-    HOME: 'Pages.Home',
-    SIGN_IN: 'Pages.SignIn',
-    SIGN_OUT: 'Pages.SignOut',
+    HOME_PAGE: 'Pages.Home',
+    SIGN_IN_PAGE: 'Pages.SignIn',
+    SIGN_OUT_PAGE: 'Pages.SignOut',
 
     // From Routes
     ROUTER: 'Routes.Router',

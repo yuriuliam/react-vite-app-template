@@ -9,11 +9,16 @@ describe('useCallbackRef', () => {
 
     const { result: callbackRef } = renderHook(() => useCallbackRef(callback))
 
+    const callbackCalls = callback.mock.calls
+
+    expect(callbackCalls).toHaveLength(0)
+
     act(() => {
       callbackRef.current('hello world!')
     })
 
-    expect(callback.mock.calls[0]).toEqual(['hello world!'])
+    expect(callbackCalls).toHaveLength(1)
+    expect(callbackCalls.at(0)).toEqual(['hello world!'])
   })
 
   it('the callback wrapper should be able to return a value', () => {

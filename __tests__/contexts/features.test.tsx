@@ -107,7 +107,7 @@ describe('Features Context/Provider', () => {
 
     await act(async () => {
       await auth.current.signIn()
-      await features.current.fetchFeatures(auth.current.token!)
+      await features.current.fetchFeatures(auth.current.token)
     })
 
     expect(features.current.hasFeatures(FF_TEST_1)).toBeTruthy()
@@ -127,7 +127,7 @@ describe('Features Context/Provider', () => {
 
     await act(async () => {
       await auth.current.signIn()
-      await features.current.fetchFeatures(auth.current.token!)
+      await features.current.fetchFeatures(auth.current.token)
     })
 
     expect(features.current.hasFeatures(FF_TEST_1)).toBeFalsy()

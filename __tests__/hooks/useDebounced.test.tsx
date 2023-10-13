@@ -12,11 +12,13 @@ describe('useDebounced', () => {
       debouncedFn.current()
     })
 
-    expect(callback.mock.calls).toHaveLength(0)
+    const callbackCalls = callback.mock.calls
+
+    expect(callbackCalls).toHaveLength(0)
 
     await vi.waitFor(
       () => {
-        expect(callback.mock.calls).toHaveLength(1)
+        expect(callbackCalls).toHaveLength(1)
       },
       { interval: 25, timeout: 100 },
     )

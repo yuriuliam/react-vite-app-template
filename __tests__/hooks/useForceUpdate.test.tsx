@@ -14,14 +14,16 @@ describe('useForceUpdate', () => {
       wrapper: createProfilerWrapper(mockId, callback),
     })
 
-    expect(callback.mock.calls).toHaveLength(1)
-    expect(callback.mock.calls[0][1]).toBe('mount')
+    const callbackCalls = callback.mock.calls
+
+    expect(callbackCalls).toHaveLength(1)
+    expect(callbackCalls.at(0).at(1)).toBe('mount')
 
     act(() => {
       forceUpdate.current()
     })
 
-    expect(callback.mock.calls).toHaveLength(2)
-    expect(callback.mock.calls[1][1]).toBe('update')
+    expect(callbackCalls).toHaveLength(2)
+    expect(callbackCalls.at(1).at(1)).toBe('update')
   })
 })

@@ -13,8 +13,8 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
  * @see https://reactrouter.com/en/main/route/loader
  */
 const SignOut: React.FC = () => {
-  const { signOut } = useAuth(COMPONENTS.NAMES.SIGN_OUT)
-  const { clearFeatures } = useFeatures(COMPONENTS.NAMES.SIGN_OUT)
+  const { signOut } = useAuth(COMPONENTS.NAMES.SIGN_OUT_PAGE)
+  const { clearFeatures } = useFeatures(COMPONENTS.NAMES.SIGN_OUT_PAGE)
 
   const navigate = useNavigate()
 
@@ -27,6 +27,6 @@ const SignOut: React.FC = () => {
 
   return <></>
 }
-SignOut.displayName = COMPONENTS.NAMES.SIGN_OUT
+SignOut.displayName = COMPONENTS.NAMES.SIGN_OUT_PAGE
 
 export { SignOut }

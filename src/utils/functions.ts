@@ -37,6 +37,19 @@ const argsReplacer = (_k: string, v: any) => {
 }
 
 /**
+ * Compose callbacks into a single function.
+ * @param callbacks callbacks to be composed.
+ * @returns A function which calls the given callbacks.
+ */
+const compose = <T extends (...args: any[]) => void>(...callbacks: T[]) => {
+  return ((...args) => {
+    callbacks.forEach(callback => {
+      callback(...args)
+    })
+  }) as T
+}
+
+/**
  * Debounces a callback by using setTimeout. It returns a function expression
  * which runs the callback after a given amount of milliseconds once called.
  *
@@ -140,6 +153,7 @@ const memoize = <T extends (...args: any[]) => any>(
 }
 
 export {
+  compose,
   debounced,
   isAsyncFunction,
   isAsyncGeneratorFunction,

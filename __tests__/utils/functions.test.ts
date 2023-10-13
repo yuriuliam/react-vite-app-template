@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 
 import {
+  compose,
   debounced,
   isAsyncFunction,
   isAsyncGeneratorFunction,
@@ -11,6 +12,38 @@ import {
 } from '@/utils/functions'
 import { wait } from '@/utils/promises'
 
+describe('compose', () => {
+  it('should stack callbacks into a single one', async () => {
+    const firstCallback = vi.fn()
+    const lastCallback = vi.fn()
+
+    const composedCallback = compose(firstCallback, lastCallback)
+
+    const foo = Symbol.for('foo')
+
+    composedCallback(foo)
+
+    const firstCallbackCalls = firstCallback.mock.calls
+    const lastCallbackCalls = lastCallback.mock.calls
+
+    expect(firstCallbackCalls).toHaveLength(1)
+    expect(firstCallbackCalls.at(0)).toEqual([foo])
+
+    expect(lastCallbackCalls).toHaveLength(1)
+    expect(lastCallbackCalls.at(0)).toEqual([foo])
+
+    const dateArgument = Date.now()
+
+    composedCallback(dateArgument)
+
+    expect(firstCallbackCalls).toHaveLength(2)
+    expect(firstCallbackCalls.at(1)).toEqual([dateArgument])
+
+    expect(lastCallbackCalls).toHaveLength(2)
+    expect(lastCallbackCalls.at(1)).toEqual([dateArgument])
+  })
+})
+
 describe('debounced', () => {
   it('should debounce a given callback', async () => {
     const callback = vi.fn()
@@ -20,11 +53,11 @@ describe('debounced', () => {
 
     debouncedCallback(value)
 
-    expect(callback.mock.calls).toHaveLength(0)
+    const mockCalls = callback.mock.calls
+
+    expect(mockCalls).toHaveLength(0)
 
     await wait(50)
-
-    const mockCalls = callback.mock.calls
 
     expect(mockCalls).toHaveLength(1)
 

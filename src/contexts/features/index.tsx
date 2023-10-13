@@ -42,7 +42,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
     features.clear()
   })
 
-  const fetchFeatures = useCallbackRef(async (token: string) => {
+  const fetchFeatures = useCallbackRef(async (token: string | null) => {
     const features = await api.getFeatures(token)
 
     if (!features) {
