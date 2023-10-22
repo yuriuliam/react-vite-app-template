@@ -84,27 +84,22 @@ App's render core + global imports and changes before React renders.
 
 ## Render Layers / Render Order
 
-```
--> createRoot {
- // Where the App starts to render.
+[1st] createRoot<br />
+  // Where the App starts to render.<br />
 
- -> App Provider {
-  // We load the data layers.
+[2nd] -> App Provider<br />
+// We load the data layers.<br />
 
-  -> Store Provider
-  -> Features Provider
-  -> Theme Provider
-  -> Auth Provider
+[3rd] -> Store Provider<br />
+[4th] -> Features Provider<br />
+[5th] -> Theme Provider<br />
+[6th] -> Auth Provider<br />
 
-  -> App Router (as Router-DOM's BrowserRouter) {
-    // Then we provide the pages through routes.
+[7th] -> App Router (as Router-DOM's BrowserRouter)<br />
+// Then we provide the pages through routes.<br />
 
-    -> Router's Error Boundary
-    -> Layouts (Page Layouts, Auth Layouts etc...)¹
-    -> Pages (then components, hooks etc...)
-  }
- }
-}
+[8th] -> Router's Error Boundary<br />
+[9th] -> Layouts (Page Layouts, Auth Layouts etc...)¹<br />
+[10th] -> Pages (then components, hooks etc...)<br />
 
 ¹: It can have 0 to x Layouts stacked.
-```
