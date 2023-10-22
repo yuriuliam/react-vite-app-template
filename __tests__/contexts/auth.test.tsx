@@ -5,9 +5,10 @@ import { useAuth } from '@/contexts/auth/context'
 
 import { APIMain } from '@/services/api/main'
 
+import { createFakeAuthResponse } from '@/utils/faker'
 import { promised } from '@/utils/promises'
 
-import { createAuthWrapper } from '#/wrappers'
+import { createAuthWrapper } from '#/__mocks__/wrappers'
 
 describe('Auth Context/Provider', () => {
   const TEST_NAME = 'Tests.Contexts.Auth'
@@ -28,6 +29,11 @@ describe('Auth Context/Provider', () => {
     expect(auth.current.isAuthenticated).toBeFalsy()
     expect(auth.current.token).toBe(null)
     expect(auth.current.user).toBe(null)
+
+    const api = APIMain.getInstance()
+    vi.spyOn(api, 'authenticate').mockReturnValue(
+      promised(createFakeAuthResponse()),
+    )
 
     await act(async () => {
       await auth.current.signIn()

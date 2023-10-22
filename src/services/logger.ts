@@ -30,6 +30,9 @@ class Logger {
     }
   }
 
+  /**
+   * retrieves the namespace without the `app:` prefix.
+   */
   public get _namespace() {
     return this._output.namespace.slice(4)
   }
@@ -77,7 +80,7 @@ class Logger {
     void this.output({
       ...options,
       title: chalk.yellow(options.title),
-      content: chalk.blueBright(options.content),
+      content: chalk.white(options.content),
     })
   }
 
@@ -85,7 +88,7 @@ class Logger {
     void this.output({
       ...options,
       title: chalk.hex('FFAA00')(options.title),
-      content: chalk.blueBright(options.content),
+      content: chalk.white(options.content),
     })
   }
 

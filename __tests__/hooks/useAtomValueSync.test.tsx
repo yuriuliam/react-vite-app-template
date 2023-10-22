@@ -6,7 +6,7 @@ import { useAtomValueSync } from '@/hooks/useAtomValueSync'
 
 import { store } from '@/services/store'
 
-import { createStoreWrapper } from '#/wrappers'
+import { createStoreWrapper } from '#/__mocks__/wrappers'
 
 describe('useAtomValueSync', () => {
   const testAtom = atom('hello world!')

@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Theme } from '@radix-ui/themes'
-import { useMediaQuery } from '@uidotdev/usehooks'
 import { useAtom } from 'jotai'
 
 import { useConst } from '@/hooks/useConst'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 import { atoms } from '@/services/store/atoms'
 

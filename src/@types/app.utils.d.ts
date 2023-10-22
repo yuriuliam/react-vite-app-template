@@ -13,7 +13,9 @@ declare global {
     /** Describes a callback method. */
     type CallbackFn = () => void
     /** Describes a callback method with arguments. */
-    type CallbackWithParamsFn<TArgs = any[]> = (...args: TArgs) => void
+    type CallbackWithParamFn<TArg0> = (arg0: TArg0) => void
+    type CallbackWithParamsFn<TArg0 extends any[]> = (...args: TArg0) => void
+    type CallbackWithParamsFn<TArg0, TArg1> = (arg0: TArg0, arg1: TArg1) => void
 
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue

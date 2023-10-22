@@ -1,12 +1,14 @@
-import { faker } from '@faker-js/faker'
 import { describe, expect, it } from 'vitest'
 import { ZodError } from 'zod'
 
 import { emailModel } from '@/models/generics'
 
+import { createFakeEmail } from '@/utils/faker'
+import { parseZodErrors } from '@/utils/zod'
+
 describe('emailModel', () => {
   it('should successfully parse consistent values', () => {
-    const email = faker.internet.email()
+    const email = createFakeEmail()
 
     const result = emailModel.safeParse(email)
 
@@ -26,6 +28,10 @@ describe('emailModel', () => {
 
     expect(emailError).not.toBe(null)
     expect(emailError!.issues).toHaveLength(1)
-    expect(emailError!.issues.at(0)!.message).toBe('given email is not valid.')
+
+    const parsedErrors = parseZodErrors(emailError)
+
+    expect(parsedErrors).toHaveProperty('zod')
+    expect(parsedErrors.zod.at(0)).toBe('given email is not valid.')
   })
 })

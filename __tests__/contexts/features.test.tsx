@@ -6,9 +6,10 @@ import { useFeatures } from '@/contexts/features/context'
 
 import { APIMain } from '@/services/api/main'
 
+import { createFakeAuthResponse } from '@/utils/faker'
 import { promised } from '@/utils/promises'
 
-import { createAuthWrapper, createFeaturesWrapper } from '#/wrappers'
+import { createAuthWrapper, createFeaturesWrapper } from '#/__mocks__/wrappers'
 
 describe('Features Context/Provider', () => {
   const TEST_NAME = 'Tests.Contexts.Features'
@@ -103,6 +104,9 @@ describe('Features Context/Provider', () => {
     })
 
     const api = APIMain.getInstance()
+    vi.spyOn(api, 'authenticate').mockReturnValue(
+      promised(createFakeAuthResponse()),
+    )
     vi.spyOn(api, 'getFeatures').mockReturnValue(promised([FF_TEST_1]))
 
     await act(async () => {
@@ -123,6 +127,9 @@ describe('Features Context/Provider', () => {
     })
 
     const api = APIMain.getInstance()
+    vi.spyOn(api, 'authenticate').mockReturnValue(
+      promised(createFakeAuthResponse()),
+    )
     vi.spyOn(api, 'getFeatures').mockReturnValue(promised(null))
 
     await act(async () => {

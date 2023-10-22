@@ -11,10 +11,13 @@ import { promisify } from '../promises'
  * If the original method is async, the method will be injected as
  * an async callback.
  *
- * @param callback A callback to generate the faker data.
+ * @param factory A callback to generate the faker data.
  * @param envModes the accepted environment modes to inject the faker.
  */
-const InjectFaker = (callback: AppUtils.CallbackFn, ...envModes: string[]) => {
+const MockReturn = (
+  factory: AppUtils.FactoryFn<any>,
+  ...envModes: string[]
+) => {
   const decorator: MethodDecorator = (_target, _key, descriptor) => {
     if (envModes.length && !envModes.some(isMode)) return
 
@@ -28,8 +31,8 @@ const InjectFaker = (callback: AppUtils.CallbackFn, ...envModes: string[]) => {
     }
 
     const overrideMethod = isAsyncFunction(originalMethod)
-      ? promisify(callback)
-      : callback
+      ? promisify(factory)
+      : factory
 
     Reflect.set(descriptor, methodKey, overrideMethod)
   }
@@ -37,4 +40,4 @@ const InjectFaker = (callback: AppUtils.CallbackFn, ...envModes: string[]) => {
   return decorator as any
 }
 
-export { InjectFaker }
+export { MockReturn }

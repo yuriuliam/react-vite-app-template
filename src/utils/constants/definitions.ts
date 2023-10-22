@@ -4,6 +4,11 @@
 const NOOP = () => {}
 
 /**
+ * Represents an untouched initial value for app purposes.
+ */
+const UNDEF: any = Symbol.for('UNDEF')
+
+/**
  * Async Function Prototype Reference
  */
 const ASYNC_FUNCTION_PROTOTYPE = Object.getPrototypeOf(async function () {})
@@ -75,4 +80,5 @@ export {
   INTL_PRICE_OPTS,
   RECORD_PROTOTYPE,
   NOOP,
+  UNDEF,
 }

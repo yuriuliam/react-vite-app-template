@@ -1,10 +1,14 @@
-import { faker } from '@faker-js/faker'
 import { describe, expect, it } from 'vitest'
 import { ZodError } from 'zod'
 
 import { authResponseModel, authTokenModel, authUserModel } from '@/models/auth'
 
-import { createFakeAuthResponse, createFakeAuthUser } from '@/utils/faker'
+import {
+  createFakeAuthResponse,
+  createFakeAuthUser,
+  createFakeToken,
+} from '@/utils/faker'
+import { parseZodErrors } from '@/utils/zod'
 
 describe('authResponseModel', () => {
   it('should successfully parse consistent values', () => {
@@ -29,15 +33,17 @@ describe('authResponseModel', () => {
 
     expect(tokenError).not.toBe(null)
     expect(tokenError!.issues).toHaveLength(1)
-    expect(tokenError!.issues.at(0)!.message).toBe(
-      'token property is required.',
-    )
+
+    const parsedErrors = parseZodErrors(tokenError)
+
+    expect(parsedErrors).toHaveProperty('token')
+    expect(parsedErrors.token.at(0)).toBe('token property is required.')
   })
 })
 
 describe('authTokenModel', () => {
   it('should successfully parse consistent values', () => {
-    const token = faker.string.nanoid(64) satisfies AppModels.AuthToken
+    const token = createFakeToken()
 
     const result = authTokenModel.safeParse(token)
 
@@ -57,6 +63,11 @@ describe('authTokenModel', () => {
 
     expect(tokenError).not.toBe(null)
     expect(tokenError!.issues).toHaveLength(1)
+
+    const parsedErrors = parseZodErrors(tokenError)
+
+    expect(parsedErrors).toHaveProperty('zod')
+    expect(parsedErrors.zod.at(0)).toBe('Expected string, received symbol')
   })
 })
 
@@ -83,9 +94,12 @@ describe('authUserModel', () => {
 
     expect(emailError).not.toBe(null)
     expect(emailError!.issues).toHaveLength(2)
-    expect(emailError!.issues.at(1)!.message).toBe(
-      'email property is required.',
-    )
+
+    const parsedErrors = parseZodErrors(emailError)
+
+    expect(parsedErrors).toHaveProperty('email')
+    expect(parsedErrors.email.at(0)).toBe('given email is not valid.')
+    expect(parsedErrors.email.at(1)).toBe('email property is required.')
   })
 
   it('should fail parsing empty id', () => {
@@ -102,7 +116,11 @@ describe('authUserModel', () => {
 
     expect(idError).not.toBe(null)
     expect(idError!.issues).toHaveLength(1)
-    expect(idError!.issues.at(0)!.message).toBe('id property is required.')
+
+    const parsedErrors = parseZodErrors(idError)
+
+    expect(parsedErrors).toHaveProperty('id')
+    expect(parsedErrors.id.at(0)).toBe('id property is required.')
   })
 
   it('should fail parsing empty name', () => {
@@ -119,6 +137,10 @@ describe('authUserModel', () => {
 
     expect(nameError).not.toBe(null)
     expect(nameError!.issues).toHaveLength(1)
-    expect(nameError!.issues.at(0)!.message).toBe('name property is required.')
+
+    const parsedErrors = parseZodErrors(nameError)
+
+    expect(parsedErrors).toHaveProperty('name')
+    expect(parsedErrors.name.at(0)).toBe('name property is required.')
   })
 })

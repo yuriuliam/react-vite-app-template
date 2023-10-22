@@ -4,8 +4,7 @@ import { authResponseModel } from '@/models/auth'
 import { featuresResponseModel } from '@/models/features'
 
 import { APP, MODE } from '@/utils/constants'
-import { InjectFaker, Memoize } from '@/utils/decorators'
-import { Deferred } from '@/utils/decorators/deferred'
+import { Deferred, Memoize, MockReturn } from '@/utils/decorators'
 import {
   createFakeAuthResponse,
   createFakeFeaturesResponse,
@@ -33,9 +32,9 @@ class APIMain extends APIBase {
   // Remove MODE.DEVELOPMENT if you want to execute the code during development.
   // ===========================================================================
 
-  @Memoize({}, MODE.DEVELOPMENT, MODE.TEST)
-  @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
-  @InjectFaker(createFakeAuthResponse, MODE.DEVELOPMENT, MODE.TEST)
+  @Memoize({}, MODE.DEVELOPMENT)
+  @Deferred(200, MODE.DEVELOPMENT)
+  @MockReturn(createFakeAuthResponse, MODE.DEVELOPMENT)
   public async authenticate() {
     try {
       const { data } = await this.fetcher.post('/auth/jwt')
@@ -48,15 +47,13 @@ class APIMain extends APIBase {
     }
   }
 
-  @Memoize({}, MODE.DEVELOPMENT, MODE.TEST)
-  @Deferred(200, MODE.DEVELOPMENT, MODE.TEST)
-  @InjectFaker(createFakeFeaturesResponse, MODE.DEVELOPMENT, MODE.TEST)
+  @Memoize({}, MODE.DEVELOPMENT)
+  @Deferred(200, MODE.DEVELOPMENT)
+  @MockReturn(createFakeFeaturesResponse, MODE.DEVELOPMENT)
   public async getFeatures(token: string | null) {
     try {
-      const { data } = await this.fetcher.get('/user/features', {
-        headers: {
-          Authorization: token ?? '',
-        },
+      const { data } = await this.fetcher.get('/users/me/features', {
+        headers: { Authorization: token },
       })
 
       return featuresResponseModel.parse(data)

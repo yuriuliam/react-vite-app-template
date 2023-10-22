@@ -10,10 +10,10 @@ describe('useDebouncedValue', () => {
     const { result: state } = renderHook(() => React.useState('hello world'))
 
     const { result: debouncedValue } = renderHook(() =>
-      useDebouncedValue(state.current[0], 25),
+      useDebouncedValue(state.current.at(0), 25),
     )
 
-    expect(debouncedValue.current).toBe(state.current[0])
+    expect(debouncedValue.current).toBe(state.current.at(0))
 
     act(() => {
       const [, setValue] = state.current
@@ -21,11 +21,11 @@ describe('useDebouncedValue', () => {
       setValue('foo bar')
     })
 
-    expect(debouncedValue.current).not.toBe(state.current[0])
+    expect(debouncedValue.current).not.toBe(state.current.at(0))
 
     await waitFor(
       () => {
-        expect(debouncedValue.current).toBe(state.current[0])
+        expect(debouncedValue.current).toBe(state.current.at(0))
       },
       { interval: 25, timeout: 100 },
     )

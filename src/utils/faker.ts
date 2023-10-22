@@ -2,20 +2,22 @@ import { faker } from '@faker-js/faker'
 
 import { FEATURES } from './constants'
 
-const createFakeAuthResponse = () =>
-  ({
-    id: faker.string.uuid(),
-    email: faker.internet.email(),
-    name: faker.person.fullName(),
-    token: faker.string.nanoid(64),
-  }) satisfies AppModels.AuthResponse
+const createFakeEmail = () => faker.internet.email()
 
 const createFakeAuthUser = () =>
   ({
     id: faker.string.uuid(),
-    email: faker.internet.email(),
+    email: createFakeEmail(),
     name: faker.person.fullName(),
   }) satisfies AppModels.AuthUser
+
+const createFakeToken = () => faker.string.nanoid({ min: 64, max: 128 })
+
+const createFakeAuthResponse = () =>
+  ({
+    ...createFakeAuthUser(),
+    token: createFakeToken(),
+  }) satisfies AppModels.AuthResponse
 
 const createFakeFeaturesResponse = () =>
   [FEATURES.HELLO_WORLD] satisfies AppModels.FeaturesResponse
@@ -23,5 +25,7 @@ const createFakeFeaturesResponse = () =>
 export {
   createFakeAuthResponse,
   createFakeAuthUser,
+  createFakeEmail,
   createFakeFeaturesResponse,
+  createFakeToken,
 }

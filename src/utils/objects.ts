@@ -5,6 +5,38 @@ type SelectKeyFn<T extends any[]> = (
 ) => string | number | symbol
 
 /**
+ * Check if both objects have same keys and values.
+ * @param a object A.
+ * @param b object B.
+ * @returns `true` if both have the same keys and values, otherwise `false`
+ */
+const areObjectsEqual = (
+  a: Record<any, any> | any[],
+  b: Record<any, any> | any[],
+) => {
+  if (Object.is(a, b)) return true
+
+  const objs = [a, b]
+
+  const isObjsArray = objs.every(Array.isArray)
+  const isObjsRecord = objs.every(isRecord)
+
+  if (!isObjsRecord && !isObjsArray) return false
+
+  const propsA = Object.keys(a)
+  const propsB = Object.keys(b)
+
+  return (
+    propsB.length === propsA.length &&
+    propsB.every(
+      key =>
+        propsA.includes(key) &&
+        Object.is(Reflect.get(a, key), Reflect.get(b, key)),
+    )
+  )
+}
+
+/**
  * Creates a Map out of an record/array.
  */
 const asMap = <T extends AppUtils.ObjectType>(value: T) =>
@@ -58,4 +90,12 @@ const isObject = (value: any): value is NonNullable<object> =>
 const isRecord = (value: any): value is Record<any, any> =>
   isObject(value) && Object.getPrototypeOf(value) === RECORD_PROTOTYPE
 
-export { asMap, asSet, defaultOrNull, groupBy, isObject, isRecord }
+export {
+  areObjectsEqual,
+  asMap,
+  asSet,
+  defaultOrNull,
+  groupBy,
+  isObject,
+  isRecord,
+}

@@ -13,7 +13,7 @@ import { useStore, type Atom } from 'jotai'
 const useAtomValueSync = <TValue>(atom: Atom<TValue>) => {
   const appStore = useStore()
 
-  const value = React.useSyncExternalStore(
+  return React.useSyncExternalStore(
     onAtomChange => {
       const unsubscribe = appStore.sub(atom, onAtomChange)
 
@@ -23,8 +23,6 @@ const useAtomValueSync = <TValue>(atom: Atom<TValue>) => {
     },
     () => appStore.get(atom),
   )
-
-  return value
 }
 
 export { useAtomValueSync }

@@ -1,10 +1,9 @@
-import { useSet } from '@uidotdev/usehooks'
-
 import { FeaturesContextProvider } from './context'
 
 import { useAPI } from '@/hooks/useAPI'
 import { useCallbackRef } from '@/hooks/useCallbackRef'
 import { useLogger } from '@/hooks/useLogger'
+import { useSet } from '@/hooks/useSet'
 
 import { COMPONENTS, LOGGER } from '@/utils/constants'
 
@@ -22,11 +21,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
       data: ids,
     })
 
-    ids.forEach(id => {
-      if (features.has(id)) return
-
-      features.add(id)
-    })
+    features.add(...ids.filter(id => !features.has(id)))
   })
 
   const clearFeatures = useCallbackRef(() => {
@@ -69,11 +64,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
       data: ids,
     })
 
-    ids.forEach(id => {
-      if (!features.has(id)) return
-
-      features.delete(id)
-    })
+    features.delete(...ids.filter(id => features.has(id)))
   })
 
   return (

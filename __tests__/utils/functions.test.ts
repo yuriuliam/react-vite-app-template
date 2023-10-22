@@ -23,24 +23,21 @@ describe('compose', () => {
 
     composedCallback(foo)
 
-    const firstCallbackCalls = firstCallback.mock.calls
-    const lastCallbackCalls = lastCallback.mock.calls
+    expect(firstCallback).toBeCalledTimes(1)
+    expect(firstCallback).toBeCalledWith(foo)
 
-    expect(firstCallbackCalls).toHaveLength(1)
-    expect(firstCallbackCalls.at(0)).toEqual([foo])
-
-    expect(lastCallbackCalls).toHaveLength(1)
-    expect(lastCallbackCalls.at(0)).toEqual([foo])
+    expect(lastCallback).toBeCalledTimes(1)
+    expect(lastCallback).toBeCalledWith(foo)
 
     const dateArgument = Date.now()
 
     composedCallback(dateArgument)
 
-    expect(firstCallbackCalls).toHaveLength(2)
-    expect(firstCallbackCalls.at(1)).toEqual([dateArgument])
+    expect(firstCallback).toBeCalledTimes(2)
+    expect(firstCallback).toBeCalledWith(dateArgument)
 
-    expect(lastCallbackCalls).toHaveLength(2)
-    expect(lastCallbackCalls.at(1)).toEqual([dateArgument])
+    expect(lastCallback).toBeCalledTimes(2)
+    expect(lastCallback).toBeCalledWith(dateArgument)
   })
 })
 
@@ -53,16 +50,12 @@ describe('debounced', () => {
 
     debouncedCallback(value)
 
-    const mockCalls = callback.mock.calls
-
-    expect(mockCalls).toHaveLength(0)
+    expect(callback).toBeCalledTimes(0)
 
     await wait(50)
 
-    expect(mockCalls).toHaveLength(1)
-
-    const mockCall = mockCalls.at(0)
-    expect(mockCall).toEqual([value])
+    expect(callback).toBeCalledTimes(1)
+    expect(callback).toBeCalledWith(value)
   })
 
   it('should run once, when called twice before timeout expires', async () => {
@@ -75,12 +68,9 @@ describe('debounced', () => {
 
     await wait(50)
 
-    const mockCalls = callback.mock.calls
+    expect(callback).toBeCalledTimes(1)
 
-    expect(mockCalls).toHaveLength(1)
-
-    const mockCall = mockCalls.at(0)
-    expect(mockCall).toEqual(['test 2'])
+    expect(callback).toBeCalledWith('test 2')
   })
 })
 

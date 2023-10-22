@@ -11,6 +11,8 @@ declare global {
     type ParentFunctionComponent<T = {}> = React.FC<React.PropsWithChildren<T>>
     /** @see {ParentFunctionComponent} */
     type PFC<T = {}> = ParentFunctionComponent<T>
+
+    type PossibleRef<T> = React.Ref<T> | undefined
   }
 }
 

@@ -4,6 +4,7 @@ import { ZodError } from 'zod'
 import { featuresResponseModel } from '@/models/features'
 
 import { createFakeFeaturesResponse } from '@/utils/faker'
+import { parseZodErrors } from '@/utils/zod'
 
 describe('featuresResponseModel', () => {
   it('should successfully parse consistent values', () => {
@@ -35,5 +36,10 @@ describe('featuresResponseModel', () => {
 
     expect(featuresResponseError).not.toBe(null)
     expect(featuresResponseError!.issues).toHaveLength(1)
+
+    const parsedErrors = parseZodErrors(featuresResponseError)
+
+    expect(parsedErrors).toHaveProperty('zod')
+    expect(parsedErrors.zod.at(0)).toBe('Expected array, received object')
   })
 })

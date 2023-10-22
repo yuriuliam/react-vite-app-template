@@ -32,7 +32,8 @@ const clamp = (
 ) => Math.max(min, Math.min(max, value))
 
 /**
- *
+ * Formats a number into a INTL Percentage value.
+ * If no locale is provided, assumed the current one
  */
 const formatPercentage: IFormatPercentage = (
   percentage,

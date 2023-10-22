@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { useForceUpdate } from '@/hooks/useForceUpdate'
 
-import { createProfilerWrapper } from '#/wrappers'
+import { createProfilerWrapper } from '#/__mocks__/wrappers'
 
 describe('useForceUpdate', () => {
   it('should return a given value', () => {
@@ -14,16 +14,14 @@ describe('useForceUpdate', () => {
       wrapper: createProfilerWrapper(mockId, callback),
     })
 
-    const callbackCalls = callback.mock.calls
-
-    expect(callbackCalls).toHaveLength(1)
-    expect(callbackCalls.at(0).at(1)).toBe('mount')
+    expect(callback).toBeCalledTimes(1)
+    expect(callback.mock.calls.at(0).at(1)).toBe('mount')
 
     act(() => {
       forceUpdate.current()
     })
 
-    expect(callbackCalls).toHaveLength(2)
-    expect(callbackCalls.at(1).at(1)).toBe('update')
+    expect(callback).toBeCalledTimes(2)
+    expect(callback.mock.calls.at(1).at(1)).toBe('update')
   })
 })

@@ -1,8 +1,4 @@
-import { isFunction } from './functions'
-
-import type React from 'react'
-
-type PossibleRef<T> = React.Ref<T> | undefined
+import { isFunctionType } from './functions'
 
 const areDependenciesEqual = (
   nextDeps: React.DependencyList,
@@ -22,15 +18,18 @@ const areDependenciesEqual = (
 /**
  * Composes React Refs into a callback,
  * making it possible to stack multiple refs.
+ *
+ * @param refs the refs to be composed.
+ * @returns a composed ref callback.
  */
 const composeRefs = <T>(
-  ...refs: Array<PossibleRef<T>>
+  ...refs: Array<React.PossibleRef<T>>
 ): React.RefCallback<T> => {
   return node => {
     refs.forEach(ref => {
       if (!ref) return
 
-      if (isFunction(ref)) {
+      if (isFunctionType(ref)) {
         ref(node)
         return
       }
