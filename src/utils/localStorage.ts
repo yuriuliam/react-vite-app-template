@@ -19,4 +19,8 @@ const asLocalStorageKey = <TPrefix extends string, TKey extends string>(
   key: TKey,
 ): LocalStorageKey<TPrefix, TKey> => `${prefix}:${key}`
 
-export { asAppLocalStorageKey }
+const getLocalStorageValue = <T>(key: string) => {
+  return JSON.parse(window.localStorage.getItem(key) ?? 'null') as T | null
+}
+
+export { asAppLocalStorageKey, getLocalStorageValue }

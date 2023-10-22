@@ -8,17 +8,20 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 import { atoms } from '@/services/store/atoms'
 
-import { COMPONENTS } from '@/utils/constants'
+import { COMPONENTS, LOCAL_STORAGE } from '@/utils/constants'
+import { getLocalStorageValue } from '@/utils/localStorage'
 
 const ThemeProvider: React.PFC = ({ children }) => {
   const preferDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  const themeClasses = useConst(
-    Object.freeze({ dark: 'dark-theme', light: 'light-theme' }),
-  )
+  const themeClasses = useConst({ dark: 'dark-theme', light: 'light-theme' })
 
   const [isDarkMode, setIsDarkMode] = useAtom(atoms.theme.isDarkMode)
 
+  const isThemeDefined = getLocalStorageValue<boolean>(LOCAL_STORAGE.THEME.DARK)
+
   React.useInsertionEffect(() => {
+    if (isThemeDefined) return
+
     setIsDarkMode(preferDarkMode)
   }, [])
 

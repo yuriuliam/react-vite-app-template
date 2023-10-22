@@ -1,4 +1,4 @@
-import { GlobalStyles } from '@/components/GlobalStyles'
+import { GlobalStyles } from './styles/global'
 
 import { AppProvider } from '@/contexts/app'
 

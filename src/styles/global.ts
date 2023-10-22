@@ -1,6 +1,6 @@
-import { css } from '@linaria/core'
+import { createGlobalStyle } from 'styled-components'
 
-const global = css`
+const GlobalStyles = createGlobalStyle`
   :root {
     --app-font-family: 'Poppins', sans-serif;
   }
@@ -9,5 +9,6 @@ const global = css`
     --default-font-family: var(--app-font-family);
   }
 `
+GlobalStyles.displayName = 'App.GlobalStyles'
 
-export { global }
+export { GlobalStyles }

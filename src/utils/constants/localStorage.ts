@@ -1,4 +1,4 @@
-const ATOMS = Object.freeze({
+const LOCAL_STORAGE = Object.freeze({
   AUTH: Object.freeze({
     TOKEN: 'auth:token',
     USER: 'auth:user',
@@ -9,4 +9,4 @@ const ATOMS = Object.freeze({
   }),
 })
 
-export { ATOMS }
+export { LOCAL_STORAGE }
