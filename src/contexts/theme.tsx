@@ -17,10 +17,10 @@ const ThemeProvider: React.PFC = ({ children }) => {
 
   const [isDarkMode, setIsDarkMode] = useAtom(atoms.theme.isDarkMode)
 
-  const isThemeDefined = getLocalStorageValue<boolean>(LOCAL_STORAGE.THEME.DARK)
+  const themeValue = getLocalStorageValue<boolean>(LOCAL_STORAGE.THEME.DARK)
 
   React.useInsertionEffect(() => {
-    if (isThemeDefined) return
+    if (themeValue !== null) return
 
     setIsDarkMode(preferDarkMode)
   }, [])

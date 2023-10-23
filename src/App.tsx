@@ -5,11 +5,13 @@ import { AppProvider } from '@/contexts/app'
 import { Routes } from '@/routes'
 
 const App: React.FC = () => (
-  <GlobalStyles>
+  <>
+    <GlobalStyles />
     <AppProvider>
       <Routes />
     </AppProvider>
-  </GlobalStyles>
+  </>
 )
+App.displayName = 'App'
 
 export { App }

@@ -8,7 +8,7 @@ import { COMPONENTS, ROUTES } from '@/utils/constants'
 
 /**
  * A page which sign-outs. Originally created if you wish to show something
- * to the user, otherwise you can use router's loader system
+ * to the user, otherwise you can use router's loader system.
  *
  * @see https://reactrouter.com/en/main/route/loader
  */

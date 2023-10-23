@@ -10,7 +10,7 @@ type DebouncedFn<T extends (...args: any[]) => any> = (
 ) => void
 
 type MemoizeOptions<T extends (...args: any[]) => any> = {
-  /** An optional External Cache to keep the return values */
+  /** An optional External Cache to keep the return values. */
   cache?: Map<string, ReturnType<T>> | undefined
   /**
    * Time-to-live of the memoized value (in milliseconds).
@@ -41,7 +41,7 @@ const argsReplacer = (_k: string, v: any) => {
  * @param callbacks callbacks to be composed.
  * @returns A function which calls the given callbacks.
  */
-const compose = <T extends (...args: any[]) => void>(...callbacks: T[]) => {
+const composed = <T extends (...args: any[]) => void>(...callbacks: T[]) => {
   return ((...args) => {
     callbacks.forEach(callback => {
       callback(...args)
@@ -153,7 +153,7 @@ const memoize = <T extends (...args: any[]) => any>(
 }
 
 export {
-  compose,
+  composed as compose,
   debounced,
   isAsyncFunction,
   isAsyncGeneratorFunction,
