@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="About this Project" />
+
+## Architecture
+
+It is based on a Clean Approach, splitting each responsibility into a new folder or file.
+
+There are a few ones:
+
+## @types folder
+
+Responsible for declaring the typings used by our application. Sometimes overriding or enhancing the already existing ones.
+
+## configs folder
+
+All the possible configurations - such as Constants and Client Defaults - used by the app - not considering `.env` variables.
+
+## containers folder
+
+Our interface/render layers, split by groups of responsibilities - then pages.
+
+## data folder
+
+Declaration of our protocols and infrastructure basis.
+
+## infra folder
+
+Implementation of our protocols and infrastructure declarations.
+
+## modules folder
+
+App Features, also split by groups of responsibilities.
+
+## shared folder
+
+Utilities, and general-use errors, models and functions which can be consumed by the whole app.
+
+## main.tsx
+
+Entrypoint of our app.

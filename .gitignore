@@ -15,6 +15,7 @@ storybook-static
 *.local
 
 # non-accepted files
+old.*
 **/*.js
 !src/**/*.js
 !__tests__/**/*.js

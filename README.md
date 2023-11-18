@@ -7,10 +7,10 @@ This is a React Application Base/Template for general purposes.
 ## How to start it
 
 1. Ensure you have those dependencies installed:
-   1. `NodeJS >= 18.18 < 19`
-   2. `PNPM >= 8.7.0`
+   1. `NodeJS >= 20.9 < 21`
+   2. `PNPM >= 8.7.5`
 2. Run `pnpm install`
-3. Make a copy of `.env.template` and name it `.env.local`
+3. Make a copy of `.env.development` and name it `.env.development.local`
 4. Run `pnpm dev` to start de application locally.
 
 ## Main Features
@@ -20,56 +20,29 @@ This is a React Application Base/Template for general purposes.
 - Global Store and State powered w/ **Jotai**
 - Components and Design System Basis w/ **Radix UI** + **Radix Themes**
 - Path Aliases powered w/ **Vite**
-- Custom CSS-in-JS Styles powered w/ **Vite** + **Linaria**
+- Custom CSS-in-JS Styles powered w/ **Vite** + **Styled Components**
 - Logger powered w/ **Debug (Lib)** and **Chalk**
 - Some amazing custom React hooks and utilities w/ **App's hooks and utils**
 - Linting + Code Styling powered w/ **ESLint (with plugins)** + **Prettier**
 
 ## Architecture
 
-It is based on a DDD Approach, splitting every "responsibility/concern" into a new folder or file.
+It is based on a Clean Approach, splitting each responsibility into a new folder or file.
 
 There are a few ones:
 
-- **@types** -> Custom application types + Typing enhancements for other libs.
-- **assets** -> Images and icons dynamically imported into the app.
-- **components** -> Reusable page parts, a common pattern for *React apps*.
-- **contexts** -> Assertive data layers provided for the app to use within the app.
-- **guards** -> Middlewares for routes, but reflects big changes on the app.
-- **hooks** -> Some code utilities used by react to execute behaviors.
-- **internals** -> Lib overrides and enhancements for the app's purposes.
-- **layouts** -> Reusable page structures, avoiding code duplicating patterns.
-- **models** -> Reusable validators, so you can ensure the data models used by the app.
-- **pages** -> Literal pages, already composed by **layouts** and enhanced with content.
-- **routes** -> All the routes, divided by an URI Resource.
-- **scripts** -> Code parts, injected and executed before rendering the React **App**.
-- **services** -> Business and built-in layers to help with the application's environment.
-- **stories** -> Responsible for dedicated application pages.
-- **styles** -> Global/Main styles for the app.
-- **utils** -> small built-in utilities by javascript concept domain.
-- **App.tsx** -> App' base
-- **main.tsx** -> App's render core + global imports and changes before React renders.
+- **@types**: Responsible for declaring the typings used by our application. Sometimes overriding or enhancing the already existing ones.
 
-## Render Layers / Render Order
+- **configs**: All the possible configurations - such as Constants and Client Defaults - used by the app - not considering `.env` variables.
 
-```
--> createRoot {
- // Where the App starts to render.
+- **containers**: Our interface/render layers, split by groups of responsibilities - usually pages.
 
- -> App Provider {
-  // We load the data layers.
+- **data**: Declaration of our protocols and infrastructure basis.
 
-  -> Store Provider
-  -> Features Provider
-  -> Theme Provider
-  -> Auth Provider
+- **infra**: Implementation of our protocols and infrastructure declarations.
 
-  -> App Router (as Router-DOM's BrowserRouter) {
-    // Then we provide the pages.
+- **modules**: App Features, also split by groups of responsibilities.
 
-    -> Router Guards and Layouts
-    -> Pages (such as Home, SignIn etc)
-  }
- }
-}
-```
+- **shared**: Utilities, and general-use errors, models and functions which can be consumed by the whole app.
+
+- **main.tsx**: Entrypoint of our app.

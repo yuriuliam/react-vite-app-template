@@ -9,15 +9,16 @@ export default defineConfig({
       extension: ['.ts', '.tsx'],
       exclude: [
         '__tests__/**/*',
-        '**/services/**/*',
-        '**/utils/constants/**/*',
-        '**/utils/decorators/**/*',
-        '**/utils/definitions',
+        'src/containers/**/*',
+        'src/data/**/*',
+        'src/modules/**/*',
+        '!src/modules/**/models',
       ],
     },
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./__tests__/setup.ts'],
+    onConsoleLog: (_, type) => (type === 'stderr' ? false : undefined),
   },
   resolve: {
     alias: {

@@ -1,2 +1,4 @@
-// This file is empty for now.
-// You might wanna configure your global test environment here.
+import { createStorageMock } from './__mocks__/protocols/cache/storage'
+
+Reflect.set(window, 'localStorage', createStorageMock())
+Reflect.set(window, 'sessionStorage', createStorageMock())

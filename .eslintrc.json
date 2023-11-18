@@ -31,12 +31,21 @@
           "error",
           {
             "format": ["PascalCase"],
+            "selector": "class"
+          },
+          {
+            "format": ["PascalCase"],
             "prefix": ["I"],
             "selector": "interface"
           },
           {
-            "format": ["PascalCase"],
-            "selector": "class"
+            "format": ["camelCase", "PascalCase"],
+            "selector": ["function", "variable"],
+            "types": ["function"]
+          },
+          {
+            "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+            "selector": ["variable"]
           }
         ],
         "import-helpers/order-imports": [
@@ -48,19 +57,12 @@
               ["/^react-dom/", "/^react/"],
               ["module", "absolute"],
               ["parent", "sibling"],
-              "/@\/assets/",
-              "/@\/components/",
-              "/@\/contexts/",
-              "/@\/guards/",
-              "/@\/hooks/",
-              "/@\/layouts/",
-              "/@\/models/",
-              "/@\/pages/",
-              "/@\/routes/",
-              "/@\/services/",
-              "/@\/scripts/",
-              "/@\/utils/",
-              "/@\/styles/",
+              "/@\/config/",
+              "/@\/containers/",
+              "/@\/data/",
+              "/@\/infra/",
+              "/@\/modules/",
+              "/@\/shared/",
               "/#/",
               "index",
               "type"

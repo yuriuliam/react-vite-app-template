@@ -3,7 +3,7 @@
 import 'styled-components'
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends AppDefs.ITheme {
+  export interface DefaultTheme {
     [key: string]: any
   }
 }

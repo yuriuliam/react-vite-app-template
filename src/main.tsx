@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { App } from './App.tsx'
+import { injectGlobalLogger } from './shared/scripts/globalLogger'
 
-import '@/scripts/globalLogger'
+import { App } from '@/containers/app'
 
 import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
@@ -11,12 +11,14 @@ import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import '@radix-ui/themes/styles.css'
 
+injectGlobalLogger()
+
 if (import.meta.env.DEV) {
   globalThis.logger.log({
     name: 'App',
     title: 'Vite',
     content: 'DEV Environment detected',
-    data: { meta: import.meta },
+    data: { env: import.meta.env, url: import.meta.url },
     style: 'inline',
   })
 }
