@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { injectGlobalLogger } from './shared/scripts/globalLogger'
+import { injectGlobalLogger } from './shared/scripts/injectGlobalLogger'
+import { logEnvironmentMeta } from './shared/scripts/logEnvironmentMeta'
 
 import { App } from '@/containers/app'
 
@@ -12,16 +13,7 @@ import '@fontsource/poppins/800.css'
 import '@radix-ui/themes/styles.css'
 
 injectGlobalLogger()
-
-if (import.meta.env.DEV) {
-  globalThis.logger.log({
-    name: 'App',
-    title: 'Vite',
-    content: 'DEV Environment detected',
-    data: { env: import.meta.env, url: import.meta.url },
-    style: 'inline',
-  })
-}
+logEnvironmentMeta()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -80,7 +80,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
   // If Client sign-out we want to clear up all feature flags.
   React.useEffect(() => {
-    if (!isAuthenticated) return
+    if (isAuthenticated) return
 
     clearFeatures()
   }, [clearFeatures, isAuthenticated])
