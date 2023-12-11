@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "benchmark": "vitest bench ./__tests__",
     "test": "vitest ./__tests__",
     "test:coverage": "vitest ./__tests__ run --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

@@ -4,6 +4,9 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
+    benchmark: {
+      include: ['__tests__/**/*.bench.*'],
+    },
     coverage: {
       provider: 'v8',
       extension: ['.ts', '.tsx'],
@@ -15,6 +18,7 @@ export default defineConfig({
         '!src/modules/**/models',
       ],
     },
+    exclude: ['__tests__/**/*.bench.*'],
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./__tests__/setup.ts'],

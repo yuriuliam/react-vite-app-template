@@ -112,7 +112,7 @@ const isAsyncGeneratorFunction = (
  * an `async`, `async generator` or `generator` type.
  *
  * If you just need to assert it's type, use `isFunctionType`
- * or `typeof value === 'function'`
+ * or `typeof myValue === 'function'`
  */
 const isFunction = (value: any): value is App.FunctionLike =>
   isFunctionType(value) && Object.getPrototypeOf(value) === FUNCTION_PROTOTYPE
