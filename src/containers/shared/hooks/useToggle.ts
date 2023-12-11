@@ -4,7 +4,7 @@ import React from 'react'
  * a simplified way to use reactive states with
  * boolean values.
  */
-const useToggle = (init: boolean | App.Utils.InitFn<boolean> = false) => {
+const useToggle = (init: boolean | App.InitFn<boolean> = false) => {
   const [value, setValue] = React.useState(init)
 
   const handleToggle = React.useCallback((newValue?: boolean | undefined) => {

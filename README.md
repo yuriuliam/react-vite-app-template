@@ -27,6 +27,7 @@ This is a React Application Base/Template for general purposes.
 
 ## Architecture
 
+The Code-style has a functional approach, mostly inspired by Elixir and Lisp.
 It is based on a Clean Approach, splitting each responsibility into a new folder or file.
 
 There are a few ones:

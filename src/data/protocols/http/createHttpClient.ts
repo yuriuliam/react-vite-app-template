@@ -11,7 +11,7 @@ type RequestHeaders = RawAxiosRequestHeaders | AxiosHeaders
 type RequestMethods = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE' | 'OPTIONS'
 
 type BaseRequestOptions = {
-  data?: App.Utils.ObjectType | undefined
+  data?: App.ObjectType | undefined
   headers?: RequestHeaders | undefined
   method: RequestMethods
   params?: unknown | undefined

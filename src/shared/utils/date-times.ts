@@ -2,8 +2,8 @@ type Timestamp = number
 type FormattedDateTime = string
 
 type IFormatDateTimeFn = (
-  value?: Date | Timestamp,
-  locale?: App.Utils.Locale,
+  value?: Date | Timestamp | undefined,
+  locale?: App.Locale,
 ) => FormattedDateTime
 
 const INTL_DATE_TIME_HOUR_MINUTE_CYCLE_OPTS =

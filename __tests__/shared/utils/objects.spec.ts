@@ -5,7 +5,6 @@ import {
   asMap,
   asSet,
   defaultOrNull,
-  groupBy,
   isObject,
   isRecord,
 } from '@/shared/utils/objects'
@@ -96,26 +95,6 @@ describe('defaultOrNull', () => {
     const value = [] as any[]
 
     expect(defaultOrNull(value)).toBe(null)
-  })
-})
-
-describe('groupBy', () => {
-  it('should group an array by a given selector', () => {
-    const value = [
-      { key: 'foo', value: 'bar' },
-      { key: 'foo', value: 'non-bar' },
-      { key: 'hello', value: 'world' },
-    ]
-
-    const result = groupBy(value, v => v.key)
-
-    expect(result).toEqual({
-      foo: [
-        { key: 'foo', value: 'bar' },
-        { key: 'foo', value: 'non-bar' },
-      ],
-      hello: [{ key: 'hello', value: 'world' }],
-    })
   })
 })
 

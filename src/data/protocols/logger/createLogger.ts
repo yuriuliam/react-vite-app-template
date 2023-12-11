@@ -4,12 +4,12 @@ import debug, { type Debugger } from 'debug'
 import { formatToLoggerTime } from '@/shared/utils/date-times'
 import { getMappedCallSites } from '@/shared/utils/runtime'
 
-type MessagePayload = App.Utils.ObjectType
+type MessagePayload = App.ObjectType
 type MessageOptions = {
   name?: string
   title: string
   content: string
-  data?: App.Utils.MaybePromise<MessagePayload | null> | undefined
+  data?: App.MaybePromise<MessagePayload | null> | undefined
   style?: 'default' | 'inline' | undefined
 }
 type ErrorMessageOptions = Omit<MessageOptions, 'title'>

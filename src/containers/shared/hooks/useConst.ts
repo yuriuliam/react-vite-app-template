@@ -2,6 +2,8 @@ import React from 'react'
 
 import { isFunction } from '@/shared/utils/functions'
 
+const UNDEF = Symbol.for('UNDEFINED_REF_VALUE') as any
+
 /**
  * Creates an immutable value.
  * It can receive an Initial value or a Initializer Function.
@@ -13,10 +15,10 @@ import { isFunction } from '@/shared/utils/functions'
  * @param init an initial value or an initializer function
  * @returns the initialized value
  */
-const useConst = <T>(init: T | App.Utils.InitFn<T>) => {
-  const ref = React.useRef(undefined as T)
+const useConst = <T>(init: T | App.InitFn<T>) => {
+  const ref = React.useRef<T>(UNDEF)
 
-  if (ref.current === undefined) {
+  if (ref.current === UNDEF) {
     ref.current = isFunction(init) ? init() : init
   }
 

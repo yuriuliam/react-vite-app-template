@@ -11,14 +11,14 @@ const deferred = async <T>(value: T, ms: number) =>
  * Puts the value into a Promise. It can receives an Initializer function
  * as well.
  */
-const promised = async <T>(init: T | App.Utils.InitFn<T>) =>
+const promised = async <T>(init: T | App.InitFn<T>) =>
   await Promise.resolve(isFunction(init) ? init() : init)
 
 /**
  * A wrapper to create a promise function out of non-async one.
  */
 const promisify =
-  <T extends App.Functions.FunctionLike>(callback: T) =>
+  <T extends App.FunctionLike>(callback: T) =>
   async (...args: Parameters<T>) =>
     (await Promise.resolve(await callback(...args))) as ReturnType<T>
 

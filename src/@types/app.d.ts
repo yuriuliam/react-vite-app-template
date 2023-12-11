@@ -2,9 +2,11 @@ declare global {
   /**
    * ### This is part of the app types.
    *
-   * It describes the Function Utilities which can be globally used in the app.
+   * It describes a set of utility types,
+   * avoiding possible typing gymnastics in `.ts(x)`
+   * and repetitive declarations.
    */
-  declare namespace App.Functions {
+  declare namespace App {
     /** Describes an Asynchronous Method. */
     type AsyncFunctionLike = (...args: any[]) => Promise<any>
 
@@ -18,36 +20,30 @@ declare global {
 
     /** Describes a Method of any type. */
     type FunctionLike = (...args: any[]) => any
-  }
 
-  /**
-   * ### This is part of the app types.
-   *
-   * It describes a set of utility types,
-   * avoiding possible typing gymnastics in `.ts(x)`
-   * and repetitive declarations.
-   */
-  declare namespace App.Utils {
+    /** Describes a possible-async value. */
+    type MaybePromise<T> = T | Promise<T>
+
     /** Generic Locale type argument, usually requested by Intl methods. */
     type Locale = string | string[]
 
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue
+
     /** Same as the factory, but semantically named to avoid confusion. */
     type InitFn<TValue> = FactoryFn<TValue>
 
     /** Describes a non-class non-null object. */
     type ObjectType = Record<any, any> | any[]
+
     /** Describes the key type of an ObjectType */
     type ObjectKey<T extends ObjectType> = T extends any[] ? number : keyof T
     type EntryKey<T extends ObjectType> = T extends any[] ? string : keyof T
+
     /** Describes the value type of an ObjectType */
     type ObjectValue<T extends ObjectType> = T extends Array<infer V>
       ? V
       : T[keyof T]
-
-    /** Describes a possible-async value. */
-    type MaybePromise<T> = T | Promise<T>
   }
 }
 

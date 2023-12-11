@@ -1,20 +1,3 @@
-type FormattedNumber = string
-
-type Currency = string
-type FormattedPrice = FormattedNumber
-
-type IFormatPercentage = (
-  value: number,
-  locale?: App.Utils.Locale,
-  maxFractionDigits?: number,
-) => FormattedNumber
-
-type IFormatPrice = (
-  value: number,
-  locale?: App.Utils.Locale,
-  currency?: Currency,
-) => FormattedPrice
-
 const INTL_PERCENTAGE_OPTS = Object.freeze<Intl.NumberFormatOptions>({
   style: 'percent',
 })
@@ -39,12 +22,13 @@ const clamp = (
 ) => Math.max(min, Math.min(max, value))
 
 /**
- * Formats a number into a INTL Percentage value.
- * If no locale is provided, assumed the current one
+ * Formats a given percentage value into a INTL-Style Percentage String.
+ *
+ * If no locale is provided, assumed the current one.
  */
-const formatPercentage: IFormatPercentage = (
-  percentage,
-  locale = [],
+const formatPercentage = (
+  percentage: number,
+  locale: App.Locale = [],
   maxFractionDigits = 2,
 ) =>
   new Intl.NumberFormat(locale, {
@@ -53,9 +37,23 @@ const formatPercentage: IFormatPercentage = (
   }).format(percentage)
 
 /**
+ * Formats a given price value into a INTL-Style Price String.
  *
+ * If no locale is provided, the current one is assumed.
+ *
+ * If no currency is provided, `USD` is assumed.
  */
-const formatPrice: IFormatPrice = (price, locale = [], currency = 'USD') =>
+const formatPrice = (
+  price: number,
+  locale: App.Locale = [],
+  currency: string = 'USD',
+) =>
   new Intl.NumberFormat(locale, { ...INTL_PRICE_OPTS, currency }).format(price)
 
-export { clamp, formatPercentage, formatPrice }
+/**
+ * Checks if value is a non-NaN number.
+ */
+const isNumber = (value: any): value is number =>
+  typeof value === 'number' && !isNaN(value)
+
+export { clamp, formatPercentage, formatPrice, isNumber }
