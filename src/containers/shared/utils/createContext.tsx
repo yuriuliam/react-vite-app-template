@@ -30,7 +30,7 @@ function createContext<T extends Record<string, any>>(
   initialValue: T | null,
   componentName: string,
 ) {
-  const Context = React.createContext(initialValue as T)
+  const Context = React.createContext(initialValue!)
 
   const Provider: ContextProvider<T> = ({ children, ...rest }) => {
     const values = (Object.keys(rest).length ? rest : initialValue) as T

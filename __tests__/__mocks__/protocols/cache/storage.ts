@@ -8,7 +8,7 @@ interface IStorageLike {
 }
 
 const createStorageMock = (cache: Map<string, string> = new Map()) => {
-  const clear = vi.fn(cache.clear)
+  const clear = vi.fn(cache.clear.bind(cache))
 
   const getItem = vi.fn((key: string) => cache.get(key) ?? null)
 
