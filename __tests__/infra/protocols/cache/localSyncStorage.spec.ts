@@ -20,7 +20,7 @@ describe('localSyncStorage', () => {
     const atomKey = 'tests:value'
     const atomValue = { value: 'foo' }
     const valueAtom = atomWithStorage(atomKey, atomValue, localSyncStorage, {
-      unstable_getOnInit: true,
+      getOnInit: true,
     })
 
     const { result: valueState } = renderHook(() => useAtom(valueAtom))

@@ -7,9 +7,7 @@ const themeAtoms = Object.freeze({
     'themes:isDark',
     null,
     localSyncStorage,
-    {
-      unstable_getOnInit: true,
-    },
+    { getOnInit: true },
   ),
 })
 

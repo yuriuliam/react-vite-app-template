@@ -20,7 +20,7 @@ describe('sessionSyncStorage', () => {
     const atomKey = 'tests:value'
     const atomValue = { value: 'foo' }
     const valueAtom = atomWithStorage(atomKey, atomValue, sessionSyncStorage, {
-      unstable_getOnInit: true,
+      getOnInit: true,
     })
 
     const { result: valueState } = renderHook(() => useAtom(valueAtom))

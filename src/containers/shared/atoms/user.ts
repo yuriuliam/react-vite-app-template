@@ -7,15 +7,13 @@ const userAtoms = Object.freeze({
     'users:token',
     null,
     localSyncStorage,
-    {
-      unstable_getOnInit: true,
-    },
+    { getOnInit: true },
   ),
   user: atomWithStorage<App.Modules.User.UserModel | null>(
     'users:me',
     null,
     localSyncStorage,
-    { unstable_getOnInit: true },
+    { getOnInit: true },
   ),
 })
 

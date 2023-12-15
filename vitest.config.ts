@@ -6,6 +6,7 @@ export default defineConfig({
   test: {
     benchmark: {
       include: ['__tests__/**/*.bench.*'],
+      exclude: ['node_modules'],
     },
     coverage: {
       provider: 'v8',
@@ -16,9 +17,10 @@ export default defineConfig({
         'src/data/**/*',
         'src/modules/**/*',
         '!src/modules/**/models',
+        'node_modules',
       ],
     },
-    exclude: ['__tests__/**/*.bench.*'],
+    exclude: ['__tests__/**/*.bench.*', 'node_modules'],
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./__tests__/setup.ts'],
