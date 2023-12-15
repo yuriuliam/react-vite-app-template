@@ -16,7 +16,12 @@ const SignInPage: React.FC = () => {
 
   const handleSignIn = useCallbackRef(async () => {
     // TODO: implement actual forms instead of mocking
-    await signIn({ email: 'user@test.com', password: 'test@2023' })
+    const authParams = {
+      email: 'Lukas_Kirlin@yahoo.com',
+      password: 'limivuro',
+    } satisfies App.Modules.User.AuthenticationParamsModel
+
+    await signIn(authParams)
 
     navigate('/')
   })

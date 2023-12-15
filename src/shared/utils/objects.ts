@@ -93,6 +93,9 @@ const random = <T>(iterable: Iterable<T>) => {
   return values.at(Math.floor(Math.random() * values.length)) ?? null
 }
 
+const uniqueArray = <T>(factoryFn: App.FactoryFn<T>, length = 10) =>
+  new Array(length).fill(0).map(() => factoryFn())
+
 export {
   areObjectsEqual,
   asMap,
@@ -102,4 +105,5 @@ export {
   isObject,
   isRecord,
   random,
+  uniqueArray,
 }

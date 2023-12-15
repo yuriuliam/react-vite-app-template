@@ -2,20 +2,30 @@ import { FeaturesModel } from '../../models'
 
 import { type IHttpClient } from '@/data/protocols/http'
 
-import { TokenModel } from '@/shared/models'
+import { createFakeFeatureFlags } from '@/shared/utils/faker'
+import { deferred } from '@/shared/utils/promises'
 
-const createLoadFeaturesService = (httpClient: IHttpClient) => {
-  return async (token: App.Models.TokenModel) => {
-    void TokenModel.parse(token)
+/** @deprecated This is a faker!! */
+const requestFeatures = async () => {
+  const featureFlags = await deferred(createFakeFeatureFlags(true), 100)
 
+  return featureFlags
+}
+
+const createLoadFeaturesService = (_httpClient: IHttpClient) => {
+  return async (_token: App.Models.TokenModel) => {
     try {
-      const { data } = await httpClient.request({
-        headers: {
-          Authorization: token,
-        },
-        method: 'GET',
-        uri: '/users/me/features',
-      })
+      // Example of actual code.
+      //
+      // const { data } = await httpClient.request({
+      //   headers: {
+      //     Authorization: token,
+      //   },
+      //   method: 'GET',
+      //   uri: '/users/me/features',
+      // })
+
+      const data = await requestFeatures()
 
       return FeaturesModel.parse(data)
     } catch (error) {

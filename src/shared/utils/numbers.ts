@@ -51,9 +51,19 @@ const formatPrice = (
   new Intl.NumberFormat(locale, { ...INTL_PRICE_OPTS, currency }).format(price)
 
 /**
+ * Checks if a given number is between a minimum and a maximum.
+ * @param value The value to be checked.
+ * @param min The minimum accepted.
+ * @param max The maximum accepted.
+ * @returns `true` if number respects `min` and `max`, otherwise `false`.
+ */
+const isBetween = (value: number, min: number, max: number) =>
+  value >= min && value <= max
+
+/**
  * Checks if value is a non-NaN number.
  */
 const isNumber = (value: any): value is number =>
   typeof value === 'number' && !isNaN(value)
 
-export { clamp, formatPercentage, formatPrice, isNumber }
+export { clamp, formatPercentage, formatPrice, isBetween, isNumber }
