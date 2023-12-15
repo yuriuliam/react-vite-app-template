@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 import { injectGlobalLogger } from './shared/scripts/injectGlobalLogger'
 import { logEnvironmentMeta } from './shared/scripts/logEnvironmentMeta'
+import { logWebVitals } from './shared/scripts/logWebVitals'
 
 import { App } from '@/containers/app'
 
@@ -14,6 +15,7 @@ import '@radix-ui/themes/styles.css'
 
 injectGlobalLogger()
 logEnvironmentMeta()
+logWebVitals()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -44,6 +44,9 @@ dependencies:
   use-sync-external-store:
     specifier: ^1.2.0
     version: 1.2.0(react@18.2.0)
+  web-vitals:
+    specifier: ^3.5.0
+    version: 3.5.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -10620,6 +10623,10 @@ packages:
     dependencies:
       defaults: 1.0.4
     dev: true
+
+  /web-vitals@3.5.0:
+    resolution: {integrity: sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==}
+    dev: false
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
