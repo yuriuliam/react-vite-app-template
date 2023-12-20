@@ -7,9 +7,6 @@ import { debounced } from '@/shared/utils/functions'
 
 /**
  * Debounces a value for a given amount of milliseconds.
- * @param value
- * @param ms
- * @returns
  */
 const useDebouncedValue = <T>(value: T, ms: number) => {
   const forceUpdate = useForceUpdate()

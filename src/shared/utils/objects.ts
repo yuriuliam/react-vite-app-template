@@ -4,8 +4,6 @@ const RECORD_PROTOTYPE = Object.getPrototypeOf({})
  * Check if both objects have same keys and values.
  * If one ore both values are not object, it will check using `Object.is`
  *
- * @param a value A.
- * @param b value B.
  * @returns `true` if both have the same keys and values, otherwise `false`
  */
 function areObjectsEqual(a: unknown, b: unknown): boolean {

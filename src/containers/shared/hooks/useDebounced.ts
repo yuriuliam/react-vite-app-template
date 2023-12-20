@@ -3,10 +3,7 @@ import { useCallbackRef } from './useCallbackRef'
 import { debounced } from '@/shared/utils/functions'
 
 /**
- * Debounces a value for a given amount of milliseconds.
- * @param value
- * @param ms
- * @returns
+ * Creates a debounced callback for a given amount of milliseconds.
  */
 const useDebounced = <T extends (...args: any[]) => void>(
   value: T,
