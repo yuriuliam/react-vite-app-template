@@ -1,9 +1,8 @@
 const BYTE_MAX_VALUE = 255
+const BIGINT_512_BITS = 2n ** 512n - 1n
 
 /**
  * Converts an ArrayBuffer into a Hexadecimal code.
- * @param buffer The buffer to be converted.
- * @returns A new Hexadecimal string from buffer.
  */
 const bufferToHex = (buffer: ArrayBuffer) =>
   Array.from(new Uint8Array(buffer)).reduce(
@@ -12,27 +11,21 @@ const bufferToHex = (buffer: ArrayBuffer) =>
   )
 
 /**
- * Hashes a string value into an 8-digit hexadecimal value in a
+ * Hashes a string value into an 16-digit hexadecimal value in a
  * deterministic way.
- * @param value the value to be hashed.
- * @returns A hash for the given value.
  */
 const hash = (value: string) =>
-  BigInt.asUintN(
-    64,
-    Array.from(value).reduce(
+  Array.from(value)
+    .reduce(
       (acc, char) =>
-        BigInt.asUintN(64, acc ** 6n - acc + BigInt(char.charCodeAt(0))),
+        ((acc << 6n) - acc + BigInt(char.charCodeAt(0))) % BIGINT_512_BITS,
       0n,
-    ),
-  )
+    )
     .toString(16)
-    .padStart(16, '0')
+    .padStart(128, '0')
 
 /**
  * Creates a random buffer from a given length.
- * @param bufferLength The length of the resultant buffer.
- * @returns A random-generated buffer.
  */
 const randomBytes = (bufferLength: number) =>
   Uint8Array.from(new Array(bufferLength).fill(BYTE_MAX_VALUE + 1), v =>
@@ -41,7 +34,6 @@ const randomBytes = (bufferLength: number) =>
 
 /**
  * Generates a random number, meant to be used as a seed.
- * @returns a random generated number.
  */
 const randomSeed = () => parseInt(bufferToHex(randomBytes(6)), 16)
 

@@ -9,11 +9,6 @@ const INTL_PRICE_OPTS = Object.freeze<Intl.NumberFormatOptions>({
 
 /**
  * Clamps a value based on given minimum and maximum values.
- *
- * @param value the value to be clamped.
- * @param min minimum value.
- * @param max maximum value.
- * @returns clamped number.
  */
 const clamp = (
   value: number,
@@ -52,10 +47,6 @@ const formatPrice = (
 
 /**
  * Checks if a given number is between a minimum and a maximum.
- * @param value The value to be checked.
- * @param min The minimum accepted.
- * @param max The maximum accepted.
- * @returns `true` if number respects `min` and `max`, otherwise `false`.
  */
 const isBetween = (value: number, min: number, max: number) =>
   value >= min && value <= max

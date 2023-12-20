@@ -1,13 +1,11 @@
 import React from 'react'
 
-import { useAtom } from 'jotai'
-
-import { userAtoms } from '../../atoms'
 import { AuthContextProvider, type SignInParams } from './context'
 
 import { useCallbackRef } from '@/containers/shared/hooks/useCallbackRef'
 import { useLogger } from '@/containers/shared/hooks/useLogger'
 
+import { useUserMe, useUserToken } from '@/modules/users/infra/hooks'
 import {
   authenticateUser,
   validateAuthenticationParams,
@@ -19,8 +17,8 @@ const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'
 const AuthProvider: React.PFC = ({ children }) => {
   const logger = useLogger(AUTH_PROVIDER_LOGGER_NAME)
 
-  const [user, setUser] = useAtom(userAtoms.user)
-  const [token, setToken] = useAtom(userAtoms.token)
+  const [user, setUser] = useUserMe()
+  const [token, setToken] = useUserToken()
 
   const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
 

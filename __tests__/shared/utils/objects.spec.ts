@@ -4,7 +4,6 @@ import {
   areObjectsEqual,
   asMap,
   asSet,
-  defaultOrNull,
   isObject,
   isRecord,
 } from '@/shared/utils/objects'
@@ -81,20 +80,6 @@ describe('asSet', () => {
 
     expect(mySet.has('foo')).toBeTruthy()
     expect(mySet.has('bar')).toBeTruthy()
-  })
-})
-
-describe('defaultOrNull', () => {
-  it('should return the first value of an array', () => {
-    const value = ['foo']
-
-    expect(defaultOrNull(value)).toBe('foo')
-  })
-
-  it('should return the null from an empty value', () => {
-    const value = [] as any[]
-
-    expect(defaultOrNull(value)).toBe(null)
   })
 })
 

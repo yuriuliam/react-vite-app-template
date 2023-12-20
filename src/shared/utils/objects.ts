@@ -33,6 +33,13 @@ function areObjectsEqual(a: unknown, b: unknown): boolean {
 }
 
 /**
+ * Creates an array filled with generated items from a given factory callback.
+ * It has it's length defined as well.
+ */
+const arrayOf = <T>(factoryFn: App.FactoryFn<T>, length = 10) =>
+  new Array(length).fill(0).map(() => factoryFn())
+
+/**
  * Creates a Map out of an record/array.
  */
 const asMap = <T extends App.ObjectType>(value: T) =>
@@ -49,25 +56,14 @@ const asSet = <T extends App.ObjectType>(value: T) =>
 /**
  * Creates a matrix with a row of a given nth of items.
  */
-const chunkEvery = <T>(iterable: Iterable<T>, nth: number) => {
+const chunkEvery = <T>(iterable: Iterable<T>, size: number) => {
   const chunks: T[][] = []
 
-  for (let i = 0, value = Array.from(iterable); i < value.length; i += nth) {
-    chunks.push(value.slice(i, i + nth))
+  for (let i = 0, value = Array.from(iterable); i < value.length; i += size) {
+    chunks.push(value.slice(i, i + size))
   }
 
   return chunks
-}
-
-/**
- * Returns the first item of an iterable without side-effects.
- *
- * It will return `null` if the iterable is empty.
- */
-const defaultOrNull = <T>(iterable: Iterable<T>) => {
-  const values = Array.from(iterable)
-
-  return values.length ? (values.at(0) as T) : null
 }
 
 /**
@@ -93,17 +89,13 @@ const random = <T>(iterable: Iterable<T>) => {
   return values.at(Math.floor(Math.random() * values.length)) ?? null
 }
 
-const uniqueArray = <T>(factoryFn: App.FactoryFn<T>, length = 10) =>
-  new Array(length).fill(0).map(() => factoryFn())
-
 export {
   areObjectsEqual,
+  arrayOf,
   asMap,
   asSet,
   chunkEvery,
-  defaultOrNull,
   isObject,
   isRecord,
   random,
-  uniqueArray,
 }

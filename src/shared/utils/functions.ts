@@ -60,8 +60,6 @@ const argsReplacer = (_k: string, v: any) => {
 
 /**
  * Compose callbacks into a single function.
- * @param callbacks callbacks to be composed.
- * @returns A function which calls the given callbacks.
  */
 const composed = <T extends (...args: any[]) => void>(...callbacks: T[]) => {
   return ((...args) => {

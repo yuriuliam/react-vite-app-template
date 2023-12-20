@@ -2,14 +2,13 @@ import { UserResponseModel } from '../../models'
 
 import { type IHttpClient } from '@/data/protocols/http'
 
-import { createFakerUsers } from '@/shared/utils/faker'
-import { deferred } from '@/shared/utils/promises'
+import { createFakerUserResponses } from '@/shared/utils/faker'
 
 type AuthParams = App.Modules.User.AuthenticationParamsModel
 
 /** @deprecated This is a faker!! */
 const requestAuthentication = async (params: AuthParams) => {
-  const data = await deferred(createFakerUsers(true), 100)
+  const data = await createFakerUserResponses(true)
 
   const user = data.find(user => user.email === params.email)
 

@@ -15,7 +15,7 @@ import '@radix-ui/themes/styles.css'
 
 injectGlobalLogger()
 logEnvironmentMeta()
-logWebVitals()
+void logWebVitals()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

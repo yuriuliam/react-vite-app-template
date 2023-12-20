@@ -1,5 +1,5 @@
 import { createStore } from 'jotai'
 
-const createAppStore = createStore.bind(null)
+const createAppStore = () => createStore()
 
 export { createAppStore }

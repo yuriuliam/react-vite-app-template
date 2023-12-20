@@ -1,18 +1,14 @@
-import {
-  onCLS,
-  onFCP,
-  onFID,
-  onINP,
-  onLCP,
-  onTTFB,
-  type ReportCallback,
-} from 'web-vitals'
-
 import { isDevelopmentMode } from '../utils/environment'
 
 import { createLogger } from '@/data/protocols/logger'
 
-const logWebVitals = () => {
+import type { ReportCallback } from 'web-vitals'
+
+const logWebVitals = async () => {
+  const { onCLS, onFCP, onFID, onINP, onLCP, onTTFB } = await import(
+    'web-vitals'
+  )
+
   if (!isDevelopmentMode()) return
 
   const logger = createLogger('web-vitals')

@@ -3,8 +3,6 @@ const BASE64_CHARS =
 
 /**
  * Decodes a base64 string value into a buffer.
- * @param b64Message the message to be decoded.
- * @returns The decoded buffer from that message.
  */
 const base64ToBuffer = (b64Message: string) => {
   const paddingIdx = b64Message.indexOf('=')
@@ -39,8 +37,6 @@ const base64ToBuffer = (b64Message: string) => {
 
 /**
  * Encodes a buffer into a base64 string value.
- * @param buffer the buffer to be encoded.
- * @returns The encoded message from the buffer.
  */
 const bufferToBase64 = (buffer: ArrayBuffer) => {
   const padding = 3 - (buffer.byteLength % 3)

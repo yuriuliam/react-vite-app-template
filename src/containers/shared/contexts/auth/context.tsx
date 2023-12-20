@@ -15,7 +15,7 @@ interface IAuthContextData {
   token: App.Models.TokenModel | null
 }
 
-const AUTH_CONTEXT_NAME = 'Auth'
+const AUTH_CONTEXT_NAME = 'App.Contexts.Auth'
 
 const [AuthContextProvider, useAuth] = createContext<IAuthContextData>(
   null,

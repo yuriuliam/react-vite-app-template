@@ -6,8 +6,8 @@ const APP_NAME = 'App.Root'
 
 const App: React.FC = () => (
   <>
-    <GlobalStyles />
     <AppProvider>
+      <GlobalStyles />
       <Routes />
     </AppProvider>
   </>
