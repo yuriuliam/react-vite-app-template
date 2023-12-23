@@ -17,6 +17,11 @@ const clamp = (
 ) => Math.max(min, Math.min(max, value))
 
 /**
+ * Returns the difference between given values
+ */
+const diff = (numA: number, numB: number) => Math.abs(numA - numB)
+
+/**
  * Formats a given percentage value into a INTL-Style Percentage String.
  *
  * If no locale is provided, assumed the current one.
@@ -57,4 +62,4 @@ const isBetween = (value: number, min: number, max: number) =>
 const isNumber = (value: any): value is number =>
   typeof value === 'number' && !isNaN(value)
 
-export { clamp, formatPercentage, formatPrice, isBetween, isNumber }
+export { clamp, diff, formatPercentage, formatPrice, isBetween, isNumber }

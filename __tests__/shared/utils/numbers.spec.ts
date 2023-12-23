@@ -1,6 +1,13 @@
 import { describe, it, expect } from 'vitest'
 
-import { clamp, formatPercentage, formatPrice } from '@/shared/utils/numbers'
+import {
+  clamp,
+  diff,
+  formatPercentage,
+  formatPrice,
+  isBetween,
+  isNumber,
+} from '@/shared/utils/numbers'
 
 describe('clamp', () => {
   it('should respect minimum value', () => {
@@ -19,6 +26,16 @@ describe('clamp', () => {
     const result = clamp(value, undefined, max)
 
     expect(result).toBe(50)
+  })
+})
+
+describe('diff', () => {
+  it('should point the difference between a number expression', () => {
+    const valueA = 30
+    const valueB = -15
+    const valueDiff = 45
+
+    expect(diff(valueA, valueB)).toBe(valueDiff)
   })
 })
 
@@ -66,5 +83,56 @@ describe('formatPrice', () => {
     const result = formatPrice(myPrice, 'en-GB')
 
     expect(result).toBe('US$37.27')
+  })
+})
+
+describe('isBetween', () => {
+  it('should check if number is between a given minimum and maximum', () => {
+    const min = 30
+    const max = 40
+    const value = 35
+
+    expect(isBetween(value, min, max)).toBeTruthy()
+  })
+
+  it('should return false if value is not a number', () => {
+    const min = 30
+    const max = 40
+    const value = 'not-a-number'
+
+    // @ts-expect-error meant to be a test
+    expect(isBetween(value, min, max)).toBeFalsy()
+  })
+
+  it('should return false if value does not respects given minimum', () => {
+    const min = 30
+    const max = 40
+    const value = 29
+
+    expect(isBetween(value, min, max)).toBeFalsy()
+  })
+
+  it('should return false if value does not respects given maximum', () => {
+    const min = 30
+    const max = 40
+    const value = 41
+
+    expect(isBetween(value, min, max)).toBeFalsy()
+  })
+})
+
+describe('isNumber', () => {
+  it('should return true to number values', () => {
+    const valueA = 30
+
+    expect(isNumber(valueA)).toBeTruthy()
+  })
+
+  it('should return false to non-number values', () => {
+    const valueA = 'not-a-number'
+    const valueB = false
+
+    expect(isNumber(valueA)).toBeFalsy()
+    expect(isNumber(valueB)).toBeFalsy()
   })
 })
