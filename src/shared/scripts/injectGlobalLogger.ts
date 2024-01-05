@@ -13,8 +13,12 @@ const injectGlobalLogger = () => {
     ? 'app:*'
     : 'app:main,app:main:*'
 
-  // Creating Global Logger Instance
-  globalThis.logger = globalLogger
+  // Creating Global Logger Instance which cannot be changed.
+  Reflect.defineProperty(globalThis, 'logger', {
+    configurable: false,
+    value: globalLogger,
+    writable: false,
+  })
 }
 
 export { injectGlobalLogger }
