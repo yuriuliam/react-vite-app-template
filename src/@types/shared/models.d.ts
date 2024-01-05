@@ -1,4 +1,5 @@
-import type { EmailModel, TokenModel } from '@/shared/models'
+import type { EmailModel } from '@/shared/models/EmailModel'
+import type { TokenModel } from '@/shared/models/TokenModel'
 import type { z } from 'zod'
 
 declare global {

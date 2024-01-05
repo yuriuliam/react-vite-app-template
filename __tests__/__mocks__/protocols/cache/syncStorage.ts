@@ -1,6 +1,6 @@
 import { vi } from 'vitest'
 
-import { type ISyncStorage } from '@/data/protocols/cache'
+import { type ISyncStorage } from '@/data/protocols/cache/createSyncStorage'
 
 const createSyncStorageMock = <TValue>(
   cache: Map<string, string> = new Map(),

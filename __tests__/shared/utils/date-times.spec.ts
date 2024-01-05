@@ -19,7 +19,7 @@ describe('formatToHour', () => {
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
-    const result = formatToHoursAndMinutes(undefined, undefined)
+    const result = formatToHoursAndMinutes()
 
     expect(result).toBeTruthy()
     expect(result).toBeTypeOf('string')
@@ -61,7 +61,7 @@ describe('formatToTime', () => {
   })
 
   it("should be able to format today's date if nullish or empty values are provided", () => {
-    const result = formatToTime(undefined, undefined)
+    const result = formatToTime()
 
     expect(result).toBeTruthy()
     expect(result).toBeTypeOf('string')

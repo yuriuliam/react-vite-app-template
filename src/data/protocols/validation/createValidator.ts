@@ -2,7 +2,7 @@ import { type z } from 'zod'
 
 import { type IErrorParser } from './createErrorParser'
 
-import { ModelValidationError } from '@/shared/errors'
+import { ModelValidationError } from '@/shared/errors/ModelValidationError'
 
 type ModelType = z.ZodType<any, any, any>
 type ModelParams<TModel extends ModelType> = z.infer<TModel>

@@ -2,7 +2,7 @@ import { isAxiosError } from 'axios'
 
 import { AppError } from './AppError'
 
-import { type Response } from '@/data/protocols/http'
+import { type Response } from '@/data/protocols/http/createHttpClient'
 
 class HttpError extends AppError {
   public constructor(requestError: unknown) {

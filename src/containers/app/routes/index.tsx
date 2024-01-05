@@ -12,25 +12,23 @@ import { SignOutPage } from '@/containers/sign-out'
 
 const ROUTES_NAME = 'App.Routes.Root'
 
-const Routes: React.FC = () => {
-  return (
-    <AppRouter>
-      <Route errorElement={<ErrorGuard />}>
-        <Route element={<AuthGuard />}>
-          <Route element={<AuthenticatedAppLayout />}>
-            <Route path={'/'} element={<HomePage />} />
-          </Route>
-        </Route>
-
-        <Route>
-          <Route path={'/sign-in'} element={<SignInPage />} />
-
-          <Route path={'/sign-out'} element={<SignOutPage />} />
+const Routes: React.FC = () => (
+  <AppRouter>
+    <Route errorElement={<ErrorGuard />}>
+      <Route element={<AuthGuard />}>
+        <Route element={<AuthenticatedAppLayout />}>
+          <Route path={'/'} element={<HomePage />} />
         </Route>
       </Route>
-    </AppRouter>
-  )
-}
+
+      <Route>
+        <Route path={'/sign-in'} element={<SignInPage />} />
+
+        <Route path={'/sign-out'} element={<SignOutPage />} />
+      </Route>
+    </Route>
+  </AppRouter>
+)
 Routes.displayName = ROUTES_NAME
 
 export { Routes }

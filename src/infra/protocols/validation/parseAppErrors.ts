@@ -1,6 +1,6 @@
-import { createErrorParser } from '@/data/protocols/validation'
+import { createErrorParser } from '@/data/protocols/validation/createErrorParser'
 
-import { AppError } from '@/shared/errors'
+import { AppError } from '@/shared/errors/AppError'
 
 function recursivelyGetAllErrors(error: unknown, ...allErrors: Error[]) {
   if (!(error instanceof Error)) return allErrors

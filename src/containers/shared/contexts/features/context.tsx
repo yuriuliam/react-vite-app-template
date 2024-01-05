@@ -1,6 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext } from '../../utils/createContext'
 
-/* eslint-disable react-refresh/only-export-components */
 interface IFeaturesContextData {
   addFeatures: (...ids: string[]) => void
   clearFeatures: () => void

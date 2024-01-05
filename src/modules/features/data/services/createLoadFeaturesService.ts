@@ -1,6 +1,6 @@
-import { FeaturesModel } from '../../models'
+import { FeatureModel } from '../../models/FeatureModel'
 
-import { type IHttpClient } from '@/data/protocols/http'
+import { type IHttpClient } from '@/data/protocols/http/createHttpClient'
 
 import { createFakeFeatureFlags } from '@/shared/utils/faker'
 
@@ -26,7 +26,7 @@ const createLoadFeaturesService = (_httpClient: IHttpClient) => {
 
       const data = await requestFeatures()
 
-      return FeaturesModel.parse(data)
+      return FeatureModel.parse(data)
     } catch (error) {
       return null
     }

@@ -5,11 +5,10 @@ import { AuthContextProvider, type SignInParams } from './context'
 import { useCallbackRef } from '@/containers/shared/hooks/useCallbackRef'
 import { useLogger } from '@/containers/shared/hooks/useLogger'
 
-import { useUserMe, useUserToken } from '@/modules/users/infra/hooks'
-import {
-  authenticateUser,
-  validateAuthenticationParams,
-} from '@/modules/users/infra/services'
+import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
+import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
+import { authenticateUser } from '@/modules/users/infra/services/authenticateUserService'
+import { validateAuthenticationParams } from '@/modules/users/infra/services/validateAuthenticationParams'
 
 const AUTH_PROVIDER_NAME = 'Providers.Auth'
 const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'

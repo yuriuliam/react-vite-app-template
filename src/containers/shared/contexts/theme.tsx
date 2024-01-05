@@ -5,7 +5,7 @@ import { Theme } from '@radix-ui/themes'
 import { useConst } from '@/containers/shared/hooks/useConst'
 import { useMediaQuery } from '@/containers/shared/hooks/useMediaQuery'
 
-import { useThemeIsDark } from '@/modules/themes/infra/hooks'
+import { useThemeIsDark } from '@/modules/themes/infra/hooks/useThemeIsDark'
 
 const THEME_PROVIDER_NAME = 'Providers.Theme'
 

@@ -4,7 +4,7 @@ import { ZodError } from 'zod'
 
 import { parseZodErrors } from '@/infra/protocols/validation/parseZodErrors'
 
-import { EmailModel } from '@/shared/models'
+import { EmailModel } from '@/shared/models/EmailModel'
 
 describe('EmailModel', () => {
   it('should successfully parse consistent values', () => {

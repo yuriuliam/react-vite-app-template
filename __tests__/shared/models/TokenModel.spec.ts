@@ -4,7 +4,7 @@ import { ZodError } from 'zod'
 
 import { parseZodErrors } from '@/infra/protocols/validation/parseZodErrors'
 
-import { TokenModel } from '@/shared/models'
+import { TokenModel } from '@/shared/models/TokenModel'
 
 describe('TokenModel', () => {
   it('should successfully parse consistent values', () => {

@@ -1,6 +1,6 @@
-import { UserResponseModel } from '../../models'
+import { UserResponseModel } from '../../models/UserResponseModel'
 
-import { type IHttpClient } from '@/data/protocols/http'
+import { type IHttpClient } from '@/data/protocols/http/createHttpClient'
 
 import { createFakerUserResponses } from '@/shared/utils/faker'
 
