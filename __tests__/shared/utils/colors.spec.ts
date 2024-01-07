@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest'
 import {
   argb32,
   cmyk,
-  // hex,
+  hex,
   // hsla,
   // hsv,
   // rgba,
@@ -152,6 +152,57 @@ describe('cmyk', () => {
     expect(() => cmyk(colorCmykMagentaOOR)).toThrowError()
     expect(() => cmyk(colorCmykYellowOOR)).toThrowError()
     expect(() => cmyk(colorCmykKeyOOR)).toThrowError()
+  })
+})
+
+describe('hex', () => {
+  it('should create a color object out of a valid hex value', () => {
+    const color = COLOR_VALUES.green
+
+    const colorObj = hex(color.hex)
+
+    expect(colorObj.toArgb32()).toBe(color.argb32)
+    expect(colorObj.toCmyk()).toEqual(color.cmyk)
+    expect(colorObj.toHex()).toEqual(color.hex)
+    expect(colorObj.toHsla()).toEqual(color.hsla)
+    expect(colorObj.toHsv()).toEqual(color.hsv)
+    expect(colorObj.toRgba()).toEqual(color.rgba)
+  })
+
+  it('should consider rgb hex values', () => {
+    const color = COLOR_VALUES.green
+    const hexValue = color.hex.slice(0, 7) // #rrggbb
+
+    const colorObj = hex(hexValue)
+
+    expect(colorObj.toArgb32()).toBe(color.argb32)
+    expect(colorObj.toCmyk()).toEqual(color.cmyk)
+    expect(colorObj.toHex()).toEqual(color.hex)
+    expect(colorObj.toHsla()).toEqual(color.hsla)
+    expect(colorObj.toHsv()).toEqual(color.hsv)
+    expect(colorObj.toRgba()).toEqual(color.rgba)
+  })
+
+  it('should consider hex values without "#"', () => {
+    const color = COLOR_VALUES.green
+    const hexValue = color.hex.replace('#', '')
+
+    console.log('hexValue', hexValue)
+
+    const colorObj = hex(hexValue)
+
+    expect(colorObj.toArgb32()).toBe(color.argb32)
+    expect(colorObj.toCmyk()).toEqual(color.cmyk)
+    expect(colorObj.toHex()).toEqual(color.hex)
+    expect(colorObj.toHsla()).toEqual(color.hsla)
+    expect(colorObj.toHsv()).toEqual(color.hsv)
+    expect(colorObj.toRgba()).toEqual(color.rgba)
+  })
+
+  it('should throw an error when provided with invalid hex values', () => {
+    const value = 'not-a-hex'
+
+    expect(() => hex(value)).toThrowError()
   })
 })
 
