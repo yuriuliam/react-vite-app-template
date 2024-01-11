@@ -14,7 +14,7 @@ There are some details which was considered here and reflects most big projects:
    1. `NodeJS >= 20.9 < 21`
    2. `PNPM >= 8.7.5`
 2. Run `pnpm install`
-3. Make a copy of `.env.development` and name it `.env.development.local`
+3. Make a copy of `.env` and name it `.env.local`
 4. Run `pnpm dev` to start de application locally.
 
 ## Main Features
