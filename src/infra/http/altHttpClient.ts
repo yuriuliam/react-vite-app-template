@@ -1,4 +1,4 @@
-import { createHttpClient } from '@/data/protocols/http/createHttpClient'
+import { createHttpClient } from '@/data/http/createHttpClient'
 
 const altHttpClient = createHttpClient(import.meta.env.VITE_API_ALT_URL)
 

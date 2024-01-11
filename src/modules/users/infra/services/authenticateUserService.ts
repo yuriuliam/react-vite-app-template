@@ -1,6 +1,6 @@
 import { createAuthenticateUserService } from '../../data/services/createAuthenticateUserService'
 
-import { mainHttpClient } from '@/infra/protocols/http/mainHttpClient'
+import { mainHttpClient } from '@/infra/http/mainHttpClient'
 
 const authenticateUser = createAuthenticateUserService(mainHttpClient)
 

@@ -1,7 +1,5 @@
 import { FeatureModel } from '../../models/FeatureModel'
 
-import { type IHttpClient } from '@/data/protocols/http/createHttpClient'
-
 import { createFakeFeatureFlags } from '@/shared/utils/faker'
 
 /** @deprecated This is a faker!! */
@@ -11,7 +9,7 @@ const requestFeatures = async () => {
   return featureFlags
 }
 
-const createLoadFeaturesService = (_httpClient: IHttpClient) => {
+const createLoadFeaturesService = (_httpClient: App.Infra.Http.IHttpClient) => {
   return async (_token: App.Models.TokenModel) => {
     try {
       // Example of actual code.

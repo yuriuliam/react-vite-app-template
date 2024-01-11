@@ -1,7 +1,5 @@
 import { UserResponseModel } from '../../models/UserResponseModel'
 
-import { type IHttpClient } from '@/data/protocols/http/createHttpClient'
-
 import { createFakerUserResponses } from '@/shared/utils/faker'
 
 type AuthParams = App.Modules.User.AuthenticationParamsModel
@@ -19,7 +17,9 @@ const requestAuthentication = async (params: AuthParams) => {
   return user
 }
 
-const createAuthenticateUserService = (_httpClient: IHttpClient) => {
+const createAuthenticateUserService = (
+  _httpClient: App.Infra.Http.IHttpClient,
+) => {
   return async (params: AuthParams) => {
     try {
       // Example of actual code.

@@ -1,4 +1,4 @@
-import { createSyncStorage } from '@/data/cache/core/createSyncStorage'
+import { createSyncStorage } from '@/data/cache/createSyncStorage'
 
 const sessionSyncStorage = createSyncStorage(
   window.sessionStorage,

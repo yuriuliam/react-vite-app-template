@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from '@/data/react/core/createContext'
+import { createContext } from '@/data/react/createContext'
 
 interface IFeaturesContextData {
   addFeatures: (...ids: string[]) => void

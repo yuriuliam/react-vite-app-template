@@ -1,8 +1,8 @@
 import { AuthenticationParamsModel } from '../../models/AuthenticationParamsModel'
 
-import { createValidator } from '@/data/protocols/validation/createValidator'
+import { createValidator } from '@/data/validation/createValidator'
 
-import { parseZodErrors } from '@/infra/protocols/validation/parseZodErrors'
+import { parseZodErrors } from '@/infra/validation/parseZodErrors'
 
 const validateAuthenticationParams = createValidator({
   model: AuthenticationParamsModel,
