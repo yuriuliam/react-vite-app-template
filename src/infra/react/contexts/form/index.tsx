@@ -3,7 +3,7 @@ import React, { type FormEventHandler } from 'react'
 import { useCallbackRef } from '../../hooks/useCallbackRef'
 import { FormContextProvider } from './context'
 
-import { useLogger } from '@/infra/logging/hooks/useLogger'
+import { useLogger } from '@/infra/logger/hooks/useLogger'
 
 type FormProviderProps = {
   onSubmit: (data: Record<string, any>) => void | Promise<void>

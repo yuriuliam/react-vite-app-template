@@ -4,7 +4,7 @@ declare global {
    *
    * See `scripts/globalLogger.ts`
    */
-  var logger: App.Infra.Logging.ILogger
+  var logger: App.Infra.Logger.ILogger
 }
 
 export = global
