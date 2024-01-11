@@ -3,7 +3,7 @@ import React from 'react'
 import { render, renderHook } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 
-import { composeRefs } from '@/containers/shared/utils/composeRefs'
+import { composeRefs } from '@/infra/react/utils/composeRefs'
 
 describe('composeRefs', () => {
   it('should return true', () => {

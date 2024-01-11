@@ -1,6 +1,5 @@
+import { composeRefs } from '../utils/composeRefs'
 import { useCallbackRef } from './useCallbackRef'
-
-import { composeRefs } from '@/containers/shared/utils/composeRefs'
 
 /**
  * Compose React Refs into a single callback.
