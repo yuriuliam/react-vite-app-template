@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { Button } from '../shared/components/Button'
-import { useFeatures } from '../shared/contexts/features/context'
-import { useCallbackRef } from '../shared/hooks/useCallbackRef'
+
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+
+import { useFeatures } from '@/modules/features/infra/contexts/features/context'
 
 const HOME_PAGE_NAME = 'Home.Root'
 

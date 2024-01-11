@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { AuthProvider } from '@/containers/shared/contexts/auth'
-import { FeaturesProvider } from '@/containers/shared/contexts/features'
-import { StoreProvider } from '@/containers/shared/contexts/store'
-import { ThemeProvider } from '@/containers/shared/contexts/theme'
+import { AuthProvider } from '@/infra/auth/contexts/auth'
+import { StoreProvider } from '@/infra/cache/contexts/store'
+import { ThemeProvider } from '@/infra/theme/contexts/theme'
+
+import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
 
 const APP_PROVIDER_NAME = 'App.Contexts.Root'
 

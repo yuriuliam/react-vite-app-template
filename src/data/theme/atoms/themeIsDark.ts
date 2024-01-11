@@ -2,11 +2,11 @@ import { atomWithStorage } from 'jotai/utils'
 
 import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
-const userMe = atomWithStorage<App.Modules.User.UserModel | null>(
-  'users:me',
+const themeIsDark = atomWithStorage<boolean | null>(
+  'themes:isDark',
   null,
   localSyncStorage,
   { getOnInit: true },
 )
 
-export { userMe }
+export { themeIsDark }

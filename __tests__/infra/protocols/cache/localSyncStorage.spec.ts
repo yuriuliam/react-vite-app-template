@@ -3,7 +3,7 @@ import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
-import { localSyncStorage } from '@/infra/protocols/cache/localSyncStorage'
+import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
 import { spySyncStorage } from '#/__mocks__/protocols/cache/syncStorage'
 

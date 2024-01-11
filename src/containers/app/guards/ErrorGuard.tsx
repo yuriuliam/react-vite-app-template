@@ -7,7 +7,7 @@ import {
 
 import { Flex, Section } from '@radix-ui/themes'
 
-import { useCallbackRef } from '@/containers/shared/hooks/useCallbackRef'
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 const ERROR_GUARD_NAME = 'App.Guards.Error'
 

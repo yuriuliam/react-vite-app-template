@@ -1,7 +1,5 @@
 import { vi } from 'vitest'
 
-import { type ISyncStorage } from '@/data/protocols/cache/createSyncStorage'
-
 const createSyncStorageMock = <TValue>(
   cache: Map<string, string> = new Map(),
 ) => {
@@ -15,10 +13,10 @@ const createSyncStorageMock = <TValue>(
     cache.set(key, JSON.stringify(value))
   })
 
-  return { getItem, removeItem, setItem } satisfies ISyncStorage
+  return { getItem, removeItem, setItem } satisfies App.Infra.Cache.ISyncStorage
 }
 
-const spySyncStorage = (syncStorage: ISyncStorage) => ({
+const spySyncStorage = (syncStorage: App.Infra.Cache.ISyncStorage) => ({
   getItem: vi.spyOn(syncStorage, 'getItem'),
   removeItem: vi.spyOn(syncStorage, 'removeItem'),
   setItem: vi.spyOn(syncStorage, 'setItem'),

@@ -1,6 +1,6 @@
 import { atomWithStorage } from 'jotai/utils'
 
-import { localSyncStorage } from '@/infra/protocols/cache/localSyncStorage'
+import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
 const userToken = atomWithStorage<App.Models.TokenModel | null>(
   'users:token',

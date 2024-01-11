@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import { AuthGuard } from '../guards/AuthGuard'
 import { ErrorGuard } from '../guards/ErrorGuard'
 import { AuthenticatedAppLayout } from '../layouts/AuthenticatedAppLayout'
 import { Router as AppRouter } from './Router'
@@ -9,6 +8,8 @@ import { Router as AppRouter } from './Router'
 import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
+
+import { AuthGuard } from '@/infra/auth/guards/AuthGuard'
 
 const ROUTES_NAME = 'App.Routes.Root'
 

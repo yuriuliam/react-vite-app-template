@@ -1,6 +1,6 @@
 import { isDevelopmentMode } from '../utils/environment'
 
-import { createLogger } from '@/data/protocols/logger/createLogger'
+import { createLogger } from '@/data/logger/core/createLogger'
 
 import type { ReportCallback } from 'web-vitals'
 

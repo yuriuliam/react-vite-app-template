@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { Button } from '../shared/components/Button'
-import { useAuth } from '../shared/contexts/auth/context'
-import { useCallbackRef } from '../shared/hooks/useCallbackRef'
+
+import { useAuth } from '@/infra/auth/contexts/auth/context'
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 const SIGN_IN_NAME = 'SignIn.Root'
 
