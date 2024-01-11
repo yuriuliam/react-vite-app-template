@@ -1,7 +1,7 @@
 import { type Debugger } from 'debug'
 
 declare global {
-  declare namespace App.Infra.Logger {
+  declare namespace App.Infra.Logging {
     type MessagePayload = App.ObjectType
     type MessageOptions = {
       name?: string

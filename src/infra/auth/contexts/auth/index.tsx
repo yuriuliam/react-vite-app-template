@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AuthContextProvider, type SignInParams } from './context'
 
-import { useLogger } from '@/infra/logger/hooks/useLogger'
+import { useLogger } from '@/infra/logging/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'

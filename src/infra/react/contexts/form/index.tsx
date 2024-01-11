@@ -3,7 +3,7 @@ import React, { type FormEventHandler } from 'react'
 import { useCallbackRef } from '../../hooks/useCallbackRef'
 import { FormContextProvider } from './context'
 
-import { useLogger } from '@/infra/logger/hooks/useLogger'
+import { useLogger } from '@/infra/logging/hooks/useLogger'
 
 type FormProviderProps = {
   onSubmit: (data: Record<string, any>) => void | Promise<void>
@@ -17,10 +17,13 @@ const FormProvider: React.PFC<FormProviderProps> = ({ children }) => {
 
   const fields = React.useRef({})
 
-  const registerField = useCallbackRef((name: string) => {
-    logger.log({ title: 'registerField::()', content: `Adding field ${name}` })
+  const registerField = useCallbackRef((fieldName: string) => {
+    logger.log({
+      title: 'registerField::()',
+      content: `Adding field ${fieldName}`,
+    })
 
-    Reflect.set(fields.current, name, null)
+    Reflect.set(fields.current, fieldName, null)
   })
 
   const onFormSubmit = useCallbackRef<FormEventHandler>(evt => {

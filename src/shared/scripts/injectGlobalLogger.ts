@@ -1,6 +1,6 @@
 import { isDevelopmentMode } from '../utils/environment'
 
-import { getGlobalLoggerInstance } from '@/infra/logger/core/getGlobalLoggerInstance'
+import { getGlobalLoggerInstance } from '@/infra/logging/core/getGlobalLoggerInstance'
 
 /**
  * Inject Global Logger

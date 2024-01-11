@@ -7,7 +7,7 @@ import { getMappedCallSites } from '@/shared/utils/runtime'
 const createAppOutput = (
   namespace: string,
   ...subNamespaces: string[]
-): App.Infra.Logger.AppOutput => {
+): App.Infra.Logging.AppOutput => {
   const appOutput = debug('app').extend(namespace)
 
   const subNamespace = subNamespaces.length
@@ -18,9 +18,9 @@ const createAppOutput = (
 }
 
 const createLoggerOutput = (
-  appOutput: App.Infra.Logger.AppOutput,
-): App.Infra.Logger.InternalOutput => {
-  const output = async (options: App.Infra.Logger.MessageOptions) => {
+  appOutput: App.Infra.Logging.AppOutput,
+): App.Infra.Logging.InternalOutput => {
+  const output = async (options: App.Infra.Logging.MessageOptions) => {
     const name = chalk.bold.green(options.name ?? 'Unknown')
     const title = chalk.bold(options.title)
     const content = chalk.italic(options.content)
@@ -51,8 +51,8 @@ const createLoggerOutput = (
   return output
 }
 
-const createLoggerLevels = (output: App.Infra.Logger.InternalOutput) => {
-  const error = (options: App.Infra.Logger.ErrorMessageOptions) => {
+const createLoggerLevels = (output: App.Infra.Logging.InternalOutput) => {
+  const error = (options: App.Infra.Logging.ErrorMessageOptions) => {
     void output({
       ...options,
       title: chalk.red('Error (!)'),
@@ -60,7 +60,7 @@ const createLoggerLevels = (output: App.Infra.Logger.InternalOutput) => {
     })
   }
 
-  const log = (options: App.Infra.Logger.MessageOptions) => {
+  const log = (options: App.Infra.Logging.MessageOptions) => {
     void output({
       ...options,
       title: chalk.yellow(options.title),
@@ -68,7 +68,7 @@ const createLoggerLevels = (output: App.Infra.Logger.InternalOutput) => {
     })
   }
 
-  const trace = (options: App.Infra.Logger.TraceMessageOptions) => {
+  const trace = (options: App.Infra.Logging.TraceMessageOptions) => {
     void output({
       ...options,
       title: chalk.magenta('Stack Trace (?)'),
@@ -76,7 +76,7 @@ const createLoggerLevels = (output: App.Infra.Logger.InternalOutput) => {
     })
   }
 
-  const warn = (options: App.Infra.Logger.MessageOptions) => {
+  const warn = (options: App.Infra.Logging.MessageOptions) => {
     void output({
       ...options,
       title: chalk.hex('FFAA00')(options.title),
@@ -95,7 +95,7 @@ const createLoggerLevels = (output: App.Infra.Logger.InternalOutput) => {
 const createLogger = (
   baseNamespace: string,
   ...subNamespaces: string[]
-): App.Infra.Logger.ILogger => {
+): App.Infra.Logging.ILogger => {
   const appOutput = createAppOutput(baseNamespace, ...subNamespaces)
   const internalOutput = createLoggerOutput(appOutput)
   const loggerLevels = createLoggerLevels(internalOutput)

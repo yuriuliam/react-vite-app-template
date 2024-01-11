@@ -3,7 +3,7 @@ import React from 'react'
 import { FeaturesContextProvider } from './context'
 
 import { useAuth } from '@/infra/auth/contexts/auth/context'
-import { useLogger } from '@/infra/logger/hooks/useLogger'
+import { useLogger } from '@/infra/logging/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useSet } from '@/infra/react/hooks/useSet'
 
