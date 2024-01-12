@@ -7,6 +7,7 @@ import {
 
 import { Flex, Section } from '@radix-ui/themes'
 
+import { useGlobalLogger } from '@/infra/logger/hooks/useGlobalLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 const ERROR_GUARD_NAME = 'App.Guards.Error'
@@ -15,6 +16,7 @@ const ERROR_GUARD_NAME = 'App.Guards.Error'
  * A middleware for possible application errors.
  */
 const ErrorGuard: React.FC = () => {
+  const logger = useGlobalLogger()
   const navigate = useNavigate()
   const errorFromRoutes = useRouteError()
 
@@ -27,12 +29,12 @@ const ErrorGuard: React.FC = () => {
   React.useEffect(() => {
     if (isRouteError) return
 
-    globalThis.logger.error({
+    logger.error({
       name: ERROR_GUARD_NAME,
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
     })
-  }, [errorFromRoutes, isRouteError])
+  }, [errorFromRoutes, isRouteError]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Flex align="center" direction="column">

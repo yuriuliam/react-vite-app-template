@@ -1,9 +1,13 @@
 import { isDevelopmentMode } from '../utils/environment'
 
+import { getGlobalLoggerInstance } from '@/infra/logger/core/getGlobalLoggerInstance'
+
 const logEnvironmentMeta = () => {
   if (!isDevelopmentMode()) return
 
-  globalThis.logger.log({
+  const globalLogger = globalThis.logger ?? getGlobalLoggerInstance()
+
+  globalLogger.log({
     name: 'App',
     title: 'Vite',
     content: 'DEV Environment detected',
