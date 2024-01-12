@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 
-import { createErrorParser } from '@/data/validation/createErrorParser'
+import { createErrorParser } from '@/data/validation/core/createErrorParser'
 
 /**
  * Parses an error into an object format.

@@ -1,4 +1,4 @@
-import { createErrorParser } from '@/data/validation/createErrorParser'
+import { createErrorParser } from '@/data/validation/core/createErrorParser'
 
 import { AppError } from '@/shared/errors/AppError'
 

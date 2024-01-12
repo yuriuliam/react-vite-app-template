@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { parseAppErrors } from '@/infra/validation/parseAppErrors'
+import { parseAppErrors } from '@/infra/validation/core/parseAppErrors'
 
 import { AppError } from '@/shared/errors/AppError'
 import { HttpError } from '@/shared/errors/HttpError'

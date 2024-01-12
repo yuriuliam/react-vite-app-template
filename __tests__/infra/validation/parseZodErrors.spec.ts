@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { z } from 'zod'
 
-import { parseZodErrors } from '@/infra/validation/parseZodErrors'
+import { parseZodErrors } from '@/infra/validation/core/parseZodErrors'
 
 describe('parseZodErrors', () => {
   it('should parse zod errors from simple models', () => {

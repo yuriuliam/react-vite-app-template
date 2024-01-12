@@ -1,6 +1,6 @@
 import { type z } from 'zod'
 
-import { ModelValidationError } from '@/shared/errors/ModelValidationError'
+import { ModelValidationError } from '@/data/validation/errors/ModelValidationError'
 
 type ModelType = z.ZodType<any, any, any>
 type ModelParams<TModel extends ModelType> = z.infer<TModel>

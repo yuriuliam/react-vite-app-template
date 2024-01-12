@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { describe, expect, it } from 'vitest'
 import { ZodError } from 'zod'
 
-import { parseZodErrors } from '@/infra/validation/parseZodErrors'
+import { parseZodErrors } from '@/infra/validation/core/parseZodErrors'
 
 import { EmailModel } from '@/shared/models/EmailModel'
 
