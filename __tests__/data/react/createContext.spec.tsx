@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import { render, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { createContext } from '@/data/react/createContext'
@@ -19,6 +19,25 @@ describe('createContext', () => {
     expect(provider.current).toBeTruthy()
     expect(provider.current).toHaveProperty('hello')
     expect(provider.current.hello).toBe('world')
+  })
+
+  it('should return a consumer as a third parameter of the context creation', () => {
+    const [Provider, , Consumer] = createContext(null, TEST_NAME)
+
+    const testData = { foo: 'bar' }
+
+    const component = render(
+      <div data-testid="consumer-container">
+        <Consumer>{data => data.foo}</Consumer>
+      </div>,
+      {
+        wrapper: createWrapper(props => <Provider {...props} {...testData} />),
+      },
+    )
+
+    const element = component.getByTestId('consumer-container')
+
+    expect(element.innerHTML).toBe(testData.foo)
   })
 
   it('should return an empty object once no parameters are passed', () => {

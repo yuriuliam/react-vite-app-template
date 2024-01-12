@@ -5,7 +5,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
-import { spySyncStorage } from '#/__mocks__/protocols/cache/syncStorage'
+import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
 
 describe('localSyncStorage', () => {
   beforeEach(() => {
@@ -35,7 +35,14 @@ describe('localSyncStorage', () => {
       setValue(newAtomValue)
     })
 
+    expect(localStorage.getItem).toBeCalledTimes(1)
+    expect(localStorage.setItem).toBeCalledTimes(1)
+
     expect(localSyncStorage.setItem).toBeCalledTimes(1)
     expect(localSyncStorage.setItem).toBeCalledWith(atomKey, newAtomValue)
+
+    expect(window.localStorage.getItem(`@App:${atomKey}`)).toBe(
+      JSON.stringify(newAtomValue),
+    )
   })
 })

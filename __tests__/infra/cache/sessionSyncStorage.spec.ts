@@ -5,7 +5,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 import { sessionSyncStorage } from '@/infra/cache/core/sessionSyncStorage'
 
-import { spySyncStorage } from '#/__mocks__/protocols/cache/syncStorage'
+import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
 
 describe('sessionSyncStorage', () => {
   beforeEach(() => {

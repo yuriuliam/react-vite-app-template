@@ -46,10 +46,10 @@ const createEventAdapterMock = (
   } satisfies IEventAdapterLike
 }
 
-const spyEventAdapter = (eventEmitter: IEventAdapterLike) => ({
+const spyOnEventAdapter = (eventEmitter: IEventAdapterLike) => ({
   addEventListener: vi.spyOn(eventEmitter, 'addEventListener'),
   removeEventListener: vi.spyOn(eventEmitter, 'removeEventListener'),
   dispatchEvent: vi.spyOn(eventEmitter, 'dispatchEvent'),
 })
 
-export { createEventAdapterMock, spyEventAdapter }
+export { createEventAdapterMock, spyOnEventAdapter }

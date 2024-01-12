@@ -99,9 +99,10 @@
       }
     },
     {
-      "files": ["*.test.ts", "*.test.tsx"],
+      "files": ["*.spec.ts", "*.spec.tsx", "*.test.ts", "*.test.tsx"],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/unbound-method": "off"
       }
     },
     {
