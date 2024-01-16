@@ -3,6 +3,7 @@ import { type Debugger } from 'debug'
 declare global {
   declare namespace App.Infra.Logger {
     type MessagePayload = App.ObjectType
+
     type MessageOptions = {
       name?: string
       title: string
@@ -10,10 +11,12 @@ declare global {
       data?: App.MaybePromise<MessagePayload | null> | undefined
       style?: 'default' | 'inline' | undefined
     }
+
     type ErrorMessageOptions = Omit<MessageOptions, 'title'>
     type TraceMessageOptions = Omit<MessageOptions, 'title' | 'data'>
 
     type AppOutput = Debugger
+
     type InternalOutput = (options: MessageOptions) => Promise<void>
 
     interface ILogger {

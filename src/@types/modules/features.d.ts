@@ -1,4 +1,5 @@
-import type { FeatureModel, FeaturesModel } from '@/modules/features/models'
+import type { FeatureModel } from '@/modules/features/models/FeatureModel'
+import type { FeaturesModel } from '@/modules/features/models/FeaturesModel'
 import type { z } from 'zod'
 
 declare global {
