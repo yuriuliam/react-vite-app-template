@@ -1,6 +1,6 @@
-import { FeatureModel } from '../../models/FeatureModel'
-
 import { createFakeFeatureFlags } from '@/shared/utils/faker'
+
+import { FeatureModel } from '../../models/FeatureModel'
 
 /** @deprecated This is a faker!! */
 const requestFeatures = async () => {

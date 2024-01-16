@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { Button } from '../shared/components/Button'
-
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+
+import { Button } from '../shared/components/Button'
 
 const SIGN_IN_NAME = 'SignIn.Root'
 

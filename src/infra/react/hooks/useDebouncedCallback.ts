@@ -1,6 +1,6 @@
-import { useCallbackRef } from './useCallbackRef'
-
 import { debounced } from '@/shared/utils/functions'
+
+import { useCallbackRef } from './useCallbackRef'
 
 /**
  * Creates a debounced callback for a given amount of milliseconds.

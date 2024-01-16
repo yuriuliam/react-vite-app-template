@@ -1,6 +1,6 @@
-import { getGlobalLoggerInstance } from '../core/getGlobalLoggerInstance'
-
 import { useConst } from '@/infra/react/hooks/useConst'
+
+import { getGlobalLoggerInstance } from '../core/getGlobalLoggerInstance'
 
 /**
  * An immutable instance of the Global Logger which can be called

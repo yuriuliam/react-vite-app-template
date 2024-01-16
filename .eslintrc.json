@@ -57,7 +57,6 @@
             "groups": [
               ["/^react-dom/", "/^react/"],
               ["module", "absolute"],
-              ["parent", "sibling"],
               "/@\/config/",
               "/@\/containers/",
               "/@\/data/",
@@ -65,6 +64,7 @@
               "/@\/modules/",
               "/@\/shared/",
               "/#/",
+              ["parent", "sibling"],
               "index",
               "type"
             ]

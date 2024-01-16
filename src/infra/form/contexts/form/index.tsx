@@ -2,10 +2,10 @@ import React from 'react'
 
 import dot from 'dot-object'
 
-import { FormContextProvider } from './context'
-
 import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+
+import { FormContextProvider } from './context'
 
 const FORM_PROVIDER_NAME = 'Providers.Form'
 const FORM_PROVIDER_LOGGER_NAME = 'providers:form'

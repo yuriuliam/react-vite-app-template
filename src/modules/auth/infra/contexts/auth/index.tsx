@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useAuthServices } from '../../hooks/useAuthServices'
-import { AuthContextProvider, type SignInParams } from './context'
-
 import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
 import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
+
+import { useAuthServices } from '../../hooks/useAuthServices'
+import { AuthContextProvider, type SignInParams } from './context'
 
 const AUTH_PROVIDER_NAME = 'Providers.Auth'
 const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'

@@ -1,6 +1,6 @@
-import { getLoggerInstance } from '../core/getLoggerInstance'
-
 import { useConst } from '@/infra/react/hooks/useConst'
+
+import { getLoggerInstance } from '../core/getLoggerInstance'
 
 /**
  * An immutable instance of the Logger which can be called

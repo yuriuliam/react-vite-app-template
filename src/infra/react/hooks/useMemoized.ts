@@ -1,7 +1,7 @@
+import { memoize } from '@/shared/utils/functions'
+
 import { useCallbackRef } from './useCallbackRef'
 import { useConst } from './useConst'
-
-import { memoize } from '@/shared/utils/functions'
 
 /**
  * Memoizes the return value of a given callback based on their parameters.

@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import { App } from '@/containers/app'
+
 import { injectGlobalLogger } from './shared/scripts/injectGlobalLogger'
 import { logEnvironmentMeta } from './shared/scripts/logEnvironmentMeta'
 import { logWebVitals } from './shared/scripts/logWebVitals'
-
-import { App } from '@/containers/app'
 
 import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'

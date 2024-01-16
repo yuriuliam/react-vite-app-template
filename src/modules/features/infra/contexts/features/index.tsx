@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useFeaturesServices } from '../../hooks/useFeaturesServices'
-import { FeaturesContextProvider } from './context'
-
 import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useSet } from '@/infra/react/hooks/useSet'
 
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+
+import { useFeaturesServices } from '../../hooks/useFeaturesServices'
+import { FeaturesContextProvider } from './context'
 
 const FEATURES_PROVIDER_NAME = 'Providers.Features'
 const FEATURES_PROVIDER_LOGGER_NAME = 'providers:features'

@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Theme } from '@radix-ui/themes'
 
-import { useThemeIsDark } from '../hooks/useThemeIsDark'
-
 import { useConst } from '@/infra/react/hooks/useConst'
 import { useMediaQuery } from '@/infra/react/hooks/useMediaQuery'
+
+import { useThemeIsDark } from '../hooks/useThemeIsDark'
 
 const THEME_PROVIDER_NAME = 'Providers.Theme'
 
