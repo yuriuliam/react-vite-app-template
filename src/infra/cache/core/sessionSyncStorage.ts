@@ -1,8 +1,10 @@
+import { SESSION_STORAGE_PREFIX } from '@/config/constants'
+
 import { createSyncStorage } from '@/data/cache/createSyncStorage'
 
 const sessionSyncStorage = createSyncStorage(
   window.sessionStorage,
-  import.meta.env.VITE_SESSION_STORAGE_ADAPTER_PREFIX,
+  SESSION_STORAGE_PREFIX,
 )
 
 export { sessionSyncStorage }
