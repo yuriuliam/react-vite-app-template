@@ -27,7 +27,7 @@ const promisify =
  * of milliseconds.
  */
 const wait = async (ms: number) => {
-  await new Promise(resolve => setTimeout(resolve, ms))
+  void (await new Promise(resolve => setTimeout(resolve, ms)))
 }
 
 export { promised, deferred, promisify, wait }

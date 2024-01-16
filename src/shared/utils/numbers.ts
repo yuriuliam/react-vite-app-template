@@ -17,14 +17,17 @@ const clamp = (
 ) => Math.max(min, Math.min(max, value))
 
 /**
- * Returns the difference between given values
+ * Returns the difference between given values.
  */
 const diff = (numA: number, numB: number) => Math.abs(numA - numB)
 
 /**
- * Formats a given percentage value into a INTL-Style Percentage String.
+ * Formats a given percentage value into a INTL-Standard Percentage String.
  *
- * If no locale is provided, assumed the current one.
+ * For reference:
+ * - `0.3852` will be `38,52%`;
+ * - `0.64` will be `64,00%`;
+ * - `1.00` will be `100,00%`;
  */
 const formatPercentage = (
   percentage: number,

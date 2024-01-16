@@ -5,8 +5,9 @@ import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { Button } from '../shared/components/Button'
 
-import { useAuth } from '@/infra/auth/contexts/auth/context'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+
+import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 
 const SIGN_IN_NAME = 'SignIn.Root'
 
@@ -20,7 +21,7 @@ const SignInPage: React.FC = () => {
     const authParams = {
       email: 'Lukas_Kirlin@yahoo.com',
       password: 'limivuro',
-    } satisfies App.Modules.User.AuthenticationParamsModel
+    } satisfies App.Modules.Auth.AuthenticationParamsModel
 
     await signIn(authParams)
 

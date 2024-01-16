@@ -7,11 +7,11 @@ import React from 'react'
 const useToggle = (init: boolean | App.InitFn<boolean> = false) => {
   const [value, setValue] = React.useState(init)
 
-  const handleToggle = React.useCallback((newValue?: boolean | undefined) => {
+  const toggleValue = React.useCallback((newValue?: boolean | undefined) => {
     setValue(oldValue => newValue ?? !oldValue)
   }, [])
 
-  return [value, handleToggle] as const
+  return [value, toggleValue] as const
 }
 
 export { useToggle }

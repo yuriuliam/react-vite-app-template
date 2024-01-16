@@ -1,8 +1,8 @@
 import { Profiler } from 'react'
 
-import { AuthProvider } from '@/infra/auth/contexts/auth'
 import { StoreProvider } from '@/infra/cache/contexts/store'
 
+import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
 import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
 
 const createWrapper = (Component: React.PFC) => {

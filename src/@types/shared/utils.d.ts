@@ -24,6 +24,9 @@ declare global {
     /** Describes a possible-async value. */
     type MaybePromise<T> = T | Promise<T>
 
+    /** Retrieves a mutable version of a value. */
+    type Mutable<T> = T extends Readonly<infer V> ? V : T
+
     /** Generic Locale type argument, usually requested by Intl methods. */
     type Locale = string | string[]
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { render, renderHook } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 
-import { composeRefs } from '@/infra/react/utils/composeRefs'
+import { useComposedRef } from '@/infra/react/hooks/useComposedRef'
 
 describe('composeRefs', () => {
   it('should return true', () => {
@@ -11,10 +11,11 @@ describe('composeRefs', () => {
 
     const { result: refObj } = renderHook(() => React.useRef(null))
     const { result: refCb } = renderHook(() => React.useCallback(callback, []))
+    const { result: composedRef } = renderHook(() =>
+      useComposedRef(refObj.current, refCb.current),
+    )
 
-    const composedRef = composeRefs(refObj.current, refCb.current)
-
-    render(<div ref={composedRef} />)
+    render(<div ref={composedRef.current} />)
 
     expect(callback).toBeCalledTimes(1)
     expect(callback).toBeCalledWith(refObj.current.current)

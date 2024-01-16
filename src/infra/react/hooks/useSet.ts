@@ -1,6 +1,5 @@
-import React from 'react'
-
 import { useCallbackRef } from './useCallbackRef'
+import { useConst } from './useConst'
 import { useForceUpdate } from './useForceUpdate'
 
 /**
@@ -8,14 +7,14 @@ import { useForceUpdate } from './useForceUpdate'
  *
  * @returns a collection of functions and properties to interact with the set.
  */
-const useSet = <T>(initialIterable?: Iterable<T> | null | undefined) => {
+const useSet = <T>(iterable?: Iterable<T> | null | undefined) => {
   const forceUpdate = useForceUpdate()
 
-  const setRef = React.useRef(new Set(initialIterable))
+  const set = useConst(new Set(iterable))
 
   const addValue = useCallbackRef((...values: T[]) => {
     values.forEach(value => {
-      setRef.current.add(value)
+      set.add(value)
     })
 
     forceUpdate()
@@ -23,19 +22,19 @@ const useSet = <T>(initialIterable?: Iterable<T> | null | undefined) => {
 
   const deleteValue = useCallbackRef((...values: T[]) => {
     values.forEach(value => {
-      setRef.current.delete(value)
+      set.delete(value)
     })
 
     forceUpdate()
   })
 
   const clearSet = useCallbackRef(() => {
-    setRef.current.clear()
+    set.clear()
     forceUpdate()
   })
 
   const hasValue = useCallbackRef((...values: T[]) => {
-    return values.every(value => setRef.current.has(value))
+    return values.every(value => set.has(value))
   })
 
   const reactiveSet = {
@@ -44,14 +43,14 @@ const useSet = <T>(initialIterable?: Iterable<T> | null | undefined) => {
     delete: deleteValue,
     has: hasValue,
     size: 0,
-    entries: setRef.current.entries.bind(setRef.current),
-    forEach: setRef.current.forEach.bind(setRef.current),
-    keys: setRef.current.keys.bind(setRef.current),
-    values: setRef.current.values.bind(setRef.current),
+    entries: set.entries.bind(set),
+    forEach: set.forEach.bind(set),
+    keys: set.keys.bind(set),
+    values: set.values.bind(set),
   }
 
   Reflect.defineProperty(reactiveSet, 'size', {
-    get: () => setRef.current.size,
+    get: () => set.size,
     configurable: false,
   })
 

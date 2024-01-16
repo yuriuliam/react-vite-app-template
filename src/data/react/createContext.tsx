@@ -1,6 +1,6 @@
 import React from 'react'
 
-type ContextProvider<T> = React.PFC<Partial<T>>
+type ContextProvider<TProps = any> = React.PFC<Partial<TProps>>
 
 const CREATE_CONTEXT_PROVIDER_PREFIX = 'App.ContextProvider'
 
@@ -11,9 +11,10 @@ const CREATE_CONTEXT_PROVIDER_PREFIX = 'App.ContextProvider'
  * You can optionally send a initialValue to get it fulfilled,
  * otherwise set it as `null`.
  *
- * It also creates a React Hook to consume it. If the initialValue
- * is `null` and the hook call occurs outside of the Provider, it
- * will throw an error.
+ * It also creates a React Hook to consume it in which if the
+ * initialValue is `null` and the hook call occurs outside of
+ * the Provider, it will throw an error.
+ *
  * This hook requires the consumer name as well, so it can be
  * tracked once an error occurs.
  *

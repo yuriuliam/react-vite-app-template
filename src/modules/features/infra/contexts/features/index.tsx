@@ -1,19 +1,20 @@
 import React from 'react'
 
+import { useFeaturesServices } from '../../hooks/useFeaturesServices'
 import { FeaturesContextProvider } from './context'
 
-import { useAuth } from '@/infra/auth/contexts/auth/context'
 import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useSet } from '@/infra/react/hooks/useSet'
 
-import { loadFeatures } from '@/modules/features/infra/services/loadFeaturesService'
+import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 
 const FEATURES_PROVIDER_NAME = 'Providers.Features'
 const FEATURES_PROVIDER_LOGGER_NAME = 'providers:features'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
   const logger = useLogger(FEATURES_PROVIDER_LOGGER_NAME)
+  const { loadFeatures } = useFeaturesServices()
 
   const { isAuthenticated, token } = useAuth(FEATURES_PROVIDER_NAME)
 

@@ -11,7 +11,7 @@ const useFormField = (consumerName: string, name: string) => {
     initialData,
     errors,
     scopePath,
-    getPersistedFieldValue: getPersistedData,
+    getPersistedFieldValue,
     unregisterField,
     registerField,
     clearFieldError,
@@ -25,8 +25,8 @@ const useFormField = (consumerName: string, name: string) => {
   )
 
   const defaultValue = React.useMemo(
-    () => getPersistedData(fieldName) ?? dot.pick(fieldName, initialData),
-    [getPersistedData, fieldName, initialData],
+    () => getPersistedFieldValue(fieldName) ?? dot.pick(fieldName, initialData),
+    [getPersistedFieldValue, fieldName, initialData],
   )
 
   const error = React.useMemo(() => errors[fieldName], [errors, fieldName])

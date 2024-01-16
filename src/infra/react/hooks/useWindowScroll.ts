@@ -19,7 +19,7 @@ const useWindowScroll = () =>
     () => ({ x: window.scrollX, y: window.scrollY }),
     () => ({ x: 0, y: 0 }),
     windowScroll => windowScroll,
-    (scrollA, scrollB) => areObjectsEqual(scrollA, scrollB),
+    areObjectsEqual,
   )
 
 export { useWindowScroll }

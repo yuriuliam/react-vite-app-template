@@ -6,7 +6,7 @@ const RECORD_PROTOTYPE = Object.getPrototypeOf({})
  *
  * @returns `true` if both have the same keys and values, otherwise `false`
  */
-function areObjectsEqual(a: unknown, b: unknown): boolean {
+const areObjectsEqual = (a: unknown, b: unknown): boolean => {
   if (Object.is(a, b)) return true
 
   const areBothArray = Array.isArray(a) && Array.isArray(b)
@@ -16,17 +16,16 @@ function areObjectsEqual(a: unknown, b: unknown): boolean {
 
   const [propsA, propsB] = [Object.keys(a), Object.keys(b)]
 
+  if (propsB.length !== propsA.length) return false
+
   const [getFromA, getFromB] = [
     Reflect.get.bind(Reflect, a),
     Reflect.get.bind(Reflect, b),
   ]
 
-  return (
-    propsB.length === propsA.length &&
-    propsB.every(
-      key =>
-        propsA.includes(key) && areObjectsEqual(getFromA(key), getFromB(key)),
-    )
+  return propsB.every(
+    key =>
+      propsA.includes(key) && areObjectsEqual(getFromA(key), getFromB(key)),
   )
 }
 

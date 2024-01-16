@@ -6,7 +6,7 @@ const UNDEF = Symbol.for('UNDEFINED_REF_VALUE') as any
 
 /**
  * Creates an immutable value.
- * It can receive an Initial value or a Initializer Function.
+ * It can receive an Initial value or an Initializer Function.
  *
  * The value is only computed once.
  */

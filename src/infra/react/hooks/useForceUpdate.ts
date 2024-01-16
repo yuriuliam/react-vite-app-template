@@ -5,6 +5,7 @@ import React from 'react'
  */
 const useForceUpdate = () => {
   const [, forceUpdate] = React.useReducer(() => ({}), {})
+
   return React.useCallback(() => {
     forceUpdate()
   }, [])

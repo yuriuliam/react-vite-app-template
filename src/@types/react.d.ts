@@ -9,9 +9,12 @@ declare global {
      * This was declared as an shortcut to avoid using `PropsWithChildren` type
      * all the time.
      */
-    type ParentFunctionComponent<T = {}> = React.FC<React.PropsWithChildren<T>>
+    type ParentFunctionComponent<TProps = {}> = React.FC<
+      React.PropsWithChildren<TProps>
+    >
+
     /** @see {ParentFunctionComponent} */
-    type PFC<T = {}> = ParentFunctionComponent<T>
+    type PFC<TProps = {}> = ParentFunctionComponent<TProps>
 
     type PossibleRef<T> = React.Ref<T> | undefined
   }

@@ -3,8 +3,7 @@ import React from 'react'
 /**
  * Same as useCallback, but saves the callback into a ref.
  *
- * It will re-assign the ref for every rerender, without triggering other
- * rerender requests unnecessarily.
+ * It will reassign the ref every effect without triggering rerenders.
  *
  * @param callback The callback to serve as the function.
  */

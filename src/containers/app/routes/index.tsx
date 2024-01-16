@@ -9,7 +9,7 @@ import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
 
-import { AuthGuard } from '@/infra/auth/guards/AuthGuard'
+import { AuthGuard } from '@/modules/auth/infra/guards/AuthGuard'
 
 const ROUTES_NAME = 'App.Routes.Root'
 

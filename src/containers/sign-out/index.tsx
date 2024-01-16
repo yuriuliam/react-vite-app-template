@@ -1,8 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useAuth } from '@/infra/auth/contexts/auth/context'
-
+import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 import { useFeatures } from '@/modules/features/infra/contexts/features/context'
 
 const SIGN_OUT_NAME = 'App.SignOut'

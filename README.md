@@ -11,7 +11,7 @@ There are some details which was considered here and reflects most big projects:
 ## How to start it
 
 1. Ensure you have those dependencies installed:
-   1. `NodeJS >= 20.9 < 21`
+   1. `NodeJS >= 20.10 < 21`
    2. `PNPM >= 8.7.5`
 2. Run `pnpm install`
 3. Make a copy of `.env` and name it `.env.local`

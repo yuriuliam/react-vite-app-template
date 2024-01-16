@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useAuthServices } from '../../hooks/useAuthServices'
 import { AuthContextProvider, type SignInParams } from './context'
 
 import { useLogger } from '@/infra/logger/hooks/useLogger'
@@ -7,14 +8,13 @@ import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
 import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
-import { authenticateUser } from '@/modules/users/infra/services/authenticateUserService'
-import { validateAuthenticationParams } from '@/modules/users/infra/services/validateAuthenticationParams'
 
 const AUTH_PROVIDER_NAME = 'Providers.Auth'
 const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'
 
 const AuthProvider: React.PFC = ({ children }) => {
   const logger = useLogger(AUTH_PROVIDER_LOGGER_NAME)
+  const { authenticateUser, validateAuthenticationParams } = useAuthServices()
 
   const [user, setUser] = useUserMe()
   const [token, setToken] = useUserToken()

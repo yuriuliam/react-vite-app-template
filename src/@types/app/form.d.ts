@@ -28,10 +28,6 @@ declare global {
       | IPathFormField<TValue>
       | IFunctionFormField<TValue>
 
-    type FormFieldRegisterFn = <TValue>(
-      field: App.Infra.Form.FormField<TValue>,
-    ) => void
-
     type FormHandleSubmitFn = (event?: React.FormEvent<HTMLFormElement>) => void
 
     type FormOnSubmitFn<TData = any> = (
@@ -45,7 +41,7 @@ declare global {
       errors: App.Infra.Form.FormErrors
       scopePath: string
       getPersistedFieldValue: (fieldName: string) => any
-      registerField: App.Infra.Form.FormFieldRegisterFn
+      registerField: <TValue>(field: App.Infra.Form.FormField<TValue>) => void
       unregisterField: (name: string) => void
       clearFieldError: (fieldName: string) => void
       handleSubmit: React.FormEventHandler<HTMLFormElement>
