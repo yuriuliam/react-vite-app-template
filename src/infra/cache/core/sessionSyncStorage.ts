@@ -1,4 +1,4 @@
-import { SESSION_STORAGE_PREFIX } from '@/config/constants'
+import { SESSION_STORAGE_PREFIX } from '@/config/cache'
 
 import { createSyncStorage } from '@/data/cache/createSyncStorage'
 

@@ -3,6 +3,8 @@ import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
+import { LOCAL_STORAGE_PREFIX } from '@/config/cache'
+
 import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
 import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
@@ -41,8 +43,8 @@ describe('localSyncStorage', () => {
     expect(localSyncStorage.setItem).toBeCalledTimes(1)
     expect(localSyncStorage.setItem).toBeCalledWith(atomKey, newAtomValue)
 
-    expect(window.localStorage.getItem(`@App:${atomKey}`)).toBe(
-      JSON.stringify(newAtomValue),
-    )
+    expect(
+      window.localStorage.getItem(`${LOCAL_STORAGE_PREFIX}:${atomKey}`),
+    ).toBe(JSON.stringify(newAtomValue))
   })
 })

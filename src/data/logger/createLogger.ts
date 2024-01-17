@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import debug from 'debug'
 
-import { formatToLoggerTime } from '@/shared/utils/date-times'
+import { formatToLoggerTime } from '@/shared/utils/dateTimes'
 import { getMappedCallSites } from '@/shared/utils/runtime'
 
 const createAppOutput = (

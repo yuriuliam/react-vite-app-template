@@ -44,7 +44,7 @@ const formatPercentage = (
  *
  * If no locale is provided, the current one is assumed.
  *
- * If no currency is provided, `USD` is assumed.
+ * Default currency is `USD`.
  */
 const formatPrice = (
   price: number,
@@ -63,6 +63,17 @@ const isBetween = (value: number, min: number, max: number) =>
  * Checks if value is a non-NaN number.
  */
 const isNumber = (value: any): value is number =>
-  typeof value === 'number' && !isNaN(value)
+  typeof value === 'number' && !Number.isNaN(value)
 
-export { clamp, diff, formatPercentage, formatPrice, isBetween, isNumber }
+const isValueInRange = (value: number, min: number, max: number) =>
+  isNumber(value) && value >= min && value <= max
+
+export {
+  clamp,
+  diff,
+  formatPercentage,
+  formatPrice,
+  isBetween,
+  isNumber,
+  isValueInRange,
+}

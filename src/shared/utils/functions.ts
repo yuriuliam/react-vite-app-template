@@ -1,3 +1,10 @@
+import {
+  ASYNC_FUNCTION_PROTOTYPE,
+  ASYNC_GENERATOR_FUNCTION_PROTOTYPE,
+  FUNCTION_PROTOTYPE,
+  GENERATOR_FUNCTION_PROTOTYPE,
+} from '@/config/functions'
+
 type DebouncedFn<T extends (...args: any[]) => any> = (
   ...args: Parameters<T>
 ) => void
@@ -13,33 +20,6 @@ type MemoizeOptions<T extends (...args: any[]) => any> = {
    */
   ttl?: number | undefined
 }
-
-/**
- * A placeholder function with no operations
- */
-const NOOP: any = () => {}
-
-/**
- * Async Function Prototype Reference
- */
-const ASYNC_FUNCTION_PROTOTYPE = Object.getPrototypeOf(async function () {})
-
-/**
- * Async Generator Function Prototype Reference
- */
-const ASYNC_GENERATOR_FUNCTION_PROTOTYPE = Object.getPrototypeOf(
-  async function* () {},
-)
-
-/**
- * Function Prototype Reference
- */
-const FUNCTION_PROTOTYPE = Object.getPrototypeOf(function () {})
-
-/**
- * Generator Function Prototype Reference
- */
-const GENERATOR_FUNCTION_PROTOTYPE = Object.getPrototypeOf(function* () {})
 
 type MemoizedFn<T extends (...args: any[]) => any> = ((
   ...args: Parameters<T>
@@ -164,7 +144,6 @@ const memoize = <T extends (...args: any[]) => any>(
 }
 
 export {
-  NOOP,
   composed,
   debounced,
   isAsyncFunction,

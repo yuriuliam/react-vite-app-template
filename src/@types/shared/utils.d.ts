@@ -44,9 +44,10 @@ declare global {
     type EntryKey<T extends ObjectType> = T extends any[] ? string : keyof T
 
     /** Describes the value type of an ObjectType */
-    type ObjectValue<T extends ObjectType> = T extends Array<infer V>
-      ? V
-      : T[keyof T]
+    type ObjectValue<T extends ObjectType> =
+      T extends Array<infer V> ? V : T[keyof T]
+
+    type Timestamp = number
   }
 }
 

@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_PREFIX } from '@/config/constants'
+import { LOCAL_STORAGE_PREFIX } from '@/config/cache'
 
 import { createSyncStorage } from '@/data/cache/createSyncStorage'
 

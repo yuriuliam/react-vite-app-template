@@ -1,3 +1,18 @@
+import {
+  ARGB32_SIGNATURE,
+  CMYK_SIGNATURE,
+  HEX_SIGNATURE,
+  HEX_VALUE_REGEXP,
+  HSLA_SIGNATURE,
+  HSL_SIGNATURE,
+  HSV_SIGNATURE,
+  RGBA32_SIGNATURE,
+  RGBA_SIGNATURE,
+  RGB_SIGNATURE,
+} from '@/config/colors'
+
+import { isNumber, isValueInRange } from './numbers'
+
 type ARGB32 = number
 /**
  * Represents a red-green-blue key-value object.
@@ -12,7 +27,9 @@ type HSLA = HSL & { alpha: number }
 type HSV = { hue: number; saturation: number; vibrance: number }
 type CMYK = { cyan: number; magenta: number; yellow: number; key: number }
 
-type ColorParams<T, U> = Partial<Omit<U, keyof T>> & T
+type ColorParams<TParams, TParamsSuperset> = TParams &
+  Partial<Omit<TParamsSuperset, keyof TParams>>
+
 type RGBAParams = ColorParams<RGB, RGBA>
 type HSLAParams = ColorParams<HSL, HSLA>
 
@@ -30,20 +47,6 @@ type SupportedColorFormats =
 type MutateFn<T> = (params: T) => T
 type StringifyFn = () => string
 
-const HEX_VALUE_REGEXP = /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{8})$/
-
-// const COLOR_METADATA = Symbol.for('__Color_METADATA__')
-
-const ARGB32_SIGNATURE = Symbol.for('__ARGB_32BITS__')
-const CMYK_SIGNATURE = Symbol.for('__CMYK__')
-const HEX_SIGNATURE = Symbol.for('__HEX__')
-const HSL_SIGNATURE = Symbol.for('__HSL__')
-const HSLA_SIGNATURE = Symbol.for('__HSLA__')
-const HSV_SIGNATURE = Symbol.for('__HSV__')
-const RGB_SIGNATURE = Symbol.for('__RGB__')
-const RGBA_SIGNATURE = Symbol.for('__RGBA__')
-const RGBA32_SIGNATURE = Symbol.for('__RGBA_32BITS__')
-
 const COLOR_SIGNATURES = Object.freeze<Record<SupportedColorFormats, symbol>>({
   argb32: ARGB32_SIGNATURE,
   cmyk: CMYK_SIGNATURE,
@@ -56,12 +59,6 @@ const COLOR_SIGNATURES = Object.freeze<Record<SupportedColorFormats, symbol>>({
   rgba32: RGBA32_SIGNATURE,
 })
 
-const isNumeric = (value: any): value is number =>
-  typeof value === 'number' && !Number.isNaN(value)
-
-const isValueInRange = (value: number, min: number, max: number) =>
-  isNumeric(value) && value >= min && value <= max
-
 class Color {
   private readonly value: number
   private readonly signature: symbol
@@ -72,7 +69,7 @@ class Color {
   }
 
   public static argb32(value: number) {
-    if (!isNumeric(value)) throw Error('Given ARGB32 value is not a number')
+    if (!isNumber(value)) throw Error('Given ARGB32 value is not a number')
 
     return new Color(value, ARGB32_SIGNATURE)
   }
@@ -140,7 +137,7 @@ class Color {
   }
 
   public static rgba32(value: number) {
-    if (!isNumeric(value)) throw Error('Given RGBA32 value is not a number')
+    if (!isNumber(value)) throw Error('Given RGBA32 value is not a number')
 
     const rgbaValue = Color.rgba32ToRgba(value)
     const argbValue = Color.rgbaToArgb32(rgbaValue)
@@ -432,20 +429,23 @@ class Color {
   }
 
   public toCmyk() {
-    const rgba = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgba = Color.argb32ToRgba(argb)
     const rgb = Color.rgbaToRgb(rgba)
 
     return Color.rgbaToCmyk(rgb)
   }
 
   public toHex() {
-    const rgbaValue = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgbaValue = Color.argb32ToRgba(argb)
 
     return Color.rgbaToHex(rgbaValue)
   }
 
   public toHsl() {
-    const rgba = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgba = Color.argb32ToRgba(argb)
     const rgb = Color.rgbaToRgb(rgba)
     const { alpha, ...hslValue } = Color.rgbaToHsla({ ...rgb, alpha: 255 })
 
@@ -453,30 +453,35 @@ class Color {
   }
 
   public toHsla() {
-    const rgbaValue = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgbaValue = Color.argb32ToRgba(argb)
 
     return Color.rgbaToHsla(rgbaValue)
   }
 
   public toHsv() {
-    const rgbaValue = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgbaValue = Color.argb32ToRgba(argb)
     const rgbValue = Color.rgbaToRgb(rgbaValue)
 
     return Color.rgbToHsv(rgbValue)
   }
 
   public toRgb() {
-    const rgba = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgba = Color.argb32ToRgba(argb)
 
     return Color.rgbaToRgb(rgba)
   }
 
   public toRgba() {
-    return Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    return Color.argb32ToRgba(argb)
   }
 
   public toRgba32() {
-    const rgbaValue = Color.argb32ToRgba(this.value)
+    const argb = this.toArgb32()
+    const rgbaValue = Color.argb32ToRgba(argb)
 
     return Color.rgbaToRgba32(rgbaValue)
   }
@@ -494,6 +499,10 @@ class Color {
     const stringify = Reflect.get(this, formatSignature) as StringifyFn
 
     return stringify()
+  }
+
+  public valueOf() {
+    return this.toArgb32()
   }
 
   public *[Symbol.iterator]() {

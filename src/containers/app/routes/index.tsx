@@ -18,14 +18,14 @@ const Routes: React.FC = () => (
     <Route errorElement={<ErrorGuard />}>
       <Route element={<AuthGuard />}>
         <Route element={<AuthenticatedAppLayout />}>
-          <Route path={'/'} element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
         </Route>
       </Route>
 
       <Route>
-        <Route path={'/sign-in'} element={<SignInPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
 
-        <Route path={'/sign-out'} element={<SignOutPage />} />
+        <Route path="/sign-out" element={<SignOutPage />} />
       </Route>
     </Route>
   </AppRouter>

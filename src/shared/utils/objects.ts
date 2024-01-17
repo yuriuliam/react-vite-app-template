@@ -1,4 +1,4 @@
-const RECORD_PROTOTYPE = Object.getPrototypeOf({})
+import { RECORD_PROTOTYPE } from '@/config/objects'
 
 /**
  * Check if both objects have same keys and values.
