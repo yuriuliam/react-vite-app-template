@@ -1,4 +1,4 @@
-import { createLogger } from '@/data/logger/createLogger'
+import { createLogger } from '@/data/logger/core/createLogger'
 
 import { memoize } from '@/shared/utils/functions'
 

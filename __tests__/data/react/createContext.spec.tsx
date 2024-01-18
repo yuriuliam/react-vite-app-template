@@ -1,7 +1,7 @@
 import { render, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { createContext } from '@/data/react/createContext'
+import { createContext } from '@/data/react/core/createContext'
 
 import { createWrapper } from '#/__mocks__/react/wrappers'
 

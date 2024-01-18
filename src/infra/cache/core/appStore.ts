@@ -1,4 +1,4 @@
-import { createAppStore } from '@/data/cache/createAppStore'
+import { createAppStore } from '@/data/cache/core/createAppStore'
 
 const appStore = createAppStore()
 

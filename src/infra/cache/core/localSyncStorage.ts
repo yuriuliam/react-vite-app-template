@@ -1,6 +1,6 @@
 import { LOCAL_STORAGE_PREFIX } from '@/config/cache'
 
-import { createSyncStorage } from '@/data/cache/createSyncStorage'
+import { createSyncStorage } from '@/data/cache/core/createSyncStorage'
 
 const localSyncStorage = createSyncStorage(
   window.localStorage,

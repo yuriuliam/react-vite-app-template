@@ -1,6 +1,6 @@
 import { getGlobalLoggerInstance } from '@/infra/logger/core/getGlobalLoggerInstance'
 
-import { isDevelopmentMode } from '../utils/environment'
+import { isDevelopmentMode } from '../core/isDevelopmentMode'
 
 const logEnvironmentMeta = () => {
   if (!isDevelopmentMode()) return

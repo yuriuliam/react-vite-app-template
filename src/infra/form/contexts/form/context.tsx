@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from '@/data/react/createContext'
+import { createContext } from '@/data/react/core/createContext'
 
 const FORM_CONTEXT_NAME = 'App.Contexts.Forms'
 
