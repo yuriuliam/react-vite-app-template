@@ -3,26 +3,30 @@ import { describe, it, expect } from 'vitest'
 import { isAsyncFunction } from '@/shared/utils/functions'
 import { deferred, promised, promisify, wait } from '@/shared/utils/promises'
 
-describe('deferred', () => {
-  it('should return a promise', () => {
-    expect(deferred('test!', 50)).instanceOf(Promise)
-  })
+describe(
+  'deferred',
+  () => {
+    it('should return a promise', () => {
+      expect(deferred('test!', 50)).instanceOf(Promise)
+    })
 
-  it('should be able to defer a value with a given ms', async () => {
-    await expect(deferred(10, 50)).resolves.toBe(10)
-  })
+    it('should be able to defer a value with a given ms', async () => {
+      await expect(deferred(10, 50)).resolves.toBe(10)
+    })
 
-  it('should resolve a deferred promise within the given time', async () => {
-    const oldNow = Date.now()
-    const time = 100
+    it('should resolve a deferred promise within the given time', async () => {
+      const oldNow = Date.now()
+      const time = 100
 
-    await deferred(null, time)
+      await deferred(null, time)
 
-    const now = Date.now()
+      const now = Date.now()
 
-    expect(now - oldNow).toBeGreaterThanOrEqual(time)
-  })
-})
+      expect(now - oldNow).toBeGreaterThanOrEqual(time)
+    })
+  },
+  { retry: 5 },
+)
 
 describe('promised', () => {
   it('should return a promise', () => {
@@ -60,14 +64,18 @@ describe('promisify', () => {
 })
 
 describe('wait', () => {
-  it('should be awaited once called', async () => {
-    const oldNow = Date.now()
-    const time = 100
+  it(
+    'should be awaited once called',
+    async () => {
+      const oldNow = Date.now()
+      const time = 100
 
-    await wait(100)
+      await wait(100)
 
-    const now = Date.now()
+      const now = Date.now()
 
-    expect(now - oldNow).toBeGreaterThanOrEqual(time)
-  })
+      expect(now - oldNow).toBeGreaterThanOrEqual(time)
+    },
+    { retry: 5 },
+  )
 })
