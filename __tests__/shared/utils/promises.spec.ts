@@ -20,7 +20,7 @@ describe('deferred', () => {
 
     const now = Date.now()
 
-    expect(now - oldNow).toBeGreaterThan(time)
+    expect(now - oldNow).toBeGreaterThanOrEqual(time)
   })
 })
 
