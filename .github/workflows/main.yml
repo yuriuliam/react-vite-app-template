@@ -6,37 +6,24 @@ on:
     branches:    
       - main
 
-x-commons:
-  node_version: &node_version 20
-
-  steps:
-    - checkout-step: &checkout_steps
-      name: Checkout
-      uses: actions/checkout@v3
-
-    - install-node-step: &install_node_steps
-      name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: *node_version
-
-    - install-pnpm-step: &install_pnpm_steps
-      name: Install Pnpm
-      run: npm install pnpm@8 -g
-
-    - install-deps-step: &install_deps_steps
-      name: Install dependencies
-      run: pnpm install --frozen-lockfile
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - *checkout_steps
-      - *install_node_steps
-      - *install_pnpm_steps
-      - *install_deps_steps
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        run: npm install pnpm@8 -g
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run build
         run: pnpm build
@@ -45,10 +32,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - *checkout_steps
-      - *install_node_steps
-      - *install_pnpm_steps
-      - *install_deps_steps
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        run: npm install pnpm@8 -g
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run Lint
         run: pnpm lint
@@ -57,10 +53,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - *checkout_steps
-      - *install_node_steps
-      - *install_pnpm_steps
-      - *install_deps_steps
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        run: npm install pnpm@8 -g
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run tests
         run: pnpm test
