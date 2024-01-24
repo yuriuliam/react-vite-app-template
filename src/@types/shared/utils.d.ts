@@ -1,11 +1,4 @@
 declare global {
-  /**
-   * ### This is part of the app types.
-   *
-   * It describes a set of utility types,
-   * avoiding possible typing gymnastics in `.ts(x)`
-   * and repetitive declarations.
-   */
   declare namespace App {
     /** Describes an Asynchronous Method. */
     type AsyncFunctionLike = (...args: any[]) => Promise<any>

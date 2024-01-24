@@ -1,14 +1,11 @@
-import { AppError } from '@/shared/errors/AppError'
+import { ValidationError } from './ValidationError'
 
-class ModelValidationError extends AppError {
+class ModelValidationError extends ValidationError {
   public constructor(
     public validationMessages: App.Infra.Validation.ErrorMessages,
     validationError: unknown,
   ) {
-    super(
-      'An error occurred when trying to access a resource.',
-      validationError,
-    )
+    super(validationError)
   }
 }
 

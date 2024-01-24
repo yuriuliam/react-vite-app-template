@@ -5,15 +5,15 @@ import { ModelValidationError } from '@/data/validation/errors/ModelValidationEr
 type ModelType = z.ZodType<any, any, any>
 type ModelParams<TModel extends ModelType> = z.infer<TModel>
 
-type CreateValidatorOptions<TModel extends ModelType> = {
+interface ICreateValidatorOptions<TModel extends ModelType> {
   model: TModel
   parseErrors: App.Infra.Validation.IErrorParser
 }
 
-const createValidator = <TModel extends ModelType>({
+const createModelValidator = <TModel extends ModelType>({
   model,
   parseErrors,
-}: CreateValidatorOptions<TModel>) => {
+}: ICreateValidatorOptions<TModel>) => {
   return (params: ModelParams<TModel>) => {
     try {
       model.parse(params)
@@ -23,4 +23,4 @@ const createValidator = <TModel extends ModelType>({
   }
 }
 
-export { createValidator }
+export { createModelValidator }

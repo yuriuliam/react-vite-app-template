@@ -1,10 +1,10 @@
-import { createValidator } from '@/data/validation/core/createValidator'
+import { createModelValidator } from '@/data/validation/core/createModelValidator'
 
 import { parseZodErrors } from '@/infra/validation/core/parseZodErrors'
 
 import { AuthenticationParamsModel } from '../../models/AuthenticationParamsModel'
 
-const validateAuthenticationParams = createValidator({
+const validateAuthenticationParams = createModelValidator({
   model: AuthenticationParamsModel,
   parseErrors: parseZodErrors,
 })

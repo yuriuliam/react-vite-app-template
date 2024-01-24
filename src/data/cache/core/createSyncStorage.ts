@@ -1,27 +1,27 @@
 import { createJSONStorage } from 'jotai/utils'
 
 const createSyncStorage = (
-  baseStorage: Storage,
-  prefix: string,
+  baseStorage: App.Infra.Cache.IStorageLike,
+  prefix?: string | null | undefined,
 ): App.Infra.Cache.ISyncStorage => {
-  const getAppStorageKey = (key: string) => `${prefix}:${key}`
+  const getStorageKey = (key: string) => (prefix ? `${prefix}:${key}` : key)
 
   const getItem = (key: string) => {
-    const appKey = getAppStorageKey(key)
+    const internalKey = getStorageKey(key)
 
-    return baseStorage.getItem(appKey)
+    return baseStorage.getItem(internalKey)
   }
 
   const removeItem = (key: string) => {
-    const appKey = getAppStorageKey(key)
+    const internalKey = getStorageKey(key)
 
-    baseStorage.removeItem(appKey)
+    baseStorage.removeItem(internalKey)
   }
 
   const setItem = (key: string, value: string) => {
-    const appKey = getAppStorageKey(key)
+    const internalKey = getStorageKey(key)
 
-    baseStorage.setItem(appKey, value)
+    baseStorage.setItem(internalKey, value)
   }
 
   const storage = createJSONStorage(() => ({
