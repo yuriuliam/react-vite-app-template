@@ -17,7 +17,7 @@ const logWebVitals = async () => {
     logger.log({
       name: 'App',
       title: data.name,
-      content: `Logging received data | Rating: ${data.rating}`,
+      content: `Rating: ${data.rating}`,
       data,
       style: 'default',
     })
