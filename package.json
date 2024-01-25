@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "benchmark": "vitest bench ./__tests__",
+    "benchmark": "vitest bench ./__tests__ --run",
     "test": "vitest ./__tests__ --run",
     "test:watch": "vitest ./__tests__",
     "test:coverage": "vitest ./__tests__ --coverage --run",
