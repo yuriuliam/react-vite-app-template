@@ -11,12 +11,13 @@ import { useGlobalLogger } from '@/infra/logger/hooks/useGlobalLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 const ERROR_GUARD_NAME = 'App.Guards.Error'
+const ERROR_GUARD_LOGGER_NAME = 'guards:error'
 
 /**
  * A middleware for possible application errors.
  */
 const ErrorGuard: React.FC = () => {
-  const logger = useGlobalLogger()
+  const logger = useGlobalLogger(ERROR_GUARD_LOGGER_NAME)
   const navigate = useNavigate()
   const errorFromRoutes = useRouteError()
 
@@ -30,7 +31,6 @@ const ErrorGuard: React.FC = () => {
     if (isRouteError) return
 
     logger.error({
-      name: ERROR_GUARD_NAME,
       content: 'Non-router error caught!',
       data: { error: errorFromRoutes },
     })

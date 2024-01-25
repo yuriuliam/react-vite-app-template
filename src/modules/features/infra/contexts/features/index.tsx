@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useSet } from '@/infra/react/hooks/useSet'
 
@@ -10,10 +9,8 @@ import { useFeaturesServices } from '../../hooks/useFeaturesServices'
 import { FeaturesContextProvider } from './context'
 
 const FEATURES_PROVIDER_NAME = 'Providers.Features'
-const FEATURES_PROVIDER_LOGGER_NAME = 'providers:features'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
-  const logger = useLogger(FEATURES_PROVIDER_LOGGER_NAME)
   const { loadFeatures } = useFeaturesServices()
 
   const { isAuthenticated, token } = useAuth(FEATURES_PROVIDER_NAME)
@@ -21,26 +18,10 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   const features = useSet<App.Modules.Features.FeatureModel>()
 
   const addFeatures = useCallbackRef((...ids: string[]) => {
-    logger.log({
-      name: FEATURES_PROVIDER_NAME,
-      title: 'addFeatures::()',
-      content: `Adding ${ids.length} feature(s)`,
-      data: ids,
-    })
-
     features.add(...ids.filter(id => !features.has(id)))
   })
 
   const clearFeatures = useCallbackRef(() => {
-    const currentFeatures = Array.from(features.values())
-
-    logger.log({
-      name: FEATURES_PROVIDER_NAME,
-      title: 'clearFeatures::()',
-      content: `Clearing ${currentFeatures.length} feature(s)`,
-      data: currentFeatures,
-    })
-
     features.clear()
   })
 
@@ -49,27 +30,13 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   )
 
   const removeFeatures = useCallbackRef((...ids: string[]) => {
-    logger.log({
-      name: FEATURES_PROVIDER_NAME,
-      title: 'removeFeatures::()',
-      content: `Removing ${ids.length} feature(s)`,
-      data: ids,
-    })
-
     features.delete(...ids.filter(id => features.has(id)))
   })
 
   const fetchFeatures = useCallbackRef(async (authToken: string) => {
     const features = await loadFeatures(authToken)
 
-    if (!features) {
-      logger.error({
-        name: FEATURES_PROVIDER_NAME,
-        content: "Couldn't fetch user features",
-      })
-
-      return
-    }
+    if (!features) return
 
     addFeatures(...features)
   })

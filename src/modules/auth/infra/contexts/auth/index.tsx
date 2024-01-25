@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
@@ -10,10 +9,8 @@ import { useAuthServices } from '../../hooks/useAuthServices'
 import { AuthContextProvider } from './context'
 
 const AUTH_PROVIDER_NAME = 'Providers.Auth'
-const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'
 
 const AuthProvider: React.PFC = ({ children }) => {
-  const logger = useLogger(AUTH_PROVIDER_LOGGER_NAME)
   const { authenticateUser, validateAuthenticationParams } = useAuthServices()
 
   const [user, setUser] = useUserMe()
@@ -28,12 +25,6 @@ const AuthProvider: React.PFC = ({ children }) => {
       const data = await authenticateUser(params)
 
       if (!data) {
-        logger.error({
-          name: AUTH_PROVIDER_NAME,
-          content: "Couldn't authenticate user",
-          data,
-        })
-
         setToken(null)
         setUser(null)
         return
@@ -47,12 +38,6 @@ const AuthProvider: React.PFC = ({ children }) => {
   )
 
   const signOut = useCallbackRef(() => {
-    logger.log({
-      name: AUTH_PROVIDER_NAME,
-      title: 'signOut::()',
-      content: "clearing current user's session",
-    })
-
     setToken(null)
     setUser(null)
   })

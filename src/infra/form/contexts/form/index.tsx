@@ -2,20 +2,16 @@ import React from 'react'
 
 import dot from 'dot-object'
 
-import { useLogger } from '@/infra/logger/hooks/useLogger'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { FormContextProvider } from './context'
 
 const FORM_PROVIDER_NAME = 'Providers.Form'
-const FORM_PROVIDER_LOGGER_NAME = 'providers:form'
 
 const FormProvider = React.forwardRef<
   App.Infra.Form.IFormHandlers,
   App.Infra.Form.IFormProviderProps
 >(({ children, initialData, onSubmit: onFormSubmit }, formRef) => {
-  const logger = useLogger(FORM_PROVIDER_LOGGER_NAME)
-
   const fields = React.useRef<App.Infra.Form.FormField[]>([])
   const persistedData = React.useRef<Record<string, any>>({})
 
@@ -220,14 +216,6 @@ const FormProvider = React.forwardRef<
       handleSubmit()
     },
   }))
-
-  React.useEffect(() => {
-    logger.log({
-      title: 'FormProvider',
-      content: 'Form Registered!',
-      data: { initialData },
-    })
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <FormContextProvider

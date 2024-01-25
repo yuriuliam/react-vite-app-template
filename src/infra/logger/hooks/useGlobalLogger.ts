@@ -6,7 +6,9 @@ import { getGlobalLoggerInstance } from '../core/getGlobalLoggerInstance'
  * An immutable instance of the Global Logger which can be called
  * within a component.
  */
-const useGlobalLogger = () =>
-  useConst(globalThis.logger ?? getGlobalLoggerInstance())
+const useGlobalLogger = (subNamespace?: string | undefined) =>
+  useConst(
+    subNamespace ? getGlobalLoggerInstance(subNamespace) : globalThis.logger,
+  )
 
 export { useGlobalLogger }
