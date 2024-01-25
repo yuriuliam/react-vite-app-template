@@ -15,10 +15,11 @@ import { Button } from '../shared/components/Button'
 const SIGN_IN_NAME = 'SignIn.Root'
 
 const SignInPage: React.FC = () => {
-  const defaultAuthParams = useConst({
-    email: 'Lukas_Kirlin@yahoo.com',
-    password: 'limivuro',
-  } satisfies App.Modules.Auth.AuthenticationParamsModel)
+  const defaultAuthParams =
+    useConst<App.Modules.Auth.AuthenticationParamsModel>({
+      email: 'Lukas_Kirlin@yahoo.com',
+      password: 'limivuro',
+    })
 
   const { isAuthenticated, signIn } = useAuth(SIGN_IN_NAME)
 
@@ -50,6 +51,7 @@ const SignInPage: React.FC = () => {
               label="Email"
               name="email"
               type="email"
+              placeholder="Insert your email"
             />
 
             <Input
@@ -57,6 +59,7 @@ const SignInPage: React.FC = () => {
               label="Password"
               name="password"
               type="password"
+              placeholder="Insert your password"
             />
           </Flex>
 

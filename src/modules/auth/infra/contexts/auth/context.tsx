@@ -1,13 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext } from '@/data/react/core/createContext'
 
-type SignInParams = {
-  email: string
-  password: string
-}
-
 interface IAuthContextData {
-  signIn: (params: SignInParams) => Promise<void>
+  signIn: (params: App.Modules.Auth.AuthenticationParamsModel) => Promise<void>
   signOut: () => void
   isAuthenticated: boolean
   user: App.Modules.User.UserModel | null
@@ -22,4 +17,3 @@ const [AuthContextProvider, useAuth] = createContext<IAuthContextData>(
 )
 
 export { AuthContextProvider, useAuth }
-export type { SignInParams }

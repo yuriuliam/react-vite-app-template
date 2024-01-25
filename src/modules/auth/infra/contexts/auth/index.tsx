@@ -7,7 +7,7 @@ import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
 import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
 
 import { useAuthServices } from '../../hooks/useAuthServices'
-import { AuthContextProvider, type SignInParams } from './context'
+import { AuthContextProvider } from './context'
 
 const AUTH_PROVIDER_NAME = 'Providers.Auth'
 const AUTH_PROVIDER_LOGGER_NAME = 'providers:auth'
@@ -21,28 +21,30 @@ const AuthProvider: React.PFC = ({ children }) => {
 
   const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
 
-  const signIn = useCallbackRef(async (params: SignInParams) => {
-    validateAuthenticationParams(params)
+  const signIn = useCallbackRef(
+    async (params: App.Modules.Auth.AuthenticationParamsModel) => {
+      validateAuthenticationParams(params)
 
-    const data = await authenticateUser(params)
+      const data = await authenticateUser(params)
 
-    if (!data) {
-      logger.error({
-        name: AUTH_PROVIDER_NAME,
-        content: "Couldn't authenticate user",
-        data,
-      })
+      if (!data) {
+        logger.error({
+          name: AUTH_PROVIDER_NAME,
+          content: "Couldn't authenticate user",
+          data,
+        })
 
-      setToken(null)
-      setUser(null)
-      return
-    }
+        setToken(null)
+        setUser(null)
+        return
+      }
 
-    const { token, ...authUser } = data
+      const { token, ...authUser } = data
 
-    setUser(authUser)
-    setToken(token)
-  })
+      setUser(authUser)
+      setToken(token)
+    },
+  )
 
   const signOut = useCallbackRef(() => {
     logger.log({
