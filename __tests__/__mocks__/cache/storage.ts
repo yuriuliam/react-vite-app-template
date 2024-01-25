@@ -6,6 +6,7 @@ interface IStorageLike {
   key: (index: number) => string | null
   removeItem: (key: string) => void
   setItem: (key: string, value: string) => void
+  readonly length: number
 }
 
 const createStorageMock = (cache: Map<string, string> = new Map()) => {
@@ -23,7 +24,21 @@ const createStorageMock = (cache: Map<string, string> = new Map()) => {
     (index: number) => Array.from(cache.keys()).at(index) ?? null,
   )
 
-  return { clear, getItem, key, removeItem, setItem } satisfies IStorageLike
+  const storageMock = {
+    clear,
+    getItem,
+    key,
+    removeItem,
+    setItem,
+    length: 0,
+  } satisfies IStorageLike
+
+  Reflect.defineProperty(storageMock, 'length', {
+    get: () => cache.size,
+    configurable: false,
+  })
+
+  return storageMock
 }
 
 export { createStorageMock }
