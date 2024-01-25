@@ -21,18 +21,20 @@ const FormProvider = React.forwardRef<
 
   const [errors, setErrors] = React.useState<App.Infra.Form.FormErrors>({})
 
-  const getPersistedFieldValue = useCallbackRef((fieldName: string) =>
+  const getPersistedValue = useCallbackRef((fieldName: string) =>
     dot.pick(fieldName, persistedData.current),
   )
 
-  const setPersistedFieldValue = useCallbackRef(
-    (fieldName: string, value: any) => {
-      dot.set(fieldName, value, persistedData.current)
-    },
-  )
+  const setPersistentValue = useCallbackRef((fieldName: string, value: any) => {
+    dot.set(fieldName, value, persistedData.current)
+  })
 
   const clearFieldValue = useCallbackRef(
-    ({ clearValue, ref, path }: App.Infra.Form.FormField) => {
+    ({ clearValue, name, ref, path }: App.Infra.Form.FormField) => {
+      if (!!clearValue || path) {
+        setPersistentValue(name, '')
+      }
+
       if (clearValue) {
         clearValue(ref, '')
         return
@@ -57,7 +59,14 @@ const FormProvider = React.forwardRef<
   )
 
   const setFieldValue = useCallbackRef(
-    ({ path, ref, setValue }: App.Infra.Form.FormField, value: any) => {
+    (
+      { path, ref, setValue, name, persist }: App.Infra.Form.FormField,
+      value: any,
+    ) => {
+      if (persist && (!!setValue || path)) {
+        setPersistentValue(name, value)
+      }
+
       if (setValue) {
         setValue(ref, value)
         return undefined
@@ -71,6 +80,10 @@ const FormProvider = React.forwardRef<
 
   const reset = useCallbackRef((data: Record<any, any> = {}) => {
     fields.current.forEach(({ name, ref, path, clearValue }) => {
+      if (!!clearValue || path) {
+        setPersistentValue(name, '')
+      }
+
       if (clearValue) {
         clearValue(ref, data[name])
         return
@@ -112,10 +125,6 @@ const FormProvider = React.forwardRef<
     fields.current.forEach(field => {
       const fieldValue = getFieldValue(field)
       data[field.name] = fieldValue
-
-      if (!field.persist) return
-
-      setPersistedFieldValue(field.name, fieldValue)
     })
 
     dot.object(data)
@@ -135,6 +144,12 @@ const FormProvider = React.forwardRef<
 
   const registerField = useCallbackRef((field: App.Infra.Form.FormField) => {
     fields.current.push(field)
+
+    const value = getPersistedValue(field.name)
+
+    if (typeof value === 'undefined') return
+
+    setFieldValue(field, value)
   })
 
   const unregisterField = useCallbackRef((fieldName: string) => {
@@ -143,13 +158,6 @@ const FormProvider = React.forwardRef<
     )
 
     if (fieldIndex < 0) return
-
-    const field = fields.current.at(fieldIndex)!
-
-    if (field.persist) {
-      const fieldValue = getFieldValue(field)
-      setPersistedFieldValue(field.name, fieldValue)
-    }
 
     fields.current.splice(fieldIndex, 1)
   })
@@ -224,7 +232,6 @@ const FormProvider = React.forwardRef<
   return (
     <FormContextProvider
       initialData={initialData}
-      getPersistedFieldValue={getPersistedFieldValue}
       errors={errors}
       scopePath=""
       registerField={registerField}

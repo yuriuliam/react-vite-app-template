@@ -40,7 +40,6 @@ declare global {
       initialData: Record<string, any>
       errors: App.Infra.Form.FormErrors
       scopePath: string
-      getPersistedFieldValue: (fieldName: string) => any
       registerField: <TValue>(field: App.Infra.Form.FormField<TValue>) => void
       unregisterField: (name: string) => void
       clearFieldError: (fieldName: string) => void

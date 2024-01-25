@@ -6,13 +6,14 @@ import { useFormField } from '../../hooks/useFormField'
 
 type HTMLInputProps = React.ComponentProps<'input'> & {
   name: string
-  label: string
+  label?: string | undefined
+  persistent?: boolean | undefined
 }
 
 const INPUT_NAME = 'Forms.Components.Input'
 
 const Input = React.forwardRef<HTMLInputElement, HTMLInputProps>(
-  ({ name, label, ...rest }, ref) => {
+  ({ name, label, persistent = false, ...rest }, ref) => {
     const internalRef = React.useRef<HTMLInputElement>(null)
     const inputRef = useComposedRef(internalRef, ref)
 
@@ -25,15 +26,16 @@ const Input = React.forwardRef<HTMLInputElement, HTMLInputProps>(
       registerField({
         name: fieldName,
         ref: internalRef,
+        persist: persistent,
         getValue: ref => ref.current.value,
         setValue: (ref, value) => void (ref.current.value = value),
         clearValue: ref => void (ref.current.value = ''),
       })
-    }, [fieldName, registerField])
+    }, [fieldName, registerField, persistent])
 
     return (
       <>
-        <label htmlFor={fieldName}>{label}</label>
+        {label && <label htmlFor={fieldName}>{label}</label>}
 
         <input
           {...rest}
