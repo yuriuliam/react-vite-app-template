@@ -1,6 +1,6 @@
 import { createFakeFeatureFlags } from '@/shared/utils/faker'
 
-import { FeatureModel } from '../../models/FeatureModel'
+import { FeaturesModel } from '../../models/FeaturesModel'
 
 /** @deprecated This is a faker!! */
 const requestFeatures = async () => {
@@ -24,7 +24,7 @@ const createLoadFeaturesService = (_httpClient: App.Infra.Http.IHttpClient) => {
 
       const data = await requestFeatures()
 
-      return FeatureModel.parse(data)
+      return FeaturesModel.parse(data)
     } catch (error) {
       return null
     }

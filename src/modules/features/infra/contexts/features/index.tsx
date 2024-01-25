@@ -33,7 +33,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
     features.delete(...ids.filter(id => features.has(id)))
   })
 
-  const fetchFeatures = useCallbackRef(async (authToken: string) => {
+  const fetchFeaturesEffect = useCallbackRef(async (authToken: string) => {
     const features = await loadFeatures(authToken)
 
     if (!features) return
@@ -44,8 +44,8 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   React.useEffect(() => {
     if (!token) return
 
-    void fetchFeatures(token)
-  }, [fetchFeatures, token])
+    void fetchFeaturesEffect(token)
+  }, [fetchFeaturesEffect, token])
 
   // If Client sign-out we want to clear up all feature flags.
   React.useEffect(() => {
