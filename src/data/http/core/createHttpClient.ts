@@ -1,6 +1,6 @@
 import axios, { isAxiosError } from 'axios'
 
-import { HttpError } from '@/shared/errors/HttpError'
+import { HttpError } from '@/data/http/errors/HttpError'
 
 const createHttpClient = (baseURL: string): App.Infra.Http.IHttpClient => {
   const httpClient = axios.create({ baseURL })

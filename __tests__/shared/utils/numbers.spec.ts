@@ -14,7 +14,7 @@ describe('clamp', () => {
     const value = 10
     const min = 20
 
-    const result = clamp(value, min)
+    const result = clamp({ value, min })
 
     expect(result).toBe(20)
   })
@@ -23,7 +23,7 @@ describe('clamp', () => {
     const value = 80
     const max = 50
 
-    const result = clamp(value, undefined, max)
+    const result = clamp({ value, max })
 
     expect(result).toBe(50)
   })

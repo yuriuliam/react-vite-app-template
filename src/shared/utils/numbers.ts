@@ -10,11 +10,11 @@ const INTL_PRICE_OPTS = Object.freeze<Intl.NumberFormatOptions>({
 /**
  * Clamps a value based on given minimum and maximum values.
  */
-const clamp = (
-  value: number,
-  min: number | undefined = Number.MIN_SAFE_INTEGER,
-  max: number | undefined = Number.MAX_SAFE_INTEGER,
-) => Math.max(min, Math.min(max, value))
+const clamp = ({
+  value = 0,
+  min = Number.MIN_SAFE_INTEGER,
+  max = Number.MAX_SAFE_INTEGER,
+}) => Math.max(min, Math.min(max, value))
 
 /**
  * Returns the difference between given values.

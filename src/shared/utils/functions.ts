@@ -131,7 +131,7 @@ const memoize = <T extends (...args: any[]) => any>(
     const result = method(...args)
     cache.set(paramsKey, result)
 
-    if (ttl > 0) setTimeout(() => cache.delete(paramsKey), ttl)
+    if (ttl > 0) setTimeout(cache.delete.bind(cache), ttl, paramsKey)
 
     return result
   }

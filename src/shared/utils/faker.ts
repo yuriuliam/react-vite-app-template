@@ -8,7 +8,7 @@ const createFakeFeatureFlags = async (shouldBeDeterministic = false) => {
 
   if (shouldBeDeterministic) faker.seed(STATIC_SEED)
 
-  return new Array<string>(FAKE_DATA_LENGTH)
+  return new Array(FAKE_DATA_LENGTH)
     .fill('FF')
     .map(featureFlagPrefix =>
       [featureFlagPrefix, faker.word.sample(), faker.word.verb()].join('_'),

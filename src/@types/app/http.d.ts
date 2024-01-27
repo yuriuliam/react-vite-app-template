@@ -18,6 +18,7 @@ declare global {
       method: RequestMethods
       params?: unknown | undefined
       uri: string
+      withCredentials?: boolean | undefined
     }
 
     type RequestOptionsWithoutData = Omit<BaseRequestOptions, 'data'>

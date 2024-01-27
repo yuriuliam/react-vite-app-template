@@ -571,3 +571,4 @@ const rgba = Color.rgba.bind(Color)
 const rgba32 = Color.rgba32.bind(Color)
 
 export { argb32, cmyk, hex, hsla, hsv, rgba, rgba32 }
+export type { Color }

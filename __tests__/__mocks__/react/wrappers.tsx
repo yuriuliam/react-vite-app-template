@@ -6,11 +6,9 @@ import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
 import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
 
 const createWrapper = (Component: React.PFC) => {
-  const ProviderWrapper: React.PFC = ({ children }) => (
-    <Component>{children}</Component>
-  )
+  const Wrapper: React.PFC = ({ children }) => <Component>{children}</Component>
 
-  return ProviderWrapper
+  return Wrapper
 }
 
 const createAuthWrapper = createWrapper.bind(null, AuthProvider)
