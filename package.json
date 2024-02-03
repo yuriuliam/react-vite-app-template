@@ -34,6 +34,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
+    "strip-ansi": "^7.1.0",
     "styled-components": "^6.1.8",
     "use-sync-external-store": "^1.2.0",
     "web-vitals": "^3.5.2",

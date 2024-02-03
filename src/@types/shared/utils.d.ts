@@ -41,6 +41,13 @@ declare global {
       T extends Array<infer V> ? V : T[keyof T]
 
     type Timestamp = number
+
+    type FormattedDateTime = string
+
+    type IFormatDateTimeFn = (
+      value?: Date | App.Timestamp | undefined,
+      locale?: App.Locale,
+    ) => FormattedDateTime
   }
 }
 

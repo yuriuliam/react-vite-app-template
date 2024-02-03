@@ -5,7 +5,7 @@ import { FormContextConsumer } from '../../contexts/form/context'
 
 type HTMLFormProps = React.ComponentProps<'form'>
 
-type FormProps = App.Infra.Form.IFormProviderProps &
+type FormProps = App.Infra.Form.FormProviderProps &
   Omit<HTMLFormProps, 'onSubmit'>
 
 const FORM_NAME = 'Forms.Components.Form'

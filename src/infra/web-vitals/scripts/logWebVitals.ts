@@ -11,7 +11,7 @@ const logWebVitals = async () => {
 
   if (!isDevelopmentMode()) return
 
-  const logger = createLogger('web-vitals')
+  const logger = createLogger({ baseNamespace: 'web-vitals' })
 
   const logWebVital: ReportCallback = data => {
     logger.log({

@@ -61,7 +61,7 @@ declare global {
       submitForm: () => void
     }
 
-    interface IFormProviderProps {
+    type FormProviderProps = {
       initialData?: Record<string, any>
       children: React.ReactNode
       onSubmit: App.Infra.Form.FormOnSubmitFn

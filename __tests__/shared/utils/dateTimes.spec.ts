@@ -1,10 +1,8 @@
 import { describe, it, expect } from 'vitest'
 
-import {
-  formatToHoursAndMinutes,
-  formatToLoggerTime,
-  formatToTime,
-} from '@/shared/utils/dateTimes'
+import { formatToLoggerTime } from '@/data/logger/utils/formatToLoggerTime'
+
+import { formatToHoursAndMinutes, formatToTime } from '@/shared/utils/dateTimes'
 
 describe('formatToHour', () => {
   it('should be able to format date-parsable values', () => {

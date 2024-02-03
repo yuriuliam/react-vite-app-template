@@ -10,7 +10,7 @@ const FORM_PROVIDER_NAME = 'Providers.Form'
 
 const FormProvider = React.forwardRef<
   App.Infra.Form.IFormHandlers,
-  App.Infra.Form.IFormProviderProps
+  App.Infra.Form.FormProviderProps
 >(({ children, initialData, onSubmit: onFormSubmit }, formRef) => {
   const fields = React.useRef<App.Infra.Form.FormField[]>([])
   const persistedData = React.useRef<Record<string, any>>({})

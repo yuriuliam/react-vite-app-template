@@ -17,6 +17,7 @@ const createEventAdapterMock = (
     if (listenersToEvent.has(listener)) return
 
     listenersToEvent.add(listener)
+    listeners.set(type, listenersToEvent)
   })
 
   const removeEventListener = vi.fn((type: string, listener: EventListener) => {
