@@ -2,7 +2,7 @@ import { LOGGER_NAME_PROD } from '@/config/logger'
 
 import { createLogger } from '@/data/logger/core/createLogger'
 
-import { loggerEventHandler } from '@/infra/event/loggerEventHandler'
+import { loggerEventHandler } from '@/infra/logger/events/loggerEventHandler'
 
 import { memoize } from '@/shared/utils/functions'
 
