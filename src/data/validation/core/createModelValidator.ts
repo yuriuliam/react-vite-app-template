@@ -7,7 +7,7 @@ type ModelParams<TModel extends ModelType> = z.infer<TModel>
 
 interface ICreateValidatorOptions<TModel extends ModelType> {
   model: TModel
-  parseErrors: App.Infra.Validation.IErrorParser
+  parseErrors: (error: unknown) => App.Infra.Validation.ErrorMessages
 }
 
 const createModelValidator = <TModel extends ModelType>({

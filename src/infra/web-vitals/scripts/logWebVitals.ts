@@ -1,6 +1,5 @@
-import { createLogger } from '@/data/logger/core/createLogger'
-
 import { isDevelopmentMode } from '@/infra/environment/core/isDevelopmentMode'
+import { getGlobalLoggerInstance } from '@/infra/logger/core/getGlobalLoggerInstance'
 
 import type { ReportCallback } from 'web-vitals'
 
@@ -11,7 +10,7 @@ const logWebVitals = async () => {
 
   if (!isDevelopmentMode()) return
 
-  const logger = createLogger({ baseNamespace: 'web-vitals' })
+  const logger = getGlobalLoggerInstance('web-vitals')
 
   const logWebVital: ReportCallback = data => {
     logger.log({

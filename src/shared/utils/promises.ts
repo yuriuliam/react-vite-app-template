@@ -5,7 +5,7 @@ import { isFunction } from './functions'
  * of milliseconds.
  */
 const deferred = async <T>(value: T, ms: number) =>
-  await new Promise<T>(resolve => setTimeout(resolve, ms, value))
+  await new Promise<T>(resolve => void setTimeout(resolve, ms, value))
 
 /**
  * Puts the value into a Promise. It can receives an Initializer function

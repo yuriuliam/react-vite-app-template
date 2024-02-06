@@ -2,7 +2,8 @@ import React from 'react'
 
 type ContextProvider<TProps = any> = React.PFC<Partial<TProps>>
 
-const CREATE_CONTEXT_PROVIDER_PREFIX = 'App.ContextProvider'
+const CREATE_CONTEXT_PREFIX = 'App.Context'
+const CREATE_CONTEXT_PROVIDER_PREFIX = 'Provider'
 
 /**
  * A small but useful wrapper React's createContext.
@@ -32,7 +33,7 @@ function createContext<T extends Record<string, any>>(
   componentName: string,
 ) {
   const Context = React.createContext(initialValue!)
-  Context.displayName = `App.Contexts.${componentName}`
+  Context.displayName = `${CREATE_CONTEXT_PREFIX}.${componentName}`
 
   const Provider: ContextProvider<T> = ({ children, ...rest }) => {
     const values = (Object.keys(rest).length ? rest : initialValue) as T

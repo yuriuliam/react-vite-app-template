@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { afterEach, vi } from 'vitest'
 
 interface IStorageLike {
   clear: () => void
@@ -36,6 +36,14 @@ const createStorageMock = (cache: Map<string, string> = new Map()) => {
   Reflect.defineProperty(storageMock, 'length', {
     get: () => cache.size,
     configurable: false,
+  })
+
+  afterEach(() => {
+    clear.mockClear()
+    getItem.mockClear()
+    removeItem.mockClear()
+    setItem.mockClear()
+    key.mockClear()
   })
 
   return storageMock

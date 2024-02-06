@@ -26,8 +26,8 @@ const SignInPage: React.FC = () => {
   const navigate = useNavigate()
 
   const handleSignIn = useCallbackRef(
-    async (params: App.Modules.Auth.AuthenticationParamsModel) => {
-      await signIn(params)
+    (params: App.Modules.Auth.AuthenticationParamsModel) => {
+      void signIn(params)
     },
   )
 

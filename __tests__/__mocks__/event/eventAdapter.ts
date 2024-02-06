@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { afterEach, vi } from 'vitest'
 
 type EventListener = (event: Event) => any
 
@@ -40,6 +40,12 @@ const createEventAdapterMock = (
     })
   })
 
+  afterEach(() => {
+    addEventListener.mockClear()
+    removeEventListener.mockClear()
+    dispatchEvent.mockClear()
+  })
+
   return {
     addEventListener,
     removeEventListener,
@@ -47,10 +53,22 @@ const createEventAdapterMock = (
   } satisfies IEventAdapterLike
 }
 
-const spyOnEventAdapter = (eventEmitter: IEventAdapterLike) => ({
-  addEventListener: vi.spyOn(eventEmitter, 'addEventListener'),
-  removeEventListener: vi.spyOn(eventEmitter, 'removeEventListener'),
-  dispatchEvent: vi.spyOn(eventEmitter, 'dispatchEvent'),
-})
+const spyOnEventAdapter = (eventEmitter: IEventAdapterLike) => {
+  const addEventListener = vi.spyOn(eventEmitter, 'addEventListener')
+  const removeEventListener = vi.spyOn(eventEmitter, 'removeEventListener')
+  const dispatchEvent = vi.spyOn(eventEmitter, 'dispatchEvent')
+
+  afterEach(() => {
+    addEventListener.mockClear()
+    removeEventListener.mockClear()
+    dispatchEvent.mockClear()
+  })
+
+  return {
+    addEventListener,
+    removeEventListener,
+    dispatchEvent,
+  }
+}
 
 export { createEventAdapterMock, spyOnEventAdapter }

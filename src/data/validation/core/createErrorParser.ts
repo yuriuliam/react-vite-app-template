@@ -1,5 +1,7 @@
-type ErrorHandler = App.Infra.Validation.IErrorHandler
-type ErrorParser = App.Infra.Validation.IErrorParser
+type IErrorHandler = (
+  error: unknown,
+  messages: Readonly<App.Infra.Validation.ErrorMessages>,
+) => App.Infra.Validation.ErrorMessages
 
 /**
  * A function which exists to create error parsers with proper typings,
@@ -8,10 +10,10 @@ type ErrorParser = App.Infra.Validation.IErrorParser
  * @param error The error to be parsed.
  * @returns parsed validation messages from the error.
  */
-const createErrorParser = (handleError: ErrorHandler) => {
-  const messages = {}
+const createErrorParser = (handleError: IErrorHandler) => {
+  const messages = Object.freeze<App.Infra.Validation.ErrorMessages>({})
 
-  return (error => handleError(error, messages)) as ErrorParser
+  return (error: unknown) => handleError(error, messages)
 }
 
 export { createErrorParser }

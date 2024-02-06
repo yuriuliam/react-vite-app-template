@@ -1,10 +1,11 @@
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 
-import { formatToLoggerTime } from '../utils/formatToLoggerTime'
+import { type Formatter } from '@/data/utilities/core/createParser'
 
 const createLoggerHandler = (
   appOutput: App.Infra.Logger.AppOutput,
+  formatTime: Formatter<number | Date | undefined>,
   eventHandler?:
     | App.Infra.Event.EventHandler<App.Infra.Logger.LogEvent>
     | null
@@ -14,7 +15,7 @@ const createLoggerHandler = (
     const name = chalk.bold.green(options.name ?? 'Unknown')
     const title = chalk.bold(options.title)
     const content = chalk.italic(options.content)
-    const now = formatToLoggerTime(Date.now(), 'en-US')
+    const now = formatTime(Date.now())
 
     const data =
       options.data instanceof Promise ? await options.data : options.data

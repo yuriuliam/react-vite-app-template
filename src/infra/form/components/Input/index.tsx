@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { TextField } from '@radix-ui/themes'
+
 import { useComposedRef } from '@/infra/react/hooks/useComposedRef'
 
 import { useFormField } from '../../hooks/useFormField'
 
-type HTMLInputProps = React.ComponentProps<'input'> & {
+type TextFieldInputProps = React.ComponentProps<typeof TextField.Input> & {
   name: string
   label?: string | undefined
   persistent?: boolean | undefined
@@ -12,7 +14,7 @@ type HTMLInputProps = React.ComponentProps<'input'> & {
 
 const INPUT_NAME = 'Forms.Components.Input'
 
-const Input = React.forwardRef<HTMLInputElement, HTMLInputProps>(
+const Input = React.forwardRef<HTMLInputElement, TextFieldInputProps>(
   ({ name, label, ...rest }, ref) => {
     const internalRef = React.useRef<HTMLInputElement>(null)
     const inputRef = useComposedRef(internalRef, ref)
@@ -33,17 +35,21 @@ const Input = React.forwardRef<HTMLInputElement, HTMLInputProps>(
     }, [fieldName, registerField])
 
     return (
-      <>
-        {label && <label htmlFor={fieldName}>{label}</label>}
+      <TextField.Root mt="2">
+        {label && (
+          <TextField.Slot>
+            <label htmlFor={fieldName}>{label}</label>
+          </TextField.Slot>
+        )}
 
-        <input
+        <TextField.Input
           {...rest}
           id={fieldName}
           name={name}
           defaultValue={defaultValue}
           ref={inputRef}
         />
-      </>
+      </TextField.Root>
     )
   },
 )

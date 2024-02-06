@@ -1,12 +1,13 @@
+name: App Foundations
+
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:    
       - main
-
-name: App Foundations
 
 jobs:
   build:

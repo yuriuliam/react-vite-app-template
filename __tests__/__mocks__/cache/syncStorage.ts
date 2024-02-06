@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { afterEach, vi } from 'vitest'
 
 const createSyncStorageMock = <TValue>(
   cache: Map<string, string> = new Map(),
@@ -13,13 +13,31 @@ const createSyncStorageMock = <TValue>(
     cache.set(key, JSON.stringify(value))
   })
 
+  afterEach(() => {
+    getItem.mockClear()
+    removeItem.mockClear()
+    setItem.mockClear()
+  })
+
   return { getItem, removeItem, setItem } satisfies App.Infra.Cache.ISyncStorage
 }
 
-const spySyncStorage = (syncStorage: App.Infra.Cache.ISyncStorage) => ({
-  getItem: vi.spyOn(syncStorage, 'getItem'),
-  removeItem: vi.spyOn(syncStorage, 'removeItem'),
-  setItem: vi.spyOn(syncStorage, 'setItem'),
-})
+const spySyncStorage = (syncStorage: App.Infra.Cache.ISyncStorage) => {
+  const getItem = vi.spyOn(syncStorage, 'getItem')
+  const removeItem = vi.spyOn(syncStorage, 'removeItem')
+  const setItem = vi.spyOn(syncStorage, 'setItem')
+
+  afterEach(() => {
+    getItem.mockClear()
+    removeItem.mockClear()
+    setItem.mockClear()
+  })
+
+  return {
+    getItem,
+    removeItem,
+    setItem,
+  }
+}
 
 export { createSyncStorageMock, spySyncStorage }
