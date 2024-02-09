@@ -15,8 +15,10 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      // App
       "@/*": ["./src/*"],
-      "#/*": ["./__tests__/*"]
+      // Tests
+      "#/*": ["./__tests__/*"],
     },
 
     /* Linting */
@@ -25,6 +27,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "__tests__", "vite.config.ts", "vitest.config.ts"],
+  "include": [
+    // Project Files
+    "__tests__",
+    "src",
+    // Vite Config
+    "vite.config.ts",
+    "vitest.config.ts",
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

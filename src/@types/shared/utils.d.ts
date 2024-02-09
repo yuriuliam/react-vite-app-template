@@ -23,6 +23,10 @@ declare global {
     /** Generic Locale type argument, usually requested by Intl methods. */
     type Locale = string | string[]
 
+    type Recursive<T, K extends string | symbol | number = string> = {
+      [key: K]: T | Recursive<T, K>
+    }
+
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue
 
