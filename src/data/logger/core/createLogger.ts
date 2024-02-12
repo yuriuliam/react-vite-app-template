@@ -1,10 +1,10 @@
 import chalk from 'chalk'
 
-import { type Formatter } from '@/data/utilities/core/createParser'
-
 import { createDebugger } from '../base/createDebugger'
 import { createLoggerHandler } from '../base/createLogHandler'
 import { createLogHandlersByLevel } from '../base/createLogHandlersByLevel'
+
+import type { Formatter } from '@/shared/utils/strings'
 
 type LoggerOptions = {
   baseNamespace: string

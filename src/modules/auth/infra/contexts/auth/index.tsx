@@ -19,7 +19,7 @@ const AuthProvider: React.PFC = ({ children }) => {
   const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
 
   const signIn = useCallbackRef(
-    async (params: App.Modules.Auth.AuthenticationParamsModel) => {
+    async (params: App.Modules.Auth.AppAuthenticationParams) => {
       validateAuthenticationParams(params)
 
       const data = await authenticateUser(params)

@@ -2,7 +2,7 @@ import { UserResponseModel } from '@/modules/users/models/UserResponseModel'
 
 import { createFakerUserResponses } from '@/shared/utils/faker'
 
-type AuthParams = App.Modules.Auth.AuthenticationParamsModel
+type AuthParams = App.Modules.Auth.AppAuthenticationParams
 
 /** @deprecated This is a faker!! */
 const requestAuthentication = async (params: AuthParams) => {

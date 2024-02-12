@@ -2,8 +2,7 @@ import { LOGGER_NAME_DEV } from '@/config/logger'
 
 import { createLogger } from '@/data/logger/core/createLogger'
 
-import { detailedDateTime } from '@/infra/dateTimes/core/detailedDateTime'
-
+import { detailedDateTime } from '@/shared/utils/dateTimes'
 import { memoize } from '@/shared/utils/functions'
 
 const getLoggerInstance = memoize(

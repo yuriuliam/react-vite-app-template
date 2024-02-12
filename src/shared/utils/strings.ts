@@ -1,7 +1,7 @@
 type Formatter<T> = (value: T) => string
 
-const createParser = <T>(formatter: Formatter<T>) => {
-  const parse = formatter
+const createStringifyAdapter = <T>(formatter: Formatter<T>) => {
+  const parse = (value: T) => formatter(value)
 
   const template = (base: TemplateStringsArray, ...args: T[]) =>
     base.reduce(
@@ -11,5 +11,5 @@ const createParser = <T>(formatter: Formatter<T>) => {
   return { parse, template }
 }
 
-export { createParser }
+export { createStringifyAdapter }
 export type { Formatter }

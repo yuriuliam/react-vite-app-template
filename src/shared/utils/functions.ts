@@ -5,6 +5,8 @@ import {
   GENERATOR_FUNCTION_PROTOTYPE,
 } from '@/config/functions'
 
+import { jsonParser } from './json'
+
 type DebouncedFn<T extends (...args: any[]) => any> = (
   ...args: Parameters<T>
 ) => void
@@ -26,16 +28,6 @@ type MemoizedFn<T extends (...args: any[]) => any> = ((
 ) => ReturnType<T>) & {
   clear: () => void
   recompute: (...args: Parameters<T>) => ReturnType<T>
-}
-
-const argsReplacer = (_k: string, v: any) => {
-  if (v === undefined) return 'undefined'
-
-  if (v instanceof Set) return Array.from(v)
-
-  if (v instanceof Map) return Object.fromEntries(v.entries())
-
-  return v
 }
 
 /**
@@ -121,10 +113,10 @@ const memoize = <T extends (...args: any[]) => any>(
   method: T,
   options?: Partial<MemoizeOptions<T>>,
 ) => {
-  const { cache = new Map<string, any>(), ttl = 0 } = options ?? {}
+  const { cache = new Map(), ttl = 0 } = options ?? {}
 
   const callMethod = (shouldRecompute: boolean, ...args: Parameters<T>) => {
-    const paramsKey = JSON.stringify(args, argsReplacer)
+    const paramsKey = jsonParser.parse(args)
 
     if (!shouldRecompute && cache.has(paramsKey)) return cache.get(paramsKey)
 

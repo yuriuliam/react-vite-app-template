@@ -4,8 +4,8 @@ import type { z } from 'zod'
 
 declare global {
   declare namespace App.Modules.Features {
-    type FeatureModel = z.infer<typeof FeatureModel>
-    type FeaturesModel = z.infer<typeof FeaturesModel>
+    type AppFeature = z.infer<typeof FeatureModel>
+    type AppFeatures = z.infer<typeof FeaturesModel>
   }
 }
 

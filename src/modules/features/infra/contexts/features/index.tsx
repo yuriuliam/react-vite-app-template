@@ -15,7 +15,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
   const { isAuthenticated, token } = useAuth(FEATURES_PROVIDER_NAME)
 
-  const features = useSet<App.Modules.Features.FeatureModel>()
+  const features = useSet<App.Modules.Features.AppFeature>()
 
   const addFeatures = useCallbackRef((...ids: string[]) => {
     features.add(...ids.filter(id => !features.has(id)))

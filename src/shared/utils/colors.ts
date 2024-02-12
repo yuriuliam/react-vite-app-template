@@ -11,7 +11,7 @@ import {
   RGB_SIGNATURE,
 } from '@/config/colors'
 
-import { isNumber, isValueInRange } from './numbers'
+import { isNumber, isBetween } from './numbers'
 
 type ARGB32 = number
 /**
@@ -330,10 +330,10 @@ class Color {
 
   private static isCmykValid({ cyan, magenta, yellow, key }: CMYK) {
     return (
-      isValueInRange(cyan, 0, 100) &&
-      isValueInRange(magenta, 0, 100) &&
-      isValueInRange(yellow, 0, 100) &&
-      isValueInRange(key, 0, 100)
+      isBetween(cyan, 0, 100) &&
+      isBetween(magenta, 0, 100) &&
+      isBetween(yellow, 0, 100) &&
+      isBetween(key, 0, 100)
     )
   }
 
@@ -348,27 +348,27 @@ class Color {
     alpha = 100,
   }: HSLAParams) {
     return (
-      isValueInRange(hue, 0, 360) &&
-      isValueInRange(saturation, 0, 100) &&
-      isValueInRange(luminance, 0, 100) &&
-      isValueInRange(alpha, 0, 100)
+      isBetween(hue, 0, 360) &&
+      isBetween(saturation, 0, 100) &&
+      isBetween(luminance, 0, 100) &&
+      isBetween(alpha, 0, 100)
     )
   }
 
   private static isHsvValid({ hue, saturation, vibrance }: HSV) {
     return (
-      isValueInRange(hue, 0, 360) &&
-      isValueInRange(saturation, 0, 100) &&
-      isValueInRange(vibrance, 0, 100)
+      isBetween(hue, 0, 360) &&
+      isBetween(saturation, 0, 100) &&
+      isBetween(vibrance, 0, 100)
     )
   }
 
   private static isRgbaValid({ red, green, blue, alpha = 255 }: RGBAParams) {
     return (
-      isValueInRange(red, 0, 255) &&
-      isValueInRange(green, 0, 255) &&
-      isValueInRange(blue, 0, 255) &&
-      isValueInRange(alpha, 0, 255)
+      isBetween(red, 0, 255) &&
+      isBetween(green, 0, 255) &&
+      isBetween(blue, 0, 255) &&
+      isBetween(alpha, 0, 255)
     )
   }
 

@@ -16,7 +16,7 @@ const SIGN_IN_NAME = 'SignIn.Root'
 
 const SignInPage: React.FC = () => {
   const defaultAuthParams =
-    useConst<App.Modules.Auth.AuthenticationParamsModel>({
+    useConst<App.Modules.Auth.AppAuthenticationParams>({
       email: 'Lukas_Kirlin@yahoo.com',
       password: 'limivuro',
     })
@@ -26,7 +26,7 @@ const SignInPage: React.FC = () => {
   const navigate = useNavigate()
 
   const handleSignIn = useCallbackRef(
-    (params: App.Modules.Auth.AuthenticationParamsModel) => {
+    (params: App.Modules.Auth.AppAuthenticationParams) => {
       void signIn(params)
     },
   )

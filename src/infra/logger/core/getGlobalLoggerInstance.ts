@@ -2,9 +2,9 @@ import { LOGGER_NAME_PROD } from '@/config/logger'
 
 import { createLogger } from '@/data/logger/core/createLogger'
 
-import { detailedDateTime } from '@/infra/dateTimes/core/detailedDateTime'
 import { loggerEventHandler } from '@/infra/logger/events/loggerEventHandler'
 
+import { detailedDateTime } from '@/shared/utils/dateTimes'
 import { memoize } from '@/shared/utils/functions'
 
 const getGlobalLoggerInstance = memoize(

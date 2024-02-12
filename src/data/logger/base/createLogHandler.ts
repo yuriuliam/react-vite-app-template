@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 
-import { type Formatter } from '@/data/utilities/core/createParser'
+import type { Formatter } from '@/shared/utils/strings'
 
 const createLoggerHandler = (
   appOutput: App.Infra.Logger.AppOutput,

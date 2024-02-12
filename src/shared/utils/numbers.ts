@@ -65,15 +65,4 @@ const isBetween = (value: number, min: number, max: number) =>
 const isNumber = (value: any): value is number =>
   typeof value === 'number' && !Number.isNaN(value)
 
-const isValueInRange = (value: number, min: number, max: number) =>
-  isNumber(value) && value >= min && value <= max
-
-export {
-  clamp,
-  diff,
-  formatPercentage,
-  formatPrice,
-  isBetween,
-  isNumber,
-  isValueInRange,
-}
+export { clamp, diff, formatPercentage, formatPrice, isBetween, isNumber }

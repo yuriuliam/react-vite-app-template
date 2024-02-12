@@ -41,7 +41,7 @@ const createFakerUserResponses = async (shouldBeDeterministic = false) => {
       email,
       password,
       token,
-    } satisfies App.Modules.User.UserResponseModel
+    } satisfies App.Modules.User.AppUserResponse
   })
 }
 
