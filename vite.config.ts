@@ -9,8 +9,19 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          faker: ['@faker-js/faker'], // ~2.5 mB (https://fakerjs.dev/guide/usage.html#browser)
-          icons: ['@radix-ui/react-icons'], // ~400.00 kB
+          // ~2.5 mB (https://fakerjs.dev/guide/usage.html#browser)
+          faker: ['@faker-js/faker'],
+          // ~400.00 kB
+          icons: ['@radix-ui/react-icons'],
+          // ~134.39 kB
+          rtf: [
+            'lexical',
+            '@lexical/react/LexicalComposer',
+            '@lexical/react/LexicalContentEditable',
+            '@lexical/react/LexicalErrorBoundary',
+            '@lexical/react/LexicalHistoryPlugin',
+            '@lexical/react/LexicalPlainTextPlugin',
+          ],
         },
       },
     },
