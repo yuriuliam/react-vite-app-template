@@ -1,5 +1,5 @@
 declare global {
-  declare namespace App.Infra.Theme {
+  declare namespace App.Modules.Theme {
     type IsDarkMode = boolean
   }
 }

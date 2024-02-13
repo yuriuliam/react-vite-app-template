@@ -2,8 +2,8 @@
 import { createContext } from '@/data/react/core/createContext'
 
 interface IAuthContextData {
-  signIn: (params: App.Modules.Auth.AppAuthenticationParams) => Promise<void>
-  signOut: () => void
+  signIn: App.Modules.Auth.SignInFn
+  signOut: App.Modules.Auth.SignOutFn
   isAuthenticated: boolean
   user: App.Modules.User.AppUser | null
   token: App.Models.TokenModel | null

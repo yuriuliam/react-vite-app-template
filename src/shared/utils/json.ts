@@ -1,5 +1,7 @@
 import { createStringifyAdapter } from '@/shared/utils/strings'
 
+const INDENT_SIZE = 2
+
 const argsReplacer = (_k: string, v: any) => {
   if (v === undefined) return 'undefined'
 
@@ -10,8 +12,12 @@ const argsReplacer = (_k: string, v: any) => {
   return v
 }
 
-const jsonParser = createStringifyAdapter((value: any) =>
+const beautifiedJsonStringify = createStringifyAdapter((value: any) =>
+  JSON.stringify(value, argsReplacer, INDENT_SIZE),
+)
+
+const jsonStringify = createStringifyAdapter((value: any) =>
   JSON.stringify(value, argsReplacer),
 )
 
-export { jsonParser }
+export { beautifiedJsonStringify, jsonStringify }

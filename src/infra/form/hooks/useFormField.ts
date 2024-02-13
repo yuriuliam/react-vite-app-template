@@ -14,7 +14,7 @@ const useFormField = (consumerName: string, name: string) => {
     unregisterField,
     registerField,
     clearFieldError,
-  } = useForm(`${consumerName}`)
+  } = useForm(`useFormField(${consumerName})`)
 
   if (!name) throw new Error(`name prop should be provided!`)
 
@@ -33,8 +33,6 @@ const useFormField = (consumerName: string, name: string) => {
   const clearError = useCallbackRef(() => {
     clearFieldError(fieldName)
   })
-
-  React.useEffect(() => {}, [])
 
   React.useEffect(
     () => () => {
