@@ -8,7 +8,7 @@ import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 import { useFeaturesServices } from '../../hooks/useFeaturesServices'
 import { FeaturesContextProvider } from './context'
 
-const FEATURES_PROVIDER_NAME = 'Providers.Features'
+const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
   const { loadFeatures } = useFeaturesServices()

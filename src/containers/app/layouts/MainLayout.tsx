@@ -5,9 +5,9 @@ import { Section } from '@radix-ui/themes'
 
 import { Header } from '../components/Header'
 
-const MAIN_LAYOUT_NAME = 'App.Layouts.Main'
+const MAIN_LAYOUT_NAME = 'Containers.App.Layouts.Main'
 
-const AuthenticatedAppLayout: React.FC = () => (
+const MainLayout: React.FC = () => (
   <>
     <Section>
       <Header />
@@ -16,6 +16,6 @@ const AuthenticatedAppLayout: React.FC = () => (
     <Outlet />
   </>
 )
-AuthenticatedAppLayout.displayName = MAIN_LAYOUT_NAME
+MainLayout.displayName = MAIN_LAYOUT_NAME
 
-export { AuthenticatedAppLayout }
+export { MainLayout }

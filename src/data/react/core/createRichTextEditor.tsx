@@ -21,7 +21,7 @@ const createRichTextEditor = (initialConfig: InitialConfigType) => {
       </LexicalComposer>
     )
   }
-  Editor.displayName = `App:RichTextEditor(${initialConfig.namespace})`
+  Editor.displayName = `Modules.Editors.RichTextEditor(${initialConfig.namespace})`
 
   return Editor
 }

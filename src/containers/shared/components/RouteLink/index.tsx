@@ -4,7 +4,7 @@ import { Link } from '../Link'
 
 type AppRouteLinkProps = React.ComponentProps<typeof ReactRouterDOMLink>
 
-const ROUTE_LINK_NAME = 'Shared.Components.RouteLink'
+const ROUTE_LINK_NAME = 'Containers.Shared.Components.RouteLink'
 
 const RouteLink: React.FC<AppRouteLinkProps> = props => (
   <Link asChild>

@@ -47,7 +47,7 @@ function createContext<T extends Record<string, any>>(
 
     if (!contextValue) {
       throw new Error(
-        `${consumerName} must be wrapped within ${componentName} or contain a truthy initial value`,
+        `"${consumerName}" must be wrapped within "${componentName}" or contain a truthy initial value`,
       )
     }
 

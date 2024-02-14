@@ -9,7 +9,7 @@ type RouterProps = Omit<
   'router'
 >
 
-const ROUTER_NAME = 'App.Routes.Router'
+const ROUTER_NAME = 'Containers.App.Routes.Router'
 
 const Router: React.PFC<RouterProps> = ({ children, ...rest }) => (
   <ReactRouterDOMRouterProvider

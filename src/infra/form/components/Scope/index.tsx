@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FormContextProvider, useForm } from '../../contexts/form/context'
 
-const SCOPE_NAME = 'Forms.Components.Scope'
+const SCOPE_NAME = 'Infra.Forms.Components.Scope'
 
 type ScopeProps = {
   path: string

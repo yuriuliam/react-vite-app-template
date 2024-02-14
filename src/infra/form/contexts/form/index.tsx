@@ -6,7 +6,7 @@ import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { FormContextProvider } from './context'
 
-const FORM_PROVIDER_NAME = 'Providers.Form'
+const FORM_PROVIDER_NAME = 'Infra.Form.Provider'
 
 const FormProvider = React.forwardRef<
   App.Infra.Form.IFormHandlers,

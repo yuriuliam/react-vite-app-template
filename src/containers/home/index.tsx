@@ -9,7 +9,7 @@ import { useFeatures } from '@/modules/features/infra/contexts/features/context'
 
 import { Button } from '../shared/components/Button'
 
-const HOME_PAGE_NAME = 'Home.Root'
+const HOME_PAGE_NAME = 'Containers.Home.Root'
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()

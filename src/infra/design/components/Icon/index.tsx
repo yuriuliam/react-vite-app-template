@@ -14,7 +14,7 @@ type AppIconProps = {
   size?: BoxProps['width']
 } & IconProps
 
-const ICON_NAME = 'Shared.Components.Icon'
+const ICON_NAME = 'Infra.Design.Components.Icon'
 
 /**
  * App's Icon component.

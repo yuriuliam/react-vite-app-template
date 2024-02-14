@@ -12,14 +12,13 @@ import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 
 import { Button } from '../shared/components/Button'
 
-const SIGN_IN_NAME = 'SignIn.Root'
+const SIGN_IN_NAME = 'Containers.SignIn.Root'
 
 const SignInPage: React.FC = () => {
-  const defaultAuthParams =
-    useConst<App.Modules.Auth.AppAuthenticationParams>({
-      email: 'Lukas_Kirlin@yahoo.com',
-      password: 'limivuro',
-    })
+  const defaultAuthParams = useConst<App.Modules.Auth.AppAuthenticationParams>({
+    email: 'Lukas_Kirlin@yahoo.com',
+    password: 'limivuro',
+  })
 
   const { isAuthenticated, signIn } = useAuth(SIGN_IN_NAME)
 

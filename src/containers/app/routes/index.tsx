@@ -8,16 +8,16 @@ import { SignOutPage } from '@/containers/sign-out'
 import { AuthGuard } from '@/modules/auth/infra/guards/AuthGuard'
 
 import { ErrorGuard } from '../guards/ErrorGuard'
-import { AuthenticatedAppLayout } from '../layouts/AuthenticatedAppLayout'
+import { MainLayout } from '../layouts/MainLayout'
 import { Router as AppRouter } from './Router'
 
-const ROUTES_NAME = 'App.Routes.Root'
+const ROUTES_NAME = 'Containers.App.Routes'
 
 const Routes: React.FC = () => (
   <AppRouter>
     <Route errorElement={<ErrorGuard />}>
       <Route element={<AuthGuard />}>
-        <Route element={<AuthenticatedAppLayout />}>
+        <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
         </Route>
       </Route>

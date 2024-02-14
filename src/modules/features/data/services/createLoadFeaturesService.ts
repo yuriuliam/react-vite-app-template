@@ -16,7 +16,7 @@ const createLoadFeaturesService = (_httpClient: App.Infra.Http.IHttpClient) => {
       //
       // const { data } = await httpClient.request({
       //   headers: {
-      //     Authorization: token,
+      //     Authorization: `Bearer ${token}`,
       //   },
       //   method: 'GET',
       //   uri: '/users/me/features',

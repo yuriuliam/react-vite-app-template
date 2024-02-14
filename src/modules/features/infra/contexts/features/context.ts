@@ -8,7 +8,7 @@ interface IFeaturesContextData {
   removeFeatures: (...ids: string[]) => void
 }
 
-const FEATURES_CONTEXT_NAME = 'App.Contexts.Features'
+const FEATURES_CONTEXT_NAME = 'Modules.Features.Context'
 
 const [FeaturesContextProvider, useFeatures] =
   createContext<IFeaturesContextData>(null, FEATURES_CONTEXT_NAME)

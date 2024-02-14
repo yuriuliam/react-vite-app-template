@@ -2,12 +2,13 @@ import { AppProvider } from './contexts/app'
 import { Routes } from './routes'
 import { GlobalStyles } from './styles/global'
 
-const APP_NAME = 'App.Root'
+const APP_NAME = 'Containers.App.Root'
 
 const App: React.FC = () => (
   <>
+    <GlobalStyles />
+
     <AppProvider>
-      <GlobalStyles />
       <Routes />
     </AppProvider>
   </>

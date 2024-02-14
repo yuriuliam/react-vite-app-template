@@ -1,6 +1,6 @@
 import { Portal } from '../Portal/index'
 
-const BODY_NAME = 'Shared.Components.BodyPortal'
+const BODY_NAME = 'Infra.React.Components.Body'
 
 /**
  * A wrapper component which portals their children to page's

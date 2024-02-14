@@ -4,7 +4,7 @@ type AppBodyProps = {
   element: Element | DocumentFragment
 }
 
-const PORTAL_NAME = 'Shared.Components.Portal'
+const PORTAL_NAME = 'Infra.React.Components.Portal'
 
 const Portal: React.PFC<AppBodyProps> = ({ children, element }) => (
   <>{ReactDOM.createPortal(children, element)}</>

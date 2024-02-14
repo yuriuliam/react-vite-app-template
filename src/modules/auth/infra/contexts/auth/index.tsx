@@ -8,7 +8,7 @@ import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
 import { useAuthServices } from '../../hooks/useAuthServices'
 import { AuthContextProvider } from './context'
 
-const AUTH_PROVIDER_NAME = 'Providers.Auth'
+const AUTH_PROVIDER_NAME = 'Modules.Auth.Provider'
 
 const AuthProvider: React.PFC = ({ children }) => {
   const { authenticateUser, validateAuthenticationParams } = useAuthServices()

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 import { useFeatures } from '@/modules/features/infra/contexts/features/context'
 
-const SIGN_OUT_NAME = 'App.SignOut'
+const SIGN_OUT_NAME = 'Containers.SignOut.Root'
 
 /**
  * A page which sign-outs. Originally created if you wish to show something

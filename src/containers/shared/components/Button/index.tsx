@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Button as RadixButton } from '@radix-ui/themes'
 
-const BUTTON_NAME = 'Shared.Components.Button'
+const BUTTON_NAME = 'Containers.Shared.Components.Button'
 
 /**
  * A button for app's purposes.

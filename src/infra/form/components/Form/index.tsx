@@ -8,7 +8,7 @@ type HTMLFormProps = React.ComponentProps<'form'>
 type FormProps = App.Infra.Form.FormProviderProps &
   Omit<HTMLFormProps, 'onSubmit'>
 
-const FORM_NAME = 'Forms.Components.Form'
+const FORM_NAME = 'Infra.Forms.Components.Form'
 
 const Form = React.forwardRef<App.Infra.Form.IFormHandlers, FormProps>(
   ({ children, initialData = {}, onSubmit, ...props }, ref) => {

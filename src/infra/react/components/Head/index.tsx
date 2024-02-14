@@ -1,6 +1,6 @@
 import { Portal } from '../Portal/index'
 
-const HEAD_NAME = 'Shared.Components.HeadPortal'
+const HEAD_NAME = 'Infra.React.Components.Head'
 
 /**
  * A wrapper component which portals their children to page's

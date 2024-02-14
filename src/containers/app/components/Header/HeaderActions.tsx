@@ -1,9 +1,10 @@
 import { Box, Flex } from '@radix-ui/themes'
 
-import { Icon } from '@/containers/shared/components/Icon'
 import { RouteLink } from '@/containers/shared/components/RouteLink'
 
-const HEADER_ACTIONS = 'App.Components.Header.Actions'
+import { Icon } from '@/infra/design/components/Icon'
+
+const HEADER_ACTIONS = 'Containers.App.Components.Header.Actions'
 
 const HeaderActions: React.FC = () => {
   return (
