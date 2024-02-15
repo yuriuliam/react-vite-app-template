@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
-import { useFeatures } from '@/modules/features/infra/contexts/features/context'
 
 const SIGN_OUT_NAME = 'Containers.SignOut.Root'
 
@@ -13,15 +12,14 @@ const SIGN_OUT_NAME = 'Containers.SignOut.Root'
  */
 const SignOutPage: React.FC = () => {
   const { signOut } = useAuth(SIGN_OUT_NAME)
-  const { clearFeatures } = useFeatures(SIGN_OUT_NAME)
 
   const navigate = useNavigate()
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     signOut()
 
     navigate('/')
-  }, [clearFeatures, navigate, signOut])
+  }, [navigate, signOut])
 
   return <></>
 }

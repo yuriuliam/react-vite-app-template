@@ -1,4 +1,4 @@
-import { createRichTextEditor } from '@/data/react/core/createRichTextEditor'
+import { createRichTextEditor } from '@/data/editors/core/createRichTextEditor'
 
 import { getLoggerInstance } from '@/infra/logger/core/getLoggerInstance'
 
@@ -12,7 +12,7 @@ const onError = (error: Error, editor: LexicalEditor) => {
     content: 'Something went wrong with the Editor',
     data: {
       error,
-      editor,
+      editor: editor.toJSON(),
     },
   })
 }
