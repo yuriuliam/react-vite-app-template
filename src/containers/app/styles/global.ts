@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
   .radix-themes {
     --default-font-family: var(--app-font-family);
   }
+
+  html, body {
+    font-family: var(--app-font-family);
+  }
 `
 
 export { GlobalStyles }

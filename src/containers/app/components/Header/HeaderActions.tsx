@@ -1,8 +1,7 @@
+import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
 import { Box, Flex } from '@radix-ui/themes'
 
 import { RouteLink } from '@/containers/shared/components/RouteLink'
-
-import { Icon } from '@/infra/design/components/Icon'
 
 const HEADER_ACTIONS = 'Containers.App.Components.Header.Actions'
 
@@ -11,11 +10,11 @@ const HeaderActions: React.FC = () => {
     <Flex gap="4" asChild>
       <Box>
         <RouteLink to="/">
-          <Icon type="GitHubLogoIcon" />
+          <GitHubLogoIcon />
         </RouteLink>
 
         <RouteLink to="/">
-          <Icon type="LinkedInLogoIcon" />
+          <LinkedInLogoIcon />
         </RouteLink>
       </Box>
     </Flex>

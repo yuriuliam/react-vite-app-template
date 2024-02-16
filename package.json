@@ -39,6 +39,7 @@
     "strip-ansi": "^7.1.0",
     "styled-components": "^6.1.8",
     "use-sync-external-store": "^1.2.0",
+    "uuid": "^9.0.1",
     "web-vitals": "^3.5.2",
     "zod": "^3.22.4"
   },
@@ -60,6 +61,7 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/use-sync-external-store": "^0.0.6",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",

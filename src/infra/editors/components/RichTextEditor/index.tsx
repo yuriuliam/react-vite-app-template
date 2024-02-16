@@ -4,16 +4,13 @@ import { getLoggerInstance } from '@/infra/logger/core/getLoggerInstance'
 
 import type { LexicalEditor } from 'lexical'
 
-const rteLogger = getLoggerInstance('rich-text-editor')
+const rteLogger = getLoggerInstance('infra:editors')
 
 const onError = (error: Error, editor: LexicalEditor) => {
   rteLogger.error({
     name: 'Rich Text Editor',
     content: 'Something went wrong with the Editor',
-    data: {
-      error,
-      editor: editor.toJSON(),
-    },
+    data: { error, editor },
   })
 }
 
