@@ -58,7 +58,7 @@ describe('createContext', () => {
     const [, useProvider] = createContext(null, TEST_NAME)
 
     expect(() => renderHook(() => useProvider(CONSUMER_NAME))).toThrowError(
-      `${CONSUMER_NAME} must be wrapped within ${TEST_NAME} or contain a truthy initial value`,
+      `"${CONSUMER_NAME}" must be wrapped within "${TEST_NAME}" or contain a truthy initial value`,
     )
   })
 })

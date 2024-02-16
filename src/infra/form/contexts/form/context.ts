@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { createContext } from '@/data/react/core/createContext'
 
 const FORM_CONTEXT_NAME = 'Infra.Form.Context'
