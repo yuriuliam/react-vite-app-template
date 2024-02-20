@@ -21,7 +21,7 @@ describe('useDebouncedCallback', () => {
         expect(callback).toBeCalledTimes(1)
         expect(callback).toBeCalledWith(...args)
       },
-      { interval: 25, timeout: 100 },
+      { interval: 10, timeout: 100 },
     )
   })
 })
