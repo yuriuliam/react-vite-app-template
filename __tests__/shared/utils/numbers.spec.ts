@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
+import { Locale } from '@/config/locale'
+
 import {
   clamp,
   diff,
@@ -61,7 +63,11 @@ describe('formatPercentage', () => {
     const maxFractionDigit = 5
 
     const result1 = formatPercentage(myPercentage)
-    const result2 = formatPercentage(myPercentage, 'en-US', maxFractionDigit)
+    const result2 = formatPercentage(
+      myPercentage,
+      Locale.UnitedStates,
+      maxFractionDigit,
+    )
 
     expect(result1).toBe('98.95%')
     expect(result2).toBe('98.95238%')
@@ -72,7 +78,7 @@ describe('formatPrice', () => {
   it('should format a given price to USD when price is provided', () => {
     const myPrice = 20.05
 
-    const result = formatPrice(myPrice, 'en-US')
+    const result = formatPrice(myPrice, Locale.UnitedStates)
 
     expect(result).toBe('$20.05')
   })
@@ -80,7 +86,7 @@ describe('formatPrice', () => {
   it('should accept locale parameter once given', () => {
     const myPrice = 37.27
 
-    const result = formatPrice(myPrice, 'en-GB')
+    const result = formatPrice(myPrice, Locale.UnitedKingdom)
 
     expect(result).toBe('US$37.27')
   })

@@ -1,10 +1,10 @@
-import { LOCAL_STORAGE_PREFIX } from '@/config/cache'
+import { StoragePrefix } from '@/config/cache'
 
 import { createSyncStorage } from '@/data/cache/core/createSyncStorage'
 
 const localSyncStorage = createSyncStorage(
   window.localStorage,
-  LOCAL_STORAGE_PREFIX,
+  StoragePrefix.Local,
 )
 
 export { localSyncStorage }

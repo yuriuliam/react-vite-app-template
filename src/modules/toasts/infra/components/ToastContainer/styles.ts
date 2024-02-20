@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-const Container = styled.div`
+const Root = styled.div`
   position: fixed;
   right: 0;
   top: 0;
@@ -8,4 +8,4 @@ const Container = styled.div`
   overflow: hidden;
 `
 
-export { Container }
+export { Root }

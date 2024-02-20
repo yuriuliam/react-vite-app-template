@@ -44,10 +44,7 @@ const Toast: React.FC<ToastProps> = ({ message }) => {
   }, [message.id, removeToastMessage])
 
   return (
-    <Styled.Container
-      type={message.type}
-      hasDescription={!!message.description}
-    >
+    <Styled.Root type={message.type} hasDescription={!!message.description}>
       {toastIcons[message.type ?? 'info']}
 
       <div>
@@ -58,7 +55,7 @@ const Toast: React.FC<ToastProps> = ({ message }) => {
       <button onClick={removeToastMessage}>
         <CrossCircledIcon />
       </button>
-    </Styled.Container>
+    </Styled.Root>
   )
 }
 Toast.displayName = TOAST_CONTAINER_NAME

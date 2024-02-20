@@ -1,5 +1,7 @@
-const COOKIE_STORAGE_PREFIX = '@App'
-const LOCAL_STORAGE_PREFIX = '@App'
-const SESSION_STORAGE_PREFIX = '@App'
+enum StoragePrefix {
+  Cookies = '@App',
+  Local = '@App',
+  Session = '@App',
+}
 
-export { COOKIE_STORAGE_PREFIX, LOCAL_STORAGE_PREFIX, SESSION_STORAGE_PREFIX }
+export { StoragePrefix }

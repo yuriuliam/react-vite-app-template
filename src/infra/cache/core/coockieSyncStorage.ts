@@ -1,4 +1,4 @@
-import { COOKIE_STORAGE_PREFIX } from '@/config/cache'
+import { StoragePrefix } from '@/config/cache'
 
 import { createCookieParser } from '@/data/cache/core/createCookieParser'
 import { createSyncStorage } from '@/data/cache/core/createSyncStorage'
@@ -13,7 +13,7 @@ const cookieSyncStorage = createSyncStorage(
       cookieParser.remove(key)
     },
   },
-  COOKIE_STORAGE_PREFIX,
+  StoragePrefix.Cookies,
 )
 
 export { cookieSyncStorage }

@@ -9,11 +9,11 @@ const TOAST_CONTAINER_NAME = 'Modules.Toast.Components.ToastContainer'
 
 const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => (
   <Body>
-    <Styled.Container>
+    <Styled.Root>
       {messages.map(message => (
         <Toast key={message.id} message={message} />
       ))}
-    </Styled.Container>
+    </Styled.Root>
   </Body>
 )
 ToastContainer.displayName = TOAST_CONTAINER_NAME

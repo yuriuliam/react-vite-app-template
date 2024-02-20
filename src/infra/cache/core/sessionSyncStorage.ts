@@ -1,10 +1,10 @@
-import { SESSION_STORAGE_PREFIX } from '@/config/cache'
+import { StoragePrefix } from '@/config/cache'
 
 import { createSyncStorage } from '@/data/cache/core/createSyncStorage'
 
 const sessionSyncStorage = createSyncStorage(
   window.sessionStorage,
-  SESSION_STORAGE_PREFIX,
+  StoragePrefix.Session,
 )
 
 export { sessionSyncStorage }

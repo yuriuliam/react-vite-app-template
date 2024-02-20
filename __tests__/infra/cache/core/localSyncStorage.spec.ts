@@ -3,7 +3,7 @@ import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
-import { LOCAL_STORAGE_PREFIX } from '@/config/cache'
+import { StoragePrefix } from '@/config/cache'
 
 import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
 
@@ -44,7 +44,7 @@ describe('localSyncStorage', () => {
     expect(localSyncStorage.setItem).toBeCalledWith(atomKey, newAtomValue)
 
     expect(
-      window.localStorage.getItem(`${LOCAL_STORAGE_PREFIX}:${atomKey}`),
+      window.localStorage.getItem(`${StoragePrefix.Local}:${atomKey}`),
     ).toBe(JSON.stringify(newAtomValue))
   })
 })

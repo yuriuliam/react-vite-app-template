@@ -1,4 +1,4 @@
-import { LOGGER_DEBUGGER_NAME, LOGGER_NAME_PROD } from '@/config/logger'
+import { LoggerName } from '@/config/logger'
 
 import { composeLoggerNames } from '@/data/logger/utils/composeLoggerNames'
 
@@ -12,10 +12,10 @@ import { getGlobalLoggerInstance } from '../core/getGlobalLoggerInstance'
 const injectGlobalLogger = () => {
   const globalLogger = globalThis.logger ?? getGlobalLoggerInstance()
 
-  const allLoggerNames = composeLoggerNames(LOGGER_DEBUGGER_NAME, '*')
+  const allLoggerNames = composeLoggerNames(LoggerName.Base, '*')
   const mainLoggerName = composeLoggerNames(
-    LOGGER_DEBUGGER_NAME,
-    LOGGER_NAME_PROD,
+    LoggerName.Base,
+    LoggerName.Production,
   )
   const mainLoggerChildrenName = composeLoggerNames(mainLoggerName, '*')
 

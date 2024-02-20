@@ -46,7 +46,7 @@ const destroyToast = keyframes`
   }
 `
 
-export const Container = styled.div<IContainerProps>`
+const Root = styled.div<IContainerProps>`
   width: 360px;
 
   animation:
@@ -109,3 +109,5 @@ export const Container = styled.div<IContainerProps>`
       }
     `}
 `
+
+export { Root }

@@ -1,5 +1,7 @@
-const LOGGER_DEBUGGER_NAME = 'app'
-const LOGGER_NAME_PROD = 'main'
-const LOGGER_NAME_DEV = 'dev'
+enum LoggerName {
+  Base = 'app',
+  Development = 'dev',
+  Production = 'main',
+}
 
-export { LOGGER_DEBUGGER_NAME, LOGGER_NAME_DEV, LOGGER_NAME_PROD }
+export { LoggerName }

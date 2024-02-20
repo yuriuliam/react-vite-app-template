@@ -3,6 +3,13 @@ import 'react'
 
 declare global {
   declare namespace React {
+    /** A shortcut to get intrinsic element names. */
+    type HTMLTags = keyof React.JSX.IntrinsicElements
+
+    /** A shortcut to get component props of intrinsic elements. */
+    type HTMLProps<TElement extends React.HTMLTags> =
+      React.ComponentProps<TElement>
+
     /**
      * Latest versions of react types does not includes children in
      * props reference.
