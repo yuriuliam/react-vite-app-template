@@ -19,10 +19,14 @@ const createSyncStorageMock = <TValue>(
     setItem.mockClear()
   })
 
-  return { getItem, removeItem, setItem } satisfies App.Infra.Cache.ISyncStorage
+  return {
+    getItem,
+    removeItem,
+    setItem,
+  } satisfies App.Modules.Cache.ISyncStorage
 }
 
-const spySyncStorage = (syncStorage: App.Infra.Cache.ISyncStorage) => {
+const spySyncStorage = (syncStorage: App.Modules.Cache.ISyncStorage) => {
   const getItem = vi.spyOn(syncStorage, 'getItem')
   const removeItem = vi.spyOn(syncStorage, 'removeItem')
   const setItem = vi.spyOn(syncStorage, 'setItem')

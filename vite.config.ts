@@ -22,6 +22,8 @@ export default defineConfig({
             '@lexical/react/LexicalHistoryPlugin',
             '@lexical/react/LexicalPlainTextPlugin',
           ],
+          // [Web Vitals] ~6.86 kB (just here to not affect app bundle)
+          wbv: ['web-vitals'],
         },
       },
     },

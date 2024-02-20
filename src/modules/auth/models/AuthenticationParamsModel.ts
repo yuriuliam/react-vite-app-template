@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { EmailModel } from '@/shared/models/EmailModel'
+import { EmailModel } from '@/modules/shared/data/models/EmailModel'
 
 const AuthenticationParamsModel = z.object({
   email: EmailModel.min(1, 'email is required.'),

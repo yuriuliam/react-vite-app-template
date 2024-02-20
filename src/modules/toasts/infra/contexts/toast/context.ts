@@ -1,4 +1,4 @@
-import { createContext } from '@/data/react/core/createContext'
+import { createContext } from '@/modules/react/data/core/createContext'
 
 interface IToastContextData {
   addToast: App.Modules.Toast.AddToastFn

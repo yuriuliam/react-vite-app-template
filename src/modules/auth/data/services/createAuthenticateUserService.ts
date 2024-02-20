@@ -1,5 +1,3 @@
-import { UserResponseModel } from '@/modules/users/models/UserResponseModel'
-
 import { createFakerUserResponses } from '@/shared/utils/faker'
 
 type AuthParams = App.Modules.Auth.AppAuthenticationParams
@@ -18,7 +16,8 @@ const requestAuthentication = async (params: AuthParams) => {
 }
 
 const createAuthenticateUserService = (
-  _httpClient: App.Infra.Http.IHttpClient,
+  _httpClient: App.Modules.Http.IHttpClient,
+  responseSchema: App.Modules.Validation.Schema,
 ) => {
   return async (params: AuthParams) => {
     try {
@@ -32,7 +31,7 @@ const createAuthenticateUserService = (
 
       const data = await requestAuthentication(params)
 
-      return UserResponseModel.parse(data)
+      return responseSchema.parse(data)
     } catch (error) {
       return null
     }

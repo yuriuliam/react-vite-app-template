@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { Form } from '@/infra/form/components/Form'
-import { Input } from '@/infra/form/components/Input'
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-import { useConst } from '@/infra/react/hooks/useConst'
-
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+import { Form } from '@/modules/forms/infra/components/Form'
+import { Input } from '@/modules/forms/infra/components/Input'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
+import { useConst } from '@/modules/react/infra/hooks/useConst'
 
 import { Button } from '../shared/components/Button'
 

@@ -2,7 +2,7 @@ import { Heading } from '@radix-ui/themes'
 
 import { RouteLink } from '@/containers/shared/components/RouteLink'
 
-import { useConst } from '@/infra/react/hooks/useConst'
+import { useConst } from '@/modules/react/infra/hooks/useConst'
 
 const HEADER_LOGO_NAME = 'Containers.App.Components.Header.Logo'
 

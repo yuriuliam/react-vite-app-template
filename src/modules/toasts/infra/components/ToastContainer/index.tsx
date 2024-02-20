@@ -1,4 +1,4 @@
-import { Body } from '@/infra/react/components/Body'
+import { BodyPortal } from '@/modules/react/infra/components/BodyPortal'
 
 import { Toast } from '../Toast'
 import * as Styled from './styles'
@@ -8,13 +8,13 @@ type ToastContainerProps = { messages: App.Modules.Toast.AppToastMessage[] }
 const TOAST_CONTAINER_NAME = 'Modules.Toast.Components.ToastContainer'
 
 const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => (
-  <Body>
+  <BodyPortal>
     <Styled.Root>
       {messages.map(message => (
         <Toast key={message.id} message={message} />
       ))}
     </Styled.Root>
-  </Body>
+  </BodyPortal>
 )
 ToastContainer.displayName = TOAST_CONTAINER_NAME
 

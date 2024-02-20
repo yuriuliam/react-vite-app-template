@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 import { useUserMe } from '@/modules/users/infra/hooks/useUserMe'
 import { useUserToken } from '@/modules/users/infra/hooks/useUserToken'
 
@@ -11,7 +10,7 @@ import { AuthContextProvider } from './context'
 const AUTH_PROVIDER_NAME = 'Modules.Auth.Provider'
 
 const AuthProvider: React.PFC = ({ children }) => {
-  const { authenticateUser, validateAuthenticationParams } = useAuthServices()
+  const { authenticateUser, authParamsSchema } = useAuthServices()
 
   const [user, setUser] = useUserMe()
   const [token, setToken] = useUserToken()
@@ -19,7 +18,7 @@ const AuthProvider: React.PFC = ({ children }) => {
   const isAuthenticated = React.useMemo(() => !!(token && user), [token, user])
 
   const signIn = useCallbackRef<App.Modules.Auth.SignInFn>(async params => {
-    validateAuthenticationParams(params)
+    authParamsSchema.parse(params)
 
     const data = await authenticateUser(params)
 

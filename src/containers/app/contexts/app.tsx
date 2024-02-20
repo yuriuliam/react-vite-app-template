@@ -1,8 +1,7 @@
-import { StoreProvider } from '@/infra/cache/contexts/store'
-import { composedWith } from '@/infra/react/hocs/composedWith'
-
 import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
+import { StoreProvider } from '@/modules/cache/infra/contexts/store'
 import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
+import { composedWith } from '@/modules/react/infra/hocs/composedWith'
 import { ThemeProvider } from '@/modules/theme/infra/contexts/theme'
 import { ToastProvider } from '@/modules/toasts/infra/contexts/toast'
 

@@ -1,4 +1,4 @@
-import { TokenModel } from '@/shared/models/TokenModel'
+import { TokenModel } from '@/modules/shared/data/models/TokenModel'
 
 import { UserModel } from './UserModel'
 

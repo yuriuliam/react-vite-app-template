@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-
 import { useFeatures } from '@/modules/features/infra/contexts/features/context'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 
 import { Button } from '../shared/components/Button'
 

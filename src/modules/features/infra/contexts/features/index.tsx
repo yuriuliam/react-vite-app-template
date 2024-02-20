@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-import { useSet } from '@/infra/react/hooks/useSet'
-
 import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
+import { useSet } from '@/modules/react/infra/hooks/useSet'
 
 import { useFeaturesServices } from '../../hooks/useFeaturesServices'
 import { FeaturesContextProvider } from './context'
@@ -15,7 +14,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
   const { isAuthenticated, token } = useAuth(FEATURES_PROVIDER_NAME)
 
-  const features = useSet<App.Modules.Features.AppFeature>()
+  const features = useSet([] as App.Modules.Features.AppFeatures)
 
   const addFeatures = useCallbackRef((...ids: string[]) => {
     features.add(...ids.filter(id => !features.has(id)))

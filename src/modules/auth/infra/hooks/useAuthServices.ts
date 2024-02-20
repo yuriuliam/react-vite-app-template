@@ -1,12 +1,12 @@
-import { useConst } from '@/infra/react/hooks/useConst'
+import { useConst } from '@/modules/react/infra/hooks/useConst'
 
 import { authenticateUser } from '../services/authenticateUserService'
-import { validateAuthenticationParams } from '../services/validateAuthenticationParams'
+import { authParamsSchema } from '../services/authParamsSchema'
 
 const useAuthServices = () =>
   useConst({
     authenticateUser,
-    validateAuthenticationParams,
+    authParamsSchema,
   })
 
 export { useAuthServices }

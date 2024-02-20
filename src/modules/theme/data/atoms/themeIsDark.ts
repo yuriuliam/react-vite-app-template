@@ -1,6 +1,6 @@
 import { atomWithStorage } from 'jotai/utils'
 
-import { localSyncStorage } from '@/infra/cache/core/localSyncStorage'
+import { localSyncStorage } from '@/modules/cache/infra/core/localSyncStorage'
 
 const themeIsDark = atomWithStorage<App.Modules.Theme.IsDarkMode | null>(
   'themes:isDark',

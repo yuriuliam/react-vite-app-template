@@ -9,7 +9,7 @@ import {
 
 import { TOAST_TTL_IN_MS } from '@/config/toasts'
 
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 
 import { useToast } from '../../contexts/toast/context'
 import * as Styled from './styles'

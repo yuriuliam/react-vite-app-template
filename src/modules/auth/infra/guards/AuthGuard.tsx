@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 import { useAuth } from '../contexts/auth/context'
 
-const AUTH_GUARD_NAME = 'Infra.Auth.Guards.Auth'
+const AUTH_GUARD_NAME = 'Modules.Auth.Guards.Auth'
 
 /**
  * A middleware for authentication.

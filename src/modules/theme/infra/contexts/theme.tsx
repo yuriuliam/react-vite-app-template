@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Theme } from '@radix-ui/themes'
 
-import { useConst } from '@/infra/react/hooks/useConst'
-import { useMediaQuery } from '@/infra/react/hooks/useMediaQuery'
+import { useConst } from '@/modules/react/infra/hooks/useConst'
+import { useMediaQuery } from '@/modules/react/infra/hooks/useMediaQuery'
 
 import { useThemeIsDark } from '../hooks/useThemeIsDark'
 

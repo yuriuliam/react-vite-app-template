@@ -8,7 +8,11 @@ interface IEventAdapterLike {
   dispatchEvent: (event: Event) => any
 }
 
-const createEventAdapterMock = (
+/**
+ * There is an event listener like that in the app, however, we need something
+ * more independent and controllable.
+ */
+const createWebEventAdapterMock = (
   listeners: Map<string, Set<EventListener>> = new Map(),
 ) => {
   const addEventListener = vi.fn((type: string, listener: EventListener) => {
@@ -71,4 +75,4 @@ const spyOnEventAdapter = (eventEmitter: IEventAdapterLike) => {
   }
 }
 
-export { createEventAdapterMock, spyOnEventAdapter }
+export { createWebEventAdapterMock, spyOnEventAdapter }

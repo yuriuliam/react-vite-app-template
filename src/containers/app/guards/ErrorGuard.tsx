@@ -7,8 +7,8 @@ import {
 
 import { Flex, Section } from '@radix-ui/themes'
 
-import { useGlobalLogger } from '@/infra/logger/hooks/useGlobalLogger'
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+import { useGlobalLogger } from '@/modules/logger/infra/hooks/useGlobalLogger'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 
 const ERROR_GUARD_NAME = 'Containers.App.Guards.Error'
 const ERROR_GUARD_LOGGER_NAME = 'guards:error'

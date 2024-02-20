@@ -1,7 +1,5 @@
 import { z } from 'zod'
 
-import { FeatureModel } from './FeatureModel'
-
-const FeaturesModel = z.array(FeatureModel)
+const FeaturesModel = z.array(z.string())
 
 export { FeaturesModel }

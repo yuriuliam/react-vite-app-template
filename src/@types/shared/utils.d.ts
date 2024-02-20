@@ -14,8 +14,11 @@ declare global {
     /** Describes a Method of any type. */
     type FunctionLike = (...args: any[]) => any
 
-    /** Describes a possible-async value. */
-    type MaybePromise<T> = T | Promise<T>
+    /** Describes a possible array value. */
+    type MaybeArray<T> = T extends Array<infer U> ? U | T : T | T[]
+
+    /** Describes a possible async value. */
+    type MaybePromise<T> = T extends Promise<infer U> ? U | T : T | Promise<T>
 
     /** Retrieves a mutable version of a value. */
     type Mutable<T> = T extends Readonly<infer V> ? V : T

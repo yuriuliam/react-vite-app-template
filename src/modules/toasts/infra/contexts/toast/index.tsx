@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { createUUID } from '@/data/identity/core/createUUID'
-
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+import { createUUID } from '@/modules/identity/data/core/createUUID'
+import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 
 import { ToastContainer } from '../../components/ToastContainer'
 import { ToastContextProvider } from './context'
