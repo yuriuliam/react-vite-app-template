@@ -8,9 +8,7 @@ type EditorProps = {
   children: App.MaybeArray<React.ReactElement<any, any>>
 }
 
-const createRichTextEditor = (
-  EditorComposer: React.FC<App.Modules.Editor.LexicalComposerProps>,
-) => {
+const createRichTextEditor = (EditorComposer: React.PFC) => {
   const createComposer = React.createElement.bind(React, EditorComposer)
 
   const Editor: React.FC<EditorProps> = ({ children }) =>

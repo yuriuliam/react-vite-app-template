@@ -3,16 +3,10 @@ import {
   type InitialConfigType,
 } from '@lexical/react/LexicalComposer'
 
+import { withProps } from '@/modules/react/infra/hocs/withProps'
+
 const createRichTextEditorComposer = (initialConfig: InitialConfigType) => {
-  const EditorComposer: React.FC<App.Modules.Editor.LexicalComposerProps> = ({
-    children,
-  }) => {
-    return (
-      <LexicalComposer initialConfig={initialConfig}>
-        {children}
-      </LexicalComposer>
-    )
-  }
+  const EditorComposer = withProps(LexicalComposer, { initialConfig })
   EditorComposer.displayName = `Modules.Editors.RichTextEditorComposer(${initialConfig.namespace})`
 
   return EditorComposer
