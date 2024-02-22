@@ -9,14 +9,13 @@ import { ToastProvider } from '@/modules/toasts/infra/contexts/toast'
 const APP_PROVIDER_NAME = 'Containers.App.Provider'
 
 const AppProvider = composedWith(
-  QueryProvider,
   ToastProvider,
   StoreProvider,
+  QueryProvider,
   AuthProvider,
   ThemeProvider,
   FeaturesProvider,
 )
-
 AppProvider.displayName = APP_PROVIDER_NAME
 
 export { AppProvider }
