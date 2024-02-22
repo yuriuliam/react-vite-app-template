@@ -1,16 +1,15 @@
 import React from 'react'
 
-const boundWithProps = <
-  TRef,
-  TProps extends Record<any, any>,
-  TBounded extends Partial<TProps> = Partial<TProps>,
->(
+const withProps = <TRef, TProps extends Record<any, any>>(
   Component: React.ComponentType<TProps>,
-  propsToBound: TBounded,
+  propsToBound: Partial<TProps>,
 ) => {
   const componentName = Component.displayName ?? 'Component'
 
-  const ComponentWithProps = React.forwardRef<TRef, TProps>((props, ref) => {
+  const ComponentWithProps = React.forwardRef<
+    TRef,
+    Omit<TProps, keyof TProps> & Partial<TProps>
+  >((props, ref) => {
     const allProps = Object.keys(props).reduce<any>(
       (acc, cur) => ({
         ...acc,
@@ -22,9 +21,9 @@ const boundWithProps = <
 
     return <Component {...allProps} ref={ref} />
   })
-  ComponentWithProps.displayName = `boundWithProps(${componentName})`
+  ComponentWithProps.displayName = `withProps(${componentName})`
 
   return ComponentWithProps
 }
 
-export { boundWithProps }
+export { withProps }

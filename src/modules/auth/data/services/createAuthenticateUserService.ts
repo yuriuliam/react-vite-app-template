@@ -1,35 +1,45 @@
-import { createFakerUserResponses } from '@/shared/utils/faker'
+import { omitKeys } from '@/shared/utils/objects'
+import { deferred } from '@/shared/utils/promises'
 
 type AuthParams = App.Modules.Auth.AppAuthenticationParams
 
-/** @deprecated This is a faker!! */
-const requestAuthentication = async (params: AuthParams) => {
-  const data = await createFakerUserResponses(true)
+const users = [
+  {
+    id: '378926fe-abdd-481c-b806-f818c62cdf8b',
+    name: 'Lukas Kirlin',
+    username: 'Lukas_Kirlin',
+    email: 'mocked@yahoo.com',
+    password: 'mocked@foobar',
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3ODkyNmZlLWFiZGQtNDgxYy1iODA2LWY4MThjNjJjZGY4YiIsIm5hbWUiOiJMdWthcyBLaXJsaW4iLCJ1c2VybmFtZSI6Ikx1a2FzX0tpcmxpbiIsImVtYWlsIjoibW9ja2VkQHlhaG9vLmNvbSJ9.VIgWauX0QVOtllI2vTUeGj_CxABchzaEBqK3Ilxu5ps',
+  },
+]
 
-  const user = data.find(user => user.email === params.email)
+const fakeFetchUser = async (params: AuthParams) => {
+  const user = users.find(
+    user => params.email === user.email && params.password === user.password,
+  )
 
-  if (!user) return null
+  if (!user) throw new Error('Wrong email/password')
 
-  if (user.password !== params.password) return null
+  const userWithoutPass = omitKeys(user, 'password')
 
-  return user
+  return await deferred(userWithoutPass, 70)
 }
 
-const createAuthenticateUserService = (
+const createAuthenticateUserService = <T>(
   _httpClient: App.Modules.Http.IHttpClient,
-  responseSchema: App.Modules.Validation.Schema,
+  responseSchema: App.Modules.Validation.SchemeParser<T>,
 ) => {
   return async (params: AuthParams) => {
     try {
-      // Example of actual code.
-      //
       // const { data } = await httpClient.request({
       //   data: params,
       //   method: 'POST',
       //   uri: '/auth/jwt',
       // })
 
-      const data = await requestAuthentication(params)
+      const data = await fakeFetchUser(params)
 
       return responseSchema.parse(data)
     } catch (error) {

@@ -11,8 +11,8 @@ declare global {
       messages: App.Modules.Validation.ErrorMessages
     }
 
-    type Schema = {
-      parse: (data: unknown) => any
+    type SchemeParser<T> = {
+      parse: (data: unknown) => T
       safeParse: (data: unknown) => SafeParseResult
     }
   }

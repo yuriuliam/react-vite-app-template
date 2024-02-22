@@ -1,8 +1,11 @@
 import { mainHttpClient } from '@/modules/http/infra/core/mainHttpClient'
 
 import { createLoadFeaturesService } from '../../data/services/createLoadFeaturesService'
-import { featuresSchema } from './featuresSchema'
+import { featuresSchemaParser } from './featuresSchema'
 
-const loadFeatures = createLoadFeaturesService(mainHttpClient, featuresSchema)
+const loadFeatures = createLoadFeaturesService(
+  mainHttpClient,
+  featuresSchemaParser,
+)
 
 export { loadFeatures }

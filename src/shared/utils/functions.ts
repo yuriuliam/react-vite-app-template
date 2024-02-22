@@ -135,6 +135,11 @@ const memoize = <T extends (...args: any[]) => any>(
   return memoized
 }
 
+const piped = <T>(...callbacks: Array<App.MutateFn<T>>) => {
+  return (arg: T) =>
+    [...callbacks].reverse().reduce((acc, cur) => cur(acc), arg)
+}
+
 export {
   composed,
   debounced,
@@ -144,5 +149,6 @@ export {
   isFunctionType,
   isGeneratorFunction,
   memoize,
+  piped,
 }
 export type { MemoizeOptions }

@@ -9,8 +9,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // [Faker] ~2.5 mB (https://fakerjs.dev/guide/usage.html#browser)
-          fkr: ['@faker-js/faker'],
           // [Radix UI - Icons] ~400.00 kB
           icn: ['@radix-ui/react-icons'],
           // [Lexical] ~134.39 kB

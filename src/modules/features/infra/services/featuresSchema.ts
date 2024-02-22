@@ -1,8 +1,8 @@
-import { createModelSchema } from '@/modules/validation/data/core/createModelSchema'
+import { createSchemaParser } from '@/modules/validation/data/core/createSchemaParser'
 import { parseZodErrors } from '@/modules/validation/infra/core/parseZodErrors'
 
 import { FeaturesModel } from '../../models/FeaturesModel'
 
-const featuresSchema = createModelSchema(FeaturesModel, parseZodErrors)
+const featuresSchemaParser = createSchemaParser(FeaturesModel, parseZodErrors)
 
-export { featuresSchema }
+export { featuresSchemaParser }

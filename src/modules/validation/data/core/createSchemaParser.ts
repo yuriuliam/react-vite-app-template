@@ -2,13 +2,13 @@ import { SchemaError } from '../errors/SchemaError'
 
 import type { z } from 'zod'
 
-const createModelSchema = (
-  model: z.ZodType<any, any, any>,
+const createSchemaParser = <T>(
+  model: z.ZodType<T, any, any>,
   parseErrors: (error: unknown) => App.Modules.Validation.ErrorMessages,
 ) => {
   const parse = (data: unknown) => {
     try {
-      model.parse(data)
+      return model.parse(data)
     } catch (error) {
       throw new SchemaError(parseErrors(error), error)
     }
@@ -33,7 +33,7 @@ const createModelSchema = (
   return {
     parse,
     safeParse,
-  } satisfies App.Modules.Validation.Schema
+  } satisfies App.Modules.Validation.SchemeParser<T>
 }
 
-export { createModelSchema }
+export { createSchemaParser }

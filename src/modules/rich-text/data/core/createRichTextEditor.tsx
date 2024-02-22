@@ -3,14 +3,13 @@ import React from 'react'
 import { composeChildren } from '@/modules/react/data/core/composeChildren'
 
 import '@lexical/react/LexicalAutoLinkPlugin'
-import { type LexicalComposerProps } from './createRichTextEditorComposer'
 
 type EditorProps = {
   children: App.MaybeArray<React.ReactElement<any, any>>
 }
 
 const createRichTextEditor = (
-  EditorComposer: React.FC<LexicalComposerProps>,
+  EditorComposer: React.FC<App.Modules.Editor.LexicalComposerProps>,
 ) => {
   const createComposer = React.createElement.bind(React, EditorComposer)
 

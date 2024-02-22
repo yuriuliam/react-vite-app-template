@@ -33,6 +33,8 @@ declare global {
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue
 
+    type MutateFn<TValue> = (arg: TValue) => TValue
+
     /** Same as the factory, but semantically named to avoid confusion. */
     type InitFn<TValue> = FactoryFn<TValue>
 

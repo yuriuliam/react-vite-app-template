@@ -75,6 +75,17 @@ const isObject = (value: any): value is object =>
 const isRecord = (value: any): value is Record<any, any> =>
   isObject(value) && Object.getPrototypeOf(value) === RECORD_PROTOTYPE
 
+const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
+  obj: TObj,
+  ...keys: TKey[]
+) => {
+  return Object.keys(obj).reduce(
+    (acc, cur) =>
+      keys.includes(cur as any) ? acc : { ...acc, [cur]: obj[cur] },
+    {},
+  ) as Omit<TObj, TKey>
+}
+
 /**
  * Retrieves a random item from a given iterable.
  *
@@ -94,5 +105,6 @@ export {
   chunkEvery,
   isObject,
   isRecord,
+  omitKeys,
   random,
 }

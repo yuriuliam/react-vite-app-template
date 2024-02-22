@@ -30,3 +30,7 @@ old.*
 *.njsproj
 *.sln
 *.sw?
+
+# Environment Files
+.env.*
+!.env

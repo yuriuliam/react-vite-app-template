@@ -1,10 +1,8 @@
-import { z } from 'zod'
+import { UserWithPasswordModel } from '@/modules/users/models/UserWithPasswordModel'
 
-import { EmailModel } from '@/modules/shared/data/models/EmailModel'
-
-const AuthenticationParamsModel = z.object({
-  email: EmailModel.min(1, 'email is required.'),
-  password: z.string().min(8, 'passwords must have at least 8 characters'),
+const AuthenticationParamsModel = UserWithPasswordModel.pick({
+  email: true,
+  password: true,
 })
 
 export { AuthenticationParamsModel }

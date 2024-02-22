@@ -1,7 +1,10 @@
 import { UserResponseModel } from '@/modules/users/models/UserResponseModel'
-import { createModelSchema } from '@/modules/validation/data/core/createModelSchema'
+import { createSchemaParser } from '@/modules/validation/data/core/createSchemaParser'
 import { parseZodErrors } from '@/modules/validation/infra/core/parseZodErrors'
 
-const userResponseSchema = createModelSchema(UserResponseModel, parseZodErrors)
+const userResponseSchemaParser = createSchemaParser(
+  UserResponseModel,
+  parseZodErrors,
+)
 
-export { userResponseSchema }
+export { userResponseSchemaParser }

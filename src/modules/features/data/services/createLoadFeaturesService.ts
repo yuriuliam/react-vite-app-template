@@ -1,29 +1,18 @@
-import { createFakeFeatureFlags } from '@/shared/utils/faker'
+import { tokenWithScheme } from '@/shared/utils/http'
 
-/** @deprecated This is a faker!! */
-const requestFeatures = async () => {
-  const featureFlags = await createFakeFeatureFlags(true)
-
-  return featureFlags
-}
-
-const createLoadFeaturesService = (
-  _httpClient: App.Modules.Http.IHttpClient,
-  responseSchema: App.Modules.Validation.Schema,
+const createLoadFeaturesService = <T>(
+  httpClient: App.Modules.Http.IHttpClient,
+  responseSchema: App.Modules.Validation.SchemeParser<T>,
 ) => {
-  return async (_token: App.Models.TokenModel) => {
+  return async (token: App.Models.TokenModel) => {
     try {
-      // Example of actual code.
-      //
-      // const { data } = await httpClient.request({
-      //   headers: {
-      //     Authorization: `Bearer ${token}`,
-      //   },
-      //   method: 'GET',
-      //   uri: '/users/me/features',
-      // })
-
-      const data = await requestFeatures()
+      const { data } = await httpClient.request({
+        headers: {
+          Authorization: tokenWithScheme(token),
+        },
+        method: 'GET',
+        uri: '/users/me/features',
+      })
 
       return responseSchema.parse(data)
     } catch (error) {

@@ -15,8 +15,8 @@ const SIGN_IN_NAME = 'Containers.SignIn.Root'
 
 const SignInPage: React.FC = () => {
   const defaultAuthParams = useConst<App.Modules.Auth.AppAuthenticationParams>({
-    email: 'Lukas_Kirlin@yahoo.com',
-    password: 'limivuro',
+    email: 'mocked@yahoo.com',
+    password: 'mocked@foobar',
   })
 
   const { isAuthenticated, signIn } = useAuth(SIGN_IN_NAME)
