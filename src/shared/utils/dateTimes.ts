@@ -31,19 +31,21 @@ const createHoursAndMinutesFormat = createDateTimeFormatCallback.bind(null, {
 /**
  *
  */
-const clockTime = createStringifyAdapter(createClockTimeFormat(Locale.Default))
+const clockTime = createStringifyAdapter(
+  createClockTimeFormat(Locale.UnitedStates),
+)
 
 /**
  *
  */
 const detailedDateTime = createStringifyAdapter(
-  createDetailedDateTimeFormat(Locale.Default),
+  createDetailedDateTimeFormat(Locale.UnitedStates),
 )
 /**
  *
  */
 const hoursAndMinutes = createStringifyAdapter(
-  createHoursAndMinutesFormat(Locale.Default),
+  createHoursAndMinutesFormat(Locale.UnitedStates),
 )
 
 export { clockTime, detailedDateTime, hoursAndMinutes }
