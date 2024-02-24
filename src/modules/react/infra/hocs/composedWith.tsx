@@ -1,26 +1,29 @@
 import React from 'react'
 
+import { getComponentDisplayName } from '../utils/getComponentDisplayName'
+
 /**
  * Creates a component which nests each declaration within the next.
  *
  * @example
- * // same as const Component = ({ children }) => <CompA><CompB>{children}</CompB></CompA>
  * const Component = composedWith(CompA, CompB)
+ *
+ * render(<Component />) // same as <CompA><CompB>{children}</CompB></CompA>
  * @param components
  * @returns
  */
 const composedWith = (
   ...components: Array<React.ComponentType<React.PropsWithChildren>>
 ) => {
-  const componentsOrderedByRender = [...components].reverse()
+  const componentsOrderedByRenderDepth = [...components].reverse()
 
-  const componentNames = components.map(
-    component => component.displayName ?? 'Component',
+  const componentNames = components.map(component =>
+    getComponentDisplayName(component),
   )
 
   const Component: React.PFC = ({ children }) => {
-    const allComponents = componentsOrderedByRender.reduce(
-      (children, layer) => React.createElement(layer, {}, children),
+    const allComponents = componentsOrderedByRenderDepth.reduce(
+      (children, layer) => React.createElement(layer, null, children),
       children,
     )
 
