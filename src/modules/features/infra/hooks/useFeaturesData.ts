@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+import { useAuth } from '@/modules/auth/infra/contexts/auth'
 
-import { fetchFeatures } from '../services/fetchFeaturesService'
+import { fetchFeatures } from '../../data/use-cases/fetchFeaturesService'
 
 const useFeaturesData = (consumerName: string) => {
   const finalConsumerName = `useFeaturesData(${consumerName})`

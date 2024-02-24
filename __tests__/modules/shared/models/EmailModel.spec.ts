@@ -2,8 +2,9 @@ import { faker } from '@faker-js/faker'
 import { describe, expect, it } from 'vitest'
 import { ZodError } from 'zod'
 
-import { EmailModel } from '@/modules/shared/data/models/EmailModel'
-import { parseZodErrors } from '@/modules/validation/infra/core/parseZodErrors'
+import { parseZodErrors } from '@/data/validation/protocols/parseZodErrors'
+
+import { EmailModel } from '@/domain/shared/models/Email'
 
 describe('EmailModel', () => {
   it('should successfully parse consistent values', () => {

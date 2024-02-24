@@ -1,4 +1,4 @@
-import type { AuthenticationParamsModel } from '@/modules/auth/models/AuthenticationParamsModel'
+import type { AuthenticationParamsModel } from '@/modules/auth/domain/models/AuthenticationParams'
 import type { z } from 'zod'
 
 declare global {

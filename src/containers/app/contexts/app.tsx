@@ -1,10 +1,12 @@
-import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
-import { StoreProvider } from '@/modules/cache/infra/contexts/store'
-import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
-import { QueryProvider } from '@/modules/react-query/infra/contexts/query'
-import { composedWith } from '@/modules/react/infra/hocs/composedWith'
-import { ThemeProvider } from '@/modules/theme/infra/contexts/theme'
-import { ToastProvider } from '@/modules/toasts/infra/contexts/toast'
+import { ThemeProvider } from '@/data/theme/contexts/theme'
+import { ToastProvider } from '@/data/toast/contexts/toast'
+
+import { StoreProvider } from '@/infra/cache/contexts/store'
+import { QueryProvider } from '@/infra/react-query/contexts/query'
+import { composedWith } from '@/infra/react/hocs/composedWith'
+
+import { AuthProvider } from '@/modules/auth/data/contexts/auth'
+import { FeaturesProvider } from '@/modules/features/data/contexts/features'
 
 const APP_PROVIDER_NAME = 'Containers.App.Provider'
 

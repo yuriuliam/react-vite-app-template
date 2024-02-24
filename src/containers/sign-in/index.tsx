@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { AppRoutePaths } from '@/config/routes'
+import { AppRoute } from '@/config/routes'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
-import { Form } from '@/modules/forms/infra/components/Form'
-import { Input } from '@/modules/forms/infra/components/Input'
-import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
-import { useConst } from '@/modules/react/infra/hooks/useConst'
+import { Form } from '@/data/forms/components/Form'
+import { Input } from '@/data/forms/components/Input'
+
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+import { useConst } from '@/infra/react/hooks/useConst'
+
+import { useAuth } from '@/modules/auth/infra/contexts/auth'
 
 import { Button } from '../shared/components/Button'
 
@@ -34,7 +36,7 @@ const SignInPage: React.FC = () => {
   React.useEffect(() => {
     if (!isAuthenticated) return
 
-    navigate(AppRoutePaths.Root)
+    navigate(AppRoute.Root)
   }, [isAuthenticated, navigate])
 
   return (

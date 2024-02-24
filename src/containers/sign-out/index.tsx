@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AppRoutePaths } from '@/config/routes'
+import { AppRoute } from '@/config/routes'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
+import { useAuth } from '@/modules/auth/infra/contexts/auth'
 
 const SIGN_OUT_NAME = 'Containers.SignOut.Root'
 
@@ -20,7 +20,7 @@ const SignOutPage: React.FC = () => {
   React.useEffect(() => {
     signOut()
 
-    navigate(AppRoutePaths.Root)
+    navigate(AppRoute.Root)
   }, [navigate, signOut])
 
   return <></>

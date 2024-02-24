@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { AppRoutePaths } from '@/config/routes'
+import { AppRoute } from '@/config/routes'
 
-import { useFeatures } from '@/modules/features/infra/contexts/features/context'
-import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
+
+import { useFeatures } from '@/modules/features/infra/contexts/features'
 
 import { Button } from '../shared/components/Button'
 
@@ -18,7 +19,7 @@ const HomePage: React.FC = () => {
   const { hasFeatures } = useFeatures(HOME_PAGE_NAME)
 
   const handleSignOut = useCallbackRef(() => {
-    navigate(AppRoutePaths.SignOut)
+    navigate(AppRoute.SignOut)
   })
 
   const hasHelloWorld = hasFeatures('ff_hello_world')

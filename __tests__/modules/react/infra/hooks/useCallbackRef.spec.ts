@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
+import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 describe('useCallbackRef', () => {
   it('should render a memoized callback', () => {

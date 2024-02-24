@@ -1,8 +1,10 @@
 import { Profiler } from 'react'
 
-import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
-import { StoreProvider } from '@/modules/cache/infra/contexts/store'
-import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
+import { StoreProvider } from '@/infra/cache/contexts/store'
+import { withProps } from '@/infra/react/hocs/withProps'
+
+import { AuthProvider } from '@/modules/auth/data/contexts/auth'
+import { FeaturesProvider } from '@/modules/features/data/contexts/features'
 
 const createWrapper = (Component: React.PFC) => {
   const Wrapper: React.PFC = ({ children }) => <Component>{children}</Component>
@@ -17,7 +19,7 @@ const createFeaturesWrapper = createWrapper.bind(null, FeaturesProvider)
 const createProfilerWrapper = (
   id: string,
   onRender: React.ProfilerOnRenderCallback,
-) => createWrapper(props => <Profiler {...props} id={id} onRender={onRender} />)
+) => createWrapper(withProps(Profiler, { id, onRender }))
 
 const createStoreWrapper = createWrapper.bind(null, StoreProvider)
 

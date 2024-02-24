@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest'
 
-import { HttpError } from '@/modules/http/data/errors/HttpError'
-import { AppError } from '@/modules/shared/data/errors/AppError'
-import { parseAppErrors } from '@/modules/validation/infra/core/parseAppErrors'
+import { parseAppErrors } from '@/data/validation/protocols/parseAppErrors'
+
+import { HttpError } from '@/domain/http/errors/HttpError'
+import { AppError } from '@/domain/shared/errors/AppError'
 
 describe('parseAppErrors', () => {
   it('should be able to parse an app error', () => {

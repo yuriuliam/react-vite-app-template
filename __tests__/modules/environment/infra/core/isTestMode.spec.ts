@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { isTestMode } from '@/modules/environment/infra/core/isTestMode'
+import { isTestMode } from '@/data/environment/use-cases/isTestMode'
 
 describe('isTestMode', () => {
   it('should return true for a matching mode', () => {

@@ -1,9 +1,10 @@
 import { act, renderHook } from '@testing-library/react'
-import { useAtom } from 'jotai'
-import { atomWithStorage } from 'jotai/utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
-import { sessionSyncStorage } from '@/modules/cache/infra/core/sessionSyncStorage'
+import { sessionSyncStorage } from '@/data/cache/use-cases/sessionSyncStorage'
+
+import { useAppAtom } from '@/infra/cache/hooks/useAppAtom'
+import { createAtomWithStorage } from '@/infra/cache/use-cases/createAtomWithStorage'
 
 import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
 
@@ -19,11 +20,16 @@ describe('sessionSyncStorage', () => {
   it('should reflect data in Storage', () => {
     const atomKey = 'tests:value'
     const atomValue = { value: 'foo' }
-    const valueAtom = atomWithStorage(atomKey, atomValue, sessionSyncStorage, {
-      getOnInit: true,
-    })
+    const valueAtom = createAtomWithStorage(
+      atomKey,
+      atomValue,
+      sessionSyncStorage,
+      {
+        getOnInit: true,
+      },
+    )
 
-    const { result: valueState } = renderHook(() => useAtom(valueAtom))
+    const { result: valueState } = renderHook(() => useAppAtom(valueAtom))
 
     const [value, setValue] = valueState.current
 

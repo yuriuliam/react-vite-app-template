@@ -1,7 +1,7 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { useDebouncedCallback } from '@/modules/react/infra/hooks/useDebouncedCallback'
+import { useDebouncedCallback } from '@/infra/react/hooks/useDebouncedCallback'
 
 describe('useDebouncedCallback', () => {
   it('should render a debounced callback', async () => {

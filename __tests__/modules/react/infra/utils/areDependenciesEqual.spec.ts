@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { areDependenciesEqual } from '@/modules/react/infra/utils/areDependenciesEqual'
+import { areDependenciesEqual } from '@/infra/react/utils/areDependenciesEqual'
 
 describe('areDependenciesEqual', () => {
   it('should return true for dependencies with same values', () => {

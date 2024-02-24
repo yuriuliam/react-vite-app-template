@@ -1,9 +1,9 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-import { AppRoutePaths } from '@/config/routes'
+import { AppRoute } from '@/config/routes'
 
-import { useAuth } from '../contexts/auth/context'
+import { useAuth } from '../../infra/contexts/auth'
 
 const AUTH_GUARD_NAME = 'Modules.Auth.Guards.Auth'
 
@@ -13,7 +13,7 @@ const AUTH_GUARD_NAME = 'Modules.Auth.Guards.Auth'
 const AuthGuard: React.FC = () => {
   const { isAuthenticated } = useAuth(AUTH_GUARD_NAME)
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={AppRoutePaths.SignIn} />
+  return isAuthenticated ? <Outlet /> : <Navigate to={AppRoute.SignIn} />
 }
 AuthGuard.displayName = AUTH_GUARD_NAME
 

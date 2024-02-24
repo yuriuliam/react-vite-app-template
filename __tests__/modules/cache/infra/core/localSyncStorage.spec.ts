@@ -1,11 +1,12 @@
 import { act, renderHook } from '@testing-library/react'
-import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
-import { StoragePrefix } from '@/config/cache'
+import { localSyncStorage } from '@/data/cache/use-cases/localSyncStorage'
 
-import { localSyncStorage } from '@/modules/cache/infra/core/localSyncStorage'
+import { StoragePrefix } from '@/domain/cache/enums/StoragePrefix'
+
+import { useAppAtom } from '@/infra/cache/hooks/useAppAtom'
 
 import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
 
@@ -25,7 +26,7 @@ describe('localSyncStorage', () => {
       getOnInit: true,
     })
 
-    const { result: valueState } = renderHook(() => useAtom(valueAtom))
+    const { result: valueState } = renderHook(() => useAppAtom(valueAtom))
 
     const [value, setValue] = valueState.current
 

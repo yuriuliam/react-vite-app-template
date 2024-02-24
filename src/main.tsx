@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client'
 
 import { App } from '@/containers/app'
 
-import { logEnvironmentMeta } from '@/modules/environment/infra/scripts/logEnvironmentMeta'
-import { injectGlobalLogger } from '@/modules/logger/infra/scripts/injectGlobalLogger'
-import { logWebVitals } from '@/modules/web-vitals/infra/scripts/logWebVitals'
+import { logWebVitals } from '@/data/web-vitals/scripts/logWebVitals'
+
+import { logEnvironmentMeta } from './data/environment/scripts/logEnvironmentMeta'
+import { injectGlobalLogger } from './data/logger/scripts/injectGlobalLogger'
 
 import '@fontsource/poppins/500.css'
 import '@fontsource/poppins/600.css'
@@ -13,7 +14,10 @@ import '@fontsource/poppins/700.css'
 import '@fontsource/poppins/800.css'
 import '@radix-ui/themes/styles.css'
 
+// Injections
 injectGlobalLogger()
+
+// Log Scripts
 logEnvironmentMeta()
 logWebVitals()
 

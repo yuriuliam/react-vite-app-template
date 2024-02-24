@@ -1,34 +1,36 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { AppRoutePaths } from '@/config/routes'
+import { AppRoute } from '@/config/routes'
 
 import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
 
-import { routesWithinAuth } from '@/modules/auth/infra/core/routesWithinAuth'
-import { routesWithinMainLayout } from '@/modules/layouts/infra/core/routesWithinMainLayout'
-import { withProps } from '@/modules/react/infra/hocs/withProps'
-import { routesWithinErrorBoundary } from '@/modules/router/infra/core/routesWithinErrorBoundary'
+import { routesWithinMainLayout } from '@/data/app/use-cases/routesWithinMainLayout'
+import { routesWithinErrorGuard } from '@/data/router/routesWithinErrorBoundary'
+
+import { withProps } from '@/infra/react/hocs/withProps'
+
+import { routesWithinAuth } from '@/modules/auth/data/use-cases/routesWithinAuth'
 
 const ROUTES_NAME = 'Containers.App.Routes'
 
 const router = createBrowserRouter([
-  routesWithinErrorBoundary([
+  routesWithinErrorGuard([
     routesWithinAuth([
       routesWithinMainLayout([
         {
-          path: AppRoutePaths.Root,
+          path: AppRoute.Root,
           element: <HomePage />,
         },
       ]),
     ]),
     {
-      path: AppRoutePaths.SignIn,
+      path: AppRoute.SignIn,
       element: <SignInPage />,
     },
     {
-      path: AppRoutePaths.SignOut,
+      path: AppRoute.SignOut,
       element: <SignOutPage />,
     },
   ]),

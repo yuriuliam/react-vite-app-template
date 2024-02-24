@@ -1,11 +1,12 @@
-import type { EmailModel } from '@/modules/shared/data/models/EmailModel'
-import type { TokenModel } from '@/modules/shared/data/models/TokenModel'
+import { type EmailModel } from '@/protocols/shared/models/Email'
+import { type TokenModel } from '@/protocols/shared/models/Token'
+
 import type { z } from 'zod'
 
 declare global {
   declare namespace App.Models {
-    type EmailModel = z.infer<typeof EmailModel>
-    type TokenModel = z.infer<typeof TokenModel>
+    type Email = z.infer<typeof EmailModel>
+    type Token = z.infer<typeof TokenModel>
   }
 }
 

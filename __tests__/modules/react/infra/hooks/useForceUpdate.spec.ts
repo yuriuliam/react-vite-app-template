@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { useForceUpdate } from '@/modules/react/infra/hooks/useForceUpdate'
+import { useForceUpdate } from '@/infra/react/hooks/useForceUpdate'
 
 import { createProfilerWrapper } from '#/__mocks__/react/wrappers'
 

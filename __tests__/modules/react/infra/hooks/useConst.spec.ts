@@ -3,7 +3,7 @@ import React from 'react'
 import { act, renderHook } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { useConst } from '@/modules/react/infra/hooks/useConst'
+import { useConst } from '@/infra/react/hooks/useConst'
 
 describe('useConst', () => {
   it('should render a memoized callback', () => {

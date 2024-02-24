@@ -1,6 +1,6 @@
-import type { UserModel } from '@/modules/users/models/UserModel'
-import type { UserResponseModel } from '@/modules/users/models/UserResponseModel'
-import type { UserWithPasswordModel } from '@/modules/users/models/UserWithPasswordModel'
+import type { UserModel } from '@/modules/users/models/User'
+import type { UserResponseModel } from '@/modules/users/models/UserResponse'
+import type { UserWithPasswordModel } from '@/modules/users/models/UserWithPassword'
 import type { z } from 'zod'
 
 declare global {

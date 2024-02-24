@@ -1,7 +1,7 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { useDebouncedValue } from '@/modules/react/infra/hooks/useDebouncedValue'
+import { useDebouncedValue } from '@/infra/react/hooks/useDebouncedValue'
 
 describe('useDebouncedValue', () => {
   it('should render a debounced value', async () => {

@@ -3,7 +3,7 @@ import React from 'react'
 import { render, renderHook } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 
-import { useComposedRef } from '@/modules/react/infra/hooks/useComposedRef'
+import { useComposedRef } from '@/infra/react/hooks/useComposedRef'
 
 describe('composeRefs', () => {
   it('should return true', () => {
