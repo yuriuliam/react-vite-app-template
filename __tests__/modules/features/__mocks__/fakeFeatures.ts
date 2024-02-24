@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 
-import { FAKE_DATA_LENGTH, STATIC_SEED } from '#/config/faker'
+import { STATIC_SEED, FAKE_DATA_LENGTH } from '#/config/faker'
 
 const createFakeFeatures = (shouldBeDeterministic = false) => {
   if (shouldBeDeterministic) faker.seed(STATIC_SEED)
 
   return new Array(FAKE_DATA_LENGTH)
-    .fill('FF')
+    .fill('feature')
     .map(featureFlagPrefix =>
       [featureFlagPrefix, faker.word.sample(), faker.word.verb()].join('_'),
     )

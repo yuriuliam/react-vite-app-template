@@ -1,4 +1,4 @@
-import { tokenWithScheme } from '@/shared/utils/http'
+import { tokenWithScheme } from '@/infra/http/utils/tokenWithScheme'
 
 const createLoadFeaturesService = <T>(
   httpClient: App.Domain.Http.IHttpClient,

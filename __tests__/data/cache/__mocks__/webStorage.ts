@@ -9,7 +9,7 @@ interface IStorageLike {
   readonly length: number
 }
 
-const createStorageMock = (cache: Map<string, string> = new Map()) => {
+const createWebStorageMock = (cache: Map<string, string> = new Map()) => {
   const clear = vi.fn(cache.clear.bind(cache))
 
   const getItem = vi.fn((key: string) => cache.get(key) ?? null)
@@ -49,4 +49,22 @@ const createStorageMock = (cache: Map<string, string> = new Map()) => {
   return storageMock
 }
 
-export { createStorageMock }
+const spySyncStorage = (syncStorage: App.Domain.Cache.ISyncStorage) => {
+  const getItem = vi.spyOn(syncStorage, 'getItem')
+  const removeItem = vi.spyOn(syncStorage, 'removeItem')
+  const setItem = vi.spyOn(syncStorage, 'setItem')
+
+  afterEach(() => {
+    getItem.mockClear()
+    removeItem.mockClear()
+    setItem.mockClear()
+  })
+
+  return {
+    getItem,
+    removeItem,
+    setItem,
+  }
+}
+
+export { createWebStorageMock, spySyncStorage }

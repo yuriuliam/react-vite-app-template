@@ -16,7 +16,7 @@ export default defineConfig({
         '.storybook/**/*',
         '__tests__/**/*',
         'src/@types/**/*',
-        'src/config/**/*',
+        'src/domain/**/*',
         'src/**/scripts/**/*',
         'src/main.tsx',
       ],

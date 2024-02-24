@@ -2,9 +2,6 @@ import { faker } from '@faker-js/faker'
 
 import { FAKE_DATA_LENGTH, STATIC_SEED } from '#/config/faker'
 
-/**
- * Creates a set of 100 fake user responses.
- */
 const createFakerUserResponses = (shouldBeDeterministic = false) => {
   if (shouldBeDeterministic) faker.seed(STATIC_SEED)
 

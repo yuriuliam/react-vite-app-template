@@ -8,7 +8,7 @@ import { StoragePrefix } from '@/domain/cache/enums/StoragePrefix'
 
 import { useAppAtom } from '@/infra/cache/hooks/useAppAtom'
 
-import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
+import { spySyncStorage } from '#/data/cache/__mocks__/syncStorage'
 
 describe('localSyncStorage', () => {
   beforeEach(() => {

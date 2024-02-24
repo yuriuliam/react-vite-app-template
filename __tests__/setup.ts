@@ -1,7 +1,7 @@
 import { cleanup } from '@testing-library/react'
 import { afterEach } from 'vitest'
 
-import { createStorageMock } from './__mocks__/cache/storage'
+import { createWebStorageMock } from './data/cache/__mocks__/webStorage'
 
 import '@testing-library/jest-dom/vitest'
 
@@ -13,5 +13,5 @@ afterEach(() => {
 
 // Setup Local Storage and Session Storage Mocks
 
-Reflect.set(window, 'localStorage', createStorageMock())
-Reflect.set(window, 'sessionStorage', createStorageMock())
+Reflect.set(window, 'localStorage', createWebStorageMock())
+Reflect.set(window, 'sessionStorage', createWebStorageMock())

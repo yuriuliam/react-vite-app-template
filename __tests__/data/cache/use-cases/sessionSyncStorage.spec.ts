@@ -6,7 +6,7 @@ import { sessionSyncStorage } from '@/data/cache/use-cases/sessionSyncStorage'
 import { useAppAtom } from '@/infra/cache/hooks/useAppAtom'
 import { createAtomWithStorage } from '@/infra/cache/use-cases/createAtomWithStorage'
 
-import { spySyncStorage } from '#/__mocks__/cache/syncStorage'
+import { spySyncStorage } from '#/data/cache/__mocks__/syncStorage'
 
 describe('sessionSyncStorage', () => {
   beforeEach(() => {
