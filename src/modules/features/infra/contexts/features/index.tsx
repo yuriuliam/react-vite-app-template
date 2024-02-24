@@ -1,18 +1,15 @@
 import React from 'react'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth/context'
 import { useCallbackRef } from '@/modules/react/infra/hooks/useCallbackRef'
 import { useSet } from '@/modules/react/infra/hooks/useSet'
 
-import { useFeaturesServices } from '../../hooks/useFeaturesServices'
+import { useFeaturesData } from '../../hooks/useFeaturesData'
 import { FeaturesContextProvider } from './context'
 
 const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
-  const { loadFeatures } = useFeaturesServices()
-
-  const { isAuthenticated, token } = useAuth(FEATURES_PROVIDER_NAME)
+  const { featureList } = useFeaturesData(FEATURES_PROVIDER_NAME)
 
   const features = useSet([] as App.Modules.Features.AppFeatures)
 
@@ -32,26 +29,13 @@ const FeaturesProvider: React.PFC = ({ children }) => {
     features.delete(...ids.filter(id => features.has(id)))
   })
 
-  const fetchFeaturesEffect = useCallbackRef(async (authToken: string) => {
-    const features = await loadFeatures(authToken)
-
-    if (!features) return
-
-    addFeatures(...features)
-  })
-
   React.useEffect(() => {
-    if (!token) return
-
-    void fetchFeaturesEffect(token)
-  }, [fetchFeaturesEffect, token])
-
-  // If Client sign-out we want to clear up all feature flags.
-  React.useEffect(() => {
-    if (isAuthenticated) return
-
     clearFeatures()
-  }, [clearFeatures, isAuthenticated])
+
+    if (!featureList) return
+
+    addFeatures(...featureList)
+  }, [addFeatures, clearFeatures, featureList])
 
   return (
     <FeaturesContextProvider

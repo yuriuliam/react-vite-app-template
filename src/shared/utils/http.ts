@@ -1,4 +1,4 @@
-const tokenWithScheme = (token: string, scheme = 'Bearer') =>
-  `${scheme} ${token}`
+const tokenWithScheme = (token: string | null, clientScheme = 'Bearer') =>
+  token ? `${clientScheme} ${token}` : ''
 
 export { tokenWithScheme }

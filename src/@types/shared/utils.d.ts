@@ -38,6 +38,8 @@ declare global {
     /** Same as the factory, but semantically named to avoid confusion. */
     type InitFn<TValue> = FactoryFn<TValue>
 
+    type ObserverFn<TValue> = (arg: TValue) => void
+
     /** Describes a non-class non-null object. */
     type ObjectType = Record<any, any> | any[]
 

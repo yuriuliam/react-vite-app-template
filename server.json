@@ -1,5 +1,6 @@
 {
-  "/users/me/features": [
-    "feature_show_name"
+  "users/me/features": [
+    { "id": "1", "code": "feat_show_name", "description": "Show User Name" },
+    { "id": "2", "code": "feat_foo_bar", "description": "Foo Bar" }
   ]
 }

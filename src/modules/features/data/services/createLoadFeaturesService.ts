@@ -4,14 +4,14 @@ const createLoadFeaturesService = <T>(
   httpClient: App.Modules.Http.IHttpClient,
   responseSchema: App.Modules.Validation.SchemeParser<T>,
 ) => {
-  return async (token: App.Models.TokenModel) => {
+  return async (token: App.Models.TokenModel | null) => {
     try {
       const { data } = await httpClient.request({
         headers: {
           Authorization: tokenWithScheme(token),
         },
         method: 'GET',
-        uri: '/users/me/features',
+        url: '/users/me/features',
       })
 
       return responseSchema.parse(data)

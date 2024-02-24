@@ -17,7 +17,7 @@ declare global {
       headers?: RequestHeaders | undefined
       method: RequestMethods
       params?: unknown | undefined
-      uri: string
+      url: string
       withCredentials?: boolean | undefined
     }
 

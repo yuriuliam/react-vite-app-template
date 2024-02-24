@@ -1,5 +1,5 @@
-import type { EmailModel } from '@/shared/models/EmailModel'
-import type { TokenModel } from '@/shared/models/TokenModel'
+import type { EmailModel } from '@/modules/shared/data/models/EmailModel'
+import type { TokenModel } from '@/modules/shared/data/models/TokenModel'
 import type { z } from 'zod'
 
 declare global {
