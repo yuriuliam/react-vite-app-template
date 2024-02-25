@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { AppRoute } from '@/config/routes'
-
+import { AppRoute } from '@/infra/app/enums/AppRoute'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 import { useFeatures } from '@/modules/features/infra/contexts/features'

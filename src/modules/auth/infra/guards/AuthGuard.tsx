@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
-import { AppRoute } from '@/config/routes'
+import { AppRoute } from '@/infra/app/enums/AppRoute'
 
 import { useAuth } from '../../infra/contexts/auth'
 

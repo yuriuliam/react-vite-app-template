@@ -6,14 +6,14 @@ import { getComponentDisplayName } from '../utils/getComponentDisplayName'
  * Creates a component with props.
  * Same as creating a component with default props.
  */
-const withProps = <TRef, TProps extends Record<any, any>>(
+const withProps = <TProps extends Record<any, any>>(
   Component: React.ComponentType<TProps>,
   propsToBound: Partial<TProps>,
 ) => {
   const componentName = getComponentDisplayName(Component)
 
   const ComponentWithProps = React.forwardRef<
-    TRef,
+    React.ComponentRef<typeof Component>,
     Omit<TProps, keyof TProps> & Partial<TProps>
   >(({ children, ...props }, ref) =>
     React.createElement(

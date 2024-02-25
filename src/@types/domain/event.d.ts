@@ -2,6 +2,10 @@ declare global {
   declare namespace App.Domain.Event {
     type EventBase = { type: string }
 
+    type InitialObservers<TEvent extends EventBase> = Iterable<
+      Readonly<[string, Set<Listener<TEvent>>]>
+    > | null
+
     type Listener<TEvent extends EventBase> = (event: TEvent) => any
 
     interface IEventHandler<TEvent extends EventBase> {

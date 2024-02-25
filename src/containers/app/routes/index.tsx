@@ -1,7 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import { AppRoute } from '@/config/routes'
-
 import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
@@ -9,6 +7,7 @@ import { SignOutPage } from '@/containers/sign-out'
 import { routesWithinMainLayout } from '@/data/app/use-cases/routesWithinMainLayout'
 import { routesWithinErrorGuard } from '@/data/router/routesWithinErrorBoundary'
 
+import { AppRoute } from '@/infra/app/enums/AppRoute'
 import { withProps } from '@/infra/react/hocs/withProps'
 
 import { routesWithinAuth } from '@/modules/auth/data/use-cases/routesWithinAuth'

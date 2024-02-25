@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { AppRoute } from '@/config/routes'
-
 import { Form } from '@/data/forms/components/Form'
 import { Input } from '@/data/forms/components/Input'
 
+import { AppRoute } from '@/infra/app/enums/AppRoute'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useConst } from '@/infra/react/hooks/useConst'
 

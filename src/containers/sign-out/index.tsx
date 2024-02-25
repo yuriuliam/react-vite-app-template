@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AppRoute } from '@/config/routes'
+import { AppRoute } from '@/infra/app/enums/AppRoute'
 
 import { useAuth } from '@/modules/auth/infra/contexts/auth'
 

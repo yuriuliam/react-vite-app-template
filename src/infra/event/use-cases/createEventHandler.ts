@@ -1,8 +1,5 @@
 const createEventHandler = <TEvent extends App.Domain.Event.EventBase>(
-  initialObservers?:
-    | Iterable<Readonly<[string, Set<App.Domain.Event.Listener<TEvent>>]>>
-    | null
-    | undefined,
+  initialObservers?: App.Domain.Event.InitialObservers<TEvent> | undefined,
 ) => {
   const observersByType = new Map(initialObservers)
 
