@@ -20,7 +20,7 @@ const createLogger = (
   const logHandler = createLoggerHandler(appDebugger, formatTime, eventHandler)
   const logHandlersByLevel = createLogLevels(logHandler)
 
-  console.debug(`Logger created: %s`, chalk.yellow(appDebugger.namespace))
+  console.debug(`Logger instantiated: %s`, chalk.yellow(appDebugger.namespace))
 
   return {
     ...eventHandler,
