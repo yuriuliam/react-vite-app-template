@@ -11,7 +11,7 @@ const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 const FeaturesProvider: React.PFC = ({ children }) => {
   const { featureList } = useFeaturesData(FEATURES_PROVIDER_NAME)
 
-  const features = useSet([] as App.Modules.Features.AppFeatures)
+  const features = useSet([] as App.Modules.Features.Domain.AppFeatures)
 
   const addFeatures = useCallbackRef((...ids: string[]) => {
     features.add(...ids.filter(id => !features.has(id)))

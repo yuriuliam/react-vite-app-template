@@ -12,7 +12,7 @@ type TextFieldInputProps = React.ComponentProps<typeof TextField.Input> & {
   persistent?: boolean | undefined
 }
 
-const INPUT_NAME = 'Modules.Forms.Components.Input'
+const INPUT_NAME = 'Infra.Forms.Input'
 
 const Input = React.forwardRef<HTMLInputElement, TextFieldInputProps>(
   ({ name, label, ...rest }, ref) => {

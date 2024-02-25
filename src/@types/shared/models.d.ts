@@ -1,6 +1,5 @@
-import { type EmailModel } from '@/protocols/shared/models/Email'
-import { type TokenModel } from '@/protocols/shared/models/Token'
-
+import type { EmailModel } from '@/domain/shared/models/Email'
+import type { TokenModel } from '@/domain/shared/models/Token'
 import type { z } from 'zod'
 
 declare global {

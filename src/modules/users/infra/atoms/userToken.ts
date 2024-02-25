@@ -1,12 +1,9 @@
-import { localSyncStorage } from '@/data/cache/use-cases/localSyncStorage'
+import { atomWithLocalStorage } from '@/data/cache/use-cases/localSyncStorage'
 
-import { createAtomWithStorage } from '@/infra/cache/use-cases/createAtomWithStorage'
-
-const userToken = createAtomWithStorage<App.Models.Token | null>(
+const [userToken, useUserToken] = atomWithLocalStorage<App.Models.Token | null>(
   'users:token',
   null,
-  localSyncStorage,
   { getOnInit: true },
 )
 
-export { userToken }
+export { useUserToken, userToken }

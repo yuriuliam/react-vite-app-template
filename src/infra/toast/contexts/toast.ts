@@ -5,7 +5,7 @@ interface IToastContextData {
   removeToast: App.Domain.Toast.RemoveToastFn
 }
 
-const TOAST_CONTEXT_NAME = 'Modules.Toast.Context'
+const TOAST_CONTEXT_NAME = 'Infra.Toast.ContextProvider'
 
 const [ToastContextProvider, useToast] = createContext<IToastContextData>(
   null,

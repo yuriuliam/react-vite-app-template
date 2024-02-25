@@ -12,8 +12,6 @@ const withProps = <TRef, TProps extends Record<any, any>>(
 ) => {
   const componentName = getComponentDisplayName(Component)
 
-  console.log('%s %o', componentName, propsToBound)
-
   const ComponentWithProps = React.forwardRef<
     TRef,
     Omit<TProps, keyof TProps> & Partial<TProps>

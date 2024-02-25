@@ -5,7 +5,7 @@ import {
   GENERATOR_FUNCTION_PROTOTYPE,
 } from '@/config/functions'
 
-import { jsonStringify } from './json'
+import { standardArgsReplacer } from './json'
 
 type DebouncedFn<T extends (...args: any[]) => any> = (
   ...args: Parameters<T>
@@ -116,7 +116,7 @@ const memoize = <T extends (...args: any[]) => any>(
   const { cache = new Map(), ttl = 0 } = options ?? {}
 
   const callMethod = (shouldRecompute: boolean, ...args: Parameters<T>) => {
-    const paramsKey = jsonStringify.parse(args)
+    const paramsKey = JSON.stringify(args, standardArgsReplacer)
 
     if (!shouldRecompute && cache.has(paramsKey)) return cache.get(paramsKey)
 

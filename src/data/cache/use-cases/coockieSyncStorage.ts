@@ -5,7 +5,7 @@ import { createSyncStorage } from '@/infra/cache/use-cases/createSyncStorage'
 
 const cookieParser = createCookieParser()
 
-const cookieSyncStorage = createSyncStorage(
+const [cookieSyncStorage, atomWithCookieStorage] = createSyncStorage(
   {
     getItem: key => cookieParser.get(key) ?? null,
     setItem: (key, value) => void cookieParser.set(key, value),
@@ -16,4 +16,4 @@ const cookieSyncStorage = createSyncStorage(
   StoragePrefix.Cookies,
 )
 
-export { cookieSyncStorage }
+export { atomWithCookieStorage, cookieSyncStorage }

@@ -1,15 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { Locale } from '@/config/locale'
-
-import {
-  clamp,
-  diff,
-  formatPercentage,
-  formatPrice,
-  isBetween,
-  isNumber,
-} from '@/shared/utils/numbers'
+import { clamp, diff, isBetween, isNumber } from '@/shared/utils/numbers'
 
 describe('clamp', () => {
   it('should respect minimum value', () => {
@@ -38,57 +29,6 @@ describe('diff', () => {
     const valueDiff = 45
 
     expect(diff(valueA, valueB)).toBe(valueDiff)
-  })
-})
-
-describe('formatPercentage', () => {
-  it('should format numbers to percentage when percentage is provided', () => {
-    const myPercentage = 0.9895
-
-    const result = formatPercentage(myPercentage)
-
-    expect(result).toBe('98.95%')
-  })
-
-  it('should be able to receive locale as second parameter', () => {
-    const myPercentage = 1.054
-
-    const result = formatPercentage(myPercentage, 'pt-BR')
-
-    expect(result).toBe('105,4%')
-  })
-
-  it('should be able to clamp a given fraction of digits', () => {
-    const myPercentage = 0.9895237812
-    const maxFractionDigit = 5
-
-    const result1 = formatPercentage(myPercentage)
-    const result2 = formatPercentage(
-      myPercentage,
-      Locale.UnitedStates,
-      maxFractionDigit,
-    )
-
-    expect(result1).toBe('98.95%')
-    expect(result2).toBe('98.95238%')
-  })
-})
-
-describe('formatPrice', () => {
-  it('should format a given price to USD when price is provided', () => {
-    const myPrice = 20.05
-
-    const result = formatPrice(myPrice, Locale.UnitedStates)
-
-    expect(result).toBe('$20.05')
-  })
-
-  it('should accept locale parameter once given', () => {
-    const myPrice = 37.27
-
-    const result = formatPrice(myPrice, Locale.UnitedKingdom)
-
-    expect(result).toBe('US$37.27')
   })
 })
 

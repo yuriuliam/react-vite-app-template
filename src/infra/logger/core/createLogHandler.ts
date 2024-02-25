@@ -1,11 +1,9 @@
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 
-import type { Formatter } from '@/shared/utils/strings'
-
 const createLoggerHandler = (
   appOutput: App.Domain.Logger.AppOutput,
-  formatTime: Formatter<number | Date | undefined>,
+  formatTime: App.Domain.Intl.DateFormatter,
   eventHandler: App.Domain.Event.IEventHandler<App.Domain.Logger.LogEvent>,
 ): App.Domain.Logger.LogHandler => {
   return async (options: App.Domain.Logger.InternalMessageOptions) => {

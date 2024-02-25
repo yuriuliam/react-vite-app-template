@@ -1,5 +1,5 @@
 import { createAppStore } from '@/infra/cache/use-cases/createAppStore'
 
-const appStore = createAppStore()
+const [appStore, appAtom] = createAppStore()
 
-export { appStore }
+export { appStore, appAtom }

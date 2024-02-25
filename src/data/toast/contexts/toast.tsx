@@ -6,7 +6,7 @@ import { ToastContextProvider } from '@/infra/toast/contexts/toast'
 
 import { ToastContainer } from '../components/ToastContainer'
 
-const TOAST_PROVIDER_NAME = 'Modules.Toast.Provider'
+const TOAST_PROVIDER_NAME = 'Infra.Toast.Provider'
 
 const ToastProvider: React.PFC = ({ children }) => {
   const [messages, setMessages] = React.useState<

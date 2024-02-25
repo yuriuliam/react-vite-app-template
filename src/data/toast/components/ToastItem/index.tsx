@@ -23,7 +23,7 @@ const toastIcons: Record<App.Domain.Toast.AppToastType, JSX.Element> = {
   success: <CheckCircledIcon />,
 }
 
-const TOAST_CONTAINER_NAME = 'Protocols.Toast.Components.ToastItem'
+const TOAST_CONTAINER_NAME = 'Infra.Toast.ToastItem'
 
 const ToastItem: React.FC<ToastProps> = ({ message }) => {
   const { removeToast } = useToast(TOAST_CONTAINER_NAME)

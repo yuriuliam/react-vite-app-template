@@ -13,7 +13,7 @@ import { useGlobalLogger } from '@/data/logger/hooks/useGlobalLogger'
 
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
-const ERROR_GUARD_NAME = 'Protocols.Routes.Guards.Error'
+const ERROR_GUARD_NAME = 'Infra.Router.ErrorGuard'
 const ERROR_GUARD_LOGGER_NAME = 'guards:error'
 
 /**

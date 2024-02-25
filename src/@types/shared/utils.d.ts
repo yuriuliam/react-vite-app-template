@@ -1,3 +1,5 @@
+import type { Locale } from '@/infra/app/enums/locale'
+
 declare global {
   declare namespace App {
     /** Describes an Asynchronous Method. */
@@ -22,9 +24,6 @@ declare global {
 
     /** Retrieves a mutable version of a value. */
     type Mutable<T> = T extends Readonly<infer V> ? V : T
-
-    /** Generic Locale type argument, usually requested by Intl methods. */
-    type Locale = string | string[]
 
     type Recursive<T, K extends string | symbol | number = string> = {
       [key: K]: T | Recursive<T, K>
@@ -57,7 +56,7 @@ declare global {
 
     type IFormatDateTimeFn = (
       value?: Date | App.Timestamp | undefined,
-      locale?: App.Locale,
+      locale?: Locale | Locale[],
     ) => FormattedDateTime
   }
 }

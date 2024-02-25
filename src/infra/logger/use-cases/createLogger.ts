@@ -5,11 +5,9 @@ import { createLoggerEventHandler } from '../core/createLoggerEventHandler'
 import { createLoggerHandler } from '../core/createLogHandler'
 import { createLogLevels } from '../core/createLogLevels'
 
-import type { Formatter } from '@/shared/utils/strings'
-
 type LoggerOptions = {
   baseNamespace: string
-  formatTime: Formatter<number | Date | undefined>
+  formatTime: App.Domain.Intl.DateFormatter
 }
 
 const createLogger = (

@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker'
 
+import { UserResponseModel } from '@/modules/users/domain/models/UserResponse'
+
 import { FAKE_DATA_LENGTH, STATIC_SEED } from '#/config/faker'
 
 const createFakerUserResponses = (shouldBeDeterministic = false) => {
@@ -15,13 +17,13 @@ const createFakerUserResponses = (shouldBeDeterministic = false) => {
     const email = faker.internet.email({ firstName, lastName })
     const token = faker.string.nanoid({ min: 64, max: 64 })
 
-    return {
+    return UserResponseModel.parse({
       id,
       name,
       username,
       email,
       token,
-    } satisfies App.Modules.User.AppUserResponse
+    })
   })
 }
 

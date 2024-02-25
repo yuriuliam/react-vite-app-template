@@ -4,7 +4,7 @@ import { RouteLink } from '@/containers/shared/components/RouteLink'
 
 import { useConst } from '@/infra/react/hooks/useConst'
 
-const HEADER_LOGO_NAME = 'Containers.App.Components.Header.Logo'
+const HEADER_LOGO_NAME = 'Infra.App.HeaderLogo'
 
 const HeaderLogo: React.FC = () => {
   const displayTitle = useConst('My App')
