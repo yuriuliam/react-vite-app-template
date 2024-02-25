@@ -12,9 +12,7 @@ import { getComponentDisplayName } from '../utils/getComponentDisplayName'
  * @param components
  * @returns
  */
-const composedWith = (
-  ...components: Array<React.ComponentType<React.PropsWithChildren>>
-) => {
+const composedWith = (...components: React.GenericParentComponent[]) => {
   const componentsOrderedByRenderDepth = [...components].reverse()
 
   const componentNames = components.map(component =>

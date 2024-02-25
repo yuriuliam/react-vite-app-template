@@ -3,6 +3,14 @@ import 'react'
 
 declare global {
   declare namespace React {
+    type GenericComponent =
+      | React.NamedExoticComponent<any>
+      | React.ComponentType<any>
+
+    type GenericParentComponent =
+      | React.NamedExoticComponent<React.PropsWithChildren>
+      | React.ComponentType<React.PropsWithChildren>
+
     /** A shortcut to get intrinsic element names. */
     type HTMLTags = keyof React.JSX.IntrinsicElements
 
@@ -24,10 +32,6 @@ declare global {
     type PFC<TProps = {}> = ParentFunctionComponent<TProps>
 
     type PossibleRef<T> = React.Ref<T> | undefined
-
-    type GenericComponent =
-      | React.NamedExoticComponent<any>
-      | React.ComponentType<any>
   }
 }
 
