@@ -9,9 +9,7 @@ const [cookieSyncStorage, atomWithCookieStorage] = createSyncStorage(
   {
     getItem: key => cookieParser.get(key) ?? null,
     setItem: (key, value) => void cookieParser.set(key, value),
-    removeItem: key => {
-      cookieParser.remove(key)
-    },
+    removeItem: key => void cookieParser.remove(key),
   },
   StoragePrefix.Cookies,
 )

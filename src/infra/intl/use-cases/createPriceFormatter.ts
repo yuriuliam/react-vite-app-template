@@ -1,5 +1,5 @@
 import type { Currency } from '../enums/Currency'
-import type { Locale } from '../enums/Locale'
+import type { LocaleTag } from '../enums/LocaleTag'
 
 type PriceFormatterOptions = Omit<
   Intl.NumberFormatOptions,
@@ -11,7 +11,7 @@ type PriceFormatterOptions = Omit<
  * and converts into an INTL-Standard Price String.
  */
 const createPriceFormatter = (
-  locale: Locale | Locale[],
+  locale: LocaleTag | LocaleTag[],
   currency: Currency,
   options: PriceFormatterOptions = {},
 ) => {
@@ -21,7 +21,9 @@ const createPriceFormatter = (
     currency,
   })
 
-  return intlCurrencyFormat.format.bind(intlCurrencyFormat)
+  return intlCurrencyFormat.format.bind(
+    intlCurrencyFormat,
+  ) satisfies App.Domain.Intl.PriceFormatter
 }
 
 export { createPriceFormatter }

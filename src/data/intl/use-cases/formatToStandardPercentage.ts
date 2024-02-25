@@ -3,9 +3,7 @@ import { createPercentageFormatter } from '@/infra/intl/use-cases/createPercenta
 
 const formatToStandardPercentage = createPercentageFormatter(
   DEFAULT_APP_LOCALE,
-  {
-    maximumFractionDigits: 2,
-  },
+  { maximumFractionDigits: 2 },
 )
 
 export { formatToStandardPercentage }

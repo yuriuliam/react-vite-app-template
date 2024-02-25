@@ -1,7 +1,7 @@
 import { Portal } from '@/infra/react/components/Portal'
 import { withProps } from '@/infra/react/hocs/withProps'
 
-const BODY_PORTAL_NAME = 'Infra.React.BodyPortal'
+const BODY_PORTAL_NAME = 'Data.React.BodyPortal'
 
 /**
  * A wrapper component which portals their children to page's

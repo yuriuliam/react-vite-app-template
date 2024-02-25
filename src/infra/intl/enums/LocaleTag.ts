@@ -1,4 +1,4 @@
-enum Locale {
+enum LocaleTag {
   ChineseHongKong = 'zh-HK',
   ChinesePRC = 'zh-CN',
   English = 'en',
@@ -18,4 +18,4 @@ enum Locale {
   Welsh = 'cy',
 }
 
-export { Locale }
+export { LocaleTag }

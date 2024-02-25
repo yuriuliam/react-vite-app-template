@@ -18,18 +18,17 @@ import { Button } from '../shared/components/Button'
 const SIGN_IN_NAME = 'Containers.SignIn.Root'
 
 const SignInPage: React.FC = () => {
-  const defaultAuthParams =
-    useConst<App.Modules.Auth.Domain.AppAuthenticationParams>({
-      email: 'mocked@yahoo.com',
-      password: 'mocked@foobar',
-    })
+  const defaultAuthParams = useConst<App.Modules.Auth.AppAuthenticationParams>({
+    email: 'mocked@yahoo.com',
+    password: 'mocked@foobar',
+  })
 
   const { isAuthenticated, signIn } = useAuth(SIGN_IN_NAME)
 
   const navigate = useNavigate()
 
   const handleSignIn = useCallbackRef(
-    (params: App.Modules.Auth.Domain.AppAuthenticationParams) => {
+    (params: App.Modules.Auth.AppAuthenticationParams) => {
       void signIn(params)
     },
   )

@@ -5,7 +5,7 @@ import * as Styled from './styles'
 
 type ToastContainerProps = { messages: App.Domain.Toast.AppToastMessage[] }
 
-const TOAST_CONTAINER_NAME = 'Infra.Toast.ToastContainer'
+const TOAST_CONTAINER_NAME = 'Data.Toast.ToastContainer'
 
 const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => (
   <BodyPortal>

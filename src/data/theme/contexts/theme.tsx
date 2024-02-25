@@ -5,7 +5,7 @@ import { useMediaQuery } from '@/infra/react/hooks/useMediaQuery'
 import { useThemeIsDark } from '@/infra/theme/atoms/themeIsDark'
 import { ThemeContextProvider } from '@/infra/theme/contexts/theme'
 
-const THEME_PROVIDER_NAME = 'Infra.Theme.Provider'
+const THEME_PROVIDER_NAME = 'Data.Theme.Provider'
 
 const ThemeProvider: React.PFC = ({ children }) => {
   const preferDarkMode = useMediaQuery('(prefers-color-scheme: dark)')

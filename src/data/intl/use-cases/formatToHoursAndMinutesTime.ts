@@ -6,11 +6,7 @@ import { createDateTimeFormatter } from '@/infra/intl/use-cases/createDateTimeFo
  */
 const formatToHoursAndMinutesTime = createDateTimeFormatter(
   DEFAULT_APP_LOCALE,
-  {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
-  },
+  { hour: '2-digit', minute: '2-digit', hour12: true },
 )
 
 export { formatToHoursAndMinutesTime }

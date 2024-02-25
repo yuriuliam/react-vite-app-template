@@ -1,4 +1,4 @@
-import type { Locale } from '../enums/Locale'
+import type { LocaleTag } from '../enums/LocaleTag'
 
 type DateTimeFormatterOptions = Intl.DateTimeFormatOptions
 
@@ -7,7 +7,7 @@ type DateTimeFormatterOptions = Intl.DateTimeFormatOptions
  * and converts into an INTL-Standard Price String.
  */
 const createDateTimeFormatter = (
-  locale: Locale | Locale[],
+  locale: LocaleTag | LocaleTag[],
   options: DateTimeFormatterOptions = {},
 ) => {
   const intlDateTimeFormat = new Intl.DateTimeFormat(locale, options)

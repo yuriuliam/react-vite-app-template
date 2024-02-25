@@ -1,4 +1,4 @@
-import type { Locale } from '../enums/Locale'
+import type { LocaleTag } from '../enums/LocaleTag'
 
 type PercentageFormatterOptions = Omit<
   Intl.NumberFormatOptions,
@@ -20,7 +20,7 @@ type PercentageFormatterOptions = Omit<
  * - `1.00` will be `100,00%`;
  */
 const createPercentageFormatter = (
-  locale: Locale | Locale[],
+  locale: LocaleTag | LocaleTag[],
   options: PercentageFormatterOptions = {},
 ) => {
   const intlPercentageFormat = new Intl.NumberFormat(locale, {

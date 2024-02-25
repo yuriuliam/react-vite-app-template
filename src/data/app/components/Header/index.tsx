@@ -8,7 +8,7 @@ type AppHeader = React.FC & {
   Root: typeof HeaderRoot
 }
 
-const HEADER_NAME = 'Infra.App.Header'
+const HEADER_NAME = 'Data.App.Header'
 
 /**
  * Main's Header component.

@@ -5,7 +5,7 @@ import { Section } from '@radix-ui/themes'
 
 import { Header } from '../components/Header'
 
-const MAIN_LAYOUT_NAME = 'Infra.Layouts.Main'
+const MAIN_LAYOUT_NAME = 'Data.Layouts.Main'
 
 const MainLayout: React.FC = () => (
   <>

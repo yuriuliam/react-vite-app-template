@@ -5,7 +5,7 @@ import dot from 'dot-object'
 import { FormContextProvider } from '@/infra/forms/contexts/form'
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
-const FORM_PROVIDER_NAME = 'Infra.Form.Provider'
+const FORM_PROVIDER_NAME = 'Data.Form.Provider'
 
 const FormProvider = React.forwardRef<
   App.Domain.Form.IFormHandlers,

@@ -1,5 +1,5 @@
-import { Locale } from '../enums/Locale'
+import { LocaleTag } from '../enums/LocaleTag'
 
-const DEFAULT_APP_LOCALE = Locale.English
+const DEFAULT_APP_LOCALE = LocaleTag.English
 
 export { DEFAULT_APP_LOCALE }

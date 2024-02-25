@@ -1,7 +1,7 @@
 import { omitKeys } from '@/shared/utils/objects'
 import { deferred } from '@/shared/utils/promises'
 
-type AuthParams = App.Modules.Auth.Domain.AppAuthenticationParams
+type AuthParams = App.Modules.Auth.AppAuthenticationParams
 
 const users = [
   {

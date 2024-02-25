@@ -4,7 +4,7 @@ import { Container, Flex } from '@radix-ui/themes'
 
 type AppHeaderRootProps = React.PropsWithChildren
 
-const HEADER_ROOT_NAME = 'Infra.App.HeaderRoot'
+const HEADER_ROOT_NAME = 'Data.App.HeaderRoot'
 
 const HeaderRoot = React.forwardRef<HTMLDivElement, AppHeaderRootProps>(
   ({ children }, ref) => {

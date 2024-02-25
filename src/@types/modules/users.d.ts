@@ -4,7 +4,7 @@ import type { UserWithPasswordModel } from '@/modules/users/domain/models/UserWi
 import type { z } from 'zod'
 
 declare global {
-  declare namespace App.Modules.User.Domain {
+  declare namespace App.Modules.User {
     type AppUser = z.infer<typeof UserModel>
     type AppUserResponse = z.infer<typeof UserResponseModel>
     type AppUserWithPassword = z.infer<typeof UserWithPasswordModel>
