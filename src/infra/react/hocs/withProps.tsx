@@ -15,11 +15,11 @@ const withProps = <TRef, TProps extends Record<any, any>>(
   const ComponentWithProps = React.forwardRef<
     TRef,
     Omit<TProps, keyof TProps> & Partial<TProps>
-  >((props, ref) => {
-    const allProps = Object.assign<any, any>(propsToBound, props)
-
-    return <Component {...allProps} ref={ref} />
-  })
+  >((props, ref) => (
+    <Component
+      {...Object.assign<any, any, any>(propsToBound, props, { ref })}
+    />
+  ))
   ComponentWithProps.displayName = `withProps(${componentName})`
 
   return ComponentWithProps
