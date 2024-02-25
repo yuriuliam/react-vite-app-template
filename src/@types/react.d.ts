@@ -24,6 +24,10 @@ declare global {
     type PFC<TProps = {}> = ParentFunctionComponent<TProps>
 
     type PossibleRef<T> = React.Ref<T> | undefined
+
+    type GenericComponent =
+      | React.NamedExoticComponent<any>
+      | React.ComponentType<any>
   }
 }
 

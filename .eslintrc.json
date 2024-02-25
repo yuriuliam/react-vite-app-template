@@ -21,14 +21,15 @@
       "rules": {
         "no-use-before-define": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/method-signature-style": "error",
         "@typescript-eslint/no-duplicate-enum-values": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-confusing-void-expression": ["error", {
           "ignoreArrowShorthand": true,
           "ignoreVoidOperator": true

@@ -17,7 +17,7 @@ const withProps = <TRef, TProps extends Record<any, any>>(
     Omit<TProps, keyof TProps> & Partial<TProps>
   >((props, ref) => (
     <Component
-      {...Object.assign<any, any, any>(propsToBound, props, { ref })}
+      {...Object.assign<any, any, any, any>({}, propsToBound, props, { ref })}
     />
   ))
   ComponentWithProps.displayName = `withProps(${componentName})`
