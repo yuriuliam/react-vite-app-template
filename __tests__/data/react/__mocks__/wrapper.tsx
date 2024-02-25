@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Profiler } from 'react'
 
 import { StoreProvider } from '@/infra/cache/contexts/store'
@@ -7,13 +8,23 @@ import { AuthProvider } from '@/modules/auth/data/contexts/auth'
 import { FeaturesProvider } from '@/modules/features/data/contexts/features'
 
 type ProfilerProps = React.ComponentProps<typeof Profiler>
+type ProfilerType = React.ComponentType<ProfilerProps>
 
-const authWrapper = withProps(AuthProvider, {})
+const AuthWrapper = withProps(AuthProvider, {})
 
-const featuresWrapper = withProps(FeaturesProvider, {})
+const FeaturesWrapper = withProps(FeaturesProvider, {})
 
-const profilerWrapper = (props: ProfilerProps) => withProps(Profiler, props)
+const profilerWrapperWith = withProps.bind<
+  null,
+  [Component: ProfilerType],
+  [propsToBound: ProfilerProps],
+  React.ForwardRefExoticComponent<
+    Omit<ProfilerProps, keyof ProfilerProps> &
+      Partial<ProfilerProps> &
+      React.RefAttributes<unknown>
+  >
+>(null, Profiler)
 
-const storeWrapper = withProps(StoreProvider, {})
+const StoreWrapper = withProps(StoreProvider, {})
 
-export { authWrapper, featuresWrapper, profilerWrapper, storeWrapper }
+export { AuthWrapper, FeaturesWrapper, profilerWrapperWith, StoreWrapper }
