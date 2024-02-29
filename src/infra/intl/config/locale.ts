@@ -1,4 +1,4 @@
-import { LocaleTag } from '../enums/LocaleTag'
+import { LocaleTag } from '@/domain/intl/enums/LocaleTag'
 
 const DEFAULT_APP_LOCALE = LocaleTag.English
 

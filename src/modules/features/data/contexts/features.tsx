@@ -13,17 +13,13 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
   const features = useSet([] as App.Modules.Features.AppFeatures)
 
-  const addFeatures = useCallbackRef((...ids: string[]) => {
-    features.add(...ids.filter(id => !features.has(id)))
-  })
+  const addFeatures = useCallbackRef(features.add)
 
   const clearFeatures = useCallbackRef(() => {
     features.clear()
   })
 
-  const hasFeatures = useCallbackRef((...ids: string[]) =>
-    ids.every(id => features.has(id)),
-  )
+  const hasFeatures = useCallbackRef(features.has)
 
   const removeFeatures = useCallbackRef((...ids: string[]) => {
     features.delete(...ids.filter(id => features.has(id)))
@@ -34,7 +30,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
 
     if (!featureList) return
 
-    addFeatures(...featureList)
+    addFeatures(...featureList.map(feat => feat.code))
   }, [addFeatures, clearFeatures, featureList])
 
   return (

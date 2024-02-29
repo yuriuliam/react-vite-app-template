@@ -1,6 +1,6 @@
-import { AppError } from '@/domain/shared/errors/AppError'
+import { AppError } from '@/domain/app/errors/AppError'
 
-import { createErrorParser } from '@/infra/validation/protocols/createErrorParser'
+import { createErrorParser } from '@/infra/validation/use-cases/createErrorParser'
 
 function recursivelyGetAllErrors(error: unknown, ...allErrors: Error[]) {
   if (!(error instanceof Error)) return allErrors

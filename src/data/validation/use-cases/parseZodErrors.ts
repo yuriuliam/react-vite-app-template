@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 
-import { createErrorParser } from '@/infra/validation/protocols/createErrorParser'
+import { createErrorParser } from '@/infra/validation/use-cases/createErrorParser'
 
 /**
  * Parses an error into an object format.

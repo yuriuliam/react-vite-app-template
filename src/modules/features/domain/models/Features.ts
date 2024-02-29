@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
-const FeaturesModel = z.array(z.string().startsWith('feature_'))
+import { FeatureFlagModel } from './FeatureFlag'
+
+const FeaturesModel = z.array(FeatureFlagModel)
 
 export { FeaturesModel }

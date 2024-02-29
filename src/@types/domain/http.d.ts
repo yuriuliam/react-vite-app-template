@@ -1,9 +1,5 @@
-import { type AxiosHeaders, type RawAxiosRequestHeaders } from 'axios'
-
 declare global {
   declare namespace App.Domain.Http {
-    type RequestHeaders = RawAxiosRequestHeaders | AxiosHeaders
-
     type RequestMethods =
       | 'GET'
       | 'POST'
@@ -14,14 +10,15 @@ declare global {
 
     type BaseRequestOptions = {
       data?: App.ObjectType | undefined
-      headers?: RequestHeaders | undefined
+      headers?: Record<string, string> | undefined
       method: RequestMethods
-      params?: unknown | undefined
+      params?: Record<string, string> | undefined
       url: string
-      withCredentials?: boolean | undefined
     }
 
-    type RequestOptionsWithoutData = Omit<BaseRequestOptions, 'data'>
+    type RequestOptionsWithoutData = Omit<BaseRequestOptions, 'data'> & {
+      data?: undefined
+    }
 
     type MethodOptions<
       TMethod extends RequestMethods,
@@ -43,14 +40,20 @@ declare global {
       | DELETEOptions
       | OPTIONSOptions
 
-    type Response<T = any> = {
+    type FetchResponse<T = any> = {
       data: T
       status: number
     }
 
+    type SafeFetchResponse<T = any> = Omit<FetchResponse<T>, 'data'> &
+      ({ data: T; isOk: true } | { data: null; isOk: false })
+
     interface IHttpClient {
-      request: <T>(config: RequestOptions) => Promise<Response<T>>
+      request: <T>(config: RequestOptions) => Promise<FetchResponse<T>>
+      safeRequest: <T>(config: RequestOptions) => Promise<SafeFetchResponse<T>>
     }
+
+    type BaseHttpClientOptions = Pick<RequestInit, 'mode'>
   }
 }
 

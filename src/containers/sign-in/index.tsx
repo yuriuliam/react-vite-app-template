@@ -6,7 +6,8 @@ import { Flex, Section, Text } from '@radix-ui/themes'
 import { Form } from '@/data/forms/components/Form'
 import { Input } from '@/data/forms/components/Input'
 
-import { AppRoute } from '@/infra/app/enums/AppRoute'
+import { AppRoute } from '@/domain/app/enums/AppRoute'
+
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useConst } from '@/infra/react/hooks/useConst'
 
@@ -35,7 +36,7 @@ const SignInPage: React.FC = () => {
   React.useEffect(() => {
     if (!isAuthenticated) return
 
-    navigate(AppRoute.Root)
+    navigate(AppRoute.Home)
   }, [isAuthenticated, navigate])
 
   return (

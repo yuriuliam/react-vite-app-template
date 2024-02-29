@@ -33,9 +33,9 @@ const useSet = <T>(iterable?: Iterable<T> | null | undefined) => {
     forceUpdate()
   })
 
-  const hasValue = useCallbackRef((...values: T[]) => {
-    return values.every(value => set.has(value))
-  })
+  const hasValue = useCallbackRef((...values: T[]) =>
+    values.every(value => set.has(value)),
+  )
 
   const reactiveSet = {
     add: addValue,

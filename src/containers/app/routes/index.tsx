@@ -7,7 +7,8 @@ import { SignOutPage } from '@/containers/sign-out'
 import { routesWithinMainLayout } from '@/data/app/use-cases/routesWithinMainLayout'
 import { routesWithinErrorGuard } from '@/data/router/routesWithinErrorBoundary'
 
-import { AppRoute } from '@/infra/app/enums/AppRoute'
+import { AppRoute } from '@/domain/app/enums/AppRoute'
+
 import { withProps } from '@/infra/react/hocs/withProps'
 
 import { routesWithinAuth } from '@/modules/auth/data/use-cases/routesWithinAuth'
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     routesWithinAuth([
       routesWithinMainLayout([
         {
-          path: AppRoute.Root,
+          path: AppRoute.Home,
           element: <HomePage />,
         },
       ]),

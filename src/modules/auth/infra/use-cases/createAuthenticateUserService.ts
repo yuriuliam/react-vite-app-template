@@ -15,6 +15,7 @@ const users = [
   },
 ]
 
+/** @deprecated Use an actual service! */
 const fakeFetchUser = async (params: AuthParams) => {
   const user = users.find(
     user => params.email === user.email && params.password === user.password,
@@ -24,7 +25,7 @@ const fakeFetchUser = async (params: AuthParams) => {
 
   const userWithoutPass = omitKeys(user, 'password')
 
-  return await deferred(userWithoutPass, 70)
+  return await deferred<App.Modules.User.AppUserResponse>(userWithoutPass, 70)
 }
 
 const createAuthenticateUserService = <T>(

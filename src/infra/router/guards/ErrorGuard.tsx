@@ -9,7 +9,8 @@ import { Flex, Section } from '@radix-ui/themes'
 
 import { useGlobalLogger } from '@/data/logger/hooks/useGlobalLogger'
 
-import { AppRoute } from '@/infra/app/enums/AppRoute'
+import { AppRoute } from '@/domain/app/enums/AppRoute'
+
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 
 const ERROR_GUARD_NAME = 'Infra.Router.ErrorGuard'
@@ -26,7 +27,7 @@ const ErrorGuard: React.FC = () => {
   const isRouteError = isRouteErrorResponse(errorFromRoutes)
 
   const handleRedirectToRoot = useCallbackRef(() => {
-    navigate(AppRoute.Root)
+    navigate(AppRoute.Home)
   })
 
   React.useEffect(() => {

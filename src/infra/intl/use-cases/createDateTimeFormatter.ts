@@ -1,4 +1,4 @@
-import type { LocaleTag } from '../enums/LocaleTag'
+import type { LocaleTag } from '@/domain/intl/enums/LocaleTag'
 
 type DateTimeFormatterOptions = Intl.DateTimeFormatOptions
 

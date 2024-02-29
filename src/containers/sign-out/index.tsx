@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AppRoute } from '@/infra/app/enums/AppRoute'
+import { AppRoute } from '@/domain/app/enums/AppRoute'
 
 import { useAuth } from '@/modules/auth/infra/contexts/auth'
 
@@ -20,7 +20,7 @@ const SignOutPage: React.FC = () => {
   React.useEffect(() => {
     signOut()
 
-    navigate(AppRoute.Root)
+    navigate(AppRoute.Home)
   }, [navigate, signOut])
 
   return <></>

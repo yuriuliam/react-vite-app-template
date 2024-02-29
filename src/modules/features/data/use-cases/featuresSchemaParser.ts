@@ -1,9 +1,12 @@
-import { parseZodErrors } from '@/data/validation/protocols/parseZodErrors'
+import { parseZodErrors } from '@/data/validation/use-cases/parseZodErrors'
 
-import { createSchemaParser } from '@/infra/validation/protocols/createSchemaParser'
+import { createSchemaParser } from '@/infra/validation/use-cases/createSchemaParser'
 
-import { FeaturesModel } from '../../domain/models/Features'
+import { FeaturesResponseModel } from '../../domain/models/FeaturesResponse'
 
-const featuresSchemaParser = createSchemaParser(FeaturesModel, parseZodErrors)
+const featuresSchemaParser = createSchemaParser(
+  FeaturesResponseModel,
+  parseZodErrors,
+)
 
 export { featuresSchemaParser }

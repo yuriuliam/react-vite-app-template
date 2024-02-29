@@ -1,5 +1,5 @@
 enum AppRoute {
-  Root = '/',
+  Home = '/',
   SignIn = '/sign-in',
   SignOut = '/sign-out',
 }

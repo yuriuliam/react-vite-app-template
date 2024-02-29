@@ -1,6 +1,6 @@
-import { parseZodErrors } from '@/data/validation/protocols/parseZodErrors'
+import { parseZodErrors } from '@/data/validation/use-cases/parseZodErrors'
 
-import { createSchemaParser } from '@/infra/validation/protocols/createSchemaParser'
+import { createSchemaParser } from '@/infra/validation/use-cases/createSchemaParser'
 
 import { UserResponseModel } from '../../domain/models/UserResponse'
 

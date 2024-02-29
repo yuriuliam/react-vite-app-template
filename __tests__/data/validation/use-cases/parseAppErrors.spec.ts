@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
 
-import { parseAppErrors } from '@/data/validation/protocols/parseAppErrors'
+import { parseAppErrors } from '@/data/validation/use-cases/parseAppErrors'
 
+import { AppError } from '@/domain/app/errors/AppError'
 import { HttpError } from '@/domain/http/errors/HttpError'
-import { AppError } from '@/domain/shared/errors/AppError'
 
 describe('parseAppErrors', () => {
   it('should be able to parse an app error', () => {
