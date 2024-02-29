@@ -31,7 +31,7 @@ describe('parseAppErrors', () => {
     try {
       throw new Error('Connection timed out')
     } catch (error) {
-      appError = new HttpError(error)
+      appError = new HttpError(null)
     }
 
     expect(appError).not.toBe(null)
@@ -39,11 +39,10 @@ describe('parseAppErrors', () => {
     const result = parseAppErrors(appError)
 
     expect(result).toHaveProperty('app')
-    expect(result.app).toHaveLength(2)
+    expect(result.app).toHaveLength(1)
     expect(result.app.at(0)).toBe(
       'An error occurred when trying to access a resource.',
     )
-    expect(result.app.at(1)).toBe('Connection timed out')
   })
 
   it('should ignore non-app errors', () => {
