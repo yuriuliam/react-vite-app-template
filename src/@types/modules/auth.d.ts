@@ -1,5 +1,6 @@
-import type { AuthenticationParamsModel } from '@/modules/auth/domain/models/AuthenticationParams'
-import type { z } from 'zod'
+import { type z } from 'zod'
+
+import { type AuthenticationParamsModel } from '@/modules/auth/domain/models/AuthenticationParams'
 
 declare global {
   declare namespace App.Modules.Auth {

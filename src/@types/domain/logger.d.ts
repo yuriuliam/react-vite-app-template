@@ -1,5 +1,6 @@
-import type { LogLevel } from '@/modules/logger/enums/logLevel'
-import type { Debugger } from 'debug'
+import { type Debugger } from 'debug'
+
+import { type LogLevel } from '@/modules/logger/enums/logLevel'
 
 declare global {
   declare namespace App.Domain.Logger {

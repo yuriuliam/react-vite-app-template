@@ -1,6 +1,6 @@
-import { SchemaError } from '@/domain/validation/errors/SchemaError'
+import { type z } from 'zod'
 
-import type { z } from 'zod'
+import { SchemaError } from '@/domain/validation/errors/SchemaError'
 
 const createSchemaParser = <T>(
   model: z.ZodType<T, any, any>,

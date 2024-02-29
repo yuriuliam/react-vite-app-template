@@ -1,8 +1,8 @@
+import { type LexicalEditor } from 'lexical'
+
 import { getLoggerInstance } from '@/data/logger/use-cases/getLoggerInstance'
 
 import { createRichTextEditorComposer } from '@/infra/rich-text/use-cases/createRichTextEditorComposer'
-
-import type { LexicalEditor } from 'lexical'
 
 const rteLogger = getLoggerInstance('infra:rich-text')
 

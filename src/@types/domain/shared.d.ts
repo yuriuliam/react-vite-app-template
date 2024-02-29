@@ -1,6 +1,7 @@
-import type { EmailModel } from '@/domain/shared/models/Email'
-import type { TokenModel } from '@/domain/shared/models/Token'
-import type { z } from 'zod'
+import { type z } from 'zod'
+
+import { type EmailModel } from '@/domain/shared/models/Email'
+import { type TokenModel } from '@/domain/shared/models/Token'
 
 declare global {
   declare namespace App.Domain.Shared {

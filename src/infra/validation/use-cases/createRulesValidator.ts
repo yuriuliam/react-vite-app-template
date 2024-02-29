@@ -1,6 +1,5 @@
+import { type RuleLevel } from '@/domain/validation/enums/RuleLevel'
 import { RuleValidationError } from '@/domain/validation/errors/RuleValidationError'
-
-import type { RuleLevel } from '@/domain/validation/enums/RuleLevel'
 
 type RuleFn<TValue> = (value: TValue) => string | null | undefined
 type RuleDef<TValue> = [RuleLevel, RuleFn<TValue>]

@@ -1,5 +1,5 @@
-import type { createStore } from 'jotai'
-import type { SyncStorage } from 'jotai/vanilla/utils/atomWithStorage'
+import { type createStore } from 'jotai'
+import { type SyncStorage } from 'jotai/vanilla/utils/atomWithStorage'
 
 declare global {
   declare namespace App.Domain.Cache {

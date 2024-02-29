@@ -1,5 +1,5 @@
-import type { Currency } from '@/domain/intl/enums/Currency'
-import type { LocaleTag } from '@/domain/intl/enums/LocaleTag'
+import { type Currency } from '@/domain/intl/enums/Currency'
+import { type LocaleTag } from '@/domain/intl/enums/LocaleTag'
 
 type PriceFormatterOptions = Omit<
   Intl.NumberFormatOptions,

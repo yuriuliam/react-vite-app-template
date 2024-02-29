@@ -1,4 +1,4 @@
-import type { LocaleTag } from '@/domain/intl/enums/LocaleTag'
+import { type LocaleTag } from '@/domain/intl/enums/LocaleTag'
 
 type PercentageFormatterOptions = Omit<
   Intl.NumberFormatOptions,

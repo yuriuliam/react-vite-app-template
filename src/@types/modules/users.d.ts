@@ -1,7 +1,8 @@
-import type { UserModel } from '@/modules/users/domain/models/User'
-import type { UserResponseModel } from '@/modules/users/domain/models/UserResponse'
-import type { UserWithPasswordModel } from '@/modules/users/domain/models/UserWithPassword'
-import type { z } from 'zod'
+import { type z } from 'zod'
+
+import { type UserModel } from '@/modules/users/domain/models/User'
+import { type UserResponseModel } from '@/modules/users/domain/models/UserResponse'
+import { type UserWithPasswordModel } from '@/modules/users/domain/models/UserWithPassword'
 
 declare global {
   declare namespace App.Modules.User {

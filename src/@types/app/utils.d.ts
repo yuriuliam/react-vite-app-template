@@ -1,4 +1,4 @@
-import type { Locale } from '@/infra/app/enums/locale'
+import { type Locale } from '@/infra/app/enums/locale'
 
 declare global {
   declare namespace App {

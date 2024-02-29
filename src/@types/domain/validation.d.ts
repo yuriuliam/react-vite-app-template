@@ -1,4 +1,4 @@
-import type { RuleLevel } from '@/modules/validation/enums/ruleLevel'
+import { type RuleLevel } from '@/modules/validation/enums/ruleLevel'
 
 declare global {
   declare namespace App.Domain.Validation {
