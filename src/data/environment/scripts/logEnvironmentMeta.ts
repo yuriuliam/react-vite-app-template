@@ -7,7 +7,7 @@ const logEnvironmentMeta = () => {
 
   const logger = getGlobalLoggerInstance('environment')
 
-  logger.log({
+  logger.info({
     name: 'App',
     title: 'Vite',
     content: 'DEV Environment detected',

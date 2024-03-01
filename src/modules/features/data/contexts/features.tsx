@@ -4,12 +4,12 @@ import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { useSet } from '@/infra/react/hooks/useSet'
 
 import { FeaturesContextProvider } from '../../infra/contexts/features'
-import { useFeaturesData } from '../../infra/hooks/useFeaturesData'
+import { useFeaturesQuery } from '../../infra/hooks/useFeaturesQuery'
 
 const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
-  const { featureList } = useFeaturesData(FEATURES_PROVIDER_NAME)
+  const { featureList } = useFeaturesQuery(FEATURES_PROVIDER_NAME)
 
   const features = useSet([] as App.Modules.Features.AppFeatures)
 

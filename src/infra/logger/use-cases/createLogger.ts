@@ -1,5 +1,3 @@
-import chalk from 'chalk'
-
 import { createDebugger } from '../core/createDebugger'
 import { createLoggerEventHandler } from '../core/createLoggerEventHandler'
 import { createLoggerHandler } from '../core/createLogHandler'
@@ -19,8 +17,6 @@ const createLogger = (
   const appDebugger = createDebugger(baseNamespace, ...subNamespaces)
   const logHandler = createLoggerHandler(appDebugger, formatTime, eventHandler)
   const logHandlersByLevel = createLogLevels(logHandler)
-
-  console.debug(`Logger instantiated: %s`, chalk.yellow(appDebugger.namespace))
 
   return {
     ...eventHandler,

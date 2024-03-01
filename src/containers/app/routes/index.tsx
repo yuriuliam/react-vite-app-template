@@ -5,7 +5,7 @@ import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
 
 import { routesWithinMainLayout } from '@/data/app/use-cases/routesWithinMainLayout'
-import { routesWithinErrorGuard } from '@/data/router/routesWithinErrorBoundary'
+import { routesWithinErrorGuard } from '@/data/router/use-cases/routesWithinErrorBoundary'
 
 import { AppRoute } from '@/domain/app/enums/AppRoute'
 

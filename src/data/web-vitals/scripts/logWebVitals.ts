@@ -17,7 +17,7 @@ const logWebVitals = () => {
   const logger = getGlobalLoggerInstance('web-vitals')
 
   const logWebVital: ReportCallback = data => {
-    logger.log({
+    logger.info({
       name: 'App',
       title: data.name,
       content: `Rating: ${data.rating}`,

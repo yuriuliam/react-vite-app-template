@@ -4,7 +4,7 @@ import { useAuth } from '@/modules/auth/infra/contexts/auth'
 
 import { fetchFeatures } from '../../data/use-cases/fetchFeaturesService'
 
-const useFeaturesData = (consumerName: string) => {
+const useFeaturesQuery = (consumerName: string) => {
   const finalConsumerName = `useFeaturesData(${consumerName})`
 
   const { token } = useAuth(finalConsumerName)
@@ -26,4 +26,4 @@ const useFeaturesData = (consumerName: string) => {
   }
 }
 
-export { useFeaturesData }
+export { useFeaturesQuery }

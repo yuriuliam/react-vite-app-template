@@ -49,35 +49,35 @@ There are a few ones:
     </tr>
     <tr>
       <th>src/config</th>
-      <th>Shared's configuration</th>
+      <th>Shared's configuration.</th>
     </tr>
     <tr>
       <th>src/containers</th>
-      <th></th>
+      <th>All React Pages and Sections.</th>
     </tr>
     <tr>
       <th>src/data</th>
-      <th></th>
+      <th>The Main implementations of Infra and Domain.</th>
     </tr>
     <tr>
       <th>src/infra</th>
-      <th></th>
+      <th>The foundations of the logic. It holds the entire logic to let it flow better with the App.</th>
     </tr>
     <tr>
       <th>src/modules</th>
-      <th></th>
+      <th>Business Logic, not related to App general concepts, but App Specialities.</th>
     </tr>
     <tr>
       <th>src/shared</th>
-      <th></th>
+      <th>Shared utilities, consumed by the entirety of the App without restrictions.</th>
     </tr>
     <tr>
       <th>src/main.tsx</th>
-      <th></th>
+      <th>The entrypoint of the App.</th>
     </tr>
     <tr>
       <th>__tests__</th>
-      <th></th>
+      <th>All the tests related to the App.</th>
     </tr>
   </tbody>
 </table>
@@ -90,7 +90,7 @@ There are a few ones:
    2. `PNPM ^8.14.1`
 2. Run `pnpm install`
 3. Make a copy of `.env` and name it `.env.local` 
-4. Run `pnpm dev` to start de application locally.
+4. Run `pnpm dev` to start de Application locally.
 
 ## Credits
 

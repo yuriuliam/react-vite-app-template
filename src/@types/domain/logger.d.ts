@@ -26,7 +26,7 @@ declare global {
 
     interface ILogger extends App.Domain.Event.IEventHandler {
       error: (options: ErrorMessageOptions) => void
-      log: (options: MessageOptions) => void
+      info: (options: MessageOptions) => void
       trace: (options: TraceMessageOptions) => void
       warn: (options: MessageOptions) => void
     }

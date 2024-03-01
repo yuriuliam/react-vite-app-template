@@ -27,8 +27,8 @@ const createLoggerHandler = (
       const isInline = !!options.style && options.style === 'inline'
 
       const dataFormatter = isInline
-        ? '%s | [%s] %s - %s\n>>>\n%s\n<<<'
-        : '%s | [%s] %s - %s\n>>>\n%o\n<<<'
+        ? '\n\n%s - %s | %s - %s\n>>>\n%s\n<<<'
+        : '\n\n%s - %s | %s - %s\n>>>\n%o\n<<<'
 
       const payload = isInline
         ? chalk.blackBright(JSON.stringify(data, null, 2))

@@ -14,7 +14,7 @@ const createLogLevels = (handleLog: App.Domain.Logger.LogHandler) => {
     })
   }
 
-  const log = (options: App.Domain.Logger.MessageOptions) => {
+  const info = (options: App.Domain.Logger.MessageOptions) => {
     void handleLog({
       ...options,
       title: chalk.yellow(options.title),
@@ -43,7 +43,7 @@ const createLogLevels = (handleLog: App.Domain.Logger.LogHandler) => {
 
   return {
     error,
-    log,
+    info,
     trace,
     warn,
   }

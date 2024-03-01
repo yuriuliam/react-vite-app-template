@@ -21,7 +21,7 @@ const composedWith = (...components: React.GenericParentComponent[]) => {
 
   const Component: React.PFC = ({ children }) => {
     const allComponents = componentsOrderedByRenderDepth.reduce(
-      (children, layer) => React.createElement(layer, null, children),
+      (children, Layer) => <Layer>{children}</Layer>,
       children,
     )
 
