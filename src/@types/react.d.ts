@@ -3,20 +3,17 @@ import 'react'
 
 declare global {
   declare namespace React {
-    type GenericComponent =
-      | React.NamedExoticComponent<any>
-      | React.ComponentType<any>
-
-    type GenericParentComponent =
-      | React.NamedExoticComponent<React.PropsWithChildren>
-      | React.ComponentType<React.PropsWithChildren>
-
     /** A shortcut to get intrinsic element names. */
     type HTMLTags = keyof React.JSX.IntrinsicElements
 
     /** A shortcut to get component props of intrinsic elements. */
     type HTMLProps<TElement extends React.HTMLTags> =
       React.ComponentProps<TElement>
+
+    type ComponentPropsWithoutChildren<T extends React.ComponentType<any>> =
+      PropsWithoutChildren<React.ComponentProps<T>>
+
+    type PropsWithoutChildren<TProps> = Omit<TProps, 'children'>
 
     /**
      * Latest versions of react types does not includes children in

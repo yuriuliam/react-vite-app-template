@@ -2,8 +2,9 @@ import React from 'react'
 
 import { useConst } from '@/infra/react/hooks/useConst'
 import { useMediaQuery } from '@/infra/react/hooks/useMediaQuery'
-import { useThemeIsDark } from '@/infra/theme/atoms/themeIsDark'
 import { ThemeContextProvider } from '@/infra/theme/contexts/theme'
+
+import { useThemeIsDark } from '../atoms/themeIsDark'
 
 const THEME_PROVIDER_NAME = 'Data.Theme.Provider'
 

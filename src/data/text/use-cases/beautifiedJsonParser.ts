@@ -1,11 +1,12 @@
 import { BEAUTIFUL_JSON_INDENT_SIZE } from '@/config/json'
 
-import { createStringParser } from '@/infra/text/use-cases/createStringParser'
+import { createJsonStringify } from '@/infra/text/use-cases/createJsonStringify'
 
 import { standardArgsReplacer } from '@/shared/utils/json'
 
-const beautifiedJsonParser = createStringParser(value =>
-  JSON.stringify(value, standardArgsReplacer, BEAUTIFUL_JSON_INDENT_SIZE),
+const beautifiedJsonParser = createJsonStringify(
+  standardArgsReplacer,
+  BEAUTIFUL_JSON_INDENT_SIZE,
 )
 
 export { beautifiedJsonParser }

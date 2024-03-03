@@ -11,19 +11,31 @@ const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 const FeaturesProvider: React.PFC = ({ children }) => {
   const { featureList } = useFeaturesQuery(FEATURES_PROVIDER_NAME)
 
-  const features = useSet([] as App.Modules.Features.AppFeatures)
+  const features = useSet<App.Modules.Features.AppFeatureFlag>()
 
-  const addFeatures = useCallbackRef(features.add)
+  const addFeatures = useCallbackRef(
+    (...values: App.Modules.Features.AppFeatureFlag[]) => {
+      values.forEach(value => features.add(value))
+    },
+  )
 
-  const clearFeatures = useCallbackRef(() => {
-    features.clear()
-  })
+  const clearFeatures = useCallbackRef(features.clear.bind(features))
 
-  const hasFeatures = useCallbackRef(features.has)
+  const exceptFeatures = useCallbackRef(
+    (...ids: App.Modules.Features.AppFeatureFlag[]) =>
+      ids.every(id => !features.has(id)),
+  )
 
-  const removeFeatures = useCallbackRef((...ids: string[]) => {
-    features.delete(...ids.filter(id => features.has(id)))
-  })
+  const hasFeatures = useCallbackRef(
+    (...values: App.Modules.Features.AppFeatureFlag[]) =>
+      values.every(value => features.has(value)),
+  )
+
+  const removeFeatures = useCallbackRef(
+    (...ids: App.Modules.Features.AppFeatureFlag[]) => {
+      ids.forEach(id => void features.delete(id))
+    },
+  )
 
   React.useEffect(() => {
     clearFeatures()
@@ -37,6 +49,7 @@ const FeaturesProvider: React.PFC = ({ children }) => {
     <FeaturesContextProvider
       addFeatures={addFeatures}
       clearFeatures={clearFeatures}
+      exceptFeatures={exceptFeatures}
       hasFeatures={hasFeatures}
       removeFeatures={removeFeatures}
     >

@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { isAsyncFunction } from '@/shared/utils/functions'
-import { deferred, promised, promisify, wait } from '@/shared/utils/promises'
+import { deferred, promised, wait } from '@/shared/utils/promises'
 
 describe(
   'deferred',
@@ -44,22 +43,6 @@ describe('promised', () => {
     const init = () => value
 
     await expect(promised(init)).resolves.toBe(value)
-  })
-})
-
-describe('promisify', () => {
-  it('should be able to create async functions', () => {
-    const myFunction = () => 10
-
-    const myAsyncFunction = promisify(myFunction)
-
-    expect(isAsyncFunction(myAsyncFunction)).toBeTruthy()
-  })
-
-  it('should act as an async function', async () => {
-    const myAsyncFunction = promisify(() => 20)
-
-    await expect(myAsyncFunction()).resolves.toBe(20)
   })
 })
 

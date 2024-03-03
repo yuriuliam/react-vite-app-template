@@ -1,7 +1,7 @@
 import { cleanup } from '@testing-library/react'
 import { afterEach } from 'vitest'
 
-import { createWebStorageMock } from './data/cache/__mocks__/webStorage'
+import { createWebStorageMock } from '#/__mocks__/cache/webStorage'
 
 import '@testing-library/jest-dom/vitest'
 

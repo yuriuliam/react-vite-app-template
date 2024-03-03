@@ -10,7 +10,7 @@ type BoundedProps<TP, TB> = Omit<TP, keyof TB> & Partial<TB>
  */
 const withProps = <TP extends Record<any, any>, TB = Partial<TP>>(
   Component: React.ComponentType<TP>,
-  propsToBound: TB,
+  propsToBound: React.PropsWithoutChildren<TB>,
 ) => {
   const componentName = getComponentDisplayName(Component)
 

@@ -1,5 +1,5 @@
-import { useCallbackRef } from './useCallbackRef'
-import { useConst } from './useConst'
+import React from 'react'
+
 import { useForceUpdate } from './useForceUpdate'
 
 /**
@@ -10,51 +10,29 @@ import { useForceUpdate } from './useForceUpdate'
 const useSet = <T>(iterable?: Iterable<T> | null | undefined) => {
   const forceUpdate = useForceUpdate()
 
-  const set = useConst(new Set(iterable))
+  const set = React.useRef(new Set(iterable))
 
-  const addValue = useCallbackRef((...values: T[]) => {
-    values.forEach(value => {
-      set.add(value)
-    })
-
+  set.current.add = (...args) => {
+    const result = Set.prototype.add.apply(set.current, args)
     forceUpdate()
-  })
 
-  const deleteValue = useCallbackRef((...values: T[]) => {
-    values.forEach(value => {
-      set.delete(value)
-    })
-
-    forceUpdate()
-  })
-
-  const clearSet = useCallbackRef(() => {
-    set.clear()
-    forceUpdate()
-  })
-
-  const hasValue = useCallbackRef((...values: T[]) =>
-    values.every(value => set.has(value)),
-  )
-
-  const reactiveSet = {
-    add: addValue,
-    clear: clearSet,
-    delete: deleteValue,
-    has: hasValue,
-    size: 0,
-    entries: set.entries.bind(set),
-    forEach: set.forEach.bind(set),
-    keys: set.keys.bind(set),
-    values: set.values.bind(set),
+    return result
   }
 
-  Reflect.defineProperty(reactiveSet, 'size', {
-    get: () => set.size,
-    configurable: false,
-  })
+  set.current.delete = (...args) => {
+    const result = Set.prototype.delete.apply(set.current, args)
 
-  return reactiveSet
+    forceUpdate()
+
+    return result
+  }
+
+  set.current.clear = (...args) => {
+    Set.prototype.clear.apply(set.current, args)
+    forceUpdate()
+  }
+
+  return set.current
 }
 
 export { useSet }

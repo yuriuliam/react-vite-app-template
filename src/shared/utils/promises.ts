@@ -15,14 +15,6 @@ const promised = async <T>(init: T | App.InitFn<T>) =>
   await Promise.resolve(isFunction(init) ? init() : init)
 
 /**
- * A wrapper to create a promise function out of non-async one.
- */
-const promisify =
-  <T extends App.FunctionLike>(callback: T) =>
-  async (...args: Parameters<T>) =>
-    (await Promise.resolve(await callback(...args))) as ReturnType<T>
-
-/**
  * Creates a promise which will be resolved after a given amount
  * of milliseconds.
  */
@@ -30,4 +22,4 @@ const wait = async (ms: number) => {
   void (await new Promise(resolve => setTimeout(resolve, ms)))
 }
 
-export { promised, deferred, promisify, wait }
+export { promised, deferred, wait }

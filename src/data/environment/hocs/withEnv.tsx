@@ -15,11 +15,7 @@ const withEnv = <TC extends React.ComponentType<any>>(
     React.ComponentRef<TC>,
     React.ComponentProps<TC>
   >((props, ref) => (
-    <>
-      {isMode(mode) && (
-        <Component {...Object.assign({} as any, props, { ref })} />
-      )}
-    </>
+    <>{isMode(mode) && <Component {...(props as any)} ref={ref} />}</>
   ))
   ComponentWithEnv.displayName = `withEnv(${componentName})`
 

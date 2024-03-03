@@ -29,10 +29,14 @@ declare global {
       [key: K]: T | Recursive<T, K>
     }
 
+    type ConvertFn<TInput, TOutput> = (value: TInput) => TOutput
+
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue
 
     type MutateFn<TValue> = (arg: TValue) => TValue
+
+    type JsonReplacerFn = (key: string, value: any) => any
 
     /** Same as the factory, but semantically named to avoid confusion. */
     type InitFn<TValue> = FactoryFn<TValue>

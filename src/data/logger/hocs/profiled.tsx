@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { timeDisplayInMs } from '@/data/text/use-cases/timeDisplayInMs'
+import { timeDisplayByMs } from '@/data/text/use-cases/timeDisplayInMs'
 
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
 import { getComponentDisplayName } from '@/infra/react/utils/getComponentDisplayName'
@@ -24,8 +24,8 @@ const profiled = <TC extends React.ComponentType<any>>(Component: TC) => {
           content: 'Component Render Trigger',
           data: {
             phase,
-            actualDuration: timeDisplayInMs(actualDuration),
-            baseDuration: timeDisplayInMs(baseDuration),
+            actualDuration: timeDisplayByMs(actualDuration),
+            baseDuration: timeDisplayByMs(baseDuration),
           },
           style: 'default',
         }),
@@ -33,7 +33,7 @@ const profiled = <TC extends React.ComponentType<any>>(Component: TC) => {
 
     return (
       <React.Profiler id={profilerId} onRender={onRender}>
-        <Component {...Object.assign({} as any, props, { ref })} />
+        <Component {...(props as any)} ref={ref} />
       </React.Profiler>
     )
   })

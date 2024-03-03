@@ -75,6 +75,9 @@ const isObject = (value: any): value is object =>
 const isRecord = (value: any): value is Record<any, any> =>
   isObject(value) && Object.getPrototypeOf(value) === RECORD_PROTOTYPE
 
+/**
+ * Omit given keys from an object.
+ */
 const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
   obj: TObj,
   ...keys: TKey[]
