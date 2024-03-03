@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { useConst } from './useConst'
 import { useForceUpdate } from './useForceUpdate'
 
 /**
@@ -10,29 +9,29 @@ import { useForceUpdate } from './useForceUpdate'
 const useSet = <T>(iterable?: Iterable<T> | null | undefined) => {
   const forceUpdate = useForceUpdate()
 
-  const set = React.useRef(new Set(iterable))
+  const set = useConst(new Set(iterable))
 
-  set.current.add = (...args) => {
-    const result = Set.prototype.add.apply(set.current, args)
+  set.add = (...args) => {
+    const result = Set.prototype.add.apply(set, args)
     forceUpdate()
 
     return result
   }
 
-  set.current.delete = (...args) => {
-    const result = Set.prototype.delete.apply(set.current, args)
+  set.delete = (...args) => {
+    const result = Set.prototype.delete.apply(set, args)
 
     forceUpdate()
 
     return result
   }
 
-  set.current.clear = (...args) => {
-    Set.prototype.clear.apply(set.current, args)
+  set.clear = (...args) => {
+    Set.prototype.clear.apply(set, args)
     forceUpdate()
   }
 
-  return set.current
+  return set
 }
 
 export { useSet }
