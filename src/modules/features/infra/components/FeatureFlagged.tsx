@@ -6,19 +6,24 @@ type FeatureFlaggedProps = {
   excepts?: FeatureCode[] | undefined
   /** Check if it include these feature flags */
   includes?: FeatureCode[] | undefined
-  /** To Identify better when debugging why a component is not showing. */
-  id: string
+  /** The component which is consuming the features context. */
+  consumerName: string
 }
 
 const FEATURE_FLAGGED_NAME = 'Modules.Features.FeatureFlagged'
 
+/**
+ * Puts an entire section o
+ */
 const FeatureFlagged: React.PFC<FeatureFlaggedProps> = ({
   children,
   includes = [],
   excepts = [],
-  id,
+  consumerName,
 }) => {
-  const { exceptFeatures, hasFeatures } = useFeatures(`FeatureFlagged(${id})`)
+  const { exceptFeatures, hasFeatures } = useFeatures(
+    `FeatureFlagged(${consumerName})`,
+  )
 
   const shouldRender = hasFeatures(...includes) && exceptFeatures(...excepts)
 
