@@ -21,7 +21,7 @@ const composedWith = (...components: Array<React.ComponentType<any>>) => {
 
   const Component: React.PFC = ({ children }) => {
     const allComponents = componentsOrderedByRenderDepth.reduce(
-      (children, Layer) => <Layer>{children}</Layer>,
+      (allLayers, Layer) => <Layer>{allLayers}</Layer>,
       children,
     )
 

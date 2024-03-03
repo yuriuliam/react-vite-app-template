@@ -5,7 +5,11 @@ import { type EnvironmentMode } from '@/domain/environment/enums/EnvironmentMode
 import { isMode } from '@/infra/environment/use-cases/isMode'
 import { getComponentDisplayName } from '@/infra/react/utils/getComponentDisplayName'
 
-const withEnv = <TC extends React.ComponentType<any>>(
+/**
+ * Renders a component under a specific environment.
+ * Useful to restrict components under a specific environment.
+ */
+const underEnv = <TC extends React.ComponentType<any>>(
   Component: TC,
   mode: EnvironmentMode,
 ) => {
@@ -22,4 +26,4 @@ const withEnv = <TC extends React.ComponentType<any>>(
   return ComponentWithEnv
 }
 
-export { withEnv }
+export { underEnv }
