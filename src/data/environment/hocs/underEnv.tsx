@@ -21,7 +21,7 @@ const underEnv = <TC extends React.ComponentType<any>>(
   >((props, ref) => (
     <>{isMode(mode) && <Component {...(props as any)} ref={ref} />}</>
   ))
-  ComponentWithEnv.displayName = `withEnv(${componentName})`
+  ComponentWithEnv.displayName = `underEnv(${componentName})`
 
   return ComponentWithEnv
 }
