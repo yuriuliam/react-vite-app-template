@@ -139,20 +139,21 @@
     "jsx-a11y"
   ],
   "rules": {
-    "no-void": "off",
     "eqeqeq": ["error", "always"],
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "no-unused-expressions": "off",
-    "import/prefer-default-export": "off",
     "import/no-default-export": "error",
+    "import/prefer-default-export": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
     ],
+    "max-depth": ["error", 2],
     "n/no-callback-literal": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-unused-expressions": "off",
+    "no-void": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
   "settings": {
     "react": {
