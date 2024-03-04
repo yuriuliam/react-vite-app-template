@@ -10,7 +10,6 @@ const underFF = <T extends React.ComponentType<any>>(
   const componentName = getComponentDisplayName(Component)
 
   const BoundFeatureFlagged = withProps(FeatureFlagged, props)
-  BoundFeatureFlagged.displayName = FeatureFlagged.displayName
 
   const ComponentUnderFF = React.forwardRef<
     React.ComponentRef<T>,
