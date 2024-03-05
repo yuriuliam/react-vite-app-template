@@ -15,6 +15,7 @@ import * as Styled from './styles'
 
 type ToastProps = {
   message: App.Domain.Toast.AppToastMessage
+  style: Record<any, any>
 }
 
 const toastIcons: Record<App.Domain.Toast.AppToastType, JSX.Element> = {
@@ -25,7 +26,7 @@ const toastIcons: Record<App.Domain.Toast.AppToastType, JSX.Element> = {
 
 const TOAST_CONTAINER_NAME = 'Data.Toast.ToastItem'
 
-const ToastItem: React.FC<ToastProps> = ({ message }) => {
+const ToastItem: React.FC<ToastProps> = ({ message, style }) => {
   const { removeToast } = useToast(TOAST_CONTAINER_NAME)
 
   const removeToastMessage = useCallbackRef(() => {
@@ -33,9 +34,7 @@ const ToastItem: React.FC<ToastProps> = ({ message }) => {
   })
 
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      removeToastMessage()
-    }, TOAST_TTL_IN_MS)
+    const timer = setTimeout(removeToastMessage, TOAST_TTL_IN_MS)
 
     return () => {
       clearTimeout(timer)
@@ -43,7 +42,11 @@ const ToastItem: React.FC<ToastProps> = ({ message }) => {
   }, [message.id, removeToastMessage])
 
   return (
-    <Styled.Root type={message.type} hasDescription={!!message.description}>
+    <Styled.Root
+      $type={message.type}
+      $hasDescription={!!message.description}
+      style={style}
+    >
       {toastIcons[message.type ?? 'info']}
 
       <div>

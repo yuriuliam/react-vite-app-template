@@ -6,8 +6,8 @@ type AuthParams = App.Modules.Auth.AppAuthenticationParams
 const users = [
   {
     id: '378926fe-abdd-481c-b806-f818c62cdf8b',
-    name: 'Lukas Kirlin',
-    username: 'Lukas_Kirlin',
+    name: 'Yuri Uliam',
+    username: 'Yuri_Uliam',
     email: 'mocked@yahoo.com',
     password: 'mocked@foobar',
     token:

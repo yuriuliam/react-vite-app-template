@@ -1,10 +1,9 @@
-import { css, keyframes, styled } from 'styled-components'
-
-import { TOAST_TTL_IN_MS } from '@/infra/toast/config/toast'
+import { animated } from '@react-spring/web'
+import { css, styled } from 'styled-components'
 
 interface IContainerProps {
-  type?: 'info' | 'success' | 'error' | undefined
-  hasDescription: boolean
+  $type?: 'info' | 'success' | 'error' | undefined
+  $hasDescription: boolean
 }
 
 const toastTypeVariations = {
@@ -22,37 +21,8 @@ const toastTypeVariations = {
   `,
 }
 
-const spawnToast = keyframes`
-  from {
-    right: -120%;
-    opacity: 0;
-  }
-
-  to {
-    right: 0%;
-    opacity: 1;
-  }
-`
-
-const destroyToast = keyframes`
-  from {
-    right: 0%;
-    opacity: 1;
-  }
-
-  to {
-    right: -120%;
-    opacity: 0;
-  }
-`
-
-const Root = styled.div<IContainerProps>`
+const Root = styled(animated.div)<IContainerProps>`
   width: 360px;
-
-  animation:
-    ${spawnToast} 250ms ease-in 0s forwards 1,
-    ${destroyToast} 250ms ease-in ${TOAST_TTL_IN_MS - 250}ms forwards 1;
-  /* name duration timing-function delay iteration-count direction fill-mode; */
 
   position: relative;
   padding: 16px 30px 16px 16px;
@@ -71,7 +41,7 @@ const Root = styled.div<IContainerProps>`
     height: 1.125rem;
   }
 
-  ${props => toastTypeVariations[props.type ?? 'info']}
+  ${props => toastTypeVariations[props.$type ?? 'info']}
 
   div {
     flex: 1;
@@ -100,7 +70,7 @@ const Root = styled.div<IContainerProps>`
   }
 
   ${props =>
-    !props.hasDescription &&
+    !props.$hasDescription &&
     css`
       align-items: center;
 
