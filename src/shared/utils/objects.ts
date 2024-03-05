@@ -51,7 +51,7 @@ const asSet = <T extends App.ObjectType>(value: T) =>
   )
 
 /**
- * Creates a matrix with a row of a given nth of items.
+ * Creates a matrix with a row of a given length.
  */
 const chunkEvery = <T>(iterable: Iterable<T>, size: number) => {
   const chunks: T[][] = []
@@ -76,6 +76,23 @@ const isRecord = (value: any): value is Record<any, any> =>
   isObject(value) && Object.getPrototypeOf(value) === RECORD_PROTOTYPE
 
 /**
+ * Returns a mixed array out of a given one.
+ */
+const mixed = <T>(array: T[]) => {
+  const indexes = array.map((_, idx) => idx)
+
+  const result: T[] = []
+
+  while (indexes.length > 0) {
+    const [item] = indexes.splice(indexes.indexOf(random(indexes)!), 1)
+
+    result.push(array.at(item)!)
+  }
+
+  return result
+}
+
+/**
  * Omit given keys from an object.
  */
 const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
@@ -92,12 +109,42 @@ const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
 /**
  * Retrieves a random item from a given iterable.
  *
- * It will return `null` if the iterable is empty.
+ * It will return `undefined` if the same has no length.
  */
 const random = <T>(iterable: Iterable<T>) => {
   const values = Array.from(iterable)
 
-  return values.at(Math.floor(Math.random() * values.length)) ?? null
+  return values.at(Math.floor(Math.random() * values.length))
+}
+
+/**
+ * Creates a new array with the values of given indexes swapped.
+ */
+const swap = <T>(array: T[], fromIdx: number, toIdx: number) => {
+  const item = array.at(fromIdx)!
+  const length = array.length
+  const diff = fromIdx - toIdx
+
+  if (diff > 0) {
+    return [
+      ...array.slice(0, toIdx),
+      item,
+      ...array.slice(toIdx, fromIdx),
+      ...array.slice(fromIdx + 1, length),
+    ]
+  }
+
+  if (diff < 0) {
+    const targetIdx = toIdx + 1
+    return [
+      ...array.slice(0, fromIdx),
+      ...array.slice(fromIdx + 1, targetIdx),
+      item,
+      ...array.slice(targetIdx, length),
+    ]
+  }
+
+  return array
 }
 
 export {
@@ -108,6 +155,8 @@ export {
   chunkEvery,
   isObject,
   isRecord,
+  mixed,
   omitKeys,
   random,
+  swap,
 }
