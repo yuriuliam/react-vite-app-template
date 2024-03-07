@@ -30,27 +30,6 @@ const areObjectsEqual = (a: unknown, b: unknown): boolean => {
 }
 
 /**
- * Creates an array filled with generated items from a given factory callback.
- * It has it's length defined as well.
- */
-const arrayOf = <T>(factoryFn: App.FactoryFn<T>, length = 10) =>
-  new Array(length).fill(0).map(() => factoryFn())
-
-/**
- * Creates a Map out of an record/array.
- */
-const asMap = <T extends App.ObjectType>(value: T) =>
-  new Map<App.EntryKey<T>, App.ObjectValue<T>>(Object.entries(value) as any)
-
-/**
- * Creates a Set out of an record/array.
- */
-const asSet = <T extends App.ObjectType>(value: T) =>
-  new Set<App.ObjectValue<T>>(
-    Array.isArray(value) ? value : Object.values(value),
-  )
-
-/**
  * Creates a matrix with a row of a given length.
  */
 const chunkEvery = <T>(iterable: Iterable<T>, size: number) => {
@@ -147,11 +126,13 @@ const swap = <T>(array: T[], fromIdx: number, toIdx: number) => {
   return array
 }
 
+const toCharCode = (iterable: Iterable<string>) =>
+  Array.from(iterable).flatMap(part =>
+    Array.from(part).map(c => c.charCodeAt(0)),
+  )
+
 export {
   areObjectsEqual,
-  arrayOf,
-  asMap,
-  asSet,
   chunkEvery,
   isObject,
   isRecord,
@@ -159,4 +140,5 @@ export {
   omitKeys,
   random,
   swap,
+  toCharCode,
 }

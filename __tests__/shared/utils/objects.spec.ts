@@ -1,12 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import {
-  areObjectsEqual,
-  asMap,
-  asSet,
-  isObject,
-  isRecord,
-} from '@/shared/utils/objects'
+import { areObjectsEqual, isObject, isRecord } from '@/shared/utils/objects'
 
 describe('areObjectsEqual', () => {
   it('should equalize different records with same props and values', () => {
@@ -43,43 +37,6 @@ describe('areObjectsEqual', () => {
     const result = areObjectsEqual(objA, objB)
 
     expect(result).toBe(false)
-  })
-})
-
-describe('asMap', () => {
-  it('should create a map out of an record', () => {
-    const value = { foo: 'bar' }
-    const myMap = asMap(value)
-
-    expect(myMap.has('foo')).toBeTruthy()
-    expect(myMap.get('foo')).toBe(value.foo)
-  })
-
-  it('should create a map out of an object', () => {
-    const value = ['foo', 'bar']
-    const myMap = asMap(value)
-
-    expect(myMap.has('0') && myMap.has('1')).toBeTruthy()
-    expect(myMap.get('0')).toBe('foo')
-    expect(myMap.get('1')).toBe('bar')
-  })
-})
-
-describe('asSet', () => {
-  it('creates a set out of an record', () => {
-    const value = { foo: 'bar' }
-    const mySet = asSet(value)
-
-    expect(mySet.has('bar')).toBeTruthy()
-    expect(Array.from(mySet)).toEqual(['bar'])
-  })
-
-  it('creates a set out of an object', () => {
-    const value = ['foo', 'bar']
-    const mySet = asSet(value)
-
-    expect(mySet.has('foo')).toBeTruthy()
-    expect(mySet.has('bar')).toBeTruthy()
   })
 })
 
