@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { timeDisplayByMs } from '@/data/text/use-cases/timeDisplayInMs'
+import { SECOND_IN_MS } from '@/config/time'
+
+import { timeDisplayInSecs } from '@/data/text/use-cases/timeDisplayInSecs'
 
 import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-import { getComponentDisplayName } from '@/infra/react/utils/getComponentDisplayName'
+
+import { getComponentDisplayName } from '@/shared/utils/react'
 
 import { useLogger } from '../hooks/useLogger'
 
@@ -15,7 +18,7 @@ const profiled = <TC extends React.ComponentType<any>>(Component: TC) => {
     React.ComponentProps<TC>
   >(({ ...props }, ref) => {
     const profilerId = React.useId()
-    const logger = useLogger('hocs:profiled')
+    const logger = useLogger('data', 'logger', 'hocs', 'profiled')
 
     const onRender = useCallbackRef<React.ProfilerOnRenderCallback>(
       (_id, phase, actualDuration, baseDuration) =>
@@ -24,8 +27,8 @@ const profiled = <TC extends React.ComponentType<any>>(Component: TC) => {
           content: 'Component Render Trigger',
           data: {
             phase,
-            actualDuration: timeDisplayByMs(actualDuration),
-            baseDuration: timeDisplayByMs(baseDuration),
+            actualDuration: timeDisplayInSecs(actualDuration / SECOND_IN_MS),
+            baseDuration: timeDisplayInSecs(baseDuration / SECOND_IN_MS),
           },
           style: 'default',
         }),

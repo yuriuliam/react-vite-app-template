@@ -4,7 +4,7 @@ import { LogLevel } from '@/domain/logger/enums/LogLevel'
 
 import { getMappedCallSites } from '@/shared/utils/runtime'
 
-const createLogLevels = (handleLog: App.Domain.Logger.LogHandler) => {
+const createLoggerLevels = (handleLog: App.Domain.Logger.LogHandler) => {
   const error = (options: App.Domain.Logger.ErrorMessageOptions) => {
     void handleLog({
       ...options,
@@ -49,4 +49,4 @@ const createLogLevels = (handleLog: App.Domain.Logger.LogHandler) => {
   }
 }
 
-export { createLogLevels }
+export { createLoggerLevels }

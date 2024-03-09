@@ -1,8 +1,10 @@
 import { isDevelopmentMode } from '@/data/environment/use-cases/isDevelopmentMode'
 
-import { LoggerName } from '@/domain/logger/enums/LoggerName'
-
-import { composeLoggerNames } from '@/infra/logger/utils/composeLoggerNames'
+import {
+  LOGGER_DELIMITER,
+  LOGGER_FULL_NAME_DEV,
+  LOGGER_FULL_NAME_PROD,
+} from '@/infra/logger/config/logger'
 
 import { getGlobalLoggerInstance } from '../use-cases/getGlobalLoggerInstance'
 
@@ -12,17 +14,18 @@ import { getGlobalLoggerInstance } from '../use-cases/getGlobalLoggerInstance'
 const injectGlobalLogger = () => {
   const globalLogger = globalThis.logger ?? getGlobalLoggerInstance()
 
-  const allLoggerNames = composeLoggerNames(LoggerName.Base, '*')
-  const mainLoggerName = composeLoggerNames(
-    LoggerName.Base,
-    LoggerName.Production,
+  const devChildrenLogger = [LOGGER_FULL_NAME_DEV, '*'].join(LOGGER_DELIMITER)
+  const prodChildrenLoggers = [LOGGER_FULL_NAME_PROD, '*'].join(
+    LOGGER_DELIMITER,
   )
-  const mainLoggerChildrenName = composeLoggerNames(mainLoggerName, '*')
+
+  const allDevLoggers = [LOGGER_FULL_NAME_DEV, devChildrenLogger].join(',')
+  const allProdLoggers = [LOGGER_FULL_NAME_PROD, prodChildrenLoggers].join(',')
 
   // Inserting debug flag to display information
   globalThis.localStorage.debug = isDevelopmentMode()
-    ? allLoggerNames
-    : `${mainLoggerName},${mainLoggerChildrenName}`
+    ? [allDevLoggers, allProdLoggers].join(',')
+    : allProdLoggers
 
   // Creating Global Logger Instance which cannot be changed.
   Reflect.defineProperty(globalThis, 'logger', {

@@ -2,11 +2,11 @@ import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 
 const createLoggerHandler = (
-  appOutput: App.Domain.Logger.AppOutput,
+  stdout: App.Domain.Logger.StandardOutputFn,
   formatTime: App.Domain.Intl.DateFormatter,
   eventHandler: App.Domain.Event.IEventHandler<App.Domain.Logger.LogEvent>,
-): App.Domain.Logger.LogHandler => {
-  return async (options: App.Domain.Logger.InternalMessageOptions) => {
+) => {
+  return (async (options: App.Domain.Logger.InternalMessageOptions) => {
     const name = chalk.bold.green(options.name ?? 'Unknown')
     const title = chalk.bold(options.title)
     const content = chalk.italic(options.content)
@@ -16,8 +16,8 @@ const createLoggerHandler = (
       options.data instanceof Promise ? await options.data : options.data
 
     eventHandler.dispatchEvent({
-      content: stripAnsi(options.content),
-      title: stripAnsi(options.title),
+      content: stripAnsi(content),
+      title: stripAnsi(title),
       type: options.type,
       data,
       name: options.name ? stripAnsi(options.name) : undefined,
@@ -34,13 +34,13 @@ const createLoggerHandler = (
         ? chalk.blackBright(JSON.stringify(data, null, 2))
         : data
 
-      appOutput(dataFormatter, now, name, title, content, payload)
+      stdout(dataFormatter, now, name, title, content, payload)
 
       return
     }
 
-    appOutput('%s | [%s] %s - %s', now, name, title, content)
-  }
+    stdout('%s | [%s] %s - %s', now, name, title, content)
+  }) satisfies App.Domain.Logger.LogHandler
 }
 
 export { createLoggerHandler }

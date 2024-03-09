@@ -4,7 +4,7 @@ import { getLoggerInstance } from '@/data/logger/use-cases/getLoggerInstance'
 
 import { createRichTextEditorComposer } from '@/infra/rich-text/use-cases/createRichTextEditorComposer'
 
-const rteLogger = getLoggerInstance('infra:rich-text')
+const rteLogger = getLoggerInstance('infra', 'rich-text')
 
 const onError = (error: Error, editor: LexicalEditor) => {
   rteLogger.error({

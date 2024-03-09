@@ -16,14 +16,20 @@ declare global {
     /** Describes a Method of any type. */
     type FunctionLike = (...args: any[]) => any
 
+    type ArrayType<T> = T[] | readonly T[]
+
     /** Describes a possible array value. */
-    type MaybeArray<T> = T extends Array<infer U> ? U | T : T | T[]
+    type MaybeArray<T> = T extends ArrayType<infer U> ? U | T : T | T[]
 
     /** Describes a possible async value. */
     type MaybePromise<T> = T extends Promise<infer U> ? U | T : T | Promise<T>
 
+    type ArrayValue<T> = T extends Array<infer V> | Readonly<Array<infer V>>
+      ? V
+      : never
+
     /** Retrieves a mutable version of a value. */
-    type Mutable<T> = T extends Readonly<infer V> ? V : T
+    type Mutable<T> = T extends Readonly<infer V> ? V : never
 
     type Recursive<T, K extends string | symbol | number = string> = {
       [key: K]: T | Recursive<T, K>

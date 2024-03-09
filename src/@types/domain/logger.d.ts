@@ -20,7 +20,7 @@ declare global {
     type ErrorMessageOptions = Omit<MessageOptions, 'title'>
     type TraceMessageOptions = Omit<MessageOptions, 'title' | 'data'>
 
-    type AppOutput = Debugger
+    type StandardOutputFn = Debugger
 
     type LogHandler = (options: InternalMessageOptions) => Promise<void>
 
@@ -32,6 +32,8 @@ declare global {
     }
 
     type LogEvent = Omit<InternalMessageOptions, 'style'>
+
+    type LoggerFactoryFn = (...namespace: string[]) => ILogger
   }
 }
 

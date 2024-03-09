@@ -1,0 +1,17 @@
+const LOGGER_DELIMITER = ':'
+
+const LOGGER_FULL_NAME_DEV = 'app:dev'
+const LOGGER_FULL_NAME_PROD = 'app:main'
+
+const LOGGER_NAME_BASE = 'app'
+const LOGGER_NAME_DEV = 'dev'
+const LOGGER_NAME_PROD = 'main'
+
+export {
+  LOGGER_DELIMITER,
+  LOGGER_FULL_NAME_DEV,
+  LOGGER_FULL_NAME_PROD,
+  LOGGER_NAME_BASE,
+  LOGGER_NAME_DEV,
+  LOGGER_NAME_PROD,
+}

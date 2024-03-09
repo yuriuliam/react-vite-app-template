@@ -8,7 +8,7 @@ import { getLoggerInstance } from '../use-cases/getLoggerInstance'
  *
  * Such logs are only shown under development mode.
  */
-const useLogger = (subNamespace: string) =>
-  useConst(getLoggerInstance(subNamespace))
+const useLogger = (...subNamespaces: string[]) =>
+  useConst(getLoggerInstance(...subNamespaces))
 
 export { useLogger }

@@ -14,7 +14,7 @@ import { getGlobalLoggerInstance } from '@/data/logger/use-cases/getGlobalLogger
 const logWebVitals = () => {
   if (!isDevelopmentMode()) return
 
-  const logger = getGlobalLoggerInstance('web-vitals')
+  const logger = getGlobalLoggerInstance('data', 'web-vitals')
 
   const logWebVital: ReportCallback = data => {
     logger.info({

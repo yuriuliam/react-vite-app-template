@@ -10,7 +10,7 @@ const createRelativeTimeFormatter = (
 
   return intlRelativeTimeFormat.format.bind(
     intlRelativeTimeFormat,
-  ) satisfies App.Domain.Intl.RelativeDateFormatter
+  ) satisfies App.Domain.Intl.RelativeTimeFormatter
 }
 
 export { createRelativeTimeFormatter }

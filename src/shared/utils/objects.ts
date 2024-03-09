@@ -1,5 +1,7 @@
 import { RECORD_PROTOTYPE } from '@/config/objects'
 
+type PredicateFn<T> = (value: T, index: number, array: T[]) => boolean
+
 /**
  * Check if both objects have same keys and values.
  * If one ore both values are not object, it will check using `Object.is`
@@ -42,6 +44,9 @@ const chunkEvery = <T>(iterable: Iterable<T>, size: number) => {
   return chunks
 }
 
+const count = <T>(array: T[], predicate: PredicateFn<T>) =>
+  array.filter(predicate).length
+
 /**
  * Checks if value is a non-null object.
  */
@@ -83,6 +88,14 @@ const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
       keys.includes(cur as any) ? acc : { ...acc, [cur]: obj[cur] },
     {},
   ) as Omit<TObj, TKey>
+}
+
+const parallel = <TA, TB>(arr1: App.ArrayType<TA>, arr2: App.ArrayType<TB>) => {
+  if (arr1.length !== arr2.length) {
+    throw new Error('the given objects have different lengths')
+  }
+
+  return arr1.map((item, idx) => [item, arr2[idx]] as [TA, TB])
 }
 
 /**
@@ -134,10 +147,12 @@ const toCharCode = (iterable: Iterable<string>) =>
 export {
   areObjectsEqual,
   chunkEvery,
+  count,
   isObject,
   isRecord,
   mixed,
   omitKeys,
+  parallel,
   random,
   swap,
   toCharCode,

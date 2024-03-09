@@ -38,11 +38,13 @@ const FeaturesProvider: React.PFC = ({ children }) => {
   )
 
   React.useEffect(() => {
-    clearFeatures()
+    React.startTransition(() => {
+      clearFeatures()
 
-    if (!featureList) return
+      if (!featureList) return
 
-    addFeatures(...featureList.map(feat => feat.code))
+      addFeatures(...featureList.map(feat => feat.code))
+    })
   }, [addFeatures, clearFeatures, featureList])
 
   return (

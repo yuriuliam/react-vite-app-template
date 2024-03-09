@@ -5,7 +5,7 @@ import { isDevelopmentMode } from '../use-cases/isDevelopmentMode'
 const logEnvironmentMeta = () => {
   if (!isDevelopmentMode()) return
 
-  const logger = getGlobalLoggerInstance('environment')
+  const logger = getGlobalLoggerInstance('data', 'environment')
 
   logger.info({
     name: 'App',

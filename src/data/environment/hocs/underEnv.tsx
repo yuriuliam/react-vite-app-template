@@ -3,7 +3,8 @@ import React from 'react'
 import { type EnvironmentMode } from '@/domain/environment/enums/EnvironmentMode'
 
 import { isMode } from '@/infra/environment/use-cases/isMode'
-import { getComponentDisplayName } from '@/infra/react/utils/getComponentDisplayName'
+
+import { getComponentDisplayName } from '@/shared/utils/react'
 
 /**
  * Renders a component under a specific environment.

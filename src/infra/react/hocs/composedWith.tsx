@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getComponentDisplayName } from '../utils/getComponentDisplayName'
+import { getComponentDisplayName } from '@/shared/utils/react'
 
 /**
  * Creates a component which nests each declaration within the next.
@@ -19,14 +19,11 @@ const composedWith = (...components: Array<React.ComponentType<any>>) => {
     getComponentDisplayName(component),
   )
 
-  const Component: React.PFC = ({ children }) => {
-    const allComponents = componentsOrderedByRenderDepth.reduce(
+  const Component: React.PFC = ({ children }) =>
+    componentsOrderedByRenderDepth.reduce(
       (allLayers, Layer) => <Layer>{allLayers}</Layer>,
       children,
     )
-
-    return allComponents
-  }
   Component.displayName = `composedWith(${componentNames.join(', ')})`
 
   return Component

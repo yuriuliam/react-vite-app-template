@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getComponentDisplayName } from '../utils/getComponentDisplayName'
+import { getComponentDisplayName } from '@/shared/utils/react'
 
 type BoundedProps<TP, TB> = Omit<TP, keyof TB> & Partial<TB>
 

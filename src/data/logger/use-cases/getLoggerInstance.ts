@@ -2,15 +2,11 @@ import { formatToDetailedDateTime } from '@/data/intl/use-cases/formatToDetailed
 
 import { LoggerName } from '@/domain/logger/enums/LoggerName'
 
-import { createLogger } from '@/infra/logger/use-cases/createLogger'
+import { createLoggerFactory } from '@/infra/logger/use-cases/createLoggerFactory'
 
-import { memoize } from '@/shared/utils/functions'
-
-const getLoggerInstance = memoize(
-  createLogger.bind(null, {
-    baseNamespace: LoggerName.Development,
-    formatTime: formatToDetailedDateTime,
-  }),
+const getLoggerInstance = createLoggerFactory(
+  formatToDetailedDateTime,
+  LoggerName.Development,
 )
 
 export { getLoggerInstance }
