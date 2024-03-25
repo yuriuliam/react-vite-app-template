@@ -1,13 +1,39 @@
-import { Theme } from '@radix-ui/themes'
+import React from 'react'
 
-import { withProps } from '@/infra/react/hocs/withProps'
+import { useMediaQuery } from '@/data/shared/hooks/useMediaQuery'
+import { ThemeContextProvider } from '@/data/theme/contexts/theme'
 
-const THEME_CONTEXT_PROVIDER_NAME = 'Infra.Theme.ContextProvider'
+import { useThemeIsDark } from '../atoms/themeIsDark'
 
-const ThemeContextProvider = withProps(Theme, {
-  accentColor: 'amber',
-  grayColor: 'slate',
-})
-ThemeContextProvider.displayName = THEME_CONTEXT_PROVIDER_NAME
+const THEME_PROVIDER_NAME = 'Data.Theme.Provider'
 
-export { ThemeContextProvider }
+const ThemeProvider: React.PFC = ({ children }) => {
+  const preferDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+
+  const [isDarkMode, setIsDarkMode] = useThemeIsDark()
+
+  React.useInsertionEffect(() => {
+    if (isDarkMode !== null) return
+
+    setIsDarkMode(preferDarkMode)
+  }, [])
+
+  React.useInsertionEffect(() => {
+    const themeClass = isDarkMode ? 'dark-theme' : 'light-theme'
+
+    document.body.classList.add(themeClass)
+
+    return () => {
+      document.body.classList.remove(themeClass)
+    }
+  }, [isDarkMode])
+
+  return (
+    <ThemeContextProvider appearance={isDarkMode ? 'dark' : 'light'}>
+      <>{children}</>
+    </ThemeContextProvider>
+  )
+}
+ThemeProvider.displayName = THEME_PROVIDER_NAME
+
+export { ThemeProvider }

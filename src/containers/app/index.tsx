@@ -1,4 +1,5 @@
-import { AppProvider } from './contexts/app'
+import { AppProvider } from '@/infra/app/contexts/app'
+
 import { Routes } from './routes'
 import { GlobalStyles } from './styles/global'
 

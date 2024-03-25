@@ -1,21 +1,16 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
 import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
 
-import { routesWithinMainLayout } from '@/data/app/use-cases/routesWithinMainLayout'
-import { routesWithinErrorGuard } from '@/data/router/use-cases/routesWithinErrorBoundary'
+import { AppRoute } from '@/data/app/enums/AppRoute'
+import { createRouter } from '@/data/router/subjects/createRouter'
 
-import { AppRoute } from '@/domain/app/enums/AppRoute'
+import { routesWithinMainLayout } from '@/infra/app/routesWithinMainLayout'
+import { routesWithinErrorGuard } from '@/infra/router/routesWithinErrorBoundary'
 
-import { withProps } from '@/infra/react/hocs/withProps'
+import { routesWithinAuth } from '@/modules/auth/infra/routesWithinAuth'
 
-import { routesWithinAuth } from '@/modules/auth/data/use-cases/routesWithinAuth'
-
-const ROUTES_NAME = 'Containers.App.Routes'
-
-const router = createBrowserRouter([
+const Routes = createRouter([
   routesWithinErrorGuard([
     routesWithinAuth([
       routesWithinMainLayout([
@@ -35,8 +30,5 @@ const router = createBrowserRouter([
     },
   ]),
 ])
-
-const Routes = withProps(RouterProvider, { router })
-Routes.displayName = ROUTES_NAME
 
 export { Routes }

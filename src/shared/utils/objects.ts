@@ -1,6 +1,4 @@
-import { RECORD_PROTOTYPE } from '@/config/objects'
-
-type PredicateFn<T> = (value: T, index: number, array: T[]) => boolean
+import { RECORD_PROTOTYPE } from '../config/objects'
 
 /**
  * Check if both objects have same keys and values.
@@ -44,8 +42,22 @@ const chunkEvery = <T>(iterable: Iterable<T>, size: number) => {
   return chunks
 }
 
-const count = <T>(array: T[], predicate: PredicateFn<T>) =>
-  array.filter(predicate).length
+const chunkMap = <TValue, TOutput>(
+  iterable: Iterable<TValue>,
+  size: number,
+  predicate: App.PredicateFn<TValue[], TOutput[]>,
+) => {
+  const chunks: TOutput[][] = []
+
+  for (let i = 0, value = Array.from(iterable); i < value.length; i += size) {
+    chunks.push(predicate(value.slice(i, i + size)))
+  }
+
+  return chunks
+}
+
+const count = <T>(array: T[], predicate: App.IndexedPredicateFn<T, boolean>) =>
+  array.filter((item, idx) => predicate(item, idx)).length
 
 /**
  * Checks if value is a non-null object.
@@ -90,12 +102,36 @@ const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
   ) as Omit<TObj, TKey>
 }
 
-const parallel = <TA, TB>(arr1: App.ArrayType<TA>, arr2: App.ArrayType<TB>) => {
-  if (arr1.length !== arr2.length) {
-    throw new Error('the given objects have different lengths')
+/**
+ * Creates a 2d-array with items of `a1` and `a2` respectively.
+ * Different from `tuples`, some of them will be undefined if the length
+ * is different.
+ *
+ * @see {tuples}
+ */
+const parallel = <TA, TB>(a1: App.ArrayType<TA>, a2: App.ArrayType<TB>) => {
+  if (a1.length > a2.length) {
+    return a1.map<[TA, TB | undefined]>((item, idx) => [item, a2[idx]])
   }
 
-  return arr1.map((item, idx) => [item, arr2[idx]] as [TA, TB])
+  return a2.map<[TA | undefined, TB]>((item, idx) => [a1[idx], item])
+}
+
+/**
+ * Map a 2d-matrix as it gets mapped into paralleled items.
+ *
+ * @see {parallel}
+ */
+const parallelMap = <TA, TB, TR>(
+  a1: App.ArrayType<TA>,
+  a2: App.ArrayType<TB>,
+  predicate: App.IndexedPredicateFn<[TA | undefined, TB | undefined], TR>,
+) => {
+  if (a1.length > a2.length) {
+    return a1.map<TR>((item, idx) => predicate([item, a2.at(idx)], idx))
+  }
+
+  return a2.map<TR>((item, idx) => predicate([a1.at(idx), item], idx))
 }
 
 /**
@@ -144,16 +180,55 @@ const toCharCode = (iterable: Iterable<string>) =>
     Array.from(part).map(c => c.charCodeAt(0)),
   )
 
+/**
+ * Creates a 2d-array with items of `a1` and `a2` respectively.
+ * Different from `parallel`, it will base length of the smaller array.
+ *
+ * @see {parallel}
+ */
+const tuples = <TA, TB>(a1: App.ArrayType<TA>, a2: App.ArrayType<TB>) => {
+  if (a1.length > a2.length) {
+    return a1.slice(0, a2.length).map<[TA, TB]>((item, idx) => [item, a2[idx]])
+  }
+
+  return a2.slice(0, a1.length).map<[TA, TB]>((item, idx) => [a1[idx], item])
+}
+
+/**
+ * Map a 2d-matrix as it gets mapped into tuples.
+ *
+ * @see {tuples}
+ */
+const tupleMap = <TA, TB, TR>(
+  a1: App.ArrayType<TA>,
+  a2: App.ArrayType<TB>,
+  predicate: App.IndexedPredicateFn<[TA, TB], TR>,
+) => {
+  if (a1.length > a2.length) {
+    return a1
+      .slice(0, a2.length)
+      .map<TR>((item, idx) => predicate([item, a2[idx]], idx))
+  }
+
+  return a2
+    .slice(0, a1.length)
+    .map<TR>((item, idx) => predicate([a1[idx], item], idx))
+}
+
 export {
   areObjectsEqual,
   chunkEvery,
+  chunkMap,
   count,
   isObject,
   isRecord,
   mixed,
   omitKeys,
   parallel,
+  parallelMap,
   random,
   swap,
   toCharCode,
+  tuples,
+  tupleMap,
 }

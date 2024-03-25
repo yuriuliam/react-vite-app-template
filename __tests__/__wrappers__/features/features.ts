@@ -1,6 +1,6 @@
-import { withProps } from '@/infra/react/hocs/withProps'
+import { withProps } from '@/data/shared/hocs/withProps'
 
-import { FeaturesProvider } from '@/modules/features/data/contexts/features'
+import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
 
 const FeaturesWrapper = withProps(FeaturesProvider, {})
 

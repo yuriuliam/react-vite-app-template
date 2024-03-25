@@ -4,6 +4,8 @@
 
 This is a React Application Base/Template for big and scalable projects.
 
+Considered a POC, the goal of this repo is to prove you can implement a distinguished clean architecture to solve real word cases with abstraction and isolation-per-concept.
+
 ## Main Features
 - Modular Clean Code architecture to give full support for scalability;
 - Common-case structures for caching, logging, validation and communicate with external services via HTTP;
@@ -57,7 +59,7 @@ There are a few ones:
     </tr>
     <tr>
       <th>src/data</th>
-      <th>The Main implementations of Infra and Domain.</th>
+      <th>The Data Access Library</th>
     </tr>
     <tr>
       <th>src/infra</th>
@@ -65,7 +67,7 @@ There are a few ones:
     </tr>
     <tr>
       <th>src/modules</th>
-      <th>Business Logic, not related to App general concepts, but App Specialities.</th>
+      <th>An isolated part of the architecture to implement the most abstract concepts.</th>
     </tr>
     <tr>
       <th>src/shared</th>

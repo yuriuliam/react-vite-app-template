@@ -1,6 +1,6 @@
 import { afterEach, vi } from 'vitest'
 
-import { createEventHandler } from '@/infra/event/use-cases/createEventHandler'
+import { createEventHandler } from '@/data/events/createEventHandler'
 
 const createEventAdapterMock = () => {
   const eventHandler = createEventHandler()

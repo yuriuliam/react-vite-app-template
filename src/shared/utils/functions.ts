@@ -3,8 +3,7 @@ import {
   ASYNC_GENERATOR_FUNCTION_PROTOTYPE,
   FUNCTION_PROTOTYPE,
   GENERATOR_FUNCTION_PROTOTYPE,
-} from '@/config/functions'
-
+} from '../config/functions'
 import { standardArgsReplacer } from './json'
 
 type DebouncedFn<T extends (...args: any[]) => any> = (
@@ -27,6 +26,7 @@ type MemoizedFn<T extends (...args: any[]) => any> = ((
   ...args: Parameters<T>
 ) => ReturnType<T>) & {
   clear: () => void
+  pure: T
   recompute: (...args: Parameters<T>) => ReturnType<T>
 }
 
@@ -129,7 +129,8 @@ const memoize = <T extends (...args: any[]) => any>(
   }
 
   const memoized = callMethod.bind(null, false) as MemoizedFn<T>
-  memoized.clear = cache.clear.bind(cache)
+  memoized.clear = Map.prototype.clear.bind(cache)
+  memoized.pure = method
   memoized.recompute = callMethod.bind(null, true)
 
   return memoized

@@ -1,8 +1,8 @@
 import { useSpring } from '@react-spring/web'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth'
-import { FeatureCode } from '@/modules/features/domain/enums/FeatureCode'
-import { useFeatures } from '@/modules/features/infra/contexts/features'
+import { useAuth } from '@/modules/auth/data/contexts/auth'
+import { useFeatures } from '@/modules/features/data/contexts/features'
+import { FeatureCode } from '@/modules/features/data/enums/FeatureCode'
 
 import * as Styled from './styles'
 

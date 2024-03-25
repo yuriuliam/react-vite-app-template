@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { Form } from '@/data/forms/components/Form'
-import { Input } from '@/data/forms/components/Input'
+import { AppRoute } from '@/data/app/enums/AppRoute'
+import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
+import { useConst } from '@/data/shared/hooks/useConst'
 
-import { AppRoute } from '@/domain/app/enums/AppRoute'
+import { Form } from '@/infra/forms/components/Form'
+import { Input } from '@/infra/forms/components/Input'
 
-import { useCallbackRef } from '@/infra/react/hooks/useCallbackRef'
-import { useConst } from '@/infra/react/hooks/useConst'
-
-import { useAuth } from '@/modules/auth/infra/contexts/auth'
+import { useAuth } from '@/modules/auth/data/contexts/auth'
 
 import { Button } from '../shared/components/Button'
 

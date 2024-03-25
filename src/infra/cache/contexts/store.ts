@@ -1,8 +1,8 @@
 import { Provider as JotaiStoreProvider } from 'jotai'
 
-import { appStore } from '@/data/cache/use-cases/appStore'
+import { withProps } from '@/data/shared/hocs/withProps'
 
-import { withProps } from '@/infra/react/hocs/withProps'
+import { appStore } from '../appStore'
 
 const STORE_CONTEXT_PROVIDER_NAME = 'Infra.Cache.StoreContextProvider'
 

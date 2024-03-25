@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-const TokenModel = z.string().min(1, 'token should be fulfilled.')
+const TokenModel = z.string()
 
 export { TokenModel }

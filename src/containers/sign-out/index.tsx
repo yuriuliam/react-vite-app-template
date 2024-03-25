@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AppRoute } from '@/domain/app/enums/AppRoute'
+import { AppRoute } from '@/data/app/enums/AppRoute'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth'
+import { useAuth } from '@/modules/auth/data/contexts/auth'
 
 const SIGN_OUT_NAME = 'Containers.SignOut.Root'
 

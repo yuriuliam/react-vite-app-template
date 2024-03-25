@@ -1,4 +1,4 @@
-import { AppError } from '@/domain/app/errors/AppError'
+import { AppError } from '@/domain/shared/errors/AppError'
 
 class AuthError extends AppError {
   public constructor(baseError: unknown) {

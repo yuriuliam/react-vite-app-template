@@ -2,7 +2,7 @@ import { ValidationError } from './ValidationError'
 
 class SchemaError extends ValidationError {
   public constructor(
-    public validationMessages: App.Domain.Validation.ErrorMessages,
+    public validationMessages: App.Domain.Validation.ValidationMessages,
     validationError: unknown,
   ) {
     super(validationError)

@@ -1,29 +1,17 @@
-import { useQuery } from '@tanstack/react-query'
+import { useFetchQuery } from '@/data/react-query/hooks/useFetchQuery'
 
-import { useAuth } from '@/modules/auth/infra/contexts/auth'
+import { useAuth } from '@/modules/auth/data/contexts/auth'
 
-import { fetchFeatures } from '../../data/use-cases/fetchFeaturesService'
+const useFeaturesQuery = <T>(
+  consumerName: string,
+  serviceFn: (token: string | null) => T,
+) => {
+  const { token } = useAuth(`useFeaturesData(${consumerName})`)
 
-const useFeaturesQuery = (consumerName: string) => {
-  const finalConsumerName = `useFeaturesData(${consumerName})`
-
-  const { token } = useAuth(finalConsumerName)
-
-  const {
-    data: featureList,
-    isLoading,
-    isFetching,
-  } = useQuery({
-    queryKey: ['feature-list', token],
-    queryFn: fetchFeatures.bind(null, token),
-    placeholderData: null,
-  })
-
-  return {
-    featureList,
-    isLoading,
-    isFetching,
-  }
+  return useFetchQuery<Awaited<T>>(
+    ['feature-list', token],
+    serviceFn.bind(null, token),
+  )
 }
 
 export { useFeaturesQuery }
