@@ -6,7 +6,7 @@
     "node": true
   },
   "extends": [
-    "standard-with-typescript",
+    "love",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",

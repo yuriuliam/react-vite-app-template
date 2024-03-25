@@ -12,7 +12,7 @@ import { getComponentDisplayName } from '../utils/getComponentDisplayName'
  * @param components
  * @returns
  */
-const composedWith = (...components: Array<React.ComponentType<any>>) => {
+const composedWith: App.Domain.React.ComposedWithHOC = (...components) => {
   const componentsOrderedByRenderDepth = [...components].reverse()
 
   const componentNames = components.map(component =>
