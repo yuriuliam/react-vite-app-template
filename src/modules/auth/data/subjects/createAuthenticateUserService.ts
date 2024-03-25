@@ -21,32 +21,30 @@ const fakeFetchUser = async (params: AuthParams) => {
     user => params.email === user.email && params.password === user.password,
   )
 
-  if (!user) throw new Error('Wrong email/password')
+  if (!user) throw new Error('Wrong email and/or password')
 
   const userWithoutPass = omitKeys(user, 'password')
 
   return await deferred<App.Modules.User.AppUserResponse>(userWithoutPass, 70)
 }
 
-const createAuthenticateUserService = <T>(
-  _httpClient: App.Domain.Http.IHttpClient,
-  responseSchema: App.Domain.Validation.SchemeParser<T>,
-) => {
-  return async (params: AuthParams) => {
-    try {
-      // const { data } = await httpClient.request({
-      //   data: params,
-      //   method: 'POST',
-      //   uri: '/auth/jwt',
-      // })
+const createAuthenticateUserService: App.Modules.Auth.CreateAuthenticateUserServiceFn =
+  (_httpClient, responseSchema) => {
+    return async params => {
+      try {
+        // const { data } = await httpClient.request({
+        //   data: params,
+        //   method: 'POST',
+        //   uri: '/auth/jwt',
+        // })
 
-      const data = await fakeFetchUser(params)
+        const data = await fakeFetchUser(params)
 
-      return responseSchema.parse(data)
-    } catch (error) {
-      return null
+        return responseSchema.parse(data)
+      } catch (error) {
+        return null
+      }
     }
   }
-}
 
 export { createAuthenticateUserService }

@@ -1,4 +1,4 @@
-import { type Path, type RouteObject } from 'react-router-dom'
+import { type To, type RouteObject } from 'react-router-dom'
 
 declare global {
   declare namespace App.Domain.Router {
@@ -8,7 +8,7 @@ declare global {
     type ErrorBoundaryBaseProps = { error: unknown; isRouteError: boolean }
     type ErrorBoundaryBase = globalThis.React.FC<ErrorBoundaryBaseProps>
 
-    type UseNextRouteFn = () => string | Partial<Path> | null
+    type UseNextRouteFn = () => To | null | undefined
 
     type CreateRouterUtilFn = (
       Element: React.FC,
@@ -19,7 +19,7 @@ declare global {
 
     type CreateErrorBoundaryFn = (GuardHandler: ErrorBoundaryBase) => RouteGuard
 
-    type CreateGuardFn = (useNextRoute: UseNextRouteFn) => RouteGuard
+    type CreateNextRouteGuardFn = (useNextRoute: UseNextRouteFn) => RouteGuard
   }
 }
 

@@ -28,7 +28,7 @@ declare global {
       value: TValue,
     ) => RuleMessages<TRuleLevel>
 
-    type SchemeParser<TValue> = {
+    type SchemaParser<TValue> = {
       parse: (data: unknown) => TValue
       safeParse: (data: unknown) => ParseResult
     }
@@ -43,7 +43,7 @@ declare global {
     type CreateSchemaParserFn = <TValue>(
       model: Model<TValue>,
       parseErrors: ErrorParserFn,
-    ) => SchemeParser<TValue>
+    ) => SchemaParser<TValue>
   }
 }
 

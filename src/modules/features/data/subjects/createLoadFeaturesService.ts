@@ -22,25 +22,23 @@ const fakeFetchUserFeatures = async (token: string | null) => {
   return await deferred<App.Modules.Features.FeaturesResponse>(features, 50)
 }
 
-const createLoadFeaturesService = <T>(
-  _httpClient: App.Domain.Http.IHttpClient,
-  responseSchema: App.Domain.Validation.SchemeParser<T>,
-) => {
-  return async (token: App.Domain.Shared.Token | null) => {
-    try {
-      // const { data } = await httpClient.request({
-      //   headers: { Authorization: tokenWithScheme(token) },
-      //   method: 'GET',
-      //   url: '/users/me/features',
-      // })
+const createLoadFeaturesService: App.Modules.Features.CreateLoadFeaturesServiceFn =
+  (_httpClient, responseSchema) => {
+    return async token => {
+      try {
+        // const { data } = await httpClient.request({
+        //   headers: { Authorization: tokenWithScheme(token) },
+        //   method: 'GET',
+        //   url: '/users/me/features',
+        // })
 
-      const data = await fakeFetchUserFeatures(token)
+        const data = await fakeFetchUserFeatures(token)
 
-      return responseSchema.parse(data)
-    } catch (error) {
-      return null
+        return responseSchema.parse(data)
+      } catch (error) {
+        return null
+      }
     }
   }
-}
 
 export { createLoadFeaturesService }

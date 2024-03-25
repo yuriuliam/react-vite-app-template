@@ -1,5 +1,5 @@
 import { AppRoute } from '@/data/app/enums/AppRoute'
-import { createGuard } from '@/data/router/subjects/createGuard'
+import { createNextRouteGuard } from '@/data/router/subjects/createNextRouteGuard'
 
 import { useAuth } from '../../data/contexts/auth'
 
@@ -8,10 +8,10 @@ const AUTH_GUARD_NAME = 'Modules.Auth.Guards.Auth'
 /**
  * A middleware for authentication.
  */
-const AuthGuard = createGuard(() => {
+const AuthGuard = createNextRouteGuard(() => {
   const { isAuthenticated } = useAuth(AUTH_GUARD_NAME)
 
-  return isAuthenticated ? null : AppRoute.SignIn
+  if (!isAuthenticated) return AppRoute.SignIn
 })
 AuthGuard.displayName = AUTH_GUARD_NAME
 
