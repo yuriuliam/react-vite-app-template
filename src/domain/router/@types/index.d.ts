@@ -10,7 +10,12 @@ declare global {
 
     type UseNextRouteFn = () => To | null | undefined
 
-    type CreateRouterUtilFn = (
+    type CreateRouteWithinElementFn = (
+      Element: React.FC,
+      routes: RouteObject[],
+    ) => RouteObject
+
+    type CreateRouteWithinErrorElementFn = (
       Element: React.FC,
       routes: RouteObject[],
     ) => RouteObject

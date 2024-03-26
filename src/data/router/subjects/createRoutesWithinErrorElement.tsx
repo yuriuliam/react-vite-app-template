@@ -1,9 +1,7 @@
-const createRoutesWithinErrorElement: App.Domain.Router.CreateRouterUtilFn = (
-  Guard,
-  routes,
-) => ({
-  errorElement: <Guard />,
-  children: routes,
-})
+const createRoutesWithinErrorElement: App.Domain.Router.CreateRouteWithinErrorElementFn =
+  (Guard, routes) => ({
+    errorElement: <Guard />,
+    children: routes,
+  })
 
 export { createRoutesWithinErrorElement }
