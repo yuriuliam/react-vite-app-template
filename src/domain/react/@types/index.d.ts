@@ -1,7 +1,7 @@
 declare global {
   declare namespace App.Domain.React {
-    type WithPropsComponent<TProps, TBound> = globalThis.React.FC<
-      Omit<TProps, keyof TBound> & Partial<TBound>
+    type WithPropsComponent<TProps, TBoundProps> = globalThis.React.FC<
+      Omit<TProps, TBoundProps> & { [P in TBoundProps]?: TProps[P] }
     >
 
     type ContextProvider<TProps = any> = globalThis.React.PFC<Partial<TProps>>
@@ -26,7 +26,7 @@ declare global {
     >(
       Component: globalThis.React.ComponentType<TProps>,
       propsToBound: TBound,
-    ) => WithPropsComponent<TProps, TBound>
+    ) => WithPropsComponent<TProps, keyof TBound>
   }
 }
 

@@ -6,7 +6,7 @@ import { useComposedRef } from '@/shared/hooks/useComposedRef'
 
 import { useFormField } from '../../hooks/useFormField'
 
-type TextFieldInputProps = React.ComponentProps<typeof TextField.Input> & {
+type TextFieldInputProps = React.ComponentProps<typeof TextField.Root> & {
   name: string
   label?: string | undefined
   persistent?: boolean | undefined
@@ -35,20 +35,19 @@ const Input = React.forwardRef<HTMLInputElement, TextFieldInputProps>(
     }, [fieldName, registerField])
 
     return (
-      <TextField.Root mt="2">
+      <TextField.Root
+        {...rest}
+        mt="2"
+        id={fieldName}
+        name={name}
+        defaultValue={defaultValue}
+        ref={inputRef}
+      >
         {label && (
           <TextField.Slot>
             <label htmlFor={fieldName}>{label}</label>
           </TextField.Slot>
         )}
-
-        <TextField.Input
-          {...rest}
-          id={fieldName}
-          name={name}
-          defaultValue={defaultValue}
-          ref={inputRef}
-        />
       </TextField.Root>
     )
   },

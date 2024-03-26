@@ -16,7 +16,7 @@ const withProps: App.Domain.React.WithPropsHOC = (Component, propsToBound) => {
 
   return ComponentWithProps as App.Domain.React.WithPropsComponent<
     React.ComponentProps<typeof Component>,
-    typeof propsToBound
+    keyof typeof propsToBound
   >
 }
 

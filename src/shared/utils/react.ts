@@ -1,5 +1,20 @@
 import { isFunctionType } from '@/shared/utils/functions'
 
+import { parallelMap } from './objects'
+
+const areDependenciesEqual = (
+  nextDeps: React.DependencyList,
+  prevDeps: React.DependencyList,
+) => {
+  if (nextDeps.length !== prevDeps.length) return false
+
+  const depsCheck = parallelMap(nextDeps, prevDeps, ([itemA, itemB]) =>
+    Object.is(itemA, itemB),
+  )
+
+  return !depsCheck.includes(false)
+}
+
 /**
  * Composes React Refs into a callback,
  * making it possible to stack multiple refs.
@@ -28,4 +43,4 @@ const composeRefs = <T>(
 const getComponentDisplayName = (Component: React.ComponentType<any>) =>
   Component.displayName || Component.name || 'Component'
 
-export { composeRefs, getComponentDisplayName }
+export { areDependenciesEqual, composeRefs, getComponentDisplayName }
