@@ -4,7 +4,7 @@ import {
   useQueryClient as useReactQueryClient,
 } from '@tanstack/react-query'
 
-import { withProps } from '@/data/shared/hocs/withProps'
+import { withProps } from '@/shared/hocs/withProps'
 
 const createQueryClient: App.Domain.ReactQuery.CreateQueryClientFn = () => {
   const queryClient = new QueryClient()

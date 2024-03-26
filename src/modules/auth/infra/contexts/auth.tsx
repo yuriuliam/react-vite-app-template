@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
-
 import { useUserMe } from '@/modules/users/infra/atoms/userMe'
 import { useUserToken } from '@/modules/users/infra/atoms/userToken'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 import { AuthContextProvider } from '../../data/contexts/auth'
 import { authenticateUser } from '../authenticateUserService'

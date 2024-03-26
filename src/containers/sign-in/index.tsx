@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { AppRoute } from '@/data/app/enums/AppRoute'
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
-import { useConst } from '@/data/shared/hooks/useConst'
 
 import { Form } from '@/infra/forms/components/Form'
 import { Input } from '@/infra/forms/components/Input'
 
 import { useAuth } from '@/modules/auth/data/contexts/auth'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
+import { useConst } from '@/shared/hooks/useConst'
 
 import { Button } from '../shared/components/Button'
 

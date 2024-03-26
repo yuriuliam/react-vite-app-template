@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
-import { useSet } from '@/data/shared/hooks/useSet'
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
+import { useSet } from '@/shared/hooks/useSet'
 
 import { FeaturesContextProvider } from '../../data/contexts/features'
 import { useFeaturesQuery } from '../../infra/hooks/useFeaturesQuery'

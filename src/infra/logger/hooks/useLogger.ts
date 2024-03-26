@@ -1,4 +1,4 @@
-import { useConst } from '@/data/shared/hooks/useConst'
+import { useConst } from '@/shared/hooks/useConst'
 
 import { getLoggerInstance } from '../getLoggerInstance'
 

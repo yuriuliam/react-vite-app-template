@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TextField } from '@radix-ui/themes'
 
-import { useComposedRef } from '@/data/shared/hooks/useComposedRef'
+import { useComposedRef } from '@/shared/hooks/useComposedRef'
 
 import { useFormField } from '../../hooks/useFormField'
 

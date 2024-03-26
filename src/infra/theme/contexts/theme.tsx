@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { useMediaQuery } from '@/data/shared/hooks/useMediaQuery'
 import { ThemeContextProvider } from '@/data/theme/contexts/theme'
+
+import { useMediaQuery } from '@/shared/hooks/useMediaQuery'
 
 import { useThemeIsDark } from '../atoms/themeIsDark'
 

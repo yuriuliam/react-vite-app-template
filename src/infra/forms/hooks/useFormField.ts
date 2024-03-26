@@ -3,7 +3,8 @@ import React from 'react'
 import dot from 'dot-object'
 
 import { useForm } from '@/data/forms/contexts/form'
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 const useFormField = (consumerName: string, name: string) => {
   const {

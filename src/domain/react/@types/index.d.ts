@@ -22,7 +22,7 @@ declare global {
 
     type WithPropsHOC = <
       TProps extends Record<any, any>,
-      TBound = Partial<TProps>,
+      TBound = Partial<Omit<TProps>, 'ref' | 'key'>,
     >(
       Component: globalThis.React.ComponentType<TProps>,
       propsToBound: TBound,

@@ -3,7 +3,7 @@ import {
   type InitialConfigType,
 } from '@lexical/react/LexicalComposer'
 
-import { withProps } from '@/data/shared/hocs/withProps'
+import { withProps } from '@/shared/hocs/withProps'
 
 const createRichTextEditorComposer = (initialConfig: InitialConfigType) => {
   const EditorComposer = withProps(LexicalComposer, { initialConfig })

@@ -25,4 +25,7 @@ const composeRefs = <T>(
   }
 }
 
-export { composeRefs }
+const getComponentDisplayName = (Component: React.ComponentType<any>) =>
+  Component.displayName || Component.name || 'Component'
+
+export { composeRefs, getComponentDisplayName }

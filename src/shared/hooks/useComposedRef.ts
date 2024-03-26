@@ -1,4 +1,4 @@
-import { composeRefs } from '../utils/composeRefs'
+import { composeRefs } from '../utils/react'
 import { useCallbackRef } from './useCallbackRef'
 
 /**

@@ -5,9 +5,10 @@ import { Flex, Section } from '@radix-ui/themes'
 
 import { AppRoute } from '@/data/app/enums/AppRoute'
 import { createErrorBoundary } from '@/data/router/subjects/createErrorBoundary'
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
 
 import { useGlobalLogger } from '@/infra/logger/hooks/useGlobalLogger'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 const ERROR_GUARD_LOGGER_NAME = 'error-boundary'
 

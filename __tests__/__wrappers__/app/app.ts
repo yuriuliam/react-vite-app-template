@@ -1,6 +1,6 @@
-import { withProps } from '@/data/shared/hocs/withProps'
-
 import { AppProvider } from '@/infra/app/contexts/app'
+
+import { withProps } from '@/shared/hocs/withProps'
 
 const AppWrapper = withProps(AppProvider, {})
 

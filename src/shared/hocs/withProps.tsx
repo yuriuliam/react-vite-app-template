@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getComponentDisplayName } from '../utils/getComponentDisplayName'
+import { getComponentDisplayName } from '../utils/react'
 
 /**
  * Creates a component with props.

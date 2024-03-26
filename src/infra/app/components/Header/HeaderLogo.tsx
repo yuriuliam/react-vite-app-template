@@ -2,7 +2,7 @@ import { Heading } from '@radix-ui/themes'
 
 import { RouteLink } from '@/containers/shared/components/RouteLink'
 
-import { useConst } from '@/data/shared/hooks/useConst'
+import { useConst } from '@/shared/hooks/useConst'
 
 const HEADER_LOGO_NAME = 'Infra.App.Header.Logo'
 

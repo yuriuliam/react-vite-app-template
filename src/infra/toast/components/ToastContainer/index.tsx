@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useTransition } from '@react-spring/web'
 
-import { BodyPortal } from '@/data/shared/components/BodyPortal'
+import { BodyPortal } from '@/shared/components/BodyPortal'
 
 import { ToastItem } from '../ToastItem'
 import * as Styled from './styles'

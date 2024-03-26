@@ -3,7 +3,8 @@ import React from 'react'
 import dot from 'dot-object'
 
 import { FormContextProvider } from '@/data/forms/contexts/form'
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 const FORM_PROVIDER_NAME = 'Data.Form.Provider'
 

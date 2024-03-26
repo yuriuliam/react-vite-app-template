@@ -1,6 +1,6 @@
 import { Provider as JotaiStoreProvider } from 'jotai'
 
-import { withProps } from '@/data/shared/hocs/withProps'
+import { withProps } from '@/shared/hocs/withProps'
 
 import { appStore } from '../appStore'
 

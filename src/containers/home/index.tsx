@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { Flex, Section, Text } from '@radix-ui/themes'
 
 import { AppRoute } from '@/data/app/enums/AppRoute'
-import { useCallbackRef } from '@/data/shared/hooks/useCallbackRef'
+
+import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 import { Button } from '../shared/components/Button'
 import { Greetings } from './components/Greetings'
