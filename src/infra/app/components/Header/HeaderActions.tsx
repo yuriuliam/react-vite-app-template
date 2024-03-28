@@ -1,7 +1,5 @@
-import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
-import { Box, Flex } from '@radix-ui/themes'
-
-import { RouteLink } from '@/containers/shared/components/RouteLink'
+import { GitHubLogoIcon, ArchiveIcon } from '@radix-ui/react-icons'
+import { Box, Flex, Link } from '@radix-ui/themes'
 
 const HEADER_ACTIONS = 'Infra.App.Header.Actions'
 
@@ -9,13 +7,21 @@ const HeaderActions: React.FC = () => {
   return (
     <Flex gap="4" asChild>
       <Box>
-        <RouteLink to="/">
+        <Link
+          title="My GitHub Profile"
+          target="_blank"
+          href="https://github.com/yuriuliam"
+        >
           <GitHubLogoIcon />
-        </RouteLink>
+        </Link>
 
-        <RouteLink to="/">
-          <LinkedInLogoIcon />
-        </RouteLink>
+        <Link
+          title="Storybook of this project"
+          target="_blank"
+          href="https://yuriuliam.github.io/react-vite-app-template/"
+        >
+          <ArchiveIcon />
+        </Link>
       </Box>
     </Flex>
   )
