@@ -24,9 +24,10 @@ const getCallSites = () => {
   const originalPrepareStackTrace = Error.prepareStackTrace
 
   try {
-    let result: NodeJS.CallSite[] = []
+    const result: NodeJS.CallSite[] = []
 
-    Error.prepareStackTrace = (_, callSites) => (result = callSites.slice(1))
+    Error.prepareStackTrace = (_, callSites) =>
+      result.push(...callSites.slice(1))
 
     void new Error().stack // Requires to access stack to fill results
 

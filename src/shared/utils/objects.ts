@@ -80,7 +80,7 @@ const mixed = <T>(array: T[]) => {
   const result: T[] = []
 
   while (indexes.length > 0) {
-    const [item] = indexes.splice(indexes.indexOf(random(indexes)!), 1)
+    const [item] = indexes.splice(indexes.indexOf(random(indexes)), 1)
 
     result.push(array.at(item)!)
   }
@@ -142,7 +142,7 @@ const parallelMap = <TA, TB, TR>(
 const random = <T>(iterable: Iterable<T>) => {
   const values = Array.from(iterable)
 
-  return values.at(Math.floor(Math.random() * values.length))
+  return values.at(Math.floor(Math.random() * values.length)) as T
 }
 
 /**

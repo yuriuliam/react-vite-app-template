@@ -5,6 +5,8 @@ const standardArgsReplacer = (_k: string, v: any) => {
 
   if (v instanceof Map) return Object.fromEntries(v.entries())
 
+  if (v instanceof Date) return v.toISOString()
+
   return v
 }
 
