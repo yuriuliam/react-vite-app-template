@@ -29,6 +29,8 @@ declare global {
       defaultValue: T,
     ) => [atom: StoreAtom<T>, useAtom: UseAtomFn<T>]
 
+    type CreateAppStoreFn = () => [appStore: Store, createAppAtom: CreateAtomFn]
+
     type CreateAtomWithStorageFn = <T>(
       storageKey: string,
       defaultValue: T,
@@ -45,8 +47,6 @@ declare global {
       syncStorage: ISyncStorage,
       createAtomWithStorageFn: CreateAtomWithStorageFn,
     ]
-
-    type CreateAppStoreFn = () => [appStore: Store, createAppAtom: CreateAtomFn]
   }
 }
 
