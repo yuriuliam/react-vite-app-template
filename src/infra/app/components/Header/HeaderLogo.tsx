@@ -1,6 +1,6 @@
 import { Heading } from '@radix-ui/themes'
 
-import { RouteLink } from '@/containers/shared/components/RouteLink'
+import { RouteLink } from '@/infra/router/components/RouteLink'
 
 import { useConst } from '@/shared/hooks/useConst'
 

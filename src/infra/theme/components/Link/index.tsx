@@ -2,7 +2,7 @@ import { Flex, Link as RadixUILink } from '@radix-ui/themes'
 
 type AppLinkProps = React.ComponentProps<typeof RadixUILink>
 
-const LINK_NAME = 'Containers.Shared.Components.Link'
+const LINK_NAME = 'Infra.Theme.Components.Link'
 
 const Link: React.FC<AppLinkProps> = props => (
   <Flex asChild align="center" justify="center">

@@ -1,4 +1,4 @@
-type ChartOptions = App.Domain.Charts.BaseChartOptions
+type ChartOptions = App.Domain.Charts.ChartOptions
 
 type ChartBuildedOptions = Omit<
   App.Domain.Charts.ChartProps,
@@ -15,13 +15,17 @@ class ChartOptionsBuilder {
   }
 
   public build() {
-    const { series, ...options } = this.options
-
-    return { series, options } satisfies ChartBuildedOptions
+    return this.toJSON()
   }
 
   public copy() {
     return new ChartOptionsBuilder(structuredClone(this.options))
+  }
+
+  public toJSON() {
+    const { series, ...options } = this.options
+
+    return { series, options } satisfies ChartBuildedOptions
   }
 
   public annotations(annotationsOptions?: ChartOptions['annotations']) {

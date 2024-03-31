@@ -2,7 +2,7 @@ import { HomePage } from '@/containers/home'
 import { SignInPage } from '@/containers/sign-in'
 import { SignOutPage } from '@/containers/sign-out'
 
-import { AppRoute } from '@/data/app/enums/AppRoute'
+import { RoutePaths } from '@/data/router/enums/RoutePaths'
 import { createRouter } from '@/data/router/subjects/createRouter'
 
 import { routesWithinMainLayout } from '@/infra/app/routesWithinMainLayout'
@@ -15,17 +15,17 @@ const Routes = createRouter([
     routesWithinAuth([
       routesWithinMainLayout([
         {
-          path: AppRoute.Home,
+          path: RoutePaths.Home,
           element: <HomePage />,
         },
       ]),
     ]),
     {
-      path: AppRoute.SignIn,
+      path: RoutePaths.SignIn,
       element: <SignInPage />,
     },
     {
-      path: AppRoute.SignOut,
+      path: RoutePaths.SignOut,
       element: <SignOutPage />,
     },
   ]),

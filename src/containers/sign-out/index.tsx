@@ -1,7 +1,7 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
-import { AppRoute } from '@/data/app/enums/AppRoute'
+import { RoutePaths } from '@/data/router/enums/RoutePaths'
+import { createPage } from '@/data/router/subjects/createPage'
 
 import { useAuth } from '@/modules/auth/data/contexts/auth'
 
@@ -12,19 +12,17 @@ const SIGN_OUT_NAME = 'Containers.SignOut.Root'
  * to the user, otherwise you can use router's loader system.
  * @see https://reactrouter.com/en/main/route/loader
  */
-const SignOutPage: React.FC = () => {
+const SignOutPage = createPage(({ navigateTo }) => {
   const { signOut } = useAuth(SIGN_OUT_NAME)
-
-  const navigate = useNavigate()
 
   React.useEffect(() => {
     signOut()
 
-    navigate(AppRoute.Home)
-  }, [navigate, signOut])
+    navigateTo(RoutePaths.Home, {})
+  }, [navigateTo, signOut])
 
   return <></>
-}
+})
 SignOutPage.displayName = SIGN_OUT_NAME
 
 export { SignOutPage }

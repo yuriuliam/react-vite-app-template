@@ -1,4 +1,4 @@
-import { ChartOptionsBuilder } from '@/domain/charts/entities/ChartOptionsBuilder'
+import { ChartOptionsBuilder } from '../core/ChartOptionsBuilder'
 
 const withChartOptions = ChartOptionsBuilder.create.bind(ChartOptionsBuilder)
 

@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // [Radix UI - Icons] ~400.00 kB
+          // [Radix UI - Icons] ~400.00 kB (All Icons)
           icn: ['@radix-ui/react-icons'],
           // [Lexical] ~134.39 kB
           lxc: [

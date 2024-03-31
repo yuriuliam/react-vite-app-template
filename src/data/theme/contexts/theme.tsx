@@ -1,12 +1,12 @@
-import { Theme } from '@radix-ui/themes'
+import { ThemeProvider } from 'styled-components'
 
 import { withProps } from '@/shared/hocs/withProps'
 
-import { themeConfig } from '../config/theme'
+import { themeTokens } from '../config/theme'
 
 const THEME_CONTEXT_PROVIDER_NAME = 'Infra.Theme.ContextProvider'
 
-const ThemeContextProvider = withProps(Theme, themeConfig)
+const ThemeContextProvider = withProps(ThemeProvider, { theme: themeTokens })
 ThemeContextProvider.displayName = THEME_CONTEXT_PROVIDER_NAME
 
 export { ThemeContextProvider }

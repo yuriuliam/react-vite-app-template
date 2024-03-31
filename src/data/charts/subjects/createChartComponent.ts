@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts'
 import { withProps } from '@/shared/hocs/withProps'
 
 const createChartComponent: App.Domain.Charts.CreateChartComponentFn = type => {
-  const ChartComponent = withProps(Chart, {
+  const ChartComponent = withProps<App.Domain.Charts.BaseChartProps>(Chart, {
     type,
     options: { chart: { type } },
   })

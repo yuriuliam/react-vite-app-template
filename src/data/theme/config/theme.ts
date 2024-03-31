@@ -1,9 +1,3 @@
-import { type useThemeContext } from '@radix-ui/themes'
+const themeTokens = {} satisfies App.Domain.Theme.ThemeTokens
 
-const themeConfig = {
-  appearance: 'dark',
-  accentColor: 'amber',
-  grayColor: 'slate',
-} satisfies Partial<ReturnType<typeof useThemeContext>>
-
-export { themeConfig }
+export { themeTokens }

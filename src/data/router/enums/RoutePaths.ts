@@ -1,7 +1,7 @@
-enum AppRoute {
+enum RoutePaths {
   Home = '/',
   SignIn = '/sign-in',
   SignOut = '/sign-out',
 }
 
-export { AppRoute }
+export { RoutePaths }

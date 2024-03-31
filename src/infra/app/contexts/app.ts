@@ -1,6 +1,6 @@
 import { StoreProvider } from '@/infra/cache/contexts/store'
 import { QueryProvider } from '@/infra/react-query/queryClient'
-import { ThemeProvider } from '@/infra/theme/contexts/theme'
+import { ThemeConfigProvider } from '@/infra/theme/contexts/themeConfig'
 import { ToastProvider } from '@/infra/toast/contexts/toast'
 
 import { AuthProvider } from '@/modules/auth/infra/contexts/auth'
@@ -15,7 +15,7 @@ const AppProvider = composedWith(
   StoreProvider,
   ToastProvider,
   AuthProvider,
-  ThemeProvider,
+  ThemeConfigProvider,
   FeaturesProvider,
 )
 AppProvider.displayName = APP_PROVIDER_NAME

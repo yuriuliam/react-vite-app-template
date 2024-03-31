@@ -1,9 +1,8 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section } from '@radix-ui/themes'
 
-import { AppRoute } from '@/data/app/enums/AppRoute'
+import { RoutePaths } from '@/data/router/enums/RoutePaths'
 import { createErrorBoundary } from '@/data/router/subjects/createErrorBoundary'
 
 import { useGlobalLogger } from '@/infra/logger/hooks/useGlobalLogger'
@@ -16,12 +15,11 @@ const ERROR_GUARD_LOGGER_NAME = 'error-boundary'
  * A middleware for possible application errors.
  */
 const ErrorGuard = createErrorBoundary(
-  ({ error: errorFromRoutes, isRouteError }) => {
+  ({ error: errorFromRoutes, isRouteError, navigateTo }) => {
     const logger = useGlobalLogger(ERROR_GUARD_LOGGER_NAME)
-    const navigate = useNavigate()
 
     const handleRedirectToRoot = useCallbackRef(() => {
-      navigate(AppRoute.Home)
+      navigateTo(RoutePaths.Home, {})
     })
 
     React.useEffect(() => {

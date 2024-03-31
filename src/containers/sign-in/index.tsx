@@ -1,31 +1,28 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { AppRoute } from '@/data/app/enums/AppRoute'
+import { RoutePaths } from '@/data/router/enums/RoutePaths'
+import { createPage } from '@/data/router/subjects/createPage'
 
 import { Form } from '@/infra/forms/components/Form'
 import { Input } from '@/infra/forms/components/Input'
+import { Button } from '@/infra/theme/components/Button'
 
 import { useAuth } from '@/modules/auth/data/contexts/auth'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 import { useConst } from '@/shared/hooks/useConst'
 
-import { Button } from '../shared/components/Button'
-
 const SIGN_IN_NAME = 'Containers.SignIn.Root'
 
-const SignInPage: React.FC = () => {
+const SignInPage = createPage(({ navigateTo }) => {
   const defaultAuthParams = useConst<App.Modules.Auth.AppAuthenticationParams>({
     email: 'mocked@yahoo.com',
     password: 'mocked@foobar',
   })
 
   const { isAuthenticated, signIn } = useAuth(SIGN_IN_NAME)
-
-  const navigate = useNavigate()
 
   const handleSignIn = useCallbackRef(
     (params: App.Modules.Auth.AppAuthenticationParams) => {
@@ -36,8 +33,8 @@ const SignInPage: React.FC = () => {
   React.useEffect(() => {
     if (!isAuthenticated) return
 
-    navigate(AppRoute.Home)
-  }, [isAuthenticated, navigate])
+    navigateTo(RoutePaths.Home, {})
+  }, [isAuthenticated, navigateTo])
 
   return (
     <Flex align="center" direction="column">
@@ -72,7 +69,7 @@ const SignInPage: React.FC = () => {
       </Section>
     </Flex>
   )
-}
+})
 SignInPage.displayName = SIGN_IN_NAME
 
 export { SignInPage }

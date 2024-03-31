@@ -5,7 +5,7 @@ import { ToastContextProvider } from '@/data/toast/contexts/toast'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
-import { ToastContainer } from '../components/ToastContainer'
+import { ToastContainer } from '../../components/ToastContainer'
 
 const TOAST_PROVIDER_NAME = 'Data.Toast.Provider'
 

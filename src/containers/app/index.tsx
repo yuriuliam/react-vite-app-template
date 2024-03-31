@@ -1,7 +1,6 @@
 import { AppProvider } from '@/infra/app/contexts/app'
-
-import { Routes } from './routes'
-import { GlobalStyles } from './styles/global'
+import { Routes } from '@/infra/app/routes'
+import { GlobalStyles } from '@/infra/theme/styles/global'
 
 const APP_NAME = 'Containers.App.Root'
 
