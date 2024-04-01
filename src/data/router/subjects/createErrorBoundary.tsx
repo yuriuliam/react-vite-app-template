@@ -1,25 +1,27 @@
 import { isRouteErrorResponse, useRouteError } from 'react-router-dom'
 
+import { type RoutePaths } from '../enums/RoutePaths'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 
-const createErrorBoundary: App.Domain.Router.CreateErrorBoundaryFn =
-  GuardHandler => {
-    const RouteGuard: React.FC = () => {
-      const errorFromRoutes = useRouteError()
-      const isRouteError = isRouteErrorResponse(errorFromRoutes)
-      const navigateTo = useNavigateTo()
+type CreateErrorBoundaryFn = App.Domain.Router.CreateErrorBoundaryFn<RoutePaths>
 
-      return (
-        <GuardHandler
-          error={errorFromRoutes}
-          isRouteError={isRouteError}
-          navigateTo={navigateTo}
-        />
-      )
-    }
-    RouteGuard.displayName = 'App.Data.Router.ErrorBoundary'
+const createErrorBoundary: CreateErrorBoundaryFn = GuardHandler => {
+  const RouteGuard: React.FC = () => {
+    const errorFromRoutes = useRouteError()
+    const isRouteError = isRouteErrorResponse(errorFromRoutes)
+    const navigateTo = useNavigateTo()
 
-    return RouteGuard
+    return (
+      <GuardHandler
+        error={errorFromRoutes}
+        isRouteError={isRouteError}
+        navigateTo={navigateTo}
+      />
+    )
   }
+  RouteGuard.displayName = 'App.Data.Router.ErrorBoundary'
+
+  return RouteGuard
+}
 
 export { createErrorBoundary }

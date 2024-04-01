@@ -1,31 +1,27 @@
+import { SchemaBuilder } from '@/domain/shared/builders/SchemaBuilder'
+
 type ChartOptions = App.Domain.Charts.ChartOptions
 
-type ChartBuildedOptions = Omit<
-  App.Domain.Charts.ChartProps,
-  'width' | 'height'
->
+type ChartDataProps = Omit<App.Domain.Charts.ChartProps, 'width' | 'height'>
 
-class ChartOptionsBuilder {
-  private constructor(protected options: ChartOptions = {}) {}
+class ChartDataPropsBuilder extends SchemaBuilder<
+  ChartOptions,
+  ChartDataProps
+> {
+  public static create(base: ChartDataPropsBuilder | ChartOptions = {}) {
+    if (base instanceof ChartDataPropsBuilder) return base.copy()
 
-  public static create(base: ChartOptionsBuilder | ChartOptions = {}) {
-    if (base instanceof ChartOptionsBuilder) return base.copy()
-
-    return new ChartOptionsBuilder(base)
+    return new ChartDataPropsBuilder(base)
   }
 
-  public build() {
-    return this.toJSON()
+  public build(): ChartDataProps {
+    const { series, ...options } = super.toJSON()
+
+    return { series, options } satisfies ChartDataProps
   }
 
   public copy() {
-    return new ChartOptionsBuilder(structuredClone(this.options))
-  }
-
-  public toJSON() {
-    const { series, ...options } = this.options
-
-    return { series, options } satisfies ChartBuildedOptions
+    return new ChartDataPropsBuilder(structuredClone(this.options))
   }
 
   public annotations(annotationsOptions?: ChartOptions['annotations']) {
@@ -103,14 +99,6 @@ class ChartOptionsBuilder {
   public yAxis(yAxisOptions?: ChartOptions['yaxis']) {
     return this.assign('yaxis', yAxisOptions)
   }
-
-  private assign<TKey extends keyof ChartOptions>(
-    key: TKey,
-    value: ChartOptions[TKey],
-  ) {
-    this.options[key] = value
-    return this
-  }
 }
 
-export { ChartOptionsBuilder }
+export { ChartDataPropsBuilder }

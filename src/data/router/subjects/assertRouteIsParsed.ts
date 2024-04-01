@@ -1,6 +1,6 @@
-import { type To } from 'react-router-dom'
+type AssertRouteIsParsedFn = App.Domain.Router.AssertRouteIsParsedFn
 
-const assertRouteIsParsed = (route: To | null | undefined, message: string) => {
+const assertRouteIsParsed: AssertRouteIsParsedFn = (route, message) => {
   if (!route) return
 
   if (typeof route === 'string') {

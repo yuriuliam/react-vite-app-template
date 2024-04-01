@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 
-import { withChartOptions } from '@/data/charts/subjects/withChartOptions'
+import { withDataChartProps } from '@/data/charts/subjects/withDataChartProps'
 
 import { themed } from '@/infra/theme/hocs/themed'
 
@@ -18,7 +18,7 @@ const meta = {
 
 const labels = ['Apple', 'Mango', 'Orange', 'Watermelon']
 
-const baseArgs = withChartOptions()
+const baseArgs = withDataChartProps()
   .labels(labels)
   .series(labels.map(() => random(10, 200)))
   .build()

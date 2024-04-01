@@ -3,17 +3,25 @@ import { useParams, useSearchParams } from 'react-router-dom'
 
 import { getComponentDisplayName } from '@/shared/utils/react'
 
+import { type RoutePaths } from '../enums/RoutePaths'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 
-const createPage: App.Domain.Router.CreatePageFn = PageComponent => {
+type CreatePageFn = App.Domain.Router.CreatePageFn<RoutePaths>
+
+const createPage: CreatePageFn = PageComponent => {
   const Page: React.FC = () => {
     const params = useParams<Record<any, any>>()
-    const [search] = useSearchParams()
+    const [search, setURLSearchParams] = useSearchParams()
 
     const navigateTo = useNavigateTo()
 
     return (
-      <PageComponent navigateTo={navigateTo} params={params} search={search} />
+      <PageComponent
+        navigateTo={navigateTo}
+        params={params}
+        search={search}
+        setURLSearchParams={setURLSearchParams}
+      />
     )
   }
   Page.displayName = getComponentDisplayName(PageComponent)

@@ -3,10 +3,9 @@ import { atomWithStorage, createJSONStorage } from 'jotai/utils'
 
 import { type StoragePrefix } from '../enums/StoragePrefix'
 
-const createSyncStorage: App.Domain.Cache.CreateSyncStorageFn<StoragePrefix> = (
-  baseStorage,
-  prefix,
-) => {
+type CreateSyncStorageFn = App.Domain.Cache.CreateSyncStorageFn<StoragePrefix>
+
+const createSyncStorage: CreateSyncStorageFn = (baseStorage, prefix) => {
   const getStorageKey = (key: string) => (prefix ? `${prefix}:${key}` : key)
 
   const getItem = (key: string) => {

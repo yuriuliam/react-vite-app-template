@@ -4,10 +4,12 @@ import { parseParamsIntoPathname } from '@/data/router/subjects/parseParamsIntoP
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
-const useNavigateTo: App.Domain.Router.UseNavigateToFn = () => {
+import { type RoutePaths } from '../enums/RoutePaths'
+
+const useNavigateTo: App.Domain.Router.UseNavigateToFn<RoutePaths> = () => {
   const navigate = useNavigate()
 
-  return useCallbackRef<App.Domain.Router.NavigateToFn>(
+  return useCallbackRef<App.Domain.Router.NavigateToFn<RoutePaths>>(
     (route, { params = {}, search = new URLSearchParams(), ...rest }) => {
       navigate({
         ...rest,

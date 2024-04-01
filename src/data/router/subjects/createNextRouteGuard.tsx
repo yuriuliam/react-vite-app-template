@@ -2,21 +2,22 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 import { assertRouteIsParsed } from './assertRouteIsParsed'
 
-const createNextRouteGuard: App.Domain.Router.CreateNextRouteGuardFn =
-  useNextRoute => {
-    const RouteGuard: React.FC = () => {
-      const nextRoute = useNextRoute()
+type CreateNextRouteGuardFn = App.Domain.Router.CreateNextRouteGuardFn
 
-      assertRouteIsParsed(
-        nextRoute,
-        'createNextRouteGuard: Route is not properly parsed',
-      )
+const createNextRouteGuard: CreateNextRouteGuardFn = useNextRoute => {
+  const RouteGuard: React.FC = () => {
+    const nextRoute = useNextRoute()
 
-      return nextRoute ? <Navigate to={nextRoute} /> : <Outlet />
-    }
-    RouteGuard.displayName = 'App.Data.Router.Guard'
+    assertRouteIsParsed(
+      nextRoute,
+      '[createNextRouteGuard]: Route is not properly parsed',
+    )
 
-    return RouteGuard
+    return nextRoute ? <Navigate to={nextRoute} /> : <Outlet />
   }
+  RouteGuard.displayName = 'App.Data.Router.Guard'
+
+  return RouteGuard
+}
 
 export { createNextRouteGuard }

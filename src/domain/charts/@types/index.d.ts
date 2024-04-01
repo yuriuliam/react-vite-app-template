@@ -12,7 +12,7 @@ declare global {
       type: T,
     ) => React.FC<ChartProps>
 
-    type ChartOptions = Exclude<ApexChartProps['options'], undefined>
+    type ChartOptions = ApexCharts.ApexOptions
   }
 }
 

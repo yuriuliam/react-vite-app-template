@@ -40,7 +40,7 @@ declare global {
       useAtom: UseAtomFn<T>,
     ]
 
-    type CreateSyncStorageFn<TPrefix> = (
+    type CreateSyncStorageFn<TPrefix extends string> = (
       baseStorage: SyncStringStorage,
       prefix?: TPrefix | null | undefined,
     ) => [

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 
-import { withChartOptions } from '@/data/charts/subjects/withChartOptions'
+import { withDataChartProps } from '@/data/charts/subjects/withDataChartProps'
 
 import { themed } from '@/infra/theme/hocs/themed'
 
@@ -31,7 +31,7 @@ const labels = [
   'December',
 ]
 
-const baseArgs = withChartOptions()
+const baseArgs = withDataChartProps()
   .colors(['#008FFB', '#00E396'])
   .labels(labels)
   .yAxis({ min: 0, max: 400 })

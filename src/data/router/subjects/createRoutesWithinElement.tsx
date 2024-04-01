@@ -1,7 +1,11 @@
-const createRoutesWithinElement: App.Domain.Router.CreateRouteWithinElementFn =
-  (Guard, routes) => ({
-    element: <Guard />,
-    children: routes,
-  })
+type CreateRouteWithinElementFn = App.Domain.Router.CreateRouteWithinElementFn
+
+const createRoutesWithinElement: CreateRouteWithinElementFn = (
+  Guard,
+  routes,
+) => ({
+  element: <Guard />,
+  children: routes,
+})
 
 export { createRoutesWithinElement }

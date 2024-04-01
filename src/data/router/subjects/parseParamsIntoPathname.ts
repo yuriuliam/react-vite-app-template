@@ -1,7 +1,6 @@
-const parseParamsIntoPathname = (
-  route: string,
-  params: Record<string, string | number>,
-) => {
+type ParseParamsIntoPathname = App.Domain.Router.ParseParamsIntoPathname
+
+const parseParamsIntoPathname: ParseParamsIntoPathname = (route, params) => {
   const parsedRoute = route.replace(/:\w+/g, match => {
     const paramName = match.slice(1)
 

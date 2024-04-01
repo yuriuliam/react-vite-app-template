@@ -11,7 +11,7 @@ const ROUTE_LINK_NAME = 'Infra.Router.Components.RouteLink'
 const RouteLink: React.FC<AppRouteLinkProps> = props => {
   assertRouteIsParsed(
     props.to,
-    `${ROUTE_LINK_NAME}: Route is not properly parsed`,
+    `[${ROUTE_LINK_NAME}]: Route is not properly parsed`,
   )
 
   return (
