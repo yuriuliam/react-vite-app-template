@@ -10,17 +10,17 @@ type CreatePageFn = App.Domain.Router.CreatePageFn<RoutePaths>
 
 const createPage: CreatePageFn = PageComponent => {
   const Page: React.FC = () => {
-    const params = useParams<Record<any, any>>()
-    const [search, setURLSearchParams] = useSearchParams()
+    const routeParams = useParams<Record<any, any>>()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const navigateTo = useNavigateTo()
 
     return (
       <PageComponent
         navigateTo={navigateTo}
-        params={params}
-        search={search}
-        setURLSearchParams={setURLSearchParams}
+        routeParams={routeParams}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
     )
   }

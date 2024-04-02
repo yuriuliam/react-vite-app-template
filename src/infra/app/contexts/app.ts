@@ -8,7 +8,7 @@ import { FeaturesProvider } from '@/modules/features/infra/contexts/features'
 
 import { composedWith } from '@/shared/hocs/composedWith'
 
-const APP_PROVIDER_NAME = 'Containers.App.Provider'
+const APP_PROVIDER_NAME = 'Infra.App.Provider'
 
 const AppProvider = composedWith(
   QueryProvider,

@@ -34,7 +34,7 @@ declare global {
       GuardHandler: ErrorBoundaryBase<TRoutes>,
     ) => RouteGuard
 
-    type PageProps<T, TRoutes extends string> = {
+    type PageProps<TRouteParams, TRoutes extends string> = {
       /**
        * Meant to be a Record of for parameter-oriented pathnames.
        *
@@ -42,7 +42,7 @@ declare global {
        * The route `/user/:id/posts/:postId` would produce:
        * `{ id: string, postId: string }`
        */
-      params: T
+      routeParams: TRouteParams
       /**
        * Navigate through the application.
        */
@@ -50,15 +50,18 @@ declare global {
       /**
        * Equivalent to `?params` in the URL.
        */
-      search: URLSearchParams
-      setURLSearchParams: SetURLSearchParams
+      searchParams: URLSearchParams
+      setSearchParams: SetURLSearchParams
     }
-    type PageFC<T, TRoutes extends string> = globalThis.React.FC<
-      PageProps<T, TRoutes>
+    type PageFC<TRouteParams, TRoutes extends string> = globalThis.React.FC<
+      PageProps<TRouteParams, TRoutes>
     >
 
-    type CreatePageFn<TRoutes extends string> = <T extends RouteParams>(
-      PageComponent: PageFC<T, TRoutes>,
+    type RouteParams = Record<string, string>
+    type CreatePageFn<TRoutes extends string> = <
+      TRouteParams extends RouteParams,
+    >(
+      PageComponent: PageFC<TRouteParams, TRoutes>,
     ) => globalThis.React.FC
 
     type RouterRoot = globalThis.React.FC
@@ -84,8 +87,6 @@ declare global {
       Element: globalThis.React.FC,
       routes: RouteObject[],
     ) => RouteObject
-
-    type RouteParams = Record<string, string>
 
     type UseNavigateToFn<TRoutes extends string> = () => NavigateToFn<TRoutes>
 
