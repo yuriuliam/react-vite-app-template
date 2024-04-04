@@ -6,7 +6,7 @@ import { useNavigateTo } from '../hooks/useNavigateTo'
 type CreateErrorBoundaryFn = App.Domain.Router.CreateErrorBoundaryFn<RoutePaths>
 
 const createErrorBoundary: CreateErrorBoundaryFn = GuardHandler => {
-  const RouteGuard: React.FC = () => {
+  const ErrorBoundary: React.FC = () => {
     const errorFromRoutes = useRouteError()
     const isRouteError = isRouteErrorResponse(errorFromRoutes)
     const navigateTo = useNavigateTo()
@@ -19,9 +19,9 @@ const createErrorBoundary: CreateErrorBoundaryFn = GuardHandler => {
       />
     )
   }
-  RouteGuard.displayName = 'App.Data.Router.ErrorBoundary'
+  ErrorBoundary.displayName = 'App.Data.Router.ErrorBoundary'
 
-  return RouteGuard
+  return ErrorBoundary
 }
 
 export { createErrorBoundary }

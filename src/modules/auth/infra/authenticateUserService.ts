@@ -4,9 +4,9 @@ import { userResponseSchemaParser } from '@/modules/users/infra/userResponseSche
 
 import { createAuthenticateUserService } from '../data/subjects/createAuthenticateUserService'
 
-const authenticateUser = createAuthenticateUserService(
+const authenticateUserService = createAuthenticateUserService(
   mainHttpClient,
   userResponseSchemaParser,
 )
 
-export { authenticateUser }
+export { authenticateUserService }

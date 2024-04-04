@@ -10,14 +10,14 @@ declare global {
     type FeatureData = z.infer<typeof FeatureDataModel>
     type FeaturesResponse = z.infer<typeof FeaturesResponseModel>
 
-    type LoadFeaturesServiceFn<T> = (
+    type LoadFeaturesServiceFn = (
       token: App.Domain.Shared.Token | null,
-    ) => Promise<T | null>
+    ) => Promise<FeaturesResponse | null>
 
-    type CreateLoadFeaturesServiceFn = <T>(
+    type CreateLoadFeaturesServiceFn = (
       httpClient: App.Domain.Http.IHttpClient,
-      responseSchema: App.Domain.Validation.SchemaParser<T>,
-    ) => LoadFeaturesServiceFn<T>
+      responseSchema: App.Domain.Validation.SchemaParser<FeaturesResponse>,
+    ) => LoadFeaturesServiceFn
   }
 }
 

@@ -3,9 +3,9 @@ import { mainHttpClient } from '@/infra/http/mainHttpClient'
 import { createLoadFeaturesService } from '../data/subjects/createLoadFeaturesService'
 import { featuresSchemaParser } from './featuresSchemaParser'
 
-const fetchFeatures = createLoadFeaturesService(
+const fetchFeaturesService = createLoadFeaturesService(
   mainHttpClient,
   featuresSchemaParser,
 )
 
-export { fetchFeatures }
+export { fetchFeaturesService }

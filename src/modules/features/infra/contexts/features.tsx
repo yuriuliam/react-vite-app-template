@@ -5,12 +5,15 @@ import { useSet } from '@/shared/hooks/useSet'
 
 import { FeaturesContextProvider } from '../../data/contexts/features'
 import { useFeaturesQuery } from '../../infra/hooks/useFeaturesQuery'
-import { fetchFeatures } from '../fetchFeaturesService'
+import { fetchFeaturesService } from '../fetchFeaturesService'
 
 const FEATURES_PROVIDER_NAME = 'Modules.Features.Provider'
 
 const FeaturesProvider: React.PFC = ({ children }) => {
-  const [featureList] = useFeaturesQuery(FEATURES_PROVIDER_NAME, fetchFeatures)
+  const [featureList] = useFeaturesQuery(
+    FEATURES_PROVIDER_NAME,
+    fetchFeaturesService,
+  )
 
   const features = useSet<App.Modules.Features.FeatureFlag>()
 

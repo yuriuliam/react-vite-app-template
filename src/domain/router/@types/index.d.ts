@@ -8,33 +8,35 @@ import {
 
 declare global {
   declare namespace App.Domain.Router {
+    type ErrorBoundary = globalThis.React.FC
     type RouteGuard = globalThis.React.FC
 
-    type RouteNavigationOptions<T extends RouteParams> = Partial<
+    type RoutePathLike = `/${string}`
+
+    type RouteNavigationOptions<T extends RouteParamsLike> = Partial<
       Omit<Path, 'pathname' | 'search'>
     > & {
       search?: URLSearchParams | undefined
       params?: T | undefined
     }
-    type NavigateToFn<TRoutes extends string> = <T>(
-      route: TRoutes,
+    type NavigateToFn<TRoutePath extends RoutePathLike> = <T>(
+      route: TRoutePath,
       options: RouteNavigationOptions<T>,
     ) => void
 
-    type ErrorBoundaryBaseProps<TRoutes extends string> = {
+    type ErrorBoundaryBaseProps<TRoutePath extends RoutePathLike> = {
       error: unknown
       isRouteError: boolean
-      navigateTo: NavigateToFn<TRoutes>
+      navigateTo: NavigateToFn<TRoutePath>
     }
-    type ErrorBoundaryBase<TRoutes extends string> = globalThis.React.FC<
-      ErrorBoundaryBaseProps<TRoutes>
-    >
+    type ErrorBoundaryBase<TRoutePath extends RoutePathLike> =
+      globalThis.React.FC<ErrorBoundaryBaseProps<TRoutePath>>
 
-    type CreateErrorBoundaryFn<TRoutes extends string> = (
-      GuardHandler: ErrorBoundaryBase<TRoutes>,
-    ) => RouteGuard
+    type CreateErrorBoundaryFn<TRoutePath extends RoutePathLike> = (
+      GuardHandler: ErrorBoundaryBase<TRoutePath>,
+    ) => ErrorBoundary
 
-    type PageProps<TRouteParams, TRoutes extends string> = {
+    type PageProps<TRouteParams, TRoutePath extends RoutePathLike> = {
       /**
        * Meant to be a Record of for parameter-oriented pathnames.
        *
@@ -46,22 +48,23 @@ declare global {
       /**
        * Navigate through the application.
        */
-      navigateTo: NavigateToFn<TRoutes>
+      navigateTo: NavigateToFn<TRoutePath>
       /**
        * Equivalent to `?params` in the URL.
        */
       searchParams: URLSearchParams
       setSearchParams: SetURLSearchParams
     }
-    type PageFC<TRouteParams, TRoutes extends string> = globalThis.React.FC<
-      PageProps<TRouteParams, TRoutes>
-    >
+    type PageFC<
+      TRouteParams,
+      TRoutePath extends RoutePathLike,
+    > = globalThis.React.FC<PageProps<TRouteParams, TRoutePath>>
 
-    type RouteParams = Record<string, string>
-    type CreatePageFn<TRoutes extends string> = <
-      TRouteParams extends RouteParams,
+    type RouteParamsLike = Record<string, string>
+    type CreatePageFn<TRoutePath extends RoutePathLike> = <
+      TRouteParams extends RouteParamsLike,
     >(
-      PageComponent: PageFC<TRouteParams, TRoutes>,
+      PageComponent: PageFC<TRouteParams, TRoutePath>,
     ) => globalThis.React.FC
 
     type RouterRoot = globalThis.React.FC
@@ -73,22 +76,23 @@ declare global {
       message: string,
     ) => void
 
-    type ParseParamsIntoPathname = (
-      route: string,
-      params: Record<string, string | number>,
-    ) => string
+    type BuildRoutePathFn<TRoutePath extends RoutePathLike> = (
+      route: TRoutePath,
+      routeParams: RouteParamsLike,
+    ) => RoutePathLike
 
     type CreateRouteWithinElementFn = (
-      Element: globalThis.React.FC,
+      Guard: RouteGuard,
       routes: RouteObject[],
     ) => RouteObject
 
     type CreateRouteWithinErrorElementFn = (
-      Element: globalThis.React.FC,
+      ErrorBoundary: ErrorBoundary,
       routes: RouteObject[],
     ) => RouteObject
 
-    type UseNavigateToFn<TRoutes extends string> = () => NavigateToFn<TRoutes>
+    type UseNavigateToFn<TRoutePath extends RoutePathLike> =
+      () => NavigateToFn<TRoutePath>
 
     type UseNextRouteFn = () => To | null | undefined
     type CreateNextRouteGuardFn = (useNextRoute: UseNextRouteFn) => RouteGuard

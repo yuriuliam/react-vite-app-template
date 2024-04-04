@@ -2,6 +2,8 @@ import { omitKeys } from '@/shared/utils/objects'
 import { deferred } from '@/shared/utils/promises'
 
 type AuthParams = App.Modules.Auth.AppAuthenticationParams
+type CreateAuthenticateUserServiceFn =
+  App.Modules.Auth.CreateAuthenticateUserServiceFn
 
 const users = [
   {
@@ -25,26 +27,30 @@ const fakeFetchUser = async (params: AuthParams) => {
 
   const userWithoutPass = omitKeys(user, 'password')
 
-  return await deferred<App.Modules.User.AppUserResponse>(userWithoutPass, 70)
+  return await deferred<App.Modules.Users.UserResponse>(userWithoutPass, 70)
 }
 
-const createAuthenticateUserService: App.Modules.Auth.CreateAuthenticateUserServiceFn =
-  (_httpClient, responseSchema) => {
-    return async params => {
-      try {
-        // const { data } = await httpClient.request({
-        //   data: params,
-        //   method: 'POST',
-        //   uri: '/auth/jwt',
-        // })
+const createAuthenticateUserService: CreateAuthenticateUserServiceFn = (
+  _httpClient,
+  responseSchema,
+) => {
+  const execute: App.Modules.Auth.AuthenticateUserServiceFn = async params => {
+    try {
+      // const { data } = await httpClient.request({
+      //   data: params,
+      //   method: 'POST',
+      //   uri: '/auth/jwt',
+      // })
 
-        const data = await fakeFetchUser(params)
+      const data = await fakeFetchUser(params)
 
-        return responseSchema.parse(data)
-      } catch (error) {
-        return null
-      }
+      return responseSchema.parse(data)
+    } catch (error) {
+      return null
     }
   }
+
+  return execute
+}
 
 export { createAuthenticateUserService }

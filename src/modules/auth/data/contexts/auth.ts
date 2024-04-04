@@ -4,7 +4,7 @@ interface IAuthContextData {
   signIn: App.Modules.Auth.SignInFn
   signOut: App.Modules.Auth.SignOutFn
   isAuthenticated: boolean
-  user: App.Modules.User.AppUser | null
+  user: App.Modules.Users.User | null
   token: App.Domain.Shared.Token | null
 }
 

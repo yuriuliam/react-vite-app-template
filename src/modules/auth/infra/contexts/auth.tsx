@@ -6,19 +6,19 @@ import { useUserToken } from '@/modules/users/infra/atoms/userToken'
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 import { AuthContextProvider } from '../../data/contexts/auth'
-import { authenticateUser } from '../authenticateUserService'
+import { authenticateUserService } from '../authenticateUserService'
 import { authParamsSchema } from '../authParamsSchema'
 
 const AUTH_PROVIDER_NAME = 'Modules.Auth.Provider'
 
 const AuthProvider: React.PFC = ({ children }) => {
-  const [user, setUser] = useUserMe()
   const [token, setToken] = useUserToken()
+  const [user, setUser] = useUserMe()
 
   const signIn = useCallbackRef<App.Modules.Auth.SignInFn>(async params => {
     authParamsSchema.parse(params)
 
-    const data = await authenticateUser(params)
+    const data = await authenticateUserService(params)
 
     if (!data) {
       setToken(null)
@@ -28,8 +28,8 @@ const AuthProvider: React.PFC = ({ children }) => {
 
     const { token, ...authUser } = data
 
-    setUser(authUser)
     setToken(token)
+    setUser(authUser)
   })
 
   const signOut = useCallbackRef<App.Modules.Auth.SignOutFn>(() => {
@@ -44,8 +44,8 @@ const AuthProvider: React.PFC = ({ children }) => {
       isAuthenticated={isAuthenticated}
       signIn={signIn}
       signOut={signOut}
-      user={user}
       token={token}
+      user={user}
     >
       {children}
     </AuthContextProvider>

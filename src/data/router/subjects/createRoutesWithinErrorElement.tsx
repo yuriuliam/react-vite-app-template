@@ -2,10 +2,10 @@ type CreateRouteWithinErrorElementFn =
   App.Domain.Router.CreateRouteWithinErrorElementFn
 
 const createRoutesWithinErrorElement: CreateRouteWithinErrorElementFn = (
-  Guard,
+  ErrorBoundary,
   routes,
 ) => ({
-  errorElement: <Guard />,
+  errorElement: <ErrorBoundary />,
   children: routes,
 })
 

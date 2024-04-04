@@ -1,5 +1,8 @@
 import { deferred } from '@/shared/utils/promises'
 
+type CreateLoadFeaturesServiceFn =
+  App.Modules.Features.CreateLoadFeaturesServiceFn
+
 const featuresByUserToken: Record<
   App.Domain.Shared.Token,
   App.Modules.Features.FeaturesResponse
@@ -22,23 +25,25 @@ const fakeFetchUserFeatures = async (token: string | null) => {
   return await deferred<App.Modules.Features.FeaturesResponse>(features, 50)
 }
 
-const createLoadFeaturesService: App.Modules.Features.CreateLoadFeaturesServiceFn =
-  (_httpClient, responseSchema) => {
-    return async token => {
-      try {
-        // const { data } = await httpClient.request({
-        //   headers: { Authorization: tokenWithScheme(token) },
-        //   method: 'GET',
-        //   url: '/users/me/features',
-        // })
+const createLoadFeaturesService: CreateLoadFeaturesServiceFn = (
+  _httpClient,
+  responseSchema,
+) => {
+  return async token => {
+    try {
+      // const { data } = await httpClient.request({
+      //   headers: { Authorization: tokenWithScheme(token) },
+      //   method: 'GET',
+      //   url: '/users/me/features',
+      // })
 
-        const data = await fakeFetchUserFeatures(token)
+      const data = await fakeFetchUserFeatures(token)
 
-        return responseSchema.parse(data)
-      } catch (error) {
-        return null
-      }
+      return responseSchema.parse(data)
+    } catch (error) {
+      return null
     }
   }
+}
 
 export { createLoadFeaturesService }
