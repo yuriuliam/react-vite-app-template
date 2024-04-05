@@ -4,8 +4,8 @@ type ErrorMessages = Record<string, string[]>
 
 type Model<T = any> = z.ZodType<T, any, any>
 type ParseResult =
-  | { success: false; messages: ErrorMessages }
-  | { success: true; messages: Record<never, never> }
+  | { isValid: false; messages: ErrorMessages }
+  | { isValid: true; messages: Record<never, never> }
 
 type RuleFn<TValue> = (value: TValue) => string | null | undefined
 type RuleDef<TRuleLevel, TValue> = [

@@ -16,10 +16,10 @@ const createSchemaParser: App.Domain.Validation.CreateSchemaParserFn = (
     try {
       model.parse(data)
     } catch (error) {
-      return { success: false, messages: errorParser(error) }
+      return { isValid: false, messages: errorParser(error) }
     }
 
-    return { success: true, messages: {} }
+    return { isValid: true, messages: {} }
   }
 
   return {
