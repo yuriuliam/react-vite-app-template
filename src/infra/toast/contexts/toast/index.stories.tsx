@@ -5,7 +5,6 @@ import { type Meta, type StoryObj } from '@storybook/react'
 
 import { useToast } from '@/data/toast/contexts/toast'
 
-import { themed } from '@/infra/theme/hocs/themed'
 import { GlobalStyles } from '@/infra/theme/styles/global'
 
 import { useConst } from '@/shared/hooks/useConst'
@@ -21,7 +20,7 @@ const meta = {
 
 const POP_TOAST_BUTTON_NAME = 'Infra.Toast.Storybook.PopToastButton'
 
-const PopToastButton = themed(() => {
+const PopToastButton: React.FC = () => {
   const options = useConst<App.Domain.Toast.ToastWithoutId[]>([
     {
       type: 'info',
@@ -50,7 +49,7 @@ const PopToastButton = themed(() => {
   }
 
   return <Button onClick={popToast}>Trigger Toast</Button>
-})
+}
 
 export const Default = {
   render: () => (

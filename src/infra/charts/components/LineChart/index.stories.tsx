@@ -2,8 +2,6 @@ import { type Meta, type StoryObj } from '@storybook/react'
 
 import { withDataChartProps } from '@/data/charts/subjects/withDataChartProps'
 
-import { themed } from '@/infra/theme/hocs/themed'
-
 import { random } from '@/shared/utils/numbers'
 
 import { LineChart } from '.'
@@ -12,7 +10,7 @@ type LineChartMeta = Meta<typeof LineChart>
 type LineChartStory = StoryObj<typeof LineChart>
 
 const meta = {
-  component: themed(LineChart),
+  component: LineChart,
   title: 'Infra/Charts/Components/LineChart',
 } satisfies LineChartMeta
 

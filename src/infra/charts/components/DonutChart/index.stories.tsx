@@ -2,8 +2,6 @@ import { type Meta, type StoryObj } from '@storybook/react'
 
 import { withDataChartProps } from '@/data/charts/subjects/withDataChartProps'
 
-import { themed } from '@/infra/theme/hocs/themed'
-
 import { random } from '@/shared/utils/numbers'
 
 import { DonutChart } from '.'
@@ -12,7 +10,7 @@ type DonutChartMeta = Meta<typeof DonutChart>
 type DonutChartStory = StoryObj<typeof DonutChart>
 
 const meta = {
-  component: themed(DonutChart),
+  component: DonutChart,
   title: 'Infra/Charts/Components/DonutChart',
 } satisfies DonutChartMeta
 

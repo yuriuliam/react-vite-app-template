@@ -4,7 +4,7 @@ const createGlobalStyle: App.Domain.Theme.CreateGlobalStyleFn = template => {
   const GlobalStyle = createSCGlobalStyle(template)
   GlobalStyle.displayName = 'Data.Theme.createGlobalStyle'
 
-  return [GlobalStyle]
+  return GlobalStyle
 }
 
 export { createGlobalStyle }

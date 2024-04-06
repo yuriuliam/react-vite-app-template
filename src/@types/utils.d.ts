@@ -31,9 +31,9 @@ declare global {
     /** Retrieves a mutable version of a value. */
     type Mutable<T> = T extends Readonly<infer V> ? V : never
 
-    type Merge<T1, T2> = Omit<T1, keyof T2> & T2
-    type Merge<T1, T2, T3> = Omit<Merge<T1, T2>, keyof T3> & T3
-    type Merge<T1, T2, T3, T4> = Omit<Merge<T1, T2, T3>, keyof T4> & T4
+    type MergeObj<T1, T2> = Omit<T1, keyof T2> & T2
+    type MergeObj<T1, T2, T3> = Omit<MergeObj<T1, T2>, keyof T3> & T3
+    type MergeObj<T1, T2, T3, T4> = Omit<MergeObj<T1, T2, T3>, keyof T4> & T4
 
     type Recursive<T, K extends string | symbol | number = string> = {
       [key: K]: T | Recursive<T, K>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 
-import { getComponentDisplayName } from '@/shared/utils/react'
-
 import { type RoutePaths } from '../enums/RoutePaths'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 
@@ -24,7 +22,6 @@ const createPage: CreatePageFn = PageComponent => {
       />
     )
   }
-  Page.displayName = getComponentDisplayName(PageComponent)
 
   return Page
 }
