@@ -1,4 +1,4 @@
-import { UINT16_MAX, UINT32_MAX, UINT8_MAX } from '../config/number'
+import { UINT16_MAX, UINT32_MAX, UINT8_MAX } from '../config/numbers'
 
 /**
  * Clamps a value based on given minimum and maximum values.

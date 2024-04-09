@@ -1,8 +1,10 @@
+import { createId } from '@paralleldrive/cuid2'
+
 declare global {
   declare namespace App.Domain.Identity {
-    type CreateUUIDFn = () => string
+    type CreateCUID2 = () => string
 
-    type UUIDRef = { value: string }
+    type IsCUID = (id: string) => boolean
   }
 }
 
