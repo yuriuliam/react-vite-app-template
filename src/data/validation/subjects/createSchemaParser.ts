@@ -25,7 +25,7 @@ const createSchemaParser: App.Domain.Validation.CreateSchemaParserFn = (
   return {
     parse,
     safeParse,
-  }
+  } satisfies App.Domain.Validation.SchemaParser<unknown>
 }
 
 export { createSchemaParser }

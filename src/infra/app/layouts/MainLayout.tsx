@@ -1,21 +1,20 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
 import { Section } from '@radix-ui/themes'
+
+import { createRouteLayout } from '@/data/router/subjects/createLayout'
 
 import { Header } from '../components/Header'
 
 const MAIN_LAYOUT_NAME = 'Infra.App.Layouts.Main'
 
-const MainLayout: React.FC = () => (
+const MainLayout = createRouteLayout(({ children }) => (
   <>
     <Section>
       <Header />
     </Section>
 
-    <Outlet />
+    {children}
   </>
-)
+))
 MainLayout.displayName = MAIN_LAYOUT_NAME
 
 export { MainLayout }

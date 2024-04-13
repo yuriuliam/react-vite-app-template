@@ -18,7 +18,7 @@ const DISPLAY_TIME_FORMAT_UNITS = Object.freeze([
   'hours',
   'minutes',
   'seconds',
-] satisfies Intl.RelativeTimeFormatUnit[])
+] as const)
 
 const TIME_IN_MS_BY_DESC_ORDER = [
   YEAR_IN_MS,
@@ -32,8 +32,8 @@ const TIME_IN_MS_BY_DESC_ORDER = [
 
 const padTime = (value: number) => value.toString().padStart(2, '0')
 
-const convertTime = (value: number, time: number, per?: number | undefined) =>
-  per ? Math.floor((value / time) % per) : Math.floor(value / time)
+const convertTime = (value: number, time: number, per = 1) =>
+  Math.floor((value / time) % per)
 
 const suffixedTime = (value: number, suffix: string) =>
   `${padTime(value)}${suffix}`
@@ -43,7 +43,7 @@ const createTimeDisplay = (timeUnit: TimeUnit) => {
 
   if (timeUnitIdx < 0) throw new Error('Invalid given timeUnit')
 
-  const timeBase = TIME_IN_MS_BY_DESC_ORDER.at(timeUnitIdx)!
+  const timeBase = TIME_IN_MS_BY_DESC_ORDER[timeUnitIdx]
 
   return (value: number) => {
     const baseValue = value * timeBase
@@ -59,7 +59,7 @@ const createTimeDisplay = (timeUnit: TimeUnit) => {
 
     const suffixes = ['w', 'd', 'h', 'm', 's', 'ms']
 
-    const baseIdx = times.map(value => !!value).indexOf(true)
+    const baseIdx = times.findIndex(value => value > 0)
 
     const timeValues = times.slice(baseIdx)
     const timeSuffixes = suffixes.slice(baseIdx)

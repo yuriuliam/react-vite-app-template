@@ -10,6 +10,7 @@ declare global {
   declare namespace App.Domain.Router {
     type ErrorBoundary = globalThis.React.FC
     type RouteGuard = globalThis.React.FC
+    type RouteLayout = globalThis.React.FC
 
     type RoutePathLike = `/${string}`
 
@@ -35,6 +36,9 @@ declare global {
     type CreateErrorBoundaryFn<TRoutePath extends RoutePathLike> = (
       GuardHandler: ErrorBoundaryBase<TRoutePath>,
     ) => ErrorBoundary
+
+    type RouteLayoutBase = globalThis.React.PFC
+    type CreateRouteLayoutFn = (Component: RouteLayoutBase) => RouteLayout
 
     type PageProps<TRouteParams, TRoutePath extends RoutePathLike> = {
       /**

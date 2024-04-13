@@ -25,19 +25,19 @@ declare global {
 
     interface ISyncStorage extends SyncStorage<any> {}
 
-    type CreateAtomFn = <T>(
-      defaultValue: T,
-    ) => [atom: StoreAtom<T>, useAtom: UseAtomFn<T>]
+    type CreateAtomFn = <TValue>(
+      defaultValue: TValue,
+    ) => [atom: StoreAtom<TValue>, useAtom: UseAtomFn<TValue>]
 
     type CreateAppStoreFn = () => [appStore: Store, createAppAtom: CreateAtomFn]
 
-    type CreateAtomWithStorageFn = <T>(
+    type CreateAtomWithStorageFn = <TValue>(
       storageKey: string,
-      defaultValue: T,
+      defaultValue: TValue,
       options?: AtomWithStorageParams[3] | undefined,
     ) => [
-      atom: WritableAtom<T, [SetStateAction<T>], void>,
-      useAtom: UseAtomFn<T>,
+      atom: WritableAtom<TValue, [SetStateAction<TValue>], void>,
+      useAtom: UseAtomFn<TValue>,
     ]
 
     type CreateSyncStorageFn<TPrefix extends string> = (
