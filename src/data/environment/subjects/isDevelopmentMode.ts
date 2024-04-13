@@ -4,6 +4,9 @@ import { isMode } from '../utils/isMode'
 /**
  * Quick way to check if it's Development mode.
  */
-const isDevelopmentMode = isMode.bind(null, EnvironmentMode.Development)
+const isDevelopmentMode: App.Domain.Environment.IsDevelopmentFn = isMode.bind(
+  null,
+  EnvironmentMode.Development,
+)
 
 export { isDevelopmentMode }

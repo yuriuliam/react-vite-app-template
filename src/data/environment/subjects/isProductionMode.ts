@@ -4,6 +4,9 @@ import { isMode } from '../utils/isMode'
 /**
  * Quick way to check if it's Production mode.
  */
-const isProductionMode = isMode.bind(null, EnvironmentMode.Production)
+const isProductionMode: App.Domain.Environment.IsProductionFn = isMode.bind(
+  null,
+  EnvironmentMode.Production,
+)
 
 export { isProductionMode }
