@@ -18,7 +18,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.0.13",
