@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom/client'
 import { App } from '@/containers/app'
 
 import { logEnvironmentMeta } from '@/infra/environment/scripts/logEnvironmentMeta'
-import { injectGlobalLogger } from '@/infra/logger/scripts/injectGlobalLogger'
 import { reportWebVitals } from '@/infra/web-vitals/scripts/reportWebVitals'
+
+import { injectGlobalLogger } from '@/modules/logging/infra/scripts/injectGlobalLogger'
 
 // Injections
 injectGlobalLogger()

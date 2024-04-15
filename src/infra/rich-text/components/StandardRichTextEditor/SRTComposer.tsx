@@ -1,17 +1,9 @@
-import { type LexicalEditor } from 'lexical'
-
 import { createRichTextEditorComposer } from '@/data/rich-text/subjects/createRichTextEditorComposer'
 
-import { getLoggerInstance } from '@/infra/logger/getLoggerInstance'
+import { RichTextError } from '@/domain/rich-text/errors/RichTextError'
 
-const rteLogger = getLoggerInstance('infra', 'rich-text')
-
-const onError = (error: Error, editor: LexicalEditor) => {
-  rteLogger.error({
-    name: 'Rich Text Editor',
-    content: 'Something went wrong with the Editor',
-    data: { error, editor },
-  })
+const onError = (error: Error, editor: App.Domain.RichText.RTEditor) => {
+  throw new RichTextError(error, editor)
 }
 
 const SRTComposer = createRichTextEditorComposer({

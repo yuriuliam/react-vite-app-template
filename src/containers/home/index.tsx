@@ -1,9 +1,9 @@
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { RoutePaths } from '@/data/router/enums/RoutePaths'
-import { createPage } from '@/data/router/subjects/createPage'
-
 import { Button } from '@/infra/theme/components/Button'
+
+import { RoutePaths } from '@/modules/routing/data/enums/RoutePaths'
+import { createPage } from '@/modules/routing/data/subjects/createPage'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 

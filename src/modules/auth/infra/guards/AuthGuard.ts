@@ -1,5 +1,5 @@
-import { RoutePaths } from '@/data/router/enums/RoutePaths'
-import { createNextRouteGuard } from '@/data/router/subjects/createNextRouteGuard'
+import { RoutePaths } from '@/modules/routing/data/enums/RoutePaths'
+import { createNextRouteGuard } from '@/modules/routing/data/subjects/createNextRouteGuard'
 
 import { useAuth } from '../../data/contexts/auth'
 

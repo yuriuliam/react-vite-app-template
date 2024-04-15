@@ -2,14 +2,13 @@ import React from 'react'
 
 import { Flex, Section, Text } from '@radix-ui/themes'
 
-import { RoutePaths } from '@/data/router/enums/RoutePaths'
-import { createPage } from '@/data/router/subjects/createPage'
-
 import { Form } from '@/infra/forms/components/Form'
 import { Input } from '@/infra/forms/components/Input'
 import { Button } from '@/infra/theme/components/Button'
 
 import { useAuth } from '@/modules/auth/data/contexts/auth'
+import { RoutePaths } from '@/modules/routing/data/enums/RoutePaths'
+import { createPage } from '@/modules/routing/data/subjects/createPage'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 import { useConst } from '@/shared/hooks/useConst'
