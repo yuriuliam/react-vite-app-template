@@ -1,4 +1,4 @@
-type CreateRouteWithinElementFn = App.Domain.Routing.CreateRouteWithinElementFn
+type CreateRouteWithinElementFn = App.Modules.Routing.CreateRouteWithinElementFn
 
 const createRoutesWithinElement: CreateRouteWithinElementFn = (
   Guard,

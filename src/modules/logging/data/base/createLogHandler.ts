@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 
-const createLoggerHandler: App.Domain.Logging.CreateLogHandler = (
+const createLoggerHandler: App.Modules.Logging.CreateLogHandler = (
   stdout,
   formatTime,
   eventHandler,

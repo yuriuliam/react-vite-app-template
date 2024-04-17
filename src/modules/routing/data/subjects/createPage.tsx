@@ -4,7 +4,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import { type RoutePaths } from '../enums/RoutePaths'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 
-type CreatePageFn = App.Domain.Routing.CreatePageFn<RoutePaths>
+type CreatePageFn = App.Modules.Routing.CreatePageFn<RoutePaths>
 
 const createPage: CreatePageFn = PageComponent => {
   const Page: React.FC = () => {

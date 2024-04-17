@@ -1,7 +1,7 @@
 type ParseRoutePathFn = (
-  path: App.Domain.Routing.RoutePathLike,
-  params: App.Domain.Routing.RouteParamsLike,
-) => App.Domain.Routing.RoutePathLike
+  path: App.Modules.Routing.RoutePathLike,
+  params: App.Modules.Routing.RouteParamsLike,
+) => App.Modules.Routing.RoutePathLike
 
 const parseRoutePath: ParseRoutePathFn = (path, params) => {
   const parsedPath = path.replace(/:\w+/g, match => {
@@ -14,7 +14,7 @@ const parseRoutePath: ParseRoutePathFn = (path, params) => {
     return String(params[param])
   })
 
-  return parsedPath as App.Domain.Routing.RoutePathLike
+  return parsedPath as App.Modules.Routing.RoutePathLike
 }
 
 export { parseRoutePath }

@@ -5,10 +5,10 @@ import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 import { type RoutePaths } from '../enums/RoutePaths'
 import { parseRoutePath } from '../utils/parseRoutePath'
 
-const useNavigateTo: App.Domain.Routing.UseNavigateToFn<RoutePaths> = () => {
+const useNavigateTo: App.Modules.Routing.UseNavigateToFn<RoutePaths> = () => {
   const navigate = useNavigate()
 
-  return useCallbackRef<App.Domain.Routing.NavigateToFn<RoutePaths>>(
+  return useCallbackRef<App.Modules.Routing.NavigateToFn<RoutePaths>>(
     (route, { params = {}, search = new URLSearchParams(), ...rest }) => {
       navigate({
         ...rest,

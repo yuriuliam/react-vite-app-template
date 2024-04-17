@@ -4,7 +4,7 @@ import { type RoutePaths } from '../enums/RoutePaths'
 import { useNavigateTo } from '../hooks/useNavigateTo'
 
 type CreateErrorBoundaryFn =
-  App.Domain.Routing.CreateErrorBoundaryFn<RoutePaths>
+  App.Modules.Routing.CreateErrorBoundaryFn<RoutePaths>
 
 const createErrorBoundary: CreateErrorBoundaryFn = GuardHandler => {
   const ErrorBoundary: React.FC = () => {

@@ -6,7 +6,7 @@ import { getInternalLoggerName } from '../utils/getInternalLoggerName'
 /**
  * Inject Global Logger
  */
-const createGlobalLoggerInjector: App.Domain.Logging.CreateLoggerInjectorFn = (
+const createGlobalLoggerInjector: App.Modules.Logging.CreateLoggerInjectorFn = (
   formatTime,
   isDev,
 ) => {

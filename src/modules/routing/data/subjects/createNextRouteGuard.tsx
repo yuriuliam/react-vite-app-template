@@ -2,7 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 import { assertRouteIsParsed } from './assertRouteIsParsed'
 
-type CreateNextRouteGuardFn = App.Domain.Routing.CreateNextRouteGuardFn
+type CreateNextRouteGuardFn = App.Modules.Routing.CreateNextRouteGuardFn
 
 const createNextRouteGuard: CreateNextRouteGuardFn = useNextRoute => {
   const RouteGuard: React.FC = () => {

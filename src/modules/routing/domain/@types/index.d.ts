@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 declare global {
-  declare namespace App.Domain.Routing {
+  declare namespace App.Modules.Routing {
     type ErrorBoundary = globalThis.React.FC
     type RouteGuard = globalThis.React.FC
     type RouteLayout = globalThis.React.FC

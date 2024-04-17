@@ -3,7 +3,7 @@ import { createLoggerLevels } from '../base/createLoggerLevels'
 import { createLoggerHandler } from '../base/createLogHandler'
 import { createStandardOutput } from '../base/createStandardOutput'
 
-const createLogger: App.Domain.Logging.CreateLoggerFn = (
+const createLogger: App.Modules.Logging.CreateLoggerFn = (
   formatTime,
   baseNamespace,
   ...subNamespaces

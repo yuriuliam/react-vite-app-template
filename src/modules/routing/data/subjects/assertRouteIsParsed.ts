@@ -1,4 +1,4 @@
-type AssertRouteIsParsedFn = App.Domain.Routing.AssertRouteIsParsedFn
+type AssertRouteIsParsedFn = App.Modules.Routing.AssertRouteIsParsedFn
 
 const assertRouteIsParsed: AssertRouteIsParsedFn = (route, message) => {
   if (!route) return

@@ -3,7 +3,7 @@ import debug from 'debug'
 import { LoggerName } from '../enums/LoggerName'
 import { composeLoggerNamespace } from '../utils/composeLoggerNamespace'
 
-const createStandardOutput: App.Domain.Logging.CreateStandardOutput = (
+const createStandardOutput: App.Modules.Logging.CreateStandardOutput = (
   baseNamespace,
   subNamespaces,
 ) => {

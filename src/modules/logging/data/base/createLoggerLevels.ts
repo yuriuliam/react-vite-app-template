@@ -4,8 +4,10 @@ import { getMappedCallSites } from '@/shared/utils/runtime'
 
 import { LogLevel } from '../enums/LogLevel'
 
-const createLoggerLevels: App.Domain.Logging.CreateLoggerLevels = handleLog => {
-  const error: App.Domain.Logging.ErrorLevelFn = options => {
+type CreateLoggerLevelsFn = App.Modules.Logging.CreateLoggerLevelsFn
+
+const createLoggerLevels: CreateLoggerLevelsFn = handleLog => {
+  const error: App.Modules.Logging.ErrorLevelFn = options => {
     void handleLog({
       ...options,
       title: chalk.red('Error (!)'),
@@ -14,7 +16,7 @@ const createLoggerLevels: App.Domain.Logging.CreateLoggerLevels = handleLog => {
     })
   }
 
-  const info: App.Domain.Logging.InfoLevelFn = options => {
+  const info: App.Modules.Logging.InfoLevelFn = options => {
     void handleLog({
       ...options,
       title: chalk.yellow(options.title),
@@ -23,7 +25,7 @@ const createLoggerLevels: App.Domain.Logging.CreateLoggerLevels = handleLog => {
     })
   }
 
-  const trace: App.Domain.Logging.TraceLevelFn = options => {
+  const trace: App.Modules.Logging.TraceLevelFn = options => {
     void handleLog({
       ...options,
       title: chalk.magenta('Stack Trace (?)'),
@@ -32,7 +34,7 @@ const createLoggerLevels: App.Domain.Logging.CreateLoggerLevels = handleLog => {
     })
   }
 
-  const warn: App.Domain.Logging.WarnLevelFn = options => {
+  const warn: App.Modules.Logging.WarnLevelFn = options => {
     void handleLog({
       ...options,
       title: chalk.hex('FFAA00')(options.title),

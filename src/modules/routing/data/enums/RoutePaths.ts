@@ -1,7 +1,7 @@
 /**
  * All App Routes, respecting Router's `RoutePathLike`
  *
- * @see {App.Domain.Routing.RoutePathLike}
+ * @see {App.Modules.Routing.RoutePathLike}
  */
 enum RoutePaths {
   Home = '/',

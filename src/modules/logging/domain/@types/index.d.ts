@@ -7,7 +7,7 @@ type LogHandlerFn = (options: InternalMessageOptions) => Promise<void>
 type StandardOutputFn = Debugger
 
 declare global {
-  declare namespace App.Domain.Logging {
+  declare namespace App.Modules.Logging {
     type MessagePayload = App.ObjectType
 
     type InternalMessageOptions = {
@@ -41,7 +41,7 @@ declare global {
 
     type LoggerFactoryFn = (...namespace: string[]) => ILogger
 
-    type CreateLoggerLevels = (handleLog: LogHandlerFn) => ILoggerLevels
+    type CreateLoggerLevelsFn = (handleLog: LogHandlerFn) => ILoggerLevels
 
     type CreateLogHandler = (
       stdout: StandardOutputFn,

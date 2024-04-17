@@ -6,7 +6,7 @@ const createLoggerFactory = (
   formatTime: App.Domain.Intl.DateFormatter,
   baseNamespace: string,
 ) =>
-  memoize<App.Domain.Logging.LoggerFactoryFn>(
+  memoize<App.Modules.Logging.LoggerFactoryFn>(
     createLogger.bind(null, formatTime, baseNamespace),
   )
 

@@ -1,5 +1,5 @@
 type CreateRouteWithinErrorElementFn =
-  App.Domain.Routing.CreateRouteWithinErrorElementFn
+  App.Modules.Routing.CreateRouteWithinErrorElementFn
 
 const createRoutesWithinErrorElement: CreateRouteWithinErrorElementFn = (
   ErrorBoundary,
