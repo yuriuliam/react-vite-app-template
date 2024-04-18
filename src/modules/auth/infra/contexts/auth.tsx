@@ -7,7 +7,6 @@ import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 import { AuthContextProvider } from '../../data/contexts/auth'
 import { authenticateUserService } from '../authenticateUserService'
-import { authParamsSchema } from '../authParamsSchema'
 
 const AUTH_PROVIDER_NAME = 'Modules.Auth.Provider'
 
@@ -16,8 +15,6 @@ const AuthProvider: React.PFC = ({ children }) => {
   const [user, setUser] = useUserMe()
 
   const signIn = useCallbackRef<App.Modules.Auth.SignInFn>(async params => {
-    authParamsSchema.parse(params)
-
     const data = await authenticateUserService(params)
 
     if (!data) {

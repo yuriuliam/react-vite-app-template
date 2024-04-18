@@ -1,7 +1,7 @@
 import { omitKeys } from '@/shared/utils/objects'
 import { deferred } from '@/shared/utils/promises'
 
-type AuthParams = App.Modules.Auth.AppAuthenticationParams
+type AuthParams = App.Modules.Auth.AuthParamsModel
 type CreateAuthenticateUserServiceFn =
   App.Modules.Auth.CreateAuthenticateUserServiceFn
 
