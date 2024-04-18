@@ -1,4 +1,4 @@
-import { AppProvider } from '@/infra/app/contexts/app'
+import { AppProvider } from '@/containers/app/contexts/app'
 
 import { withProps } from '@/shared/hocs/withProps'
 

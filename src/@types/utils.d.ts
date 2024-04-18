@@ -39,7 +39,10 @@ declare global {
       [key: K]: T | Recursive<T, K>
     }
 
-    type TypedFn<TArgs extends any[], TResult> = (...args: TArgs) => TResult
+    type TypedFn<
+      TArgs extends any[] | undefined,
+      TResult,
+    > = TArgs extends undefined ? () => TResult : (...args: TArgs) => TResult
 
     type PredicateFn<TInput, TOutput> = TypedFn<[value: TInput], TOutput>
     type IndexedPredicateFn<TInput, TOutput> = TypedFn<
@@ -47,12 +50,14 @@ declare global {
       TOutput
     >
 
-    type CallbackFn = () => void
+    type CallbackFn<TArgs extends any[] | undefined> = TArgs extends undefined
+      ? () => void
+      : (...args: TArgs) => void
 
     /** Describes a factory method. */
     type FactoryFn<TValue> = () => TValue
 
-    type InjectorFn = () => void
+    type InjectorFn = CallbackFn<undefined>
 
     type MutateFn<TValue> = (arg: TValue) => TValue
 
@@ -60,9 +65,8 @@ declare global {
 
     /** Same as the factory, but semantically named to avoid confusion. */
     type InitFn<TValue> = FactoryFn<TValue>
-    type CallbackWithReturn<TValue> = FactoryFn<TValue>
 
-    type ObserverFn<TValue> = (arg: TValue) => void
+    type ObserverFn<TValue> = CallbackFn<[value: TValue]>
 
     /** Describes a non-class non-null object. */
     type ObjectType = Record<any, any> | any[]

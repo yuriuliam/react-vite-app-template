@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { RoutePaths } from '@/data/router/enums/RoutePaths'
-import { createPage } from '@/data/router/subjects/createPage'
-
 import { useAuth } from '@/modules/auth/data/contexts/auth'
+import { RoutePaths } from '@/modules/routing/data/enums/RoutePaths'
+import { createPage } from '@/modules/routing/data/subjects/createPage'
 
 const SIGN_OUT_NAME = 'Containers.SignOut.Root'
 

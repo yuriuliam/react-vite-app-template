@@ -1,17 +1,17 @@
 import { type z } from 'zod'
 
-import { type AuthenticationParamsModel } from '../models/AuthenticationParams'
+import { type AuthParamsModel } from '../models/AuthParamsModel'
 
 declare global {
   declare namespace App.Modules.Auth {
-    type AppAuthenticationParams = z.infer<typeof AuthenticationParamsModel>
+    type AuthParamsModel = z.infer<typeof AuthParamsModel>
     type AuthResponse = App.Modules.Users.UserResponse
 
-    type SignInFn = (params: AppAuthenticationParams) => Promise<void>
+    type SignInFn = (params: AuthParamsModel) => Promise<void>
     type SignOutFn = () => void
 
     type AuthenticateUserServiceFn = (
-      params: AppAuthenticationParams,
+      params: AuthParamsModel,
     ) => Promise<AuthResponse | null>
 
     type CreateAuthenticateUserServiceFn = (

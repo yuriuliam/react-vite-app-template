@@ -1,6 +1,6 @@
 import { HttpError } from '@/domain/http/errors/HttpError'
 
-import { buildUrl } from '../utils/buildUrl'
+import { withUrl } from './withUrl'
 
 const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
   baseUrl,
@@ -9,7 +9,10 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
   const fetchResponse = async (options: App.Domain.Http.RequestOptions) => {
     const { uri, params, data = undefined, ...rest } = options
 
-    const urlInput = buildUrl(baseUrl, uri, params)
+    const urlInput = withUrl({ baseUrl })
+      .uri(uri)
+      .searchParams(new URLSearchParams(params))
+      .build()
 
     const response = await fetch(urlInput, {
       ...baseOptions,

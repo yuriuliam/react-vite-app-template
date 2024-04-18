@@ -1,4 +1,4 @@
-import { createRoutesWithinElement } from '@/data/router/subjects/createRoutesWithinElement'
+import { createRoutesWithinElement } from '@/modules/routing/data/subjects/createRoutesWithinElement'
 
 import { AuthGuard } from './guards/AuthGuard'
 

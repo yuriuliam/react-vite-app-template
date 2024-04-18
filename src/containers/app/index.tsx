@@ -1,6 +1,8 @@
-import { AppProvider } from '@/infra/app/contexts/app'
-import { Routes } from '@/infra/app/routes'
 import { GlobalStyles } from '@/infra/theme/styles/global'
+
+import { MainRouter } from '@/modules/routing/infra/router'
+
+import { AppProvider } from './contexts/app'
 
 const APP_NAME = 'Containers.App.Root'
 
@@ -9,7 +11,7 @@ const App: React.FC = () => (
     <GlobalStyles />
 
     <AppProvider>
-      <Routes />
+      <MainRouter />
     </AppProvider>
   </>
 )
