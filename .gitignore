@@ -34,3 +34,6 @@ old.*
 # Environment Files
 .env.*
 !.env
+
+# Repo Template files
+src-tauri/target
