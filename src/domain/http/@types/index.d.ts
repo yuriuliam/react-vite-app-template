@@ -28,6 +28,10 @@ type DELETEOptions = MethodOptions<'DELETE', RequestOptionsWithoutData>
 type OPTIONSOptions = MethodOptions<'OPTIONS', RequestOptionsWithoutData>
 
 type FetchResponse<T = any> = {
+  /**
+   * Never undefined.
+   * @see https://github.com/tauri-apps/tauri/blob/e816a46b953092053d72c70feddf48a8c273c80d/tooling/api/src/http.ts#L364-L392
+   */
   data: T
   status: number
 }
