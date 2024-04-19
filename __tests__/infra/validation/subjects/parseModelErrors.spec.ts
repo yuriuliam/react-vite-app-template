@@ -19,9 +19,9 @@ describe('parseModelErrors', () => {
 
     const result = parseModelErrors(modelError)
 
-    expect(result).toHaveProperty('zod')
-    expect(result.zod).toHaveLength(1)
-    expect(result.zod.at(0)).toBe('Should not be empty.')
+    expect(result).toHaveProperty('_zod')
+    expect(result._zod).toHaveLength(1)
+    expect(result._zod.at(0)).toBe('Should not be empty.')
   })
 
   it('should parse zod errors from object models', () => {

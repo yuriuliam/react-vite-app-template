@@ -8,10 +8,13 @@ import { reportWebVitals } from '@/infra/web-vitals/scripts/reportWebVitals'
 
 import { injectGlobalLogger } from '@/modules/logging/infra/scripts/injectGlobalLogger'
 
+import { assertEnvironmentKeys } from './infra/environment/scripts/assertEnvironmentKeys'
+
 // Injections
 injectGlobalLogger()
 
 // Log Scripts
+assertEnvironmentKeys()
 logEnvironmentMeta()
 reportWebVitals()
 

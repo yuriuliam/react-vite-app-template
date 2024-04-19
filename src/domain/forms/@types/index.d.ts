@@ -10,6 +10,7 @@ import type {
   type SubmitHandler,
   type SubmitErrorHandler,
   type FieldValues,
+  type DefaultValues,
 } from 'react-hook-form'
 
 type BaseFormContextData = Omit<UseFormReturn<any, any, any>, 'handleSubmit'>
@@ -31,7 +32,10 @@ type FormInputRegistryOptions<TFields extends FieldValues> = Omit<
 type HTMLFormProps = React.ComponentProps<'form'>
 type HTMLInputProps = React.ComponentProps<typeof TextField.Root>
 
-type ControlledHTMLFormProps = Omit<HTMLFormProps, 'onSubmit'>
+type ControlledHTMLFormProps = Omit<
+  HTMLFormProps,
+  'onSubmit' | 'defaultValue' | keyof UseFormProps<any, any>
+>
 type ControlledHTMLInputProps = Omit<
   HTMLInputProps,
   'name' | keyof FormInputRegistryOptions<any>
@@ -40,6 +44,7 @@ type ControlledHTMLInputProps = Omit<
 }
 
 type FormRootProps<TFields extends FieldValues> = ControlledHTMLFormProps & {
+  defaultValues?: DefaultValues<TFields>
   onValidSubmit: SubmitHandler<TFields>
   onInvalidSubmit?: SubmitErrorHandler<TFields>
 }

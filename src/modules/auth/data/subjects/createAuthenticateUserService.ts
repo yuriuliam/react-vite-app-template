@@ -1,7 +1,6 @@
 import { omitKeys } from '@/shared/utils/objects'
 import { deferred } from '@/shared/utils/promises'
 
-type AuthParams = App.Modules.Auth.AuthParamsModel
 type CreateAuthenticateUserServiceFn =
   App.Modules.Auth.CreateAuthenticateUserServiceFn
 
@@ -11,14 +10,14 @@ const users = [
     name: 'Yuri Uliam',
     username: 'Yuri_Uliam',
     email: 'mocked@yahoo.com',
-    password: 'mocked@foobar',
+    password: 'foobar123',
     token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3ODkyNmZlLWFiZGQtNDgxYy1iODA2LWY4MThjNjJjZGY4YiIsIm5hbWUiOiJMdWthcyBLaXJsaW4iLCJ1c2VybmFtZSI6Ikx1a2FzX0tpcmxpbiIsImVtYWlsIjoibW9ja2VkQHlhaG9vLmNvbSJ9.VIgWauX0QVOtllI2vTUeGj_CxABchzaEBqK3Ilxu5ps',
   },
 ]
 
 /** @deprecated Use an actual service! */
-const fakeFetchUser = async (params: AuthParams) => {
+const fakeFetchUser = async (params: App.Modules.Auth.AuthParamsModel) => {
   const user = users.find(
     user => params.email === user.email && params.password === user.password,
   )

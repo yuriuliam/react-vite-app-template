@@ -30,5 +30,6 @@ const Greetings: React.FC = () => {
     </Styled.Root>
   )
 }
+Greetings.displayName = GREETINGS_NAME
 
 export { Greetings }

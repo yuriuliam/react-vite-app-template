@@ -33,10 +33,16 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
   const FormRoot: App.Domain.Forms.FormRootFC = ({
     children,
+    defaultValues,
     onValidSubmit,
     onInvalidSubmit,
+    ...rest
   }) => {
-    const form = useHookForm({ ...formProps, resolver: zodResolver(schema) })
+    const form = useHookForm({
+      ...formProps,
+      defaultValues: defaultValues || formProps.defaultValues,
+      resolver: zodResolver(schema),
+    })
 
     const handleFormSubmit = form.handleSubmit(onValidSubmit, onInvalidSubmit)
 
@@ -46,7 +52,9 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
     return (
       <HookFormContextProvider {...form}>
-        <form onSubmit={onFormSubmit}>{children}</form>
+        <form {...rest} onSubmit={onFormSubmit}>
+          {children}
+        </form>
       </HookFormContextProvider>
     )
   }
