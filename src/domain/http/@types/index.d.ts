@@ -27,7 +27,7 @@ type DELETEOptions = MethodOptions<'DELETE', RequestOptionsWithoutData>
 type OPTIONSOptions = MethodOptions<'OPTIONS', RequestOptionsWithoutData>
 
 type FetchResponse<T = any> = {
-  data: T
+  data: T | undefined
   status: number
 }
 
@@ -36,6 +36,8 @@ type SafeFetchResponse<T = any> = Omit<FetchResponse<T>, 'data'> &
 
 declare global {
   declare namespace App.Domain.Http {
+    type HttpResponse = Response
+
     type RequestOptions =
       | GETOptions
       | POSTOptions

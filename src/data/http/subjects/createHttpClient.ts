@@ -1,5 +1,6 @@
 import { HttpError } from '@/domain/http/errors/HttpError'
 
+import { parseJsonResponse } from '../utils/parseJsonResponse'
 import { withUrl } from './withUrl'
 
 const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
@@ -29,7 +30,7 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
     if (!response.ok) throw new HttpError(response)
 
     const result = {
-      data: await response.json(),
+      data: await parseJsonResponse(response),
       status: response.status,
     }
 
@@ -40,7 +41,7 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
     const response = await fetchResponse(options)
 
     const result = {
-      data: response.ok ? await response.json() : null,
+      data: await parseJsonResponse(response),
       status: response.status,
       isOk: response.ok,
     }
