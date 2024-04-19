@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { createCUID2 } from '@/data/identity/subjects/createCUID2'
 import { ToastContextProvider } from '@/data/toast/contexts/toast'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 
 import { ToastContainer } from '../../components/ToastContainer'
+import { createToastId } from '../../createToastId'
 
 const TOAST_PROVIDER_NAME = 'Data.Toast.Provider'
 
@@ -16,7 +16,7 @@ const ToastProvider: React.PFC = ({ children }) => {
 
   const addToast = useCallbackRef<App.Domain.Toast.AddToastFn>(
     ({ title, description, type }) => {
-      const id = createCUID2()
+      const id = createToastId()
 
       const toast = {
         id,

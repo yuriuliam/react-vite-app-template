@@ -1,10 +1,17 @@
-import { createId } from '@paralleldrive/cuid2'
+import { type init } from '@paralleldrive/cuid2'
+
+type InitCUIDParameters = Parameters<typeof init>
+type InitCUIDOptions = InitCUIDParameters[0]
+
+type InternalCUIDOptions = { prefix?: string | undefined }
 
 declare global {
   declare namespace App.Domain.Identity {
-    type CreateCUID2 = () => string
+    type CUIDGenOptions = InitCUIDOptions & InternalCUIDOptions
+    type CreateCUIDFn = () => string
+    type InitCUIDFn = (options: CUIDGenOptions) => CreateCUIDFn
 
-    type IsCUID = (id: string) => boolean
+    type IsCUIDFn = (id: string) => boolean
   }
 }
 
