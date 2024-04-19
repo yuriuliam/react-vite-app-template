@@ -1,3 +1,5 @@
+import { fetch, Body } from '@tauri-apps/api/http'
+
 import { HttpError } from '@/domain/http/errors/HttpError'
 
 import { withUrl } from './withUrl'
@@ -14,9 +16,9 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
       .searchParams(new URLSearchParams(params))
       .build()
 
-    const response = await fetch(urlInput, {
+    const response = await fetch<any>(urlInput.toString(), {
       ...baseOptions,
-      body: data ? JSON.stringify(data) : undefined,
+      body: data ? Body.json(data) : undefined,
       ...rest,
     })
 
@@ -29,7 +31,7 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
     if (!response.ok) throw new HttpError(response)
 
     const result = {
-      data: await response.json(),
+      data: response.data,
       status: response.status,
     }
 
@@ -40,7 +42,7 @@ const createHttpClient: App.Domain.Http.CreateHttpClientFn = (
     const response = await fetchResponse(options)
 
     const result = {
-      data: response.ok ? await response.json() : null,
+      data: response.ok ? response.data : null,
       status: response.status,
       isOk: response.ok,
     }

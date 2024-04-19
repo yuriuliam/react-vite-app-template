@@ -1,3 +1,4 @@
+import { Response as TauriResponse } from '@tauri-apps/api/http'
 import { describe, it, expect } from 'vitest'
 
 import { HttpError } from '@/domain/http/errors/HttpError'
@@ -21,8 +22,13 @@ describe('parseAppErrors', () => {
   })
 
   it('should be able to parse an http error (inherited)', () => {
-    const statusText = 'Connection timed out'
-    const response = new Response(undefined, { status: 408, statusText })
+    const response = new TauriResponse({
+      data: null,
+      status: 408,
+      headers: {},
+      rawHeaders: {},
+      url: 'http://react-vite.fake.mock.com',
+    })
 
     const appError = new HttpError(response)
 

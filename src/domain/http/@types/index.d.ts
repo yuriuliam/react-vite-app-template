@@ -1,3 +1,4 @@
+import { type Response as TauriResponse } from '@tauri-apps/api/http'
 type BaseHttpClientOptions = Pick<RequestInit, 'mode'>
 
 type RequestMethods = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE' | 'OPTIONS'
@@ -36,6 +37,8 @@ type SafeFetchResponse<T = any> = Omit<FetchResponse<T>, 'data'> &
 
 declare global {
   declare namespace App.Domain.Http {
+    type HttpResponse<T = any> = TauriResponse<T>
+
     type RequestOptions =
       | GETOptions
       | POSTOptions
