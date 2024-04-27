@@ -1,8 +1,4 @@
-import { type TextField } from '@radix-ui/themes'
-import { type z } from 'zod'
-
-import type React from 'react'
-import type {
+import {
   type FieldPath as HookFormFieldPath,
   type RegisterOptions as HookFormRegisterOptions,
   type UseFormProps,
@@ -13,15 +9,16 @@ import type {
   type DefaultValues,
 } from 'react-hook-form'
 
-type BaseFormContextData = Omit<UseFormReturn<any, any, any>, 'handleSubmit'>
+import { type TextField } from '@radix-ui/themes'
+import { type z } from 'zod'
 
-type FieldsSchema<TFields extends FieldValues> = z.Schema<TFields, any>
+type BaseFormContextData = UseFormReturn<any, any, any>
 
 type FormOptions<TFields extends FieldValues, TContext> = Omit<
   UseFormProps<TFields, TContext>,
   'resolver'
 > & {
-  schema: FieldsSchema<TFields>
+  schema: z.Schema<TFields>
 }
 
 type FormInputRegistryOptions<TFields extends FieldValues> = Omit<
@@ -30,7 +27,7 @@ type FormInputRegistryOptions<TFields extends FieldValues> = Omit<
 >
 
 type HTMLFormProps = React.ComponentProps<'form'>
-type HTMLInputProps = React.ComponentProps<typeof TextField.Root>
+type HTMLInputProps = TextField.RootProps
 
 type ControlledHTMLFormProps = Omit<
   HTMLFormProps,
