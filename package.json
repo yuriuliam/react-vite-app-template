@@ -8,19 +8,21 @@
     "pnpm": "^8.14.1"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "benchmark": "vitest bench ./__tests__ --run",
-    "test": "vitest ./__tests__ --run",
-    "test:watch": "vitest ./__tests__",
-    "test:coverage": "vitest ./__tests__ --coverage --run",
-    "test:coverage:watch": "vitest ./__tests__ --coverage",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
+    "dev": "pnpm tauri:dev",
+    "build": "pnpm tauri:build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build"
+    "tauri:build": "tauri build",
+    "web:dev": "vite",
+    "web:build": "tsc && vite build",
+    "web:benchmark": "vitest bench ./__tests__ --run",
+    "web:lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "web:preview": "vite preview",
+    "web:test": "vitest ./__tests__ --run",
+    "web:test:watch": "vitest ./__tests__",
+    "web:test:coverage": "vitest ./__tests__ --coverage --run",
+    "web:test:coverage:watch": "vitest ./__tests__ --coverage"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.0.14",
