@@ -15,7 +15,6 @@ const createNextRouteGuard: CreateNextRouteGuardFn = useNextRoute => {
 
     return nextRoute ? <Navigate to={nextRoute} /> : <Outlet />
   }
-  RouteGuard.displayName = 'App.Data.Router.Guard'
 
   return RouteGuard
 }
