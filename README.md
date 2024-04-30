@@ -24,7 +24,6 @@ Considered a POC, the goal of this repo is to prove you can implement a distingu
 - Decentralized Global State w/ **Jotai**
 - Documentation and Design Workshop w/ **Storybook**
 - Linting + Code Styling w/ **ESLint (with plugins)** + **Prettier**
-- Rich Text Editor w/ **Lexical**
 - Tests w/ **Vitest** + **Testing Library** + **JSDom**
 
 ## Architecture
@@ -88,8 +87,8 @@ There are a few ones:
 ## How to start it?
 
 1. Ensure you have those dependencies installed:
-   1. `NodeJS ^20.11.1`
-   2. `PNPM ^8.14.1`
+   1. `NodeJS ^20.12.2`
+   2. `PNPM ^9.0.6`
 2. Run `pnpm install`
 3. Make a copy of `.env` and name it `.env.local` 
 4. Run `pnpm dev` to start de Application locally.
