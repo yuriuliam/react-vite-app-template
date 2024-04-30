@@ -1,3 +1,9 @@
+const assert = (condition: boolean, message: string) => {
+  if (condition) return
+
+  throw new Error(message)
+}
+
 /**
  * Map call sites to JSON format
  */
@@ -39,4 +45,4 @@ const getCallSites = () => {
 
 const getMappedCallSites = () => getCallSites().slice(1).map(callSitesToJSON)
 
-export { getCallSites, getMappedCallSites }
+export { assert, getCallSites, getMappedCallSites }
