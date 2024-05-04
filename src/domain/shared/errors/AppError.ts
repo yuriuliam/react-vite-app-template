@@ -1,5 +1,5 @@
 class AppError extends Error {
-  public constructor(message: string, baseError: unknown | null = null) {
+  public constructor(message: string, baseError: unknown = undefined) {
     super(message, { cause: baseError })
   }
 }
