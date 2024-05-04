@@ -16,7 +16,7 @@ declare global {
 
     type RouteNavigationOptions = Partial<Omit<Path, 'pathname' | 'search'>> & {
       search?: URLSearchParams | undefined
-      params?: T | undefined
+      params?: RouteParamsLike | undefined
     }
     type NavigateToFn<TRoutePath extends RoutePathLike> = (
       route: TRoutePath,
