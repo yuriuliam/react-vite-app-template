@@ -15,7 +15,7 @@ type CreateFormFn = App.Domain.Forms.CreateFormFn
 
 const CREATE_FORM_ROOT_PREFIX = 'Form.Root'
 const CREATE_FORM_INPUT_PREFIX = 'Form.Input'
-const CREATE_FORM_SCOPE_PREFIX = 'Form.Scope'
+const CREATE_FORM_ITERATOR_SCOPE_PREFIX = 'Form.IteratorScope'
 
 const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   const useForm: App.Domain.Forms.UseFormHook = consumerName => {
@@ -32,7 +32,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
   const formRootName = `${CREATE_FORM_ROOT_PREFIX}.${componentName}`
   const formInputName = `${CREATE_FORM_INPUT_PREFIX}.${componentName}`
-  const formScopeName = `${CREATE_FORM_SCOPE_PREFIX}.${componentName}`
+  const formIteratorScopeName = `${CREATE_FORM_ITERATOR_SCOPE_PREFIX}.${componentName}`
 
   const FormRoot: App.Domain.Forms.FormRootFC = ({
     children,
@@ -128,7 +128,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
     min,
     max,
   }) => {
-    const form = useForm(formScopeName)
+    const form = useForm(formIteratorScopeName)
     const formValues = form.getValues(path)
 
     const [length, { decrease, increase }] = useCount(
@@ -165,7 +165,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
       </>
     )
   }
-  FormIteratorScope.displayName = formScopeName
+  FormIteratorScope.displayName = formIteratorScopeName
 
   const Form: App.Domain.Forms.FormComposer = Object.freeze({
     Root: FormRoot,
