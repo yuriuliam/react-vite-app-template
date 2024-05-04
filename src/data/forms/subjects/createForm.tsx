@@ -10,6 +10,7 @@ import { TextField } from '@radix-ui/themes'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 import { useCount } from '@/shared/hooks/useCount'
+import { clamp } from '@/shared/utils/numbers'
 
 type CreateFormFn = App.Domain.Forms.CreateFormFn
 
@@ -133,7 +134,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
     const [length, { decrease, increase }] = useCount(
       Array.isArray(formValues) ? formValues.length : 0,
-      min,
+      clamp({ value: min, min: 0 }),
       max,
     )
 
