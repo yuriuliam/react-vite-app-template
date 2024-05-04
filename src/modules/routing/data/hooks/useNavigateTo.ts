@@ -12,7 +12,7 @@ const useNavigateTo: App.Modules.Routing.UseNavigateToFn<RoutePaths> = () => {
     (route, { params = {}, search = new URLSearchParams(), ...rest }) => {
       navigate({
         ...rest,
-        pathname: parseRoutePath(route, params as any),
+        pathname: parseRoutePath(route, params),
         search: search ? `?${search.toString()}` : undefined,
       })
     },

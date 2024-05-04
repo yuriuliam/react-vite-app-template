@@ -11,15 +11,6 @@ export default defineConfig({
         manualChunks: {
           // [Radix UI - Icons] ~400.00 kB (All Icons)
           icn: ['@radix-ui/react-icons'],
-          // [Lexical] ~134.39 kB
-          lxc: [
-            'lexical',
-            '@lexical/react/LexicalComposer',
-            '@lexical/react/LexicalContentEditable',
-            '@lexical/react/LexicalErrorBoundary',
-            '@lexical/react/LexicalHistoryPlugin',
-            '@lexical/react/LexicalPlainTextPlugin',
-          ],
           // [Web Vitals] ~6.86 kB (just here to not affect app bundle)
           wbv: ['web-vitals'],
         },
@@ -33,5 +24,4 @@ export default defineConfig({
     strictPort: true,
     watch: { ignored: ['**/src-tauri/**'] },
   },
-  worker: { format: 'iife' },
 })

@@ -23,7 +23,7 @@ jobs:
           node-version: 20
 
       - name: Install Pnpm
-        run: npm install pnpm@8.14.1 -g
+        run: npm install pnpm@9.0.6 -g
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -44,7 +44,7 @@ jobs:
           node-version: 20
 
       - name: Install Pnpm
-        run: npm install pnpm@8.14.1 -g
+        run: npm install pnpm@9.0.6 -g
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -65,7 +65,7 @@ jobs:
           node-version: 20
 
       - name: Install Pnpm
-        run: npm install pnpm@8.14.1 -g
+        run: npm install pnpm@9.0.6 -g
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -86,7 +86,7 @@ jobs:
           node-version: 20
 
       - name: Install Pnpm
-        run: npm install pnpm@8.14.1 -g
+        run: npm install pnpm@9.0.6 -g
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

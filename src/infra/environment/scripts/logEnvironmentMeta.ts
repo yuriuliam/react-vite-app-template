@@ -7,7 +7,7 @@ const logEnvironmentMeta = () => {
     name: 'App',
     title: 'Vite',
     content: 'DEV Environment detected',
-    data: { env: import.meta.env, url: import.meta.url },
+    data: { env: import.meta.env },
     style: 'inline',
   })
 }

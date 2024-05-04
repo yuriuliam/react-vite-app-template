@@ -6,7 +6,7 @@ class RuleValidationError extends ValidationError {
   public constructor(
     public validationMessages: App.Domain.Validation.RuleMessages<RuleLevel>,
   ) {
-    super(null)
+    super(undefined)
   }
 }
 

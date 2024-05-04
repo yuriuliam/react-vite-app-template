@@ -6,7 +6,7 @@ const initCUID: InitCUIDFn = ({ prefix, ...options } = {}) => {
   const generateCUID = init({
     random: Math.random,
     length: 10,
-    fingerprint: import.meta.env.VITE_APP_CUID_FINGERPRINT,
+    fingerprint: import.meta.env.VITE_CUID_FINGERPRINT,
     ...options,
   })
 

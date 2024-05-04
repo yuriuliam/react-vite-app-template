@@ -14,15 +14,13 @@ declare global {
 
     type RoutePathLike = `/${string}`
 
-    type RouteNavigationOptions<T extends RouteParamsLike> = Partial<
-      Omit<Path, 'pathname' | 'search'>
-    > & {
+    type RouteNavigationOptions = Partial<Omit<Path, 'pathname' | 'search'>> & {
       search?: URLSearchParams | undefined
-      params?: T | undefined
+      params?: RouteParamsLike | undefined
     }
-    type NavigateToFn<TRoutePath extends RoutePathLike> = <T>(
+    type NavigateToFn<TRoutePath extends RoutePathLike> = (
       route: TRoutePath,
-      options: RouteNavigationOptions<T>,
+      options: RouteNavigationOptions,
     ) => void
 
     type ErrorBoundaryBaseProps<TRoutePath extends RoutePathLike> = {
