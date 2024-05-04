@@ -12,6 +12,10 @@ import {
 import { type TextField } from '@radix-ui/themes'
 import { type z } from 'zod'
 
+type IteratorPathScoped<T> = T extends `${infer Prefix}.${number}`
+  ? Prefix
+  : never
+
 type BaseFormContextData = UseFormReturn<any, any, any>
 
 type FormOptions<TFields extends FieldValues, TContext> = Omit<
@@ -50,6 +54,22 @@ type FormInputProps<TFields extends FieldValues> = ControlledHTMLInputProps & {
   name: HookFormFieldPath<TFields>
 } & FormInputRegistryOptions<TFields>
 
+type FormIteratorScopeProps<
+  TFields extends FieldValues = FieldValues,
+  Path extends string = HookFormFieldPath<TFields>,
+> = {
+  path: IteratorPathScoped<Path>
+  min?: number | undefined
+  max?: number | undefined
+} & {
+  children?:
+    | App.IndexedPredicateFn<
+        `${IteratorPathScoped<Path>}.${number}`,
+        React.ReactNode
+      >
+    | undefined
+}
+
 declare global {
   declare namespace App.Domain.Forms {
     interface IFormContextData extends BaseFormContextData {}
@@ -60,9 +80,13 @@ declare global {
     type FormInputFC<TFields extends FieldValues = FieldValues> =
       globalThis.React.FC<FormInputProps<TFields>>
 
+    type FormIteratorScopeFC<TFields extends FieldValues = FieldValues> =
+      globalThis.React.FC<FormIteratorScopeProps<TFields>>
+
     type FormComposer<TFields extends FieldValues = FieldValues> = {
       Root: FormRootFC<TFields>
       Input: FormInputFC<TFields>
+      IteratorScope: FormIteratorScopeFC<TFields>
     }
 
     type UseFormHook<

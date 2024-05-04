@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import React from 'react'
 import {
   useForm as useHookForm,
   FormProvider as HookFormContextProvider,
@@ -9,11 +9,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { TextField } from '@radix-ui/themes'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
+import { useCount } from '@/shared/hooks/useCount'
+
+type CreateFormFn = App.Domain.Forms.CreateFormFn
 
 const CREATE_FORM_ROOT_PREFIX = 'Form.Root'
 const CREATE_FORM_INPUT_PREFIX = 'Form.Input'
-
-type CreateFormFn = App.Domain.Forms.CreateFormFn
+const CREATE_FORM_SCOPE_PREFIX = 'Form.Scope'
 
 const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   const useForm: App.Domain.Forms.UseFormHook = consumerName => {
@@ -30,6 +32,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
   const formRootName = `${CREATE_FORM_ROOT_PREFIX}.${componentName}`
   const formInputName = `${CREATE_FORM_INPUT_PREFIX}.${componentName}`
+  const formScopeName = `${CREATE_FORM_SCOPE_PREFIX}.${componentName}`
 
   const FormRoot: App.Domain.Forms.FormRootFC = ({
     children,
@@ -61,7 +64,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   FormRoot.displayName = formRootName
 
   const FormInput: App.Domain.Forms.FormInputFC = props => {
-    const inputId = useId()
+    const inputId = React.useId()
     const { formState, register: registerField } = useForm(formInputName)
 
     const {
@@ -83,8 +86,6 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
       ...rest
     } = props
 
-    const finalInputId = id || inputId
-
     const inputRegistry = registerField(name, {
       required,
       min,
@@ -103,6 +104,8 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
     const fieldError = formState.errors[name]
     const errorMessage = String(fieldError?.message || '')
 
+    const finalInputId = id || inputId
+
     return (
       <>
         <TextField.Root {...rest} {...inputRegistry} id={finalInputId}>
@@ -119,9 +122,56 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   }
   FormInput.displayName = formInputName
 
+  const FormIteratorScope: App.Domain.Forms.FormIteratorScopeFC = ({
+    children,
+    path = '',
+    min,
+    max,
+  }) => {
+    const form = useForm(formScopeName)
+    const formValues = form.getValues(path)
+
+    const [length, { decrease, increase }] = useCount(
+      Array.isArray(formValues) ? formValues.length : 0,
+      min,
+      max,
+    )
+
+    React.useEffect(() => {
+      if (!Array.isArray(formValues)) return
+
+      form.setValue(path, formValues.slice(0, length))
+    }, [form, formValues, length, path])
+
+    const placeholder = React.useMemo(() => {
+      return Array.from({ length }, () => path).map(
+        (prefix, idx) => `${prefix}.${idx}`,
+      )
+    }, [length, path])
+
+    if (!children) return <></>
+
+    return (
+      <>
+        <button type="button" onClick={increase.bind(null, 1)}>
+          +
+        </button>
+
+        <button type="button" onClick={decrease.bind(null, 1)}>
+          -
+        </button>
+
+        {placeholder.map(children as any)}
+      </>
+    )
+  }
+  FormIteratorScope.displayName = formScopeName
+
   const Form: App.Domain.Forms.FormComposer = Object.freeze({
     Root: FormRoot,
     Input: FormInput,
+
+    IteratorScope: FormIteratorScope,
   })
 
   return [Form, useForm] satisfies ReturnType<CreateFormFn> as any
