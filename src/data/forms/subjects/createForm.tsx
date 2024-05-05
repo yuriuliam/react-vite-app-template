@@ -10,6 +10,7 @@ import { TextField } from '@radix-ui/themes'
 
 import { useCallbackRef } from '@/shared/hooks/useCallbackRef'
 import { useCount } from '@/shared/hooks/useCount'
+import { clamp } from '@/shared/utils/numbers'
 
 type CreateFormFn = App.Domain.Forms.CreateFormFn
 
@@ -63,7 +64,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   }
   FormRoot.displayName = formRootName
 
-  const FormInput: App.Domain.Forms.FormInputFC = props => {
+  const FormTextField: App.Domain.Forms.FormTextFieldFC = props => {
     const inputId = React.useId()
     const { formState, register: registerField } = useForm(formInputName)
 
@@ -120,7 +121,62 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
       </>
     )
   }
-  FormInput.displayName = formInputName
+  FormTextField.displayName = formInputName
+
+  const FormInput: App.Domain.Forms.FormInputFC = props => {
+    const inputId = React.useId()
+    const { formState, register: registerField } = useForm(formInputName)
+
+    const {
+      id,
+      label,
+      name,
+      required,
+      min,
+      max,
+      maxLength,
+      minLength,
+      validate,
+      setValueAs,
+      shouldUnregister,
+      onChange,
+      onBlur,
+      disabled,
+      deps,
+      ...rest
+    } = props
+
+    const inputRegistry = registerField(name, {
+      required,
+      min,
+      max,
+      maxLength,
+      minLength,
+      validate,
+      setValueAs,
+      shouldUnregister,
+      onChange,
+      onBlur,
+      disabled,
+      deps,
+    })
+
+    const fieldError = formState.errors[name]
+    const errorMessage = String(fieldError?.message || '')
+
+    const finalInputId = id || inputId
+
+    return (
+      <>
+        {label && <label htmlFor={finalInputId}>{label}</label>}
+
+        <input {...rest} {...inputRegistry} id={finalInputId} />
+
+        <span>{errorMessage}</span>
+      </>
+    )
+  }
+  FormTextField.displayName = formInputName
 
   const FormIteratorScope: App.Domain.Forms.FormIteratorScopeFC = ({
     children,
@@ -133,7 +189,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
     const [length, { decrease, increase }] = useCount(
       Array.isArray(formValues) ? formValues.length : 0,
-      min,
+      clamp({ value: min, min: 0 }),
       max,
     )
 
@@ -169,8 +225,8 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
 
   const Form: App.Domain.Forms.FormComposer = Object.freeze({
     Root: FormRoot,
+    TextField: FormTextField,
     Input: FormInput,
-
     IteratorScope: FormIteratorScope,
   })
 

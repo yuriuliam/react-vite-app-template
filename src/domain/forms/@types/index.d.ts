@@ -31,12 +31,20 @@ type FormInputRegistryOptions<TFields extends FieldValues> = Omit<
 >
 
 type HTMLFormProps = React.ComponentProps<'form'>
-type HTMLInputProps = TextField.RootProps
+type HTMLInputProps = React.ComponentProps<'input'>
+type RadixTextFieldProps = TextField.RootProps
 
 type ControlledHTMLFormProps = Omit<
   HTMLFormProps,
   'onSubmit' | 'defaultValue' | keyof UseFormProps<any, any>
 >
+type ControlledRadixTextFieldProps = Omit<
+  RadixTextFieldProps,
+  'name' | keyof FormInputRegistryOptions<any>
+> & {
+  label?: string | undefined
+}
+
 type ControlledHTMLInputProps = Omit<
   HTMLInputProps,
   'name' | keyof FormInputRegistryOptions<any>
@@ -53,6 +61,11 @@ type FormRootProps<TFields extends FieldValues> = ControlledHTMLFormProps & {
 type FormInputProps<TFields extends FieldValues> = ControlledHTMLInputProps & {
   name: HookFormFieldPath<TFields>
 } & FormInputRegistryOptions<TFields>
+
+type FormRadixTextFieldProps<TFields extends FieldValues> =
+  ControlledRadixTextFieldProps & {
+    name: HookFormFieldPath<TFields>
+  } & FormInputRegistryOptions<TFields>
 
 type FormIteratorScopeProps<
   TFields extends FieldValues = FieldValues,
@@ -77,6 +90,9 @@ declare global {
     type FormRootFC<TFields extends FieldValues = FieldValues> =
       globalThis.React.FC<FormRootProps<TFields>>
 
+    type FormTextFieldFC<TFields extends FieldValues = FieldValues> =
+      globalThis.React.FC<FormRadixTextFieldProps<TFields>>
+
     type FormInputFC<TFields extends FieldValues = FieldValues> =
       globalThis.React.FC<FormInputProps<TFields>>
 
@@ -85,6 +101,7 @@ declare global {
 
     type FormComposer<TFields extends FieldValues = FieldValues> = {
       Root: FormRootFC<TFields>
+      TextField: FormTextFieldFC<TFields>
       Input: FormInputFC<TFields>
       IteratorScope: FormIteratorScopeFC<TFields>
     }

@@ -10,7 +10,10 @@ const withProps: App.Domain.React.WithPropsHOC = (Component, propsToBound) => {
   const componentName = getComponentDisplayName(Component)
 
   const ComponentWithProps = React.forwardRef((props, ref) => (
-    <Component {...Object.assign({} as any, propsToBound, props)} ref={ref} />
+    <Component
+      {...Object.assign<any, any, any>({}, propsToBound, props)}
+      ref={ref}
+    />
   ))
   ComponentWithProps.displayName = `withProps(${componentName})`
 

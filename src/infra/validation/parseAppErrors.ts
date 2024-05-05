@@ -1,6 +1,6 @@
 import { createErrorParser } from '@/data/validation/subjects/createErrorParser'
 
-import { AppError } from '@/domain/shared/errors/AppError'
+import { AppError } from '@/domain/commons/errors/AppError'
 
 import { recursivelyGetAllErrors } from './utils/recursivelyGetAllErrors'
 

@@ -14,7 +14,7 @@ import { useConst } from '@/shared/hooks/useConst'
 const SIGN_IN_NAME = 'Containers.SignIn.Root'
 
 const SignInPage = createPage(({ navigateTo }) => {
-  const defaultAuthParams = useConst<App.Modules.Auth.AuthParamsModel>({
+  const defaultAuthParams = useConst<Partial<App.Modules.Auth.AuthParams>>({
     email: 'mocked@yahoo.com',
     password: 'foobar123',
   })
@@ -36,7 +36,7 @@ const SignInPage = createPage(({ navigateTo }) => {
       <Section>
         <AuthForm.Root defaultValues={defaultAuthParams} onValidSubmit={signIn}>
           <Flex direction="column">
-            <AuthForm.Input
+            <AuthForm.TextField
               autoComplete="email"
               label="Email"
               name="email"
@@ -45,7 +45,7 @@ const SignInPage = createPage(({ navigateTo }) => {
               required
             />
 
-            <AuthForm.Input
+            <AuthForm.TextField
               autoComplete="current-password"
               label="Password"
               name="password"

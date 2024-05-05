@@ -1,4 +1,4 @@
-import { TokenModel } from '@/domain/shared/models/Token'
+import { TokenModel } from '@/domain/commons/models/Token'
 
 import { UserModel } from './User'
 

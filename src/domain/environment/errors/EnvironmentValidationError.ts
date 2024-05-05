@@ -1,4 +1,4 @@
-import { AppError } from '@/domain/shared/errors/AppError'
+import { AppError } from '@/domain/commons/errors/AppError'
 
 class EnvironmentValidationError extends AppError {
   public constructor(

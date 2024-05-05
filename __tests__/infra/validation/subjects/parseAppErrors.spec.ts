@@ -1,8 +1,8 @@
 import { Response as TauriResponse } from '@tauri-apps/api/http'
 import { describe, it, expect } from 'vitest'
 
+import { AppError } from '@/domain/commons/errors/AppError'
 import { HttpError } from '@/domain/http/errors/HttpError'
-import { AppError } from '@/domain/shared/errors/AppError'
 
 import { parseAppErrors } from '@/infra/validation/parseAppErrors'
 
