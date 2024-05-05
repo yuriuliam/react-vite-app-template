@@ -1,4 +1,4 @@
-import { AppError } from '@/domain/shared/errors/AppError'
+import { AppError } from '@/domain/commons/errors/AppError'
 
 class HttpError extends AppError {
   public constructor(public response: App.Domain.Http.HttpResponse) {

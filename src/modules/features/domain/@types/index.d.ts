@@ -11,7 +11,7 @@ declare global {
     type FeaturesResponse = z.infer<typeof FeaturesResponseModel>
 
     type LoadFeaturesServiceFn = (
-      token: App.Domain.Shared.Token | null,
+      token: App.Domain.Commons.Token | null,
     ) => Promise<FeaturesResponse | null>
 
     type CreateLoadFeaturesServiceFn = (

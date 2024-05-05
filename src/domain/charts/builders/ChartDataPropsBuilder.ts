@@ -1,4 +1,4 @@
-import { SchemaBuilder } from '@/domain/shared/builders/SchemaBuilder'
+import { SchemaBuilder } from '@/domain/commons/builders/SchemaBuilder'
 
 type ChartOptions = App.Domain.Charts.ChartOptions
 

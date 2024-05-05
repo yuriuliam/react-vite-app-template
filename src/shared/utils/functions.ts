@@ -52,12 +52,12 @@ const debounced = <T extends (...args: any[]) => void>(
   callback: T,
   ms: number,
 ) => {
-  let curTimeout = 0
+  let curTimeout: NodeJS.Timeout | null = null
 
   return ((...args: Parameters<T>) => {
     if (curTimeout) clearTimeout(curTimeout)
 
-    curTimeout = setTimeout(callback, ms, ...args) as any
+    curTimeout = setTimeout(callback, ms, ...args)
   }) as DebouncedFn<T>
 }
 

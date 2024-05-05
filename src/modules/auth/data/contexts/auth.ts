@@ -5,7 +5,7 @@ interface IAuthContextData {
   signOut: App.Modules.Auth.SignOutFn
   isAuthenticated: boolean
   user: App.Modules.Users.User | null
-  token: App.Domain.Shared.Token | null
+  token: App.Domain.Commons.Token | null
 }
 
 const AUTH_CONTEXT_NAME = 'Modules.Auth.Context'

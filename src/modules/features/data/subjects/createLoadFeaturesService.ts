@@ -4,7 +4,7 @@ type CreateLoadFeaturesServiceFn =
   App.Modules.Features.CreateLoadFeaturesServiceFn
 
 const featuresByUserToken: Record<
-  App.Domain.Shared.Token,
+  App.Domain.Commons.Token,
   App.Modules.Features.FeaturesResponse
 > = {
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM3ODkyNmZlLWFiZGQtNDgxYy1iODA2LWY4MThjNjJjZGY4YiIsIm5hbWUiOiJMdWthcyBLaXJsaW4iLCJ1c2VybmFtZSI6Ikx1a2FzX0tpcmxpbiIsImVtYWlsIjoibW9ja2VkQHlhaG9vLmNvbSJ9.VIgWauX0QVOtllI2vTUeGj_CxABchzaEBqK3Ilxu5ps':

@@ -95,9 +95,8 @@ const omitKeys = <TObj extends Record<any, any>, TKey extends keyof TObj>(
   obj: TObj,
   ...keys: TKey[]
 ) => {
-  return Object.keys(obj).reduce(
-    (acc, cur) =>
-      keys.includes(cur as any) ? acc : { ...acc, [cur]: obj[cur] },
+  return (Object.keys(obj) as TKey[]).reduce(
+    (acc, cur) => (keys.includes(cur) ? acc : { ...acc, [cur]: obj[cur] }),
     {},
   ) as Omit<TObj, TKey>
 }

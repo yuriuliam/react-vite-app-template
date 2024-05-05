@@ -17,7 +17,7 @@ const users = [
 ]
 
 /** @deprecated Use an actual service! */
-const fakeFetchUser = async (params: App.Modules.Auth.AuthParamsModel) => {
+const fakeFetchUser = async (params: App.Modules.Auth.AuthParams) => {
   const user = users.find(
     user => params.email === user.email && params.password === user.password,
   )
