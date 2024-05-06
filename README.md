@@ -1,5 +1,9 @@
 # React Vite Template
 
+## BEFORE you continue!!!
+
+This is a POC, something already structured. Consider this project a study-case first!
+
 ## What's this?
 
 This is a React Application Base/Template for big and scalable projects.

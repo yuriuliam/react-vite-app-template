@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  useForm as useHookForm,
-  FormProvider as HookFormContextProvider,
-  useFormContext as useHookFormContext,
-} from 'react-hook-form'
+import ReactHookForm from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TextField } from '@radix-ui/themes'
@@ -19,8 +15,8 @@ const CREATE_FORM_INPUT_PREFIX = 'Form.Input'
 const CREATE_FORM_ITERATOR_SCOPE_PREFIX = 'Form.IteratorScope'
 
 const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
-  const useForm: App.Domain.Forms.UseFormHook = consumerName => {
-    const formContextValue = useHookFormContext()
+  const useForm: App.Domain.Forms.UseFormHook<any> = consumerName => {
+    const formContextValue = ReactHookForm.useFormContext()
 
     if (!formContextValue) {
       throw new Error(
@@ -42,7 +38,7 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
     onInvalidSubmit,
     ...rest
   }) => {
-    const form = useHookForm({
+    const form = ReactHookForm.useForm({
       ...formProps,
       defaultValues: defaultValues || formProps.defaultValues,
       resolver: zodResolver(schema),
@@ -55,11 +51,11 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
     >(evt => void handleFormSubmit(evt))
 
     return (
-      <HookFormContextProvider {...form}>
+      <ReactHookForm.FormProvider {...form}>
         <form {...rest} onSubmit={onFormSubmit}>
           {children}
         </form>
-      </HookFormContextProvider>
+      </ReactHookForm.FormProvider>
     )
   }
   FormRoot.displayName = formRootName
@@ -223,14 +219,14 @@ const createForm: CreateFormFn = ({ schema, ...formProps }, componentName) => {
   }
   FormIteratorScope.displayName = formIteratorScopeName
 
-  const Form: App.Domain.Forms.FormComposer = Object.freeze({
+  const Form: App.Domain.Forms.FormComposer<any> = Object.freeze({
     Root: FormRoot,
     TextField: FormTextField,
     Input: FormInput,
     IteratorScope: FormIteratorScope,
   })
 
-  return [Form, useForm] satisfies ReturnType<CreateFormFn> as any
+  return [Form, useForm] satisfies ReturnType<CreateFormFn>
 }
 
 export { createForm }

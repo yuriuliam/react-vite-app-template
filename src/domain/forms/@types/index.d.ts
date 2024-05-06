@@ -1,32 +1,23 @@
-import {
-  type FieldPath as HookFormFieldPath,
-  type RegisterOptions as HookFormRegisterOptions,
-  type UseFormProps,
-  type UseFormReturn,
-  type SubmitHandler,
-  type SubmitErrorHandler,
-  type FieldValues,
-  type DefaultValues,
-} from 'react-hook-form'
-
 import { type TextField } from '@radix-ui/themes'
 import { type z } from 'zod'
+
+import type ReactHookForm from 'react-hook-form'
 
 type IteratorPathScoped<T> = T extends `${infer Prefix}.${number}`
   ? Prefix
   : never
 
-type BaseFormContextData = UseFormReturn<any, any, any>
+type BaseFormContextData = ReactHookForm.UseFormReturn<any, any, any>
 
-type FormOptions<TFields extends FieldValues, TContext> = Omit<
-  UseFormProps<TFields, TContext>,
+type FormOptions<TFields extends ReactHookForm.FieldValues, TContext> = Omit<
+  ReactHookForm.UseFormProps<TFields, TContext>,
   'resolver'
 > & {
   schema: z.Schema<TFields>
 }
 
-type FormInputRegistryOptions<TFields extends FieldValues> = Omit<
-  HookFormRegisterOptions<TFields, HookFormFieldPath<TFields>>,
+type FormInputRegistryOptions<TFields extends ReactHookForm.FieldValues> = Omit<
+  ReactHookForm.RegisterOptions<TFields, ReactHookForm.FieldPath<TFields>>,
   'pattern' | 'valueAsNumber' | 'valueAsDate'
 >
 
@@ -36,7 +27,7 @@ type RadixTextFieldProps = TextField.RootProps
 
 type ControlledHTMLFormProps = Omit<
   HTMLFormProps,
-  'onSubmit' | 'defaultValue' | keyof UseFormProps<any, any>
+  'onSubmit' | 'defaultValue' | keyof ReactHookForm.UseFormProps<any, any>
 >
 type ControlledRadixTextFieldProps = Omit<
   RadixTextFieldProps,
@@ -52,24 +43,26 @@ type ControlledHTMLInputProps = Omit<
   label?: string | undefined
 }
 
-type FormRootProps<TFields extends FieldValues> = ControlledHTMLFormProps & {
-  defaultValues?: DefaultValues<TFields>
-  onValidSubmit: SubmitHandler<TFields>
-  onInvalidSubmit?: SubmitErrorHandler<TFields>
-}
+type FormRootProps<TFields extends ReactHookForm.FieldValues> =
+  ControlledHTMLFormProps & {
+    defaultValues?: ReactHookForm.DefaultValues<TFields>
+    onValidSubmit: ReactHookForm.SubmitHandler<TFields>
+    onInvalidSubmit?: ReactHookForm.SubmitErrorHandler<TFields>
+  }
 
-type FormInputProps<TFields extends FieldValues> = ControlledHTMLInputProps & {
-  name: HookFormFieldPath<TFields>
-} & FormInputRegistryOptions<TFields>
+type FormInputProps<TFields extends ReactHookForm.FieldValues> =
+  ControlledHTMLInputProps & {
+    name: ReactHookForm.FieldPath<TFields>
+  } & FormInputRegistryOptions<TFields>
 
-type FormRadixTextFieldProps<TFields extends FieldValues> =
+type FormRadixTextFieldProps<TFields extends ReactHookForm.FieldValues> =
   ControlledRadixTextFieldProps & {
-    name: HookFormFieldPath<TFields>
+    name: ReactHookForm.FieldPath<TFields>
   } & FormInputRegistryOptions<TFields>
 
 type FormIteratorScopeProps<
-  TFields extends FieldValues = FieldValues,
-  Path extends string = HookFormFieldPath<TFields>,
+  TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+  Path extends string = ReactHookForm.FieldPath<TFields>,
 > = {
   path: IteratorPathScoped<Path>
   min?: number | undefined
@@ -87,19 +80,25 @@ declare global {
   declare namespace App.Domain.Forms {
     interface IFormContextData extends BaseFormContextData {}
 
-    type FormRootFC<TFields extends FieldValues = FieldValues> =
-      globalThis.React.FC<FormRootProps<TFields>>
+    type FormRootFC<
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = globalThis.React.FC<FormRootProps<TFields>>
 
-    type FormTextFieldFC<TFields extends FieldValues = FieldValues> =
-      globalThis.React.FC<FormRadixTextFieldProps<TFields>>
+    type FormTextFieldFC<
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = globalThis.React.FC<FormRadixTextFieldProps<TFields>>
 
-    type FormInputFC<TFields extends FieldValues = FieldValues> =
-      globalThis.React.FC<FormInputProps<TFields>>
+    type FormInputFC<
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = globalThis.React.FC<FormInputProps<TFields>>
 
-    type FormIteratorScopeFC<TFields extends FieldValues = FieldValues> =
-      globalThis.React.FC<FormIteratorScopeProps<TFields>>
+    type FormIteratorScopeFC<
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = globalThis.React.FC<FormIteratorScopeProps<TFields>>
 
-    type FormComposer<TFields extends FieldValues = FieldValues> = {
+    type FormComposer<
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = {
       Root: FormRootFC<TFields>
       TextField: FormTextFieldFC<TFields>
       Input: FormInputFC<TFields>
@@ -107,14 +106,15 @@ declare global {
     }
 
     type UseFormHook<
-      TFields extends FieldValues = FieldValues,
-      TContext = any,
-    > = (consumer: string) => UseFormReturn<TFields, TContext, undefined>
+      TFields extends ReactHookForm.FieldValues = ReactHookForm.FieldValues,
+    > = (
+      consumer: string,
+    ) => ReactHookForm.UseFormReturn<TFields, any, undefined>
 
-    type CreateFormFn = <TFields extends FieldValues, TContext>(
-      formOptions: FormOptions<TFields, TContext>,
+    type CreateFormFn = <TFields extends ReactHookForm.FieldValues>(
+      formOptions: FormOptions<TFields, any>,
       componentName: string,
-    ) => [Form: FormComposer<TFields>, useForm: UseFormHook<TFields, TContext>]
+    ) => [Form: FormComposer<TFields>, useForm: UseFormHook<TFields, any>]
   }
 }
 
