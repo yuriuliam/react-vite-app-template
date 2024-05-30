@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactHookForm from 'react-hook-form'
+import * as ReactHookForm from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TextField } from '@radix-ui/themes'
